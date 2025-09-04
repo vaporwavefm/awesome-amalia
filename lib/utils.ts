@@ -6,96 +6,80 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false) {
-  let tempScores: { id: string; queen: string; episodeNumber: string | number; score: number, }[] = [];
+  const episodeNum = Number(episodeNumber);
 
-  // Assign scores for all non-eliminated queens
+  // Detect finale: 4 or fewer remaining, none eliminated
+  const isFinale = trackRecord.every(q => !q.isEliminated) && trackRecord.length <= 4;
+
+  if (isFinale) {
+    // Pick a single winner randomly
+    const winnerIndex = Math.floor(Math.random() * trackRecord.length);
+    return trackRecord.map((q, idx) => ({
+      ...q,
+      placements: [
+        ...q.placements,
+        { episodeNumber, placement: idx === winnerIndex ? 'win' : 'finale' }
+      ],
+      // Do NOT increment wins/highs/lows/bottoms
+      // leave other stats unchanged
+    }));
+  }
+
+  // --- Normal episode logic ---
+  let tempScores: { id: string; queen: string; episodeNumber: string | number; score: number }[] = [];
+
   const scoredRecord = trackRecord.map(q => {
-    if (q.isEliminated) {
-      return { ...q };
-    }
+    if (q.isEliminated) return { ...q };
 
     const tempScore = Math.floor(Math.random() * 100) + 1;
-    tempScores.push({
-      id: q.id,
-      queen: q.name,
-      episodeNumber,
-      score: tempScore
-    });
+    tempScores.push({ id: q.id, queen: q.name, episodeNumber, score: tempScore });
 
     return {
       ...q,
-      scores: [
-        ...q.scores,
-        { episodeNumber, score: tempScore }
-      ]
+      scores: [...q.scores, { episodeNumber, score: tempScore }]
     };
   });
 
-  // order tempScores and judge performance
   tempScores.sort((a, b) => b.score - a.score);
   let [topCount, bottomCount] = nittyGritty({ size: tempScores.length });
 
   const topQueens = tempScores.slice(0, topCount);
   const bottomQueens = tempScores.slice(-bottomCount);
-  const eliminatedId = nonElimination
-    ? null
-    : lipsync(bottomQueens.slice(1));
+  const eliminatedId = nonElimination ? null : lipsync(bottomQueens.slice(1));
 
-  // Apply placements
   const updatedRecord = scoredRecord.map(q => {
-    if (q.isEliminated) {
-      return { ...q };
-    }
+    if (q.isEliminated) return { ...q };
 
     let placementType: 'win' | 'high' | 'low' | 'bottom' | 'safe';
 
     if (topQueens[0]?.id === q.id) {
       placementType = 'win';
-      return {
-        ...q,
-        wins: q.wins + 1,
-        placements: [...q.placements, { episodeNumber, placement: placementType }]
-      };
+      return { ...q, wins: q.wins + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }
 
     if (topQueens.slice(1).some(t => t.id === q.id)) {
       placementType = 'high';
-      return {
-        ...q,
-        highs: q.highs + 1,
-        placements: [...q.placements, { episodeNumber, placement: placementType }]
-      };
+      return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }
 
     if (bottomQueens[0]?.id === q.id) {
       placementType = 'low';
-      return {
-        ...q,
-        lows: q.lows + 1,
-        placements: [...q.placements, { episodeNumber, placement: placementType }]
-      };
+      return { ...q, lows: q.lows + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }
 
     if (bottomQueens.some(b => b.id === q.id)) {
       placementType = 'bottom';
       const isEliminated = q.id === eliminatedId;
-      return {
-        ...q,
-        bottoms: q.bottoms + 1,
-        isEliminated,
-        placements: [...q.placements, { episodeNumber, placement: placementType }]
-      };
+      return { ...q, bottoms: q.bottoms + 1, isEliminated, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }
 
     placementType = 'safe';
-    return {
-      ...q,
-      placements: [...q.placements, { episodeNumber, placement: placementType }]
-    };
+    return { ...q, placements: [...q.placements, { episodeNumber, placement: placementType }] };
   });
 
   return updatedRecord;
 }
+
 
 
 function nittyGritty({ size }: { size: number }) {

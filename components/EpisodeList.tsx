@@ -19,14 +19,13 @@ const EpisodeList = ({
             {episodes.map((ep) => {
                 // Use post-episode snapshot to detect safe queens
                 const queensSnapshot = episodeHistory.post[ep.episodeNumber] || initialTrackRecord;
-
+                
                 const hasSafeQueens = queensSnapshot.some(q => {
-                    const placement = q.placements?.find(
-                        p => Number(p.episodeNumber) === Number(ep.episodeNumber)
+                    const placement = q.placements?.find((p: { episodeNumber: string | number; placement: string }) =>
+                        Number(p.episodeNumber) === Number(ep.episodeNumber)
                     );
                     return placement?.placement === "safe";
                 });
-
                 const isFinale = ep.title?.toLowerCase().includes("finale");
                 return (
                     <div
@@ -43,15 +42,27 @@ const EpisodeList = ({
                         {/* Quick links to results */}
                         <div className="flex flex-wrap gap-1 text-xs">
                             {isFinale ? (
-                                <button
-                                    className="px-2 py-1 rounded bg-blue-500 text-white"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        onEpisodeEventClick(ep.episodeNumber, "winner", ep.nonElimination || '');
-                                    }}
-                                >
-                                    Winner
-                                </button>
+                                <>
+                                    <button
+                                        className="px-2 py-1 rounded bg-blue-500 text-white"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onEpisodeEventClick(ep.episodeNumber, "winner", ep.nonElimination || '');
+                                        }}
+                                    >
+                                        Winner
+                                    </button>
+
+                                    <button
+                                        className="px-2 py-1 rounded bg-gray-700 text-white"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onEpisodeEventClick(ep.episodeNumber, "results", false);
+                                        }}
+                                    >
+                                        Show Results
+                                    </button>
+                                </>
                             ) : (
                                 <>
                                     <button

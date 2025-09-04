@@ -21,6 +21,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
   const [episodeHistory, setEpisodeHistory] = useState<{ pre: { [key: number]: any[] }, post: { [key: number]: any[] } }>({ pre: {}, post: {} });
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [episodeEvent, setEpisodeEvent] = useState('');
+  const [showResults, setShowResults] = useState(false);
 
   // Precompute all episode results
   useEffect(() => {
@@ -33,7 +34,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
     // Assign one random non-elimination episode
     const eligible = sortedEpisodes.filter(e => !e.title.toLowerCase().includes("finale"));
     if (eligible.length > 0) {
-      const randomIndex =  Math.min(Math.floor(Math.random() * eligible.length), 9 );
+      const randomIndex = Math.min(Math.floor(Math.random() * eligible.length), 9);
       //if(randomIndex === 9 || randomIndex === 10) randomIndex = 8;
       sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
     }
@@ -49,12 +50,21 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
 
   const handleEpisodeClick = (episodeNumber: number) => {
     setEpisodeEvent('');
+    setShowResults(false); // reset show results
     setSelectedEpisode(episodeNumber);
   };
 
   const handleEpisodeEventClick = (episodeNumber: number, eventType: string) => {
     setSelectedEpisode(episodeNumber);
+
+    if (eventType === "results") {
+      setEpisodeEvent("results");   // <-- explicitly set it
+      setShowResults(true);          // <-- force results view
+      return;
+    }
+
     setEpisodeEvent(eventType);
+    setShowResults(false);
   };
 
   const filteredQueens = selectedEpisode
@@ -65,31 +75,31 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
 
   // Determine which queens to display
   const queensToDisplay = selectedEpisode
-    ? filteredQueens.filter(q => {
-      const placement = q.placements?.find(p => p.episodeNumber === selectedEpisode);
-      const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
-      const isNonElim = episode?.nonElimination;
+    ? episodeEvent === "results"
+      ? episodeHistory.post[selectedEpisode] || []
+      : filteredQueens.filter(q => {
+        const placement = q.placements?.find(p => p.episodeNumber === selectedEpisode);
+        const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
+        const isNonElim = episode?.nonElimination;
 
-      switch (episodeEvent) {
-        case 'announceSafe':
-          return placement?.placement === 'safe';
-        case 'winner':
-          return placement?.placement === 'win';
-        case 'high':
-          return placement?.placement === 'high';
-        case 'bottom':
-          return placement?.placement === 'low' || placement?.placement === 'bottom';
-        case 'bottom2':
-          // Always show both queens in the bottom
-          return placement?.placement === 'bottom';
-        case 'eliminated':
-          // If non-elimination, show both bottom 2 queens
-          if (isNonElim) return placement?.placement === 'bottom';
-          return q.isEliminated && placement?.placement === 'bottom';
-        default:
-          return true;
-      }
-    })
+        switch (episodeEvent) {
+          case 'announceSafe':
+            return placement?.placement === 'safe';
+          case 'winner':
+            return placement?.placement === 'win';
+          case 'high':
+            return placement?.placement === 'high';
+          case 'bottom':
+            return placement?.placement === 'low' || placement?.placement === 'bottom';
+          case 'bottom2':
+            return placement?.placement === 'bottom';
+          case 'eliminated':
+            if (isNonElim) return placement?.placement === 'bottom';
+            return q.isEliminated && placement?.placement === 'bottom';
+          default:
+            return true;
+        }
+      })
     : filteredQueens;
 
   // Event message generator
@@ -105,6 +115,13 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
       case 'announceSafe':
         return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
       case 'winner':
+        if (episode?.title.toLowerCase().includes("finale")) {
+          // Finale special case
+          return names.length === 1
+            ? `${names[0]} is crowned the WINNER of the season! `
+            : `${others.join(', ')}, and ${last} are crowned co-winners of the season!`;
+        }
+        // Normal weekly challenge
         return names.length === 1
           ? `${names[0]} is declared the winner of this week's Maxi Challenge!`
           : `${others.join(', ')}, and ${last} are declared winners!`;
@@ -152,7 +169,8 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
                         episodeEvent === 'bottom' ? 'Bottom Queens' :
                           episodeEvent === 'bottom2' ? 'Bottom 2' :
                             episodeEvent === 'eliminated' ? 'Eliminated Queen' :
-                              'Queens'}
+                              episodeEvent === 'results' ? 'Season Results' :
+                                'Queens'}
                 </h2>
                 {eventMessage && <p className="mt-2 text-sm font-medium text-purple-800">{eventMessage}</p>}
               </div>
@@ -161,7 +179,9 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
             <CardList
               queens={queensToDisplay}
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
+              viewMode={episodeEvent}
               nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
+              showResults={showResults}
             />
           </>
         ) : (

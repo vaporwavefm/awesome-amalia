@@ -18,22 +18,26 @@ type Queen = {
 const CardList = ({
     queens,
     episodeType,
-    nonElimination
+    viewMode,
+    nonElimination,
+    showResults
 }: {
     queens: Queen[];
     episodeType?: string;
+    viewMode?: string;
     nonElimination?: boolean;
+    showResults?: boolean;
 }) => {
     const maxWins = Math.max(...queens.map(q => q.wins));
     let filteredQueens = queens;
-
     const normalizedType = episodeType?.toLowerCase() || "";
-
-    // Determine view type
     const isFullCastView = !episodeType;
     const isEventView = !!episodeType;
-
-    // Filter queens based on event type
+    const isRegularEpisodeView = !isEventView;
+    /*
+    
+    // Determine view type
+// Filter queens based on event type
     if (normalizedType.includes("finale")) {
         filteredQueens = queens.filter(q => q.wins === maxWins);
     } else if (normalizedType.includes("eliminated")) {
@@ -74,6 +78,7 @@ const CardList = ({
 
     // Apply non-elimination adjustment
     if (nonElimination && normalizedType.includes("bottom 2")) {
+        
         // Only show Bottom 2 queens in a non-elimination episode
         filteredQueens = filteredQueens.filter(q =>
             q.placements.some(
@@ -83,29 +88,58 @@ const CardList = ({
             )
         );
     }
+    */
+
+    const resultsTable = (
+        <div className="p-4 bg-white rounded-xl shadow-md col-span-full w-full">
+            <h3 className="text-lg font-bold mb-2 text-center">Season Results</h3>
+            <table className="table-auto w-full text-sm border-collapse">
+                <thead>
+                    <tr className="border-b">
+                        <th className="px-2 py-1 text-left">Queen</th>
+                        <th className="px-2 py-1">Wins</th>
+                        <th className="px-2 py-1">Highs</th>
+                        <th className="px-2 py-1">Lows</th>
+                        <th className="px-2 py-1">Bottoms</th>
+                        <th className="px-2 py-1">Eliminated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {queens.map(q => (
+                        <tr key={q.id} className="border-t">
+                            <td className="px-2 py-1 font-medium">{q.name}</td>
+                            <td className="px-2 py-1 text-center">{q.wins}</td>
+                            <td className="px-2 py-1 text-center">{q.highs}</td>
+                            <td className="px-2 py-1 text-center">{q.lows}</td>
+                            <td className="px-2 py-1 text-center">{q.bottoms}</td>
+                            <td className="px-2 py-1 text-center">
+                                {q.isEliminated ? "❌" : "✅"}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 
     return (
-        <div
-            className={`${isFullCastView
-                ? "grid grid-cols-4 gap-4 justify-items-center"
-                : "flex flex-wrap justify-center gap-6"
-                }`}
-        >
+        <div className="flex flex-wrap justify-center gap-6">
             {filteredQueens.map((queen) => (
                 <div
                     key={queen.id}
-                    className={`transition duration-300 ${isEventView
-                        ? "inline-flex max-w-xs justify-center"
-                        : "flex-1 min-w-[0] basis-[calc(25%-1rem)]"
-                        } ${queen.isEliminated ? "opacity-40 grayscale" : ""}`}
+                    className={`transition duration-300 inline-flex max-w-xs justify-center 
+                        ${queen.isEliminated && (viewMode === 'eliminated' || viewMode == null) ? "opacity-40 grayscale" : ""}`}
                 >
                     <QueenCard
                         q={queen}
                         maxWins={maxWins}
-                        isBottom={["bottom", "bottom2"].includes(normalizedType)}
+                        viewMode={viewMode}
                     />
                 </div>
             ))}
+
+            {/* Add results card at the end */}
+            {showResults && resultsTable}
         </div>
     );
 };

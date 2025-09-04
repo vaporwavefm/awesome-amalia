@@ -13,16 +13,16 @@ type Queen = {
   isEliminated: boolean;
 };
 
-const QueenCard = ({ q, maxWins, isBottom }: { q: Queen, maxWins: number, isBottom?: boolean }) => {
+const QueenCard = ({ q, maxWins, viewMode }: { q: Queen, maxWins: number, viewMode?: string }) => {
 
   const isTopWinner = q.wins === maxWins && maxWins > 0;
-
+  const isMainScreen = viewMode != null && viewMode != 'eliminated';
 
   return (
     <Card
       className={`flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl 
-        ${q.isEliminated ? 'border-2 border-red-400 bg-red-50' : 'border border-gray-200'}
-        ${isBottom && !q.isEliminated ? 'opacity-40 grayscale' : ''}
+        ${q.isEliminated && !isMainScreen ? 'border-2 border-red-400 bg-red-50' : 'border border-gray-200'}
+        ${q.isEliminated && !isMainScreen ? 'opacity-40 grayscale' : ''}
         w-48 h-80`} // fixed width and height
     >
       <CardHeader>
@@ -40,9 +40,8 @@ const QueenCard = ({ q, maxWins, isBottom }: { q: Queen, maxWins: number, isBott
             src={q.url || ''}
             alt={q.name}
             fill
-            className={`object-cover rounded-full ${
-              (q.isEliminated || isBottom) ? 'grayscale' : ''
-            }`}
+            className={`object-cover rounded-full ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''
+              }`}
           />
         </div>
 
@@ -53,11 +52,11 @@ const QueenCard = ({ q, maxWins, isBottom }: { q: Queen, maxWins: number, isBott
           <p>Bottom: {q.bottoms}</p>
         </div>
 
-        {q.isEliminated && (
+        {(q.isEliminated && !isMainScreen) ? (
           <span className="mt-2 px-2 py-1 bg-red-500 text-white text-xs rounded-full self-center">
             Eliminated
           </span>
-        )}
+        ) : ''}
       </CardContent>
     </Card>
 
