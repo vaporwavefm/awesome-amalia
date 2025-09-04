@@ -2,7 +2,7 @@
 import React from "react";
 
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+//import { db } from "@/lib/firebase";
 import SimLayout from "@/components/SimLayout";
 import { queens, episodes } from "@/constants/queenData";
 
