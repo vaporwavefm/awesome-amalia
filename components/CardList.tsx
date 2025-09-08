@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import QueenCard from "./QueenCard";
 import SeasonTrackRecordTable from "./SeasonTrackRecordTable";
-import SeasonTrackRecordChart from "./SeasonTrackRecordChart";
+//import SeasonTrackRecordChart from "./SeasonTrackRecordChart";
 import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
 
 type Queen = {
@@ -45,7 +46,7 @@ const CardList = ({
     episodes: { episodeNumber: number | string; title: string }[];
 }) => {
     const maxWins = Math.max(...queens.map((q) => q.wins));
-    let filteredQueens = queens;
+    const filteredQueens = queens;
 
     return (
         <div className="w-full">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useMemo, useState, useEffect } from "react";
 import CardList from "./CardList";
@@ -31,8 +32,8 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
   // Precompute all episode results
   useEffect(() => {
     let trackRecord = initialTrackRecord.map(q => ({ ...q }));
-    let preHistory: { [key: number]: any[] } = {};
-    let postHistory: { [key: number]: any[] } = {};
+    const preHistory: { [key: number]: any[] } = {};
+    const postHistory: { [key: number]: any[] } = {};
 
     const sortedEpisodes = episodes.sort((a, b) => a.episodeNumber - b.episodeNumber);
 
@@ -44,7 +45,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
       sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
     }
 
-    for (let e of sortedEpisodes) {
+    for (const e of sortedEpisodes) {
       preHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
       trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination);
       postHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
@@ -162,7 +163,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
     ? generateEventMessage(queensToDisplay, episodeEvent, selectedEpisode)
     : '';
 
-  const maxWins = Math.max(...queensToDisplay.map(q => q.wins));
+  //const maxWins = Math.max(...queensToDisplay.map(q => q.wins));
 
   return (
     <div className="flex gap-2 pt-2">
