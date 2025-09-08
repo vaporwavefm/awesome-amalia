@@ -1,6 +1,11 @@
-'use client';
+"use client";
+
 import React from "react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import QueenCard from "./QueenCard";
+import SeasonTrackRecordTable from "./SeasonTrackRecordTable";
+import SeasonTrackRecordChart from "./SeasonTrackRecordChart";
+import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
 
 type Queen = {
     id: string;
@@ -15,131 +20,97 @@ type Queen = {
     placements: any;
 };
 
+type Lipsync = {
+  id: string;
+  title: string;
+  episode: string;
+  artist: string;
+};
+
 const CardList = ({
     queens,
+    lipsyncs,
     episodeType,
     viewMode,
     nonElimination,
-    showResults
+    showResults,
+    episodes,
 }: {
     queens: Queen[];
+    lipsyncs: Lipsync[];
     episodeType?: string;
     viewMode?: string;
     nonElimination?: boolean;
     showResults?: boolean;
+    episodes: { episodeNumber: number | string; title: string }[];
 }) => {
-    const maxWins = Math.max(...queens.map(q => q.wins));
+    const maxWins = Math.max(...queens.map((q) => q.wins));
     let filteredQueens = queens;
-    const normalizedType = episodeType?.toLowerCase() || "";
-    const isFullCastView = !episodeType;
-    const isEventView = !!episodeType;
-    const isRegularEpisodeView = !isEventView;
-    /*
-    
-    // Determine view type
-// Filter queens based on event type
-    if (normalizedType.includes("finale")) {
-        filteredQueens = queens.filter(q => q.wins === maxWins);
-    } else if (normalizedType.includes("eliminated")) {
-        filteredQueens = queens.filter(q => q.isEliminated);
-    } else if (normalizedType.includes("bottom 2") || normalizedType.includes("bottom")) {
-        filteredQueens = queens.filter(q =>
-            q.placements.some(
-                (p: any) =>
-                    p.placement === "bottom" &&
-                    p.episodeNumber === q.scores.at(-1)?.episodeNumber
-            )
-        );
-    } else if (normalizedType.includes("high")) {
-        filteredQueens = queens.filter(q =>
-            q.placements.some(
-                (p: any) =>
-                    p.placement === "high" &&
-                    p.episodeNumber === q.scores.at(-1)?.episodeNumber
-            )
-        );
-    } else if (normalizedType.includes("safe")) {
-        filteredQueens = queens.filter(q =>
-            q.placements.some(
-                (p: any) =>
-                    p.placement === "safe" &&
-                    p.episodeNumber === q.scores.at(-1)?.episodeNumber
-            )
-        );
-    } else if (normalizedType.includes("win")) {
-        filteredQueens = queens.filter(q =>
-            q.placements.some(
-                (p: any) =>
-                    p.placement === "win" &&
-                    p.episodeNumber === q.scores.at(-1)?.episodeNumber
-            )
-        );
-    }
-
-    // Apply non-elimination adjustment
-    if (nonElimination && normalizedType.includes("bottom 2")) {
-        
-        // Only show Bottom 2 queens in a non-elimination episode
-        filteredQueens = filteredQueens.filter(q =>
-            q.placements.some(
-                (p: any) =>
-                    p.placement === "bottom" &&
-                    p.episodeNumber === q.scores.at(-1)?.episodeNumber
-            )
-        );
-    }
-    */
-
-    const resultsTable = (
-        <div className="p-4 bg-white rounded-xl shadow-md col-span-full w-full">
-            <h3 className="text-lg font-bold mb-2 text-center">Season Results</h3>
-            <table className="table-auto w-full text-sm border-collapse">
-                <thead>
-                    <tr className="border-b">
-                        <th className="px-2 py-1 text-left">Queen</th>
-                        <th className="px-2 py-1">Wins</th>
-                        <th className="px-2 py-1">Highs</th>
-                        <th className="px-2 py-1">Lows</th>
-                        <th className="px-2 py-1">Bottoms</th>
-                        <th className="px-2 py-1">Eliminated</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {queens.map(q => (
-                        <tr key={q.id} className="border-t">
-                            <td className="px-2 py-1 font-medium">{q.name}</td>
-                            <td className="px-2 py-1 text-center">{q.wins}</td>
-                            <td className="px-2 py-1 text-center">{q.highs}</td>
-                            <td className="px-2 py-1 text-center">{q.lows}</td>
-                            <td className="px-2 py-1 text-center">{q.bottoms}</td>
-                            <td className="px-2 py-1 text-center">
-                                {q.isEliminated ? "❌" : "✅"}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
 
     return (
-        <div className="flex flex-wrap justify-center gap-6">
-            {filteredQueens.map((queen) => (
-                <div
-                    key={queen.id}
-                    className={`transition duration-300 inline-flex max-w-xs justify-center 
-                        ${queen.isEliminated && (viewMode === 'eliminated' || viewMode == null) ? "opacity-40 grayscale" : ""}`}
-                >
-                    <QueenCard
-                        q={queen}
-                        maxWins={maxWins}
-                        viewMode={viewMode}
-                    />
-                </div>
-            ))}
+        <div className="w-full">
+            {showResults ? (
+                <Tabs defaultValue="queens" className="w-full">
+                    <TabsList className="flex justify-center mb-4">
+                        <TabsTrigger value="queens">Queens</TabsTrigger>
+                        <TabsTrigger value="table">Contestant Progess</TabsTrigger>
+                       {/* <TabsTrigger value="chart">Track Record Chart</TabsTrigger> */}
+                        <TabsTrigger value="lipsyncs">Lipsyncs</TabsTrigger>
+                    </TabsList>
 
-            {/* Add results card at the end */}
-            {showResults && resultsTable}
+                    {/* Queens Tab */}
+                    <TabsContent value="queens">
+                        <div className="flex flex-wrap justify-center gap-4">
+                            {filteredQueens.map((queen) => (
+                                <div
+                                    key={queen.id}
+                                    className={`transition duration-300 inline-flex max-w-xs justify-center 
+                      ${queen.isEliminated &&
+                                            (viewMode === "eliminated" || viewMode == null)
+                                            ? "opacity-40 grayscale"
+                                            : ""
+                                        }`}
+                                >
+                                    <QueenCard q={queen} maxWins={maxWins} viewMode={viewMode} />
+                                </div>
+                            ))}
+                        </div>
+                    </TabsContent>
+
+                    {/* Table Tab */}
+                    <TabsContent value="table">
+                        <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                    </TabsContent>
+
+                    {/* Chart Tab */}
+                    {/*
+                    <TabsContent value="chart">
+                        <SeasonTrackRecordChart queens={queens} episodes={episodes} />
+                    </TabsContent>
+                    */}
+                    {/* Lipsync Tab */}
+                    <TabsContent value="lipsyncs">
+                        <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
+                    </TabsContent>
+                </Tabs>
+            ) : (
+                // Default non-results view (just show queens)
+                <div className="flex flex-wrap justify-center gap-4">
+                    {filteredQueens.map((queen) => (
+                        <div
+                            key={queen.id}
+                            className={`transition duration-300 inline-flex max-w-xs justify-center 
+                  ${queen.isEliminated &&
+                                    (viewMode === "eliminated" || viewMode == null)
+                                    ? "opacity-40 grayscale"
+                                    : ""
+                                }`}
+                        >
+                            <QueenCard q={queen} maxWins={maxWins} viewMode={viewMode} />
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

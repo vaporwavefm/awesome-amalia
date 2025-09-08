@@ -4,7 +4,12 @@ import CardList from "./CardList";
 import { mainChallenge } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
 
-const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => {
+type Placement = {
+  episodeNumber: number | string;
+  placement: string;
+};
+
+const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: any[]; lipsyncs: any[]}) => {
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
       ...q,
@@ -14,7 +19,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
       bottoms: 0,
       highs: 0,
       lows: 0,
-      isEliminated: false
+      isEliminated: false,
     }));
   }, [queens]);
 
@@ -78,7 +83,9 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
     ? episodeEvent === "results"
       ? episodeHistory.post[selectedEpisode] || []
       : filteredQueens.filter(q => {
-        const placement = q.placements?.find(p => p.episodeNumber === selectedEpisode);
+        const placement = (q.placements as Placement[])?.find(
+  (p: Placement) => p.episodeNumber === selectedEpisode
+);
         const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
         const isNonElim = episode?.nonElimination;
 
@@ -95,7 +102,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
             return placement?.placement === 'bottom';
           case 'eliminated':
             if (isNonElim) return placement?.placement === 'bottom';
-            return q.isEliminated && placement?.placement === 'bottom';
+            return placement?.placement === 'bottom';
           default:
             return true;
         }
@@ -105,12 +112,23 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
   // Event message generator
   const generateEventMessage = (queens: any[], event: string, episodeNumber: number) => {
     const names = queens.map(q => q.name);
+    const isEliminated = queens.map(q => q.isEliminated);
     if (!names.length) return '';
     const last = names[names.length - 1];
     const others = names.slice(0, names.length - 1);
     const episode = episodes.find(e => e.episodeNumber === episodeNumber);
     const isNonElim = episode?.nonElimination;
 
+    let btmMsg = '';
+    if(event == 'eliminated'){
+      if(isEliminated[0] == true && isEliminated[1] == false){
+        btmMsg = names[1] + ', shantay you stay. ' + names[0] + ', sashay away.';
+      }
+      if(isEliminated[0] == false && isEliminated[1] == true){
+        btmMsg = names[0] + ', shantay you stay. ' + names[1] + ', sashay away.';
+      }
+    };
+    
     switch (event) {
       case 'announceSafe':
         return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
@@ -130,11 +148,11 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
       case 'bottom':
         return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')}, and ${last} have placed low.`;
       case 'bottom2':
-        return names.length === 1 ? `${names[0]} is up for elimination.` : `${others.join(', ')}, and ${last} are up for elimination.`;
+        return names.length === 1 ? `${names[0]} is up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber -1].artist}. Good luck and don't fuck it up!` 
+        : `${others.join(', ')}, and ${last} are up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber -1].artist}. Good luck and don't fuck it up!`;
       case 'eliminated':
         if (isNonElim) return 'Both queens have been given a chance to slay another day!';
-        return names.length === 1 ? `${names[0]} sashayed away.` : `${others.join(', ')}, and ${last} sashayed away.`;
-
+        return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;
       default:
         return '';
     }
@@ -147,7 +165,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
   const maxWins = Math.max(...queensToDisplay.map(q => q.wins));
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 pt-2">
       <div className="w-1/4 p-4">
         <EpisodeList
           episodes={episodes}
@@ -178,10 +196,12 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
 
             <CardList
               queens={queensToDisplay}
+              lipsyncs={lipsyncs}
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
               viewMode={episodeEvent}
               nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
               showResults={showResults}
+              episodes={episodes}
             />
           </>
         ) : (
@@ -197,7 +217,7 @@ const SimLayout = ({ queens, episodes }: { queens: any[]; episodes: any[] }) => 
               </div>
             )}
 
-            <CardList queens={filteredQueens} />
+            <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs}/>
           </>
         )}
       </div>

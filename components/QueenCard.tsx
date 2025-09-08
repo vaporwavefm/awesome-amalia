@@ -27,8 +27,8 @@ const QueenCard = ({ q, maxWins, viewMode }: { q: Queen, maxWins: number, viewMo
     >
       <CardHeader>
         <CardTitle
-          className={`text-center text-lg font-semibold break-words ${isTopWinner ? 'text-yellow-500' : ''
-            }`}
+          className={`text-center text-lg font-bold break-words 
+          ${isTopWinner ? "text-yellow-500 drop-shadow-lg" : "text-black-500"}`}
         >
           {q.name}
         </CardTitle>
@@ -40,7 +40,7 @@ const QueenCard = ({ q, maxWins, viewMode }: { q: Queen, maxWins: number, viewMo
             src={q.url || ''}
             alt={q.name}
             fill
-            className={`object-cover rounded-full ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''
+            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''
               }`}
           />
         </div>
@@ -53,7 +53,7 @@ const QueenCard = ({ q, maxWins, viewMode }: { q: Queen, maxWins: number, viewMo
         </div>
 
         {(q.isEliminated && !isMainScreen) ? (
-          <span className="mt-2 px-2 py-1 bg-red-500 text-white text-xs rounded-full self-center">
+          <span className="mt-2 px-2 py-1 bg-red-500 text-white text-xs rounded-full self-center animate-pulse">
             Eliminated
           </span>
         ) : ''}

@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false) {
-  const episodeNum = Number(episodeNumber);
+  //const episodeNum = Number(episodeNumber);
 
   // Detect finale: 4 or fewer remaining, none eliminated
   const isFinale = trackRecord.every(q => !q.isEliminated) && trackRecord.length <= 4;
@@ -26,7 +26,7 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
   }
 
   // --- Normal episode logic ---
-  let tempScores: { id: string; queen: string; episodeNumber: string | number; score: number }[] = [];
+  const tempScores: { id: string; queen: string; episodeNumber: string | number; score: number }[] = [];
 
   const scoredRecord = trackRecord.map(q => {
     if (q.isEliminated) return { ...q };
@@ -41,11 +41,19 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
   });
 
   tempScores.sort((a, b) => b.score - a.score);
-  let [topCount, bottomCount] = nittyGritty({ size: tempScores.length });
+
+  const [topCount, bottomCount] = nittyGritty({ size: tempScores.length });
 
   const topQueens = tempScores.slice(0, topCount);
   const bottomQueens = tempScores.slice(-bottomCount);
   const eliminatedId = nonElimination ? null : lipsync(bottomQueens.slice(1));
+
+  /*
+  if (topCount == 2 && bottomCount == 2) {
+    console.log(JSON.stringify(tempScores) + '\n' + nittyGritty({ size: tempScores.length }));
+    console.log('top: ' + JSON.stringify(topQueens));
+    console.log('bottom ' + JSON.stringify(bottomQueens));
+  } */
 
   const updatedRecord = scoredRecord.map(q => {
     if (q.isEliminated) return { ...q };
@@ -62,7 +70,7 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
       return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }
 
-    if (bottomQueens[0]?.id === q.id) {
+    if (bottomQueens[0]?.id === q.id && bottomCount > 2) {
       placementType = 'low';
       return { ...q, lows: q.lows + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
     }

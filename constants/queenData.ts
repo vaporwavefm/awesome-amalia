@@ -123,7 +123,7 @@
     {
       id: 'RA7LXFcMgWuYEsPyR1fw',
       title: 'Grand Finale',
-      description: "RuPaul crowns America's Next Drag Superstar as the top four battle it out in an epic lip sync smackdown for the crown.",
+      description: "RuPaul crowns America's Next Drag Superstar as the top queens battle it out in an epic lip sync smackdown for the crown.",
       season: '10',
       type: 'finale,lipsyncSmackdown',
       episodeNumber: 14
@@ -193,3 +193,102 @@
       type: 'acting'
     }
   ].sort((a, b) => a.episodeNumber - b.episodeNumber);
+
+  export const lipsyncs = [
+    {
+      id: 'Dk5qXIHU1ZPjloNCdrsc',
+      title: "Ain't No Other Man",
+      episode: 's10e01',
+      genre: "pop,funk,r&b,soul",
+      artist: "Christina Aguilera",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjloNCdrs',
+      title: "Best of My Love",
+      episode: 's10e02',
+      genre: "funk,disco,soul,r&b",
+      artist: "The Emotions",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjloNCdr',
+      title: "Celebrity Skin",
+      episode: 's10e03',
+      genre: "rock,pop rock,grunge",
+      artist: "Hole",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjloNCd',
+      title: "Pound The Alarm",
+      episode: 's10e04',
+      genre: "pop/hip-hop",
+      artist: "Nicki Minaj",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjloN',
+      title: "Man! I Feel Like a Woman",
+      episode: 's10e05',
+      genre: "country pop,country,southern rock",
+      artist: "Shania Twain",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjlo',
+      title: "I'm Coming Out",
+      episode: 's10e06',
+      genre: "r&b,pop,soul,dance,electronic",
+      artist: "Diana Ross",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZPjloNCc',
+      title: "Cut To The Feeling",
+      episode: 's10e07',
+      genre: "pop",
+      artist: "Carly Rae Jepsen",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIPjloNCdrsc',
+      title: "Groove Is in the Heart",
+      episode: 's10e08',
+      genre: "pop,dance,electronic",
+      artist: "Deee-Lite",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXIHU1ZCdrsc',
+      title: "New Attitude",
+      episode: 's10e09',
+      genre: "pop,synth-pop,r&b,new wave",
+      artist: "Patti Labelle",
+      season: '10'
+    },
+    {
+      id: 'Dk5q1ZPjloNCdrsc',
+      title: "Good As Hell",
+      episode: 's10e10',
+      genre: "alternative,indie,pop",
+      artist: "Lizzo",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXZPjloNCdrsc',
+      title: "Nasty Girl",
+      episode: 's10e11',
+      genre: "synth-funk,disco",
+      artist: "Vanity 6",
+      season: '10'
+    },
+    {
+      id: 'Dk5qXPjloNCdrsc',
+      title: "Call Me Mother",
+      episode: 's10e12',
+      genre: "dance,electronic,pop",
+      artist: "RuPaul",
+      season: '10'
+    },
+  ];

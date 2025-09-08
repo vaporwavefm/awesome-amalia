@@ -88,14 +88,15 @@ const NavMenu = () => {
                                         href="/"
                                     >
                                         <div className="mt-4 mb-2 text-lg font-medium">
-                                            shadcn/ui
+                                            NavMenu coming soon!
                                         </div>
                                         <p className="text-muted-foreground text-sm leading-tight">
-                                            Beautifully designed components built with Tailwind CSS.
+                                            period
                                         </p>
                                     </a>
                                 </NavigationMenuLink>
                             </li>
+                            {/*
                             <ListItem href="/docs" title="Introduction">
                                 Re-usable components built using Radix UI and Tailwind CSS.
                             </ListItem>
@@ -105,9 +106,12 @@ const NavMenu = () => {
                             <ListItem href="/docs/primitives/typography" title="Typography">
                                 Styles for headings, paragraphs, lists...etc
                             </ListItem>
+                            */}
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
+                {/*
+                
                 <NavigationMenuItem  className="--primary">
                     <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -207,6 +211,7 @@ const NavMenu = () => {
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
+                */}
             </NavigationMenuList>
         </NavigationMenu>
     </div>;
