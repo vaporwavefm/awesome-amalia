@@ -117,19 +117,28 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
- .grayscale-image {
+.grayscale-image {
   filter: grayscale(100%);
 }
 
 @keyframes sparkle {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .sparkle-gold {
@@ -138,10 +147,35 @@
   animation: sparkle 10s ease infinite;
   color: black;
   font-weight: bold;
-  border: 2px solid #DAA520; /* darker gold border */
+  border: 2px solid #DAA520;
+  /* darker gold border */
   text-shadow: 0 0 4px #fff, 0 0 8px #FFD700;
 }
 
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.tabs-trigger {
+  @apply flex-1 py-3 text-center rounded-full font-semibold text-gray-700
+         hover:bg-purple-200 transition-colors duration-200;
+}
+
+/* Active state (shadcn tabs add `data-[state=active]` attribute) */
+.tabs-trigger[data-state="active"] {
+  @apply bg-purple-500 text-white;
+}
+
+.general-msg {
+  @apply inline-block max-w-2xl bg-gradient-to-r from-pink-300 via-purple-200 to-pink-200 rounded-2xl shadow-xl py-4 px-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl;
+}
+
+.tabs-list {
+  @apply flex justify-center mb-6 gap-2 bg-gray-100 rounded-full p-1 shadow-inner max-w-3xl mx-auto w-full;
+}
 @layer base {
   :root {
     --chart-1: oklch(0.646 0.222 41.116);
@@ -150,7 +184,7 @@
     --chart-4: oklch(0.828 0.189 84.429);
     --chart-5: oklch(0.769 0.188 70.08);
   }
- 
+
   .dark {
     --chart-1: oklch(0.488 0.243 264.376);
     --chart-2: oklch(0.696 0.17 162.48);

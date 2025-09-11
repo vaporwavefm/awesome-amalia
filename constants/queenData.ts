@@ -3,86 +3,226 @@
       id: '89INJU5hNdXC0eE7MhYQ',
       seasons: '10',
       name: "Asia O'Hara",
+      franchise: 'US',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/09/AsiaO%27HaraS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163151'
     },
     {
       id: 'GCPOER9gchnbUYypo6NE',
-      seasons: '10',
+      seasons: '10,AS4,UKvtW1',
       name: 'Mo Heart',
+      franchise: 'US',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fe/MoniqueHeartS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163838'
     },
     {
       id: 'HpRBu08C9By6AItFjYXS',
       seasons: '10',
       name: 'Aquaria',
+      franchise: 'US',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a9/AquariaS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163055'
     },
     {
       id: 'IuuiAIyabJzfcCfhhSFf',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f0/TheVixenS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831164009',
       name: 'The Vixen',
+      franchise: 'US',
       seasons: '10'
     },
     {
       id: 'Orf65XZogioI5B3Dn0Pe',
       name: 'Eureka',
-      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9e/EurekaS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163344',
-      seasons: '9,10'
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6b/EurekaS9CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240217194933',
+      seasons: '9,10,AS6,CvtW2',
+      franchise: 'US',
     },
     {
       id: 'VpS44N9gYCu1NfjXhYdZ',
       name: 'Mayhem Miller',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/MayhemMillerS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163657',
-      seasons: '10'
+      seasons: '10,AS5,UKvtW2',
+      franchise: 'US'
     },
     {
       id: 'azOnO1m1uTeoFsHSBRS6',
       name: 'Dusty Ray Bottoms',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9c/DustyRayBottomsS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163312',
-      seasons: '10'
+      seasons: '10',
+      franchise: 'US'
     },
     {
       id: 'exRBLHWBm2DcOpU5PX9W',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/15/KalorieKarbdashianWilliamsS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163436',
       seasons: '10',
-      name: 'Kalorie Karbdashian Williams'
+      name: 'Kalorie Karbdashian Williams',
+      franchise: 'US'
     },
     {
       id: 'f6GdfvE47XjaTx5B9SnI',
       name: 'Kameron Michaels',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6a/KameronMichaelsS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163523',
-      seasons: '10'
+      seasons: '10',
+      franchise: 'US'
     },
     {
       id: 'lTWffBQjI3kDqV1zUv0s',
       seasons: '10',
       name: 'Yuhua Hamasaki',
+      franchise: 'US',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/62/YuhuaHamasakiS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831164124'
     },
     {
       id: 'm6XuY2322yfiJi64irLQ',
-      seasons: '10',
+      seasons: '10,AS5',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/MizCrackerS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163727',
-      name: 'Miz Cracker'
+      name: 'Miz Cracker',
+      franchise: 'US'
     },
     {
       id: 'rxNyWgSFuvoLo3qu6NpX',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/VanessaVanjieMateoS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163920',
-      seasons: '10',
-      name: 'Vanessa Vanjie Mateo'
+      seasons: '10,11',
+      name: 'Vanessa Vanjie Mateo',
+      franchise: 'US'
     },
     {
       id: 't4C78lcMTQjKW0Igtxmw',
       name: 'Monét X Change',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/Mon%C3%A9tXChangeS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163803',
-      seasons: '10'
+      seasons: '10,AS4',
+      franchise: 'US'
     },
     {
       id: 'zIAD00WTFnMvEP42tp39',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e8/BlairStClairS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831163230',
-      seasons: '10',
-      name: 'Blair St. Clair'
-    }
+      seasons: '10,AS5',
+      name: 'Blair St. Clair',
+      franchise: 'US'
+    },
+    {
+      id: 'zIAD22WTFnMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3a/A%27keriaCDavenportS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152524',
+      seasons: '11,AS6',
+      name: "A'keria C. Davenport",
+      franchise: 'US'
+    },
+    {
+      id: 'zIAD22W56nMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/42/ArielVersaceS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152449',
+      seasons: '11',
+      name: "Ariel Versace",
+      franchise: 'US'
+    },
+    {
+      id: 'zIAD22WTFnMvEP4nBp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/75/BrookeLynnHytesS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152558',
+      seasons: '11',
+      name: "Brooke Lynn Hytes",
+      franchise: 'US'
+    },
+    {
+      id: 'zISE22WTFnMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f1/HoneyDavenportS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152652',
+      seasons: '11',
+      name: "Honey Davenport",
+      franchise: 'US'
+    },
+    {
+      id: 'zISERRRTFnMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8c/KahannaMontreseS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152729',
+      seasons: '11,AS8',
+      name: "Kahanna Montrese",
+      franchise: 'US'
+    },
+    {
+      id: 'zISE22WTFnMvEP12D539',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8c/MercedesImanDiamondS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152824',
+      seasons: '11',
+      name: "Mercedes Iman Diamond",
+      franchise: 'US'
+    },
+    {
+      id: 'zISE4k0oFnMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/NinaWestS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831152853',
+      seasons: '11,AS9',
+      name: "Nina West",
+      franchise: 'US'
+    },
+    {
+      id: 'zISE22444nMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/PlastiqueTiaraS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210907152402',
+      seasons: '11,AS9',
+      name: "Plastique Tiara",
+      franchise: 'US'
+    },
+    {
+      id: '4hSS32444nMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/Ra%27JahO%27HaraS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153040',
+      seasons: '11,AS6,CvtW1',
+      name: "Ra'Jah O'Hara",
+      franchise: 'US'
+    },
+    {
+      id: 'zISE22444nMvEP000OO9',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3b/ScarletEnvyS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153122',
+      seasons: '11,AS6,UKvtW2',
+      name: "Scarlet Envy",
+      franchise: 'US'
+    },
+    {
+      id: 'zI3f35444nMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/ShugaCainS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153221',
+      seasons: '11',
+      name: "Shuga Cain",
+      franchise: 'US'
+    },
+    {
+      id: 'zIIIkl444nMvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5e/SilkyNutmegGanacheS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153343',
+      seasons: '11,AS6,CvtW1',
+      name: "Silky Nutmeg Ganache",
+      franchise: 'US'
+    },
+    {
+      id: 'zI3f35444nMvEP42tp40',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/02/SojuS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153424',
+      seasons: '11',
+      name: "Soju",
+      franchise: 'US'
+    },
+    {
+      id: 'zI3f3f67S3fvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3c/YvieOddlyS11CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831153546',
+      seasons: '11',
+      name: "Yvie Oddly",
+      franchise: 'US'
+    },
+    {
+      id: 'z4f7kX67S3fvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/21/A%27WhoraDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830112328',
+      seasons: 'UK2',
+      name: "A'Whora",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'z4f7k9DD33fvEP42tp39',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e1/AsttinaMandellaDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830112528',
+      seasons: 'UK2',
+      name: "Asttina Mandella",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'z4f7kX67S3fvEP4fbNN3',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3c/BiminiBonBoulashDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113012',
+      seasons: 'UK2',
+      name: "Bimini Bon-Boulash",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'z4f7d4fAA3fvEP4fbNN3',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/AnastarziaAnaquwayCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830120919',
+      seasons: 'C1',
+      name: "Anastarzia Anaquway",
+      franchise: 'CA'
+    }, 
   ].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
@@ -116,7 +256,7 @@
       id: 'MReanRyzunBSWtgsPr4Q',
       season: '10',
       title: '10s Across the Board',
-      type: 'design',
+      type: 'premiere,design',
       description: "Christina Aguilera stunts on the mainstage. Fan favourite queens from the past decade of Drag Race return as 14 new queens compete to become America's Next Drag Superstar and win $100,000.",
       episodeNumber: 1
     },
@@ -191,6 +331,46 @@
       description: "The queens are assigned parts and must act in the new hit series, `Breastworld'. `Broad City' stars Ilana Glazer and Abbi Jacobson guest judge, with Randy Rainbow and Stephen Colbert as special guests.",
       title: 'Breastworld',
       type: 'acting'
+    },
+    {
+      id: 'xfZoym7gIp0866itTNUR',
+      episodeNumber: 1,
+      season: '11',
+      description: "Miley Cyrus goes undercover in the workroom to spy on the new cast of queens competing for $100,000. The first test is to create signature looks from materials belonging to former Drag Race legends.",
+      title: 'Whatcha Unpackin?',
+      type: 'premiere,design'
+    },
+    {
+      id: 'xfZoym7wWq886f5IS2qR',
+      episodeNumber: 2,
+      season: '11',
+      description: 'The queens are challenged to act in drag queen versions of blockbuster movies; actors Sydelle Noel ("Black Panther") and Bobby Moynihan ("Saturday Night Live") guest judge.',
+      title: 'Good God Girl, Get Out',
+      type: 'acting'
+    },
+    {
+      id: 'xfZo4fgRRq886f5IS2qR',
+      episodeNumber: 3,
+      season: '11',
+      description: 'The queens put their pop icon knowledge to the test when they have to perform in diva worship talk shows; actor Troye Sivan ("Boy Erased") and actor Guillermo Diaz ("Scandal") guest judge.',
+      title: 'Diva Worship',
+      type: 'acting,improv,comedy'
+    },
+    {
+      id: 'E3S2eem7wWq886f5IS2qe',
+      episodeNumber: 4,
+      season: '11',
+      description: "The queens hop into Rachel Maddow drag to present a breaking news story, and then get political with a Grease-inspired musical flavoured with women from Trump's world. Tiffany `New York' Pollard and Joel McHale guest judge.",
+      title: 'Trump: The Rusical',
+      type: 'musical'
+    },
+    {
+      id: 'R4gIymg5hD3886fd3S2q',
+      episodeNumber: 5,
+      season: '11',
+      description: 'The queens battle each other in a spooky pageant of monster-inspired couture and must showcase three Halloween-inspired looks. Supermodel Cara Delevingne and pop culture icon Elvira guest judge.',
+      title: 'Monster Ball',
+      type: 'design,ball'
     }
   ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 

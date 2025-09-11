@@ -30,7 +30,7 @@ const EpisodeList = ({
                 const isFinale = ep.title?.toLowerCase().includes("finale");
                 return (
                     <div
-                        key={ep.episodeNumber}
+                        key={ep.id}
                         className="p-1 border rounded cursor-pointer hover:bg-gray-100"
                         onClick={() => onEpisodeClick(ep.episodeNumber)}
                     >

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React from "react";
 import {
   Table,
@@ -14,7 +13,7 @@ import Image from "next/image";
 
 type Placement = {
   episodeNumber: number | string;
-  placement: string; // "bottom" | "eliminated" | ...
+  placement: string;
 };
 
 type Queen = {
@@ -41,13 +40,13 @@ type Lipsync = {
   artist: string;
 };
 
-type SeasonTrackRecordTableProps = {
+type Props = {
   queens: Queen[];
   episodes: Episode[];
   lipsyncNames: Lipsync[];
 };
 
-const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: SeasonTrackRecordTableProps) => {
+const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) => {
   const lipsyncs = episodes
     .map((ep) => {
       const bottoms = queens.filter((q) =>
@@ -81,79 +80,75 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: SeasonTra
     .filter(Boolean);
 
   return (
-    <Table>
-      <TableCaption>Season Lipsyncs (Bottom 2 + Eliminations)</TableCaption>
-      <TableHeader>
+    <Table className="table-auto border-collapse border border-gray-300 shadow-md">
+      <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">
+        Season Lipsyncs (Bottom 2 + Eliminations)
+      </TableCaption>
+      <TableHeader className="bg-purple-50">
         <TableRow>
-          <TableHead className="text-center">Episode</TableHead>
-          <TableHead className="text-center">Song</TableHead>
-          <TableHead className="text-center">Bottom 2</TableHead>    
-          <TableHead className="text-center">Eliminated</TableHead>
+          <TableHead className="text-center py-2 px-4 border-b">Episode</TableHead>
+          <TableHead className="text-center py-2 px-4 border-b">Song</TableHead>
+          <TableHead className="text-center py-2 px-4 border-b">Bottom 2</TableHead>    
+          <TableHead className="text-center py-2 px-4 border-b">Eliminated</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {lipsyncs.map((ls: any, i: number) => (
-          <TableRow key={i}>
-            <TableCell className="font-medium text-center">
+          <TableRow key={i} className="hover:bg-purple-50 transition-colors">
+            <TableCell className="text-center py-3 px-2 font-medium">
               EP{ls.episode.episodeNumber}: {ls.episode.title}
             </TableCell>
 
-            <TableCell className="font-medium text-center">
+            <TableCell className="text-center py-3 px-2 font-medium text-purple-700">
               {lipsyncNames[i]?.title} – {lipsyncNames[i]?.artist}
             </TableCell>
 
-            <TableCell className="text-center flex items-center justify-center gap-4">
+            <TableCell className="text-center py-3 px-2 flex items-center justify-center gap-4">
               {/* Queen 1 */}
               <div className="flex flex-col items-center">
-                <div className="relative w-12 h-12">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-300 shadow-sm">
                   <Image
                     src={ls.queen1.url || "/placeholder.png"}
                     alt={ls.queen1.name}
                     fill
-                    className={`rounded-full border-2 border-purple-300 object-cover`}
+                    className="object-cover"
                   />
                 </div>
-                <span>{ls.queen1.name}</span>
+                <span className="mt-1 font-medium">{ls.queen1.name}</span>
               </div>
 
-              <span className="mx-2 font-bold">vs</span>
+              <span className="mx-2 font-bold text-purple-500">vs</span>
 
               {/* Queen 2 */}
               <div className="flex flex-col items-center">
-                <div className="relative w-12 h-12">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-300 shadow-sm">
                   <Image
                     src={ls.queen2.url || "/placeholder.png"}
                     alt={ls.queen2.name}
                     fill
-                    className={`rounded-full border-2 border-purple-300 object-cover
-                    }`}
+                    className="object-cover"
                   />
                 </div>
-                <span>{ls.queen2.name}</span>
+                <span className="mt-1 font-medium">{ls.queen2.name}</span>
               </div>
             </TableCell>
 
-            <TableCell className="text-center text-red-600 font-semibold">
+            <TableCell className="text-center py-3 px-2">
               {ls.eliminated ? (
-
                 <div className="flex flex-col items-center">
-                <div className="relative w-12 h-12">
-                  <Image
-                    src={ls.eliminated.url || "/placeholder.png"}
-                    alt={ls.eliminated.name}
-                    fill
-                    className={`rounded-full border-2 border-purple-300 object-cover grayscale
-                    }`}
-                  />
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-red-400 shadow-sm grayscale">
+                    <Image
+                      src={ls.eliminated.url || "/placeholder.png"}
+                      alt={ls.eliminated.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <span className="mt-1 line-through font-semibold text-red-600">{ls.eliminated.name}</span>
                 </div>
-                <span className="line-through">{ls.eliminated.name}</span>
-              </div>
-
-               
               ) : (
                 "—"
               )}
-
             </TableCell>
           </TableRow>
         ))}

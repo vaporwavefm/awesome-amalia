@@ -22,10 +22,10 @@ type Queen = {
 };
 
 type Lipsync = {
-  id: string;
-  title: string;
-  episode: string;
-  artist: string;
+    id: string;
+    title: string;
+    episode: string;
+    artist: string;
 };
 
 const CardList = ({
@@ -45,6 +45,7 @@ const CardList = ({
     showResults?: boolean;
     episodes: { episodeNumber: number | string; title: string }[];
 }) => {
+    
     const maxWins = Math.max(...queens.map((q) => q.wins));
     const filteredQueens = queens;
 
@@ -52,17 +53,18 @@ const CardList = ({
         <div className="w-full">
             {showResults ? (
                 <Tabs defaultValue="queens" className="w-full">
-                    <TabsList className="flex justify-center mb-4">
-                        <TabsTrigger value="queens">Queens</TabsTrigger>
-                        <TabsTrigger value="table">Contestant Progess</TabsTrigger>
-                       {/* <TabsTrigger value="chart">Track Record Chart</TabsTrigger> */}
-                        <TabsTrigger value="lipsyncs">Lipsyncs</TabsTrigger>
+                    <TabsList className="tabs-list">
+                        <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
+                        <TabsTrigger value="table" className="tabs-trigger" >Contestant Progess</TabsTrigger>
+                        {/* <TabsTrigger value="chart">Track Record Chart</TabsTrigger> */}
+                        <TabsTrigger value="lipsyncs"className="tabs-trigger" >Lipsyncs</TabsTrigger>
                     </TabsList>
 
                     {/* Queens Tab */}
                     <TabsContent value="queens">
                         <div className="flex flex-wrap justify-center gap-4">
                             {filteredQueens.map((queen) => (
+                                
                                 <div
                                     key={queen.id}
                                     className={`transition duration-300 inline-flex max-w-xs justify-center 
@@ -72,7 +74,12 @@ const CardList = ({
                                             : ""
                                         }`}
                                 >
-                                    <QueenCard q={queen} maxWins={maxWins} viewMode={viewMode} />
+                                    <QueenCard
+            q={queen}
+            maxWins={maxWins}
+            viewMode={viewMode}
+            isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
+          />
                                 </div>
                             ))}
                         </div>
@@ -107,7 +114,11 @@ const CardList = ({
                                     : ""
                                 }`}
                         >
-                            <QueenCard q={queen} maxWins={maxWins} viewMode={viewMode} />
+                            <QueenCard
+                                q={queen}
+                                maxWins={maxWins}
+                                viewMode={viewMode}
+                            />
                         </div>
                     ))}
                 </div>

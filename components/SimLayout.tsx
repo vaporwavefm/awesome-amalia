@@ -10,7 +10,7 @@ type Placement = {
   placement: string;
 };
 
-const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: any[]; lipsyncs: any[]}) => {
+const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: any[]; lipsyncs: any[] }) => {
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
       ...q,
@@ -34,20 +34,24 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
     let trackRecord = initialTrackRecord.map(q => ({ ...q }));
     const preHistory: { [key: number]: any[] } = {};
     const postHistory: { [key: number]: any[] } = {};
+    const sortedEpisodes = [...episodes].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
-    const sortedEpisodes = episodes.sort((a, b) => a.episodeNumber - b.episodeNumber);
+    // Reset all nonElim flags
+    sortedEpisodes.forEach(e => { e.nonElimination = false; });
 
-    // Assign one random non-elimination episode
-    const eligible = sortedEpisodes.filter(e => !e.title.toLowerCase().includes("finale"));
+    // Eligible = non-finale AND episodeNumber <= 9
+    const eligible = sortedEpisodes.filter(
+      e => !e.title.toLowerCase().includes("finale") && e.episodeNumber <= 9
+    );
+
     if (eligible.length > 0) {
-      const randomIndex = Math.min(Math.floor(Math.random() * eligible.length), 9);
-      //if(randomIndex === 9 || randomIndex === 10) randomIndex = 8;
+      const randomIndex = Math.floor(Math.random() * eligible.length);
       sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
     }
 
     for (const e of sortedEpisodes) {
       preHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
-      trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination);
+      trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination, e.type);
       postHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
     }
 
@@ -85,8 +89,8 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
       ? episodeHistory.post[selectedEpisode] || []
       : filteredQueens.filter(q => {
         const placement = (q.placements as Placement[])?.find(
-  (p: Placement) => p.episodeNumber === selectedEpisode
-);
+          (p: Placement) => p.episodeNumber === selectedEpisode
+        );
         const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
         const isNonElim = episode?.nonElimination;
 
@@ -121,15 +125,15 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
     const isNonElim = episode?.nonElimination;
 
     let btmMsg = '';
-    if(event == 'eliminated'){
-      if(isEliminated[0] == true && isEliminated[1] == false){
+    if (event == 'eliminated') {
+      if (isEliminated[0] == true && isEliminated[1] == false) {
         btmMsg = names[1] + ', shantay you stay. ' + names[0] + ', sashay away.';
       }
-      if(isEliminated[0] == false && isEliminated[1] == true){
+      if (isEliminated[0] == false && isEliminated[1] == true) {
         btmMsg = names[0] + ', shantay you stay. ' + names[1] + ', sashay away.';
       }
     };
-    
+
     switch (event) {
       case 'announceSafe':
         return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
@@ -149,8 +153,8 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
       case 'bottom':
         return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')}, and ${last} have placed low.`;
       case 'bottom2':
-        return names.length === 1 ? `${names[0]} is up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber -1].artist}. Good luck and don't fuck it up!` 
-        : `${others.join(', ')}, and ${last} are up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber -1].artist}. Good luck and don't fuck it up!`;
+        return names.length === 1 ? `${names[0]} is up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber - 1].artist}. Good luck and don't fuck it up!`
+          : `${others.join(', ')}, and ${last} are up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber - 1].artist}. Good luck and don't fuck it up!`;
       case 'eliminated':
         if (isNonElim) return 'Both queens have been given a chance to slay another day!';
         return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;
@@ -180,8 +184,8 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
         {episodeEvent ? (
           <>
             <div className="flex justify-center mb-4">
-              <div className="inline-block max-w-md bg-gradient-to-r from-pink-300 via-purple-200 to-pink-200 rounded-2xl shadow-xl py-4 px-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                <h2 className="font-extrabold text-2xl text-black tracking-wide drop-shadow-sm">
+              <div className="general-msg">
+                <h2 className="font-extrabold text-2xl text-black tracking-wide">
                   {episodeEvent === 'announceSafe' ? 'Safe Queens' :
                     episodeEvent === 'winner' ? 'Winner' :
                       episodeEvent === 'high' ? 'High Queens' :
@@ -204,6 +208,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
               showResults={showResults}
               episodes={episodes}
             />
+            
           </>
         ) : (
           <>
@@ -218,7 +223,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
               </div>
             )}
 
-            <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs}/>
+            <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs} />
           </>
         )}
       </div>

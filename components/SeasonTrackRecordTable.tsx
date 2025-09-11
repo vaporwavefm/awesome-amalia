@@ -25,7 +25,7 @@ type Queen = {
 
 type SeasonTrackRecordTableProps = {
     queens: Queen[];
-    episodes: { episodeNumber: number | string; title: string }[];
+    episodes: { episodeNumber: number | string; title: string; id?: string }[];
 };
 
 const SeasonTrackRecordTable = ({ queens, episodes }: SeasonTrackRecordTableProps) => {
@@ -73,6 +73,7 @@ const SeasonTrackRecordTable = ({ queens, episodes }: SeasonTrackRecordTableProp
         const aLast = a.placements.at(-1);
         const bLast = b.placements.at(-1);
 
+        console.log(a.name + ' ' + JSON.stringify(a.placements));
         // Determine final status
         const aFinal = !a.isEliminated && Number(aLast?.episodeNumber) === finaleEpNum ? aLast?.placement : null;
         const bFinal = !b.isEliminated && Number(bLast?.episodeNumber) === finaleEpNum ? bLast?.placement : null;
@@ -83,10 +84,23 @@ const SeasonTrackRecordTable = ({ queens, episodes }: SeasonTrackRecordTableProp
         if (!a.isEliminated && aFinal !== "win") return -1; // Runner-ups next
         if (!b.isEliminated && bFinal !== "win") return 1;
 
-        const aElimEp = a.isEliminated ? Number(aLast?.episodeNumber) : finaleEpNum; // Remaining queens by elimination episode descending
-        const bElimEp = b.isEliminated ? Number(bLast?.episodeNumber) : finaleEpNum;
+        // Get last "bottom" episode
+    const aLastBottomEp = Math.max(
+  ...a.placements.filter(p => p.placement === "bottom").map(p => Number(p.episodeNumber))
+) || 0;
 
-        return bElimEp - aElimEp;
+    const bLastBottomEp = Math.max(
+        ...b.placements.filter(p => p.placement === "bottom").map(p => Number(p.episodeNumber))
+    ) || 0;
+
+    // Sort: later "bottom" comes first
+    if (aLastBottomEp !== bLastBottomEp) return bLastBottomEp - aLastBottomEp;
+
+    // Fallback: sort by elimination episode
+    const aElimEp = a.isEliminated ? Number(aLast?.episodeNumber) : finaleEpNum;
+    const bElimEp = b.isEliminated ? Number(bLast?.episodeNumber) : finaleEpNum;
+
+    return bElimEp - aElimEp;
     });
 
     const maxWins = Math.max(...queens.map(q => q.wins)); // for mario party-esque stats
@@ -103,7 +117,7 @@ const SeasonTrackRecordTable = ({ queens, episodes }: SeasonTrackRecordTableProp
                         <TableHead>Queen</TableHead>
                         {episodes.map(ep => (
                             <TableHead
-                                key={ep.episodeNumber}
+                                key={ep.id}
                                 className="text-center px-2 h-20 align-top"
                             >
                                 <div className="whitespace-normal break-words h-full flex flex-col justify-center">
@@ -155,7 +169,7 @@ const SeasonTrackRecordTable = ({ queens, episodes }: SeasonTrackRecordTableProp
 
                                     return (
                                         <TableCell
-                                            key={ep.episodeNumber}
+                                            key={ep.id}
                                             className={`text-center 
                                                 ${isElimEp
                                                     ? "bg-red-400 font-bold text-black-700" // highlight elimination episode

@@ -7,25 +7,36 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false) {
+export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false, episodeType: string) {
   //const episodeNum = Number(episodeNumber);
 
-  // Detect finale: 4 or fewer remaining, none eliminated
-  const isFinale = trackRecord.every(q => !q.isEliminated) && trackRecord.length <= 4;
+  const isFinale = episodeType.toLowerCase().includes("finale");
 
   if (isFinale) {
-    // Pick a single winner randomly
-    const winnerIndex = Math.floor(Math.random() * trackRecord.length);
-    return trackRecord.map((q, idx) => ({
-      ...q,
-      placements: [
-        ...q.placements,
-        { episodeNumber, placement: idx === winnerIndex ? 'win' : 'finale' }
-      ],
-      // Do NOT increment wins/highs/lows/bottoms
-      // leave other stats unchanged
-    }));
-  }
+    const activeQueens = trackRecord.filter(q => !q.isEliminated); // Only active queens
+    const maxWins = Math.max(...activeQueens.map(q => q.wins)); // Max wins among active
+
+    const finalists = activeQueens
+      .map((q) => (q.wins === maxWins ? trackRecord.indexOf(q) : -1))
+      .filter(idx => idx !== -1);
+
+    const winnerIndex = finalists[Math.floor(Math.random() * finalists.length)]; // Random winner
+
+    return trackRecord.map((q, idx) => {
+        if (q.isEliminated) return q; // do nothing
+        return {
+            ...q,
+            placements: [
+                ...q.placements,
+                {
+                    episodeNumber,
+                    placement: idx === winnerIndex ? "win" : "finale", // Only update active queens
+                },
+            ],
+        };
+    });
+}
+
 
   // --- Normal episode logic ---
   const tempScores: { id: string; queen: string; episodeNumber: string | number; score: number }[] = [];
@@ -90,8 +101,6 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
   return updatedRecord;
 }
 
-
-
 function nittyGritty({ size }: { size: number }) {
   // Explicit rules for 4 queens left
   if (size === 4) {
@@ -108,7 +117,6 @@ function nittyGritty({ size }: { size: number }) {
   if (placementReserve[size]) return placementReserve[size];
   return [3, 3]; // default
 }
-
 
 function lipsync(bottomQueens: { id: string; queen: string }[]) {
   const eliminatedQueen = bottomQueens[Math.floor(Math.random() * bottomQueens.length)];
