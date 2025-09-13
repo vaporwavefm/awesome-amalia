@@ -46,7 +46,7 @@ type Props = {
   lipsyncNames: Lipsync[];
 };
 
-const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) => {
+const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames}: Props) => {
   const lipsyncs = episodes
     .map((ep) => {
       const bottoms = queens.filter((q) =>

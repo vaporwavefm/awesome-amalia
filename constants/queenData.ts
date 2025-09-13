@@ -217,7 +217,78 @@
       franchise: 'GB'
     }, 
     {
-      id: 'z4f7d4fAA3fvEP4fbNN3',
+      id: 'J6UypeN4r9dsso1RtlYf',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3c/BiminiBonBoulashDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113012',
+      seasons: 'UK2',
+      name: "Bimini Bon-Boulash",
+      franchise: 'GB'
+    }, 
+
+    {
+      id: 'eN1tRG58s5CyDpwu576y',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/CherryValentineDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113420',
+      seasons: 'UK2',
+      name: "Cherry Valentine",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'xg7MtFees1vTbZUOTXvC',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/33/EllieDiamondDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113452',
+      seasons: 'UK2',
+      name: "Ellie Diamond",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'I9m1tCPKjegq6AWYcMeu',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/GinnyLemonDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113522',
+      seasons: 'UK2',
+      name: "Ginny Lemon",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'PoY029qjrljzW3wQ7fEf',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6b/JoeBlackDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113555',
+      seasons: 'UK2',
+      name: "Joe Black",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'c0J7kqtwIFFMOnC9CR4T',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/15/LawrenceChaneyDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113630',
+      seasons: 'UK2',
+      name: "Lawrence Chaney",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'oDlEZbTpLcjn8HxbjsSw',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/SisterSisterDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113657',
+      seasons: 'UK2',
+      name: "Sister Sister",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'f0fsflEgKqBiGFGZZ6e0',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/TayceDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113905',
+      seasons: 'UK2',
+      name: "Tayce",
+      franchise: 'GB'
+    }, 
+    {
+      id: 'JMKBg2QZ1pVzNovlAsfb',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6e/TiaKofiDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830113939',
+      seasons: 'UK2',
+      name: "Tia Kofi",
+      franchise: 'GB'
+    }, 
+     {
+      id: 'J4f7KKl0spVzNovlAsfb',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/59/VeronicaGreenDRUK2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830114014',
+      seasons: 'UK2',
+      name: "Veronica Green",
+      franchise: 'GB'
+    },
+    {
+      id: 'nPdLPVGIscMZ1tEoxy22',
       url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/AnastarziaAnaquwayCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830120919',
       seasons: 'C1',
       name: "Anastarzia Anaquway",
@@ -470,5 +541,13 @@
       genre: "dance,electronic,pop",
       artist: "RuPaul",
       season: '10'
+    },
+  ];
+
+    export const seasons = [
+    {
+      id: 'e4QVuMqKSe300LfZ8BF2',
+      seasonNumber: '10',
+      franchise: 'US',
     },
   ];

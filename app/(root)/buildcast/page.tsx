@@ -2,14 +2,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Search from "@/components/Search";
-import { queens, episodes } from "@/constants/queenData";
+import { queens, episodes, seasons } from "@/constants/queenData";
 import QueenCard from "@/components/QueenCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { X, GripVertical } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCrown, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCrown, faPlay, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator"
 
@@ -48,6 +48,12 @@ const Page = () => {
   const [queenCards, setQueenCards] = useState<typeof queens>([]);
   const [episodeCards, setEpisodeCards] = useState<typeof episodes>([]);
   const [activeTab, setActiveTab] = useState("general");
+  const [minQueens, setMinQueens] = useState(0);
+  const [minEps, setMinEps] = useState(0);
+  const [reqQueensMet, setReqQueensMet] = useState(false);
+  const [reqEpsMet, setReqEpsMet] = useState(false);
+  const [finaleSet, setFinaleSet] = useState(false);
+
   const router = useRouter();
 
   const handleSaveToLocalStorage = () => {
@@ -58,6 +64,7 @@ const Page = () => {
 
   const handleRemoveQueen = (id: string) => {
     setQueenCards((prev) => prev.filter((queen) => queen.id !== id));
+    setMinEps(minEps - 1);
   };
 
   const handleRemoveEpisode = (id: string) => {
@@ -65,20 +72,43 @@ const Page = () => {
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem("selectedQueens");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      const sorted = parsed.sort((a: any, b: any) =>
-        a.name.localeCompare(b.name)
-      );
-      setQueenCards(sorted);
+    const savedQueens = localStorage.getItem("selectedQueens");
+    const savedEpisodes = localStorage.getItem("selectedEpisodes");
+
+    let parsedQueens: any[] = [];
+    let parsedEps: any[] = [];
+
+    if (savedQueens) {
+      parsedQueens = JSON.parse(savedQueens);
+      parsedQueens.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      setQueenCards(parsedQueens);
     }
 
-    const savedEpisodes = localStorage.getItem("selectedEpisodes");
     if (savedEpisodes) {
-      setEpisodeCards(JSON.parse(savedEpisodes));
+      parsedEps = JSON.parse(savedEpisodes);
+      setEpisodeCards(parsedEps);
     }
+
   }, []);
+
+  useEffect(() => {
+
+    const requiredQueens = episodeCards.length > 0 ? episodeCards.length + 1 : 4;
+    const requiredEps = queenCards.length > 0 ? queenCards.length - 1 : 3;
+
+    setMinQueens(requiredQueens);
+    setMinEps(requiredEps);
+    setReqQueensMet(queenCards.length === requiredQueens);
+    setReqEpsMet(episodeCards.length === requiredEps);
+
+    if (episodeCards.length > 0) {
+      const lastEp = episodeCards[episodeCards.length - 1];
+      setFinaleSet(lastEp.type?.toLowerCase().includes("finale"));
+    } else {
+      setFinaleSet(false);
+    }
+
+  }, [queenCards, episodeCards]);
 
   function SortableEpisode({
     episode,
@@ -205,13 +235,13 @@ const Page = () => {
                   <SelectGroup>
                     <SelectLabel>Regular</SelectLabel>
                     <SelectItem value="osf">Old-School Finale</SelectItem>
-                    <SelectItem value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
+                    <SelectItem disabled value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
                   </SelectGroup>
                   <SelectGroup>
                     <SelectLabel>All-Stars</SelectLabel>
-                    <SelectItem value="osas">Old-School All-Stars (coming soon!)</SelectItem>
-                    <SelectItem value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
-                    <SelectItem value="laas">Lipsync Assassins (coming soon!)</SelectItem>
+                    <SelectItem disabled value="osas">Old-School All-Stars (coming soon!)</SelectItem>
+                    <SelectItem disabled value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
+                    <SelectItem disabled value="laas">Lipsync Assassins (coming soon!)</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -236,10 +266,11 @@ const Page = () => {
               entity={queens}
               field="name"
               type="queen"
-              onSelect={(queen) =>
+              onSelect={(queen) => {
                 setQueenCards((prev) =>
                   prev.some((q) => q.id === queen.id) ? prev : [...prev, queen]
                 )
+              }
               }
             />
 
@@ -272,12 +303,28 @@ const Page = () => {
               entity={episodes}
               field="title"
               type="episode"
-              onSelect={(episode) =>
+              onSelect={(episode) => {
+                setEpisodeCards((prev) =>
+                  prev.some((e) => e.id === episode.id) ? prev : [...prev, episode]
+                );
+              }}
+            />
+
+            {/* 
+            <p className="flex justify-center mt-4 mb-4 font-bold">
+              OR...import a season!(this will overwrite your current selections)
+              </p>
+            
+            <Search
+              entity={seasons}
+              field="seasonNumber"
+              type="season"
+              *
+            />/} {/*onSelect={(season) =>
                 setEpisodeCards((prev) =>
                   prev.some((e) => e.id === episode.id) ? prev : [...prev, episode]
                 )
-              }
-            />
+              } */}
 
             <DndContext
               collisionDetection={closestCenter}
@@ -312,19 +359,35 @@ const Page = () => {
         </TabsContent>
       </Tabs>
 
-      <div className="pb-8 flex justify-center">
-        <Button
-          onClick={handleSaveToLocalStorage}
-          disabled={queenCards.length !== 14}
-          className="px-8 py-4 text-lg font-semibold rounded-full shadow-lg transition-all 
+      <div className="text-center">
+        <div className="mb-3">
+          <p> To generate a brand-new simulation, you&apos;ll need to meet the minimum requirements below. (The will adjust as you add more queens and episodes!)</p>
+          <p className={reqQueensMet ? 'text-green-700' : 'text-red-700'}>
+            {reqQueensMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+            <span className="font-bold">Exactly</span> {minQueens} Queens (if season were to have a minimum of {minEps} episodes)
+          </p>
+          <p className={reqEpsMet ? 'text-green-700' : 'text-red-700'}>
+            {reqEpsMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+            <span className="font-bold">Exactly</span> {minEps} Episodes (if season were to have a minimum of {minQueens} queens)
+          </p>
+          <p className={finaleSet ? "text-green-700" : "text-red-700"}>
+            {finaleSet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+            Finale Episode {finaleSet ? "Set" : "Not Set"}
+          </p>
+        </div>
+        <div className="pb-8 flex justify-center">
+          <Button
+            onClick={handleSaveToLocalStorage}
+            disabled={!(reqEpsMet && reqQueensMet && finaleSet)}
+            className="px-8 py-4 text-lg font-semibold rounded-full shadow-lg transition-all 
                disabled:opacity-50 disabled:cursor-not-allowed
                hover:scale-105 hover:shadow-xl"
-        >
-          {queenCards.length === 14
-            ? "Show me the results!"
-            : `Show me the results! (${queenCards.length}/14)`}
-        </Button>
+          >
+            Show me the results!
+          </Button>
+        </div>
       </div>
+
     </>
   );
 };

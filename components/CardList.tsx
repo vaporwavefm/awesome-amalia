@@ -45,7 +45,7 @@ const CardList = ({
     showResults?: boolean;
     episodes: { episodeNumber: number | string; title: string }[];
 }) => {
-    
+
     const maxWins = Math.max(...queens.map((q) => q.wins));
     const filteredQueens = queens;
 
@@ -55,16 +55,17 @@ const CardList = ({
                 <Tabs defaultValue="queens" className="w-full">
                     <TabsList className="tabs-list">
                         <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
-                        <TabsTrigger value="table" className="tabs-trigger" >Contestant Progess</TabsTrigger>
+                        <TabsTrigger value="table-min" className="tabs-trigger" >Contestant Progess (Minified)</TabsTrigger>
+                        <TabsTrigger value="table-full" className="tabs-trigger" >Contestant Progess</TabsTrigger>
                         {/* <TabsTrigger value="chart">Track Record Chart</TabsTrigger> */}
-                        <TabsTrigger value="lipsyncs"className="tabs-trigger" >Lipsyncs</TabsTrigger>
+                        <TabsTrigger value="lipsyncs" className="tabs-trigger" >Lipsyncs</TabsTrigger>
                     </TabsList>
 
                     {/* Queens Tab */}
                     <TabsContent value="queens">
                         <div className="flex flex-wrap justify-center gap-4">
                             {filteredQueens.map((queen) => (
-                                
+
                                 <div
                                     key={queen.id}
                                     className={`transition duration-300 inline-flex max-w-xs justify-center 
@@ -75,21 +76,24 @@ const CardList = ({
                                         }`}
                                 >
                                     <QueenCard
-            q={queen}
-            maxWins={maxWins}
-            viewMode={viewMode}
-            isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
-          />
+                                        q={queen}
+                                        maxWins={maxWins}
+                                        viewMode={viewMode}
+                                        isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
+                                    />
                                 </div>
                             ))}
                         </div>
                     </TabsContent>
 
                     {/* Table Tab */}
-                    <TabsContent value="table">
-                        <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                    <TabsContent value="table-min">
+                        <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} />
                     </TabsContent>
 
+                    <TabsContent value="table-full">
+                        <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                    </TabsContent>
                     {/* Chart Tab */}
                     {/*
                     <TabsContent value="chart">

@@ -166,7 +166,7 @@
 
 /* Active state (shadcn tabs add `data-[state=active]` attribute) */
 .tabs-trigger[data-state="active"] {
-  @apply bg-purple-500 text-white;
+  @apply bg-violet-500 text-white;
 }
 
 .general-msg {

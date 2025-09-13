@@ -170,7 +170,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
   //const maxWins = Math.max(...queensToDisplay.map(q => q.wins));
 
   return (
-    <div className="flex gap-2 pt-2">
+    <div className="flex justify-center gap-2 pt-2">
       <div className="w-1/4 p-4">
         <EpisodeList
           episodes={episodes}
@@ -212,16 +212,23 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
           </>
         ) : (
           <>
-            {selectedEpisode && (
-              <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
-                <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide">
-                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.title}
-                </h2>
-                <p className="mt-4 text-md text-gray-800 text-center leading-relaxed">
-                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.description}
-                </p>
-              </div>
-            )}
+            {selectedEpisode ? (
+        // existing episode preview box
+        <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
+          <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide">
+            {episodes.find(e => e.episodeNumber === selectedEpisode)?.title}
+          </h2>
+          <p className="mt-4 text-md text-gray-800 text-center leading-relaxed">
+            {episodes.find(e => e.episodeNumber === selectedEpisode)?.description}
+          </p>
+        </div>
+      ) : (
+        // initial message
+        <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
+          <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide"> Mama, the race is on! </h2>
+          <p className="text-lg text-center text-gray-800 leading-relaxed">  Who will snatch the crown? Click on any episode to follow their journey!</p>
+        </div>
+      )}
 
             <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs} />
           </>

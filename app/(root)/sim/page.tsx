@@ -4,50 +4,74 @@ import React, { useEffect, useState } from "react";
 //import { collection, getDocs } from "firebase/firestore";
 //import { db } from "@/lib/firebase";
 import SimLayout from "@/components/SimLayout";
-import { queens, episodes, lipsyncs } from "@/constants/queenData";
+import { lipsyncs } from "@/constants/queenData";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button"; // since you're already using shadcn/ui buttons
 
 const Page = () => {
 
-const [selectedQueens, setSelectedQueens] = useState<any[]>([]);
-const [selectedEpisodes, setSelectedEpisodes] = useState<any[]>([]);
-  //async function getUsers() {
+  const [selectedQueens, setSelectedQueens] = useState<any[]>([]);
+  const [selectedEpisodes, setSelectedEpisodes] = useState<any[]>([]);
+  const [canSim, setCanSim] = useState(false);
+  const router = useRouter();
 
+  //async function getUsers() {
   //const querySnapshot = await getDocs(collection(db, "episodes"));
   //const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   //return users;
   //}
-
   //const users = await getUsers();
-
   //console.log(users);
 
   useEffect(() => {
     const saved = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      const parsedEps = JSON.parse(savedEpisodes ?? '[]');
-      // sort alphabetically by name
-      const sorted = parsed.sort((a: any, b: any) =>
-        a.name.localeCompare(b.name)
-      );
 
-      let i = 1;
-      for(const ep in parsedEps){
-        //console.log(parsedEps[ep]);
-        parsedEps[ep].episodeNumber = i;
-        i++;
+    if (saved && savedEpisodes) {
+
+      const parsedQueens = JSON.parse(saved) ?? [];
+      const parsedEps = JSON.parse(savedEpisodes ?? "[]");
+
+      if (parsedQueens.length > 0 && parsedEps.length > 0) {
+        
+        const sorted = parsedQueens.sort((a: any, b: any) =>
+          a.name.localeCompare(b.name)
+        ); // sort alphabetically by name
+
+        let i = 1;
+        for (const ep in parsedEps) {
+          parsedEps[ep].episodeNumber = i;
+          i++;
+        }
+        setSelectedQueens(sorted);
+        setSelectedEpisodes(parsedEps);
+        setCanSim(true);
       }
-      setSelectedQueens(sorted);
-      setSelectedEpisodes(parsedEps);
+
     }
   }, []);
 
+
   return (
     <>
-      <SimLayout queens={selectedQueens}
-        episodes={selectedEpisodes}
-        lipsyncs={lipsyncs} />
+      {canSim ?
+        <SimLayout queens={selectedQueens}
+          episodes={selectedEpisodes}
+          lipsyncs={lipsyncs} />
+        : (
+        <div className="flex flex-col items-center justify-center min-h-100 gap-4">
+          <p className="text-lg font-medium text-gray-700">
+            No valid simulation built!
+          </p>
+          <Button
+            onClick={() => router.push("/buildcast")}
+            className="px-6 py-3 text-lg font-semibold rounded-full shadow-md hover:shadow-lg transition"
+          >
+            Maybe we can try double-checking our settings?
+          </Button>
+        </div>
+      )
+      }
     </>
   )
 };

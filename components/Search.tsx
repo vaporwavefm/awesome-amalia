@@ -11,7 +11,7 @@ type SearchProps = {
   entity: any[];
   field: string;
   onSelect?: (item: any) => void; // callback to parent
-  type: "queen" | "episode";
+  type: string;
 };
 
 const Search = ({ entity, field, onSelect, type }: SearchProps) => {
@@ -63,7 +63,7 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
           />
           <Input
             value={query}
-            placeholder={`Search ${type === "queen" ? "queens" : "episodes"}... (enter at least 2 characters!)`}
+            placeholder={`Search ${type}s... (enter at least 2 characters!)`}
             className="border-none focus-visible:ring-0 focus:outline-none text-gray-800"
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -82,7 +82,7 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                     className="flex items-center p-3 hover:bg-gray-50 cursor-pointer transition"
                     onClick={() => handleClickItem(res)}
                   >
-                    {type === "queen" ? (
+                    {type === "queen" && (
                       <>
                         <Image
                           src={res.url || ""}
@@ -99,7 +99,8 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                           ) : null;
                         })()}
                       </>
-                    ) : (
+                    )}
+                    {type == "episode" && (
                       <>
                         <span className="font-medium text-gray-700">{res.title}</span>
                         {res.season && (
@@ -107,6 +108,17 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                             Season {res.season}, Episode {res.episodeNumber}
                           </span>
                         )}
+                      </>
+                    )}
+                    {type == "season" && (
+                      <>
+                        <span className="font-medium text-gray-700">Season {res.seasonNumber}</span>
+                        {(() => {
+                          const Flag = Flags[res.franchise as keyof typeof Flags];
+                          return Flag ? (
+                            <Flag className="w-6 h-4 ml-auto rounded-sm shadow-sm" />
+                          ) : null;
+                        })()}
                       </>
                     )}
                   </li>
