@@ -188,8 +188,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="flex flex-col space-y-2 w-[280px]">
-              {/* Label + tooltip icon row */}
+            <div className="flex flex-col space-y-2 w-[300px] pb-2">
               <div className="flex items-center justify-between">
                 <span className="font-medium text-gray-800">Select season mode:</span>
                 <Tooltip>
@@ -246,8 +245,41 @@ const Page = () => {
                 </SelectContent>
               </Select>
             </div>
-          </div>
 
+            <div className="flex flex-col space-y-2 w-[300px]">
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-gray-800">Number of double shantays:</span>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                    >
+                      <Info className="w-4 h-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs text-sm">
+                    <p>
+                      Double shantays means that in a given episode, all queens who are in the bottom 
+                      will be given a change to slay another day.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+
+              {/* Select dropdown */}
+              <Select defaultValue="0">
+                <SelectTrigger id="numNonElim" className="w-full">
+                  <SelectValue placeholder="Select a number:" />
+                </SelectTrigger>
+                <SelectContent>
+                    
+                    <SelectItem value="0">0</SelectItem>
+                    <SelectItem value="1">1</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </TabsContent>
 
         {/* Queens Tab */}
@@ -359,6 +391,7 @@ const Page = () => {
         </TabsContent>
       </Tabs>
 
+      {/* Validation and submit button */}
       <div className="text-center">
         <div className="mb-3">
           <p> To generate a brand-new simulation, you&apos;ll need to meet the minimum requirements below. (The will adjust as you add more queens and episodes!)</p>

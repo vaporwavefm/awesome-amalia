@@ -294,6 +294,90 @@
       name: "Anastarzia Anaquway",
       franchise: 'CA'
     }, 
+    {
+      id: 'BCcskRCskxfz0T12OS7r',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/AnastarziaAnaquwayCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830120919',
+      seasons: 'C1',
+      name: "Anastarzia Anaquway",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'eCDSyGHbM1WougQVlBzs',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/BOACDR1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210830121121',
+      seasons: 'C1',
+      name: "BOA",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'mviIxUz21QsTXMKUan9t',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6b/IlonaVerleyCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830121323',
+      seasons: 'C1',
+      name: "Ilona Verley",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'xZlusEcJTi19F5Ii0bXz',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a3/JimboCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830122751',
+      seasons: 'C1',
+      name: "Jimbo",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'NbWnNPxnKgiYvgR2ytgO',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/JuiceBoxxCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830122923',
+      seasons: 'C1',
+      name: "Juice Boxx",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'eqQcI61YGxb4leH7xtbi',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/87/KiaraCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830123128',
+      seasons: 'C1',
+      name: "Kiara",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'BStMmP5D8ZvdtWPbvXXA',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9a/KyneCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830123244',
+      seasons: 'C1',
+      name: "Kyne",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'LSPbFPcfuqU3FxrYkp2q',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/LemonCDR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830123441',
+      seasons: 'C1',
+      name: "Lemon",
+      franchise: 'CA'
+    }, 
+    {
+      id: '1vKpHj4lQLKdxtdeJDc9',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a6/PriyankaCDR1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210830124123',
+      seasons: 'C1',
+      name: "Priyanka",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'Ck4gLNsfjLqwpqM01L8X',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fc/RitaBagaCDR1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210830124151',
+      seasons: 'C1',
+      name: "Rita Baga",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'DIqZ501D1AZ9jFOwIcyT',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1a/ScarlettBoBoCDR1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210830124225',
+      seasons: 'C1',
+      name: "Scarlet BoBo",
+      franchise: 'CA'
+    }, 
+    {
+      id: 'jctebj2hRpCBpdU5yGlW',
+      url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c6/TynomiBanksCDR1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210830124302',
+      seasons: 'C1',
+      name: "Tynomi Banks",
+      franchise: 'CA'
+    }, 
   ].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
