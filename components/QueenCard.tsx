@@ -1,8 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import * as Flags from 'country-flag-icons/react/3x2';
-import { X } from "lucide-react"; 
+import { X } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 type Queen = {
   id: string;
@@ -15,22 +22,24 @@ type Queen = {
   lows?: number;
   bottoms?: number;
   isEliminated?: boolean;
+  stats?: any;
 };
 
-const QueenCard = ({ q, 
-  maxWins, 
-  viewMode, 
-  isWinner, 
+const QueenCard = ({ q,
+  maxWins,
+  viewMode,
+  isWinner,
   isBuildCast,
   onRemove
- }:
-  { q: Queen,
-     maxWins?: number, 
-     viewMode?: string, 
-     isWinner?: boolean, 
-     isBuildCast?: boolean,
-     onRemove?: (id: string) => void;
-     }
+}:
+  {
+    q: Queen,
+    maxWins?: number,
+    viewMode?: string,
+    isWinner?: boolean,
+    isBuildCast?: boolean,
+    onRemove?: (id: string) => void;
+  }
 ) => {
 
   const isTopWinner = (maxWins != null) ? q.wins === maxWins && maxWins > 0 : false;
@@ -38,11 +47,11 @@ const QueenCard = ({ q,
 
   return (
     <Card
-  className={`relative flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl 
+      className={`relative flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl 
     ${q.isEliminated && !isMainScreen ? 'border-2 border-red-400 bg-red-50' : 'border border-gray-200'}
     ${q.isEliminated && !isMainScreen ? 'opacity-40 grayscale' : ''}
-    w-48 h-80`}
->
+    w-56 min-h-80`}
+    >
       {isBuildCast && (
         <button
           onClick={() => onRemove?.(q.id)}
@@ -60,23 +69,51 @@ const QueenCard = ({ q,
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col items-center justify-between h-full">
+      <CardContent className="flex flex-col items-center justify-start space-y-3">
         <div className="relative w-24 h-24">
           <Image
             src={q.url || ''}
             alt={q.name}
             fill
-            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''
-              }`}
+            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''}`}
           />
         </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">
+        <div className="grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">
           {q.wins != null && (<p>Wins: {q.wins}</p>)}
           {q.highs != null && (<p>Highs: {q.highs}</p>)}
           {q.lows != null && (<p>Lows: {q.lows}</p>)}
           {q.bottoms != null && (<p>Bottoms: {q.bottoms}</p>)}
         </div>
+
+        {!isBuildCast && (
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full max-w-[13rem] self-center"
+          >
+            <AccordionItem value="stats">
+              <AccordionTrigger>Stats</AccordionTrigger>
+              <AccordionContent className="pt-2 text-sm text-gray-700">
+                {q.stats ? (
+                  <div className="grid grid-cols-2 gap-2">
+                    {Object.entries(q.stats).map(([statName, statValue]) => (
+                      <div
+                        key={statName}
+                        className="flex justify-between border-b border-gray-200 py-1 text-xs sm:text-sm"
+                      >
+                        <span className="capitalize truncate">{statName}</span>
+                        <span className="font-medium">{statValue as number}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-gray-500">No stats available</p>
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
 
         {isBuildCast && (
           <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700 text-center">

@@ -10,7 +10,7 @@ type Placement = {
   placement: string;
 };
 
-const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: any[]; lipsyncs: any[] }) => {
+const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[]; episodes: any[]; lipsyncs: any[]; minNonElimEps: number }) => {
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
       ...q,
@@ -21,6 +21,13 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
       highs: 0,
       lows: 0,
       isEliminated: false,
+      stats: {
+        Acting: Math.floor(Math.random() * 100) + 1,
+        Dance: Math.floor(Math.random() * 100) + 1,
+        Comedy: Math.floor(Math.random() * 100) + 1,
+        Design: Math.floor(Math.random() * 100) + 1,
+        Singing: Math.floor(Math.random() * 100) + 1,
+      }
     }));
   }, [queens]);
 
@@ -44,9 +51,11 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
       e => !e.title.toLowerCase().includes("finale") && e.episodeNumber <= 9
     );
 
-    if (eligible.length > 0) {
-      const randomIndex = Math.floor(Math.random() * eligible.length);
-      sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
+    if (eligible.length > 0 && Number(minNonElimEps) > 0) {
+      for (let i = 0; i < Number(minNonElimEps); i++) {
+        const randomIndex = Math.floor(Math.random() * eligible.length);
+        sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
+      }
     }
 
     for (const e of sortedEpisodes) {
@@ -180,7 +189,7 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
           initialTrackRecord={initialTrackRecord}
         />
       </div>
-      <div className="w-3/4">
+      <div className="w-3/4 pt-2">
         {episodeEvent ? (
           <>
             <div className="flex justify-center mb-4">
@@ -208,27 +217,27 @@ const SimLayout = ({ queens, episodes, lipsyncs }: { queens: any[]; episodes: an
               showResults={showResults}
               episodes={episodes}
             />
-            
+
           </>
         ) : (
           <>
             {selectedEpisode ? (
-        // existing episode preview box
-        <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
-          <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide">
-            {episodes.find(e => e.episodeNumber === selectedEpisode)?.title}
-          </h2>
-          <p className="mt-4 text-md text-gray-800 text-center leading-relaxed">
-            {episodes.find(e => e.episodeNumber === selectedEpisode)?.description}
-          </p>
-        </div>
-      ) : (
-        // initial message
-        <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
-          <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide"> Mama, the race is on! </h2>
-          <p className="text-lg text-center text-gray-800 leading-relaxed">  Who will snatch the crown? Click on any episode to follow their journey!</p>
-        </div>
-      )}
+              // existing episode preview box
+              <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
+                <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide">
+                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.title}
+                </h2>
+                <p className="mt-4 text-md text-gray-800 text-center leading-relaxed">
+                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.description}
+                </p>
+              </div>
+            ) : (
+              // initial message
+              <div className="m-6 p-6 bg-gradient-to-r from-purple-200 via-pink-100 to-purple-100 rounded-2xl shadow-lg border border-purple-300">
+                <h2 className="font-extrabold text-2xl text-center text-purple-800 tracking-wide"> Mama, the race is on! </h2>
+                <p className="text-lg text-center text-gray-800 leading-relaxed">  Who will snatch the crown? Click on any episode to follow their journey!</p>
+              </div>
+            )}
 
             <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs} />
           </>

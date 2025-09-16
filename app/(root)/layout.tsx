@@ -3,7 +3,7 @@ import NavMenu from "@/components/NavMenu";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return <div>
     <NavMenu />
-    <div className="mt-8"> {children}</div>
+    <div className="bg-gradient-to-b from-violet-50 to-white"> {children}</div>
     </div>;
 };
 

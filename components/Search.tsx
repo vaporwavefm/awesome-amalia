@@ -50,6 +50,10 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
     }
   }, [searchQuery]);
 
+  const placeHolder = type == 'season'
+  ? 'Search season (enter a season number)'
+  : 'Search ' + type + ' names... (enter at least 2 characters!)';
+
   return (
     <div className="flex  items-center justify-center  px-4">
       <div className="relative w-full max-w-xl">
@@ -63,7 +67,7 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
           />
           <Input
             value={query}
-            placeholder={`Search ${type}s... (enter at least 2 characters!)`}
+            placeholder={placeHolder}
             className="border-none focus-visible:ring-0 focus:outline-none text-gray-800"
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -100,16 +104,30 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                         })()}
                       </>
                     )}
-                    {type == "episode" && (
-                      <>
+                    {type === "episode" && (
+                      <div className="w-full">
                         <span className="font-medium text-gray-700">{res.title}</span>
                         {res.season && (
-                          <span className="ml-auto text-sm text-gray-500">
-                            Season {res.season}, Episode {res.episodeNumber}
-                          </span>
+                          <div className="ml-4 text-sm text-gray-500">
+                            <div className="flex items-center gap-2">
+                              {(() => {
+                                const Flag = Flags[res.franchise as keyof typeof Flags];
+                                return Flag ? (
+                                  <Flag className="w-6 h-4 rounded-sm shadow-sm" />
+                                ) : null;
+                              })()}
+                              <span>
+                                Season {res.season}, Episode {res.episodeNumber}
+                              </span>
+                            </div>
+                            <div className="italic text-gray-400">
+                              (type: {res.type})
+                            </div>
+                          </div>
                         )}
-                      </>
+                      </div>
                     )}
+
                     {type == "season" && (
                       <>
                         <span className="font-medium text-gray-700">Season {res.seasonNumber}</span>

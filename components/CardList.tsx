@@ -7,6 +7,7 @@ import QueenCard from "./QueenCard";
 import SeasonTrackRecordTable from "./SeasonTrackRecordTable";
 //import SeasonTrackRecordChart from "./SeasonTrackRecordChart";
 import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
+import QueenScoreBreakdownTable from "./QueenScoreBreakdownTable";
 
 type Queen = {
     id: string;
@@ -125,8 +126,20 @@ const CardList = ({
                             />
                         </div>
                     ))}
+
+
+
                 </div>
             )}
+            {/* 
+            {filteredQueens.map((queen) => (
+                <QueenScoreBreakdownTable
+                    key={queen.id}
+                    queenName={queen.name}
+                    scores={queen.scores as any}
+                />
+            ))} */}
+
         </div>
     );
 };

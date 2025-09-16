@@ -161,12 +161,12 @@
 
 .tabs-trigger {
   @apply flex-1 py-3 text-center rounded-full font-semibold text-gray-700
-         hover:bg-purple-200 transition-colors duration-200;
+         hover:bg-purple-300 transition-colors duration-300;
 }
 
 /* Active state (shadcn tabs add `data-[state=active]` attribute) */
 .tabs-trigger[data-state="active"] {
-  @apply bg-violet-500 text-white;
+  @apply bg-violet-600 text-white;
 }
 
 .general-msg {
@@ -174,7 +174,7 @@
 }
 
 .tabs-list {
-  @apply flex justify-center mb-6 gap-2 bg-gray-100 rounded-full p-1 shadow-inner max-w-3xl mx-auto w-full;
+  @apply flex justify-center mb-6 gap-2 bg-gray-200 rounded-full p-1 shadow-inner max-w-4xl mx-auto w-full;
 }
 @layer base {
   :root {

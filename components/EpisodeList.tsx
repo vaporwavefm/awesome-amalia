@@ -30,18 +30,18 @@ const EpisodeList = ({
   };
 
   return (
-    <div className="space-y-2 mt-4">
+    <div className="max-h-[calc(100vh-100px)] overflow-y-auto space-y-2 pr-2 pl-2 pb-2">
       <div
         onClick={() => {
           setSelectedEpisode(0);
           onEpisodeClick(0);
         }}
-        className={`p-5 rounded-2xl border bg-gradient-to-r from-pink-100 to-purple-100 
+        className={`p-5 rounded-2xl border bg-gradient-to-r from-pink-300 to-purple-300 
           shadow-md hover:shadow-lg transition cursor-pointer text-center
-          ${selectedEpisode === 0 ? "ring-4 ring-purple-400" : ""}`}
+          ${selectedEpisode === 0 ? "ring-4 ring-purple-500" : ""}`}
       >
         <h2 className="font-extrabold text-lg text-purple-800">Start Your Engines!</h2>
-        <p className="text-sm text-gray-700 mt-1">
+        <p className="text-sm text-gray-700 mt-1 font-bold">
           Click here or any card to see the season progress!
         </p>
       </div>
@@ -63,7 +63,7 @@ const EpisodeList = ({
         return (
           <div
             key={ep.id}
-            className={`p-4 rounded-2xl border bg-gradient-to-br from-pink-50 to-purple-50 
+            className={`p-4 rounded-2xl border bg-gradient-to-br from-pink-100 to-purple-100 
               shadow-sm hover:shadow-md transition cursor-pointer
               ${selectedEpisode === ep.episodeNumber ? "ring-4 ring-pink-400" : ""}`}
             onClick={() => {
@@ -126,7 +126,7 @@ const EpisodeList = ({
                     Bottom 2
                   </button>
                   <button
-                    className="px-3 py-1 text-xs rounded-full bg-red-600 hover:bg-red-700 transition text-white"
+                    className="px-3 py-1 text-xs rounded-full bg-red-600 hover:bg-red-800 transition text-white"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "eliminated", ep.nonElimination || "")}
                   >
                     Elimination

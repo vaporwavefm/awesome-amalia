@@ -4,14 +4,14 @@ import React from "react";
 const Page = () => {
 
   const updates = [
-    { date: "2025-09-14", note: "First go-live! Simulator currently has the following seasons imported: US10, US11, UK2, C1. For now, only the old-school style season mode is available. The placement determination for contestants currently is set to true random." },
+    { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
 
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-purple-50 to-white px-6 relative overflow-hidden">
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-violet-50 to-white px-6 relative overflow-hidden">
 
-        <div className="absolute bottom-50 inset-x-0 flex justify-between opacity-20 pointer-events-none">
+        <div className="absolute bottom-70 inset-x-0 flex justify-between opacity-20 pointer-events-none">
           {Array.from({ length: 10 }).map((_, idx) => (
             <Image
               key={idx}
@@ -24,7 +24,7 @@ const Page = () => {
           ))}
         </div>
 
-        <section className="relative z-10 max-w-2xl text-center bg-white shadow-lg rounded-2xl p-8 space-y-6">
+        <section className="relative z-10 max-w-2xl text-center bg-white shadow-xl rounded-2xl p-8 space-y-8">
           <h1 className="text-3xl font-extrabold text-violet-700">
             Welcome to the RuPaul&apos;s Drag Race Simulator!
           </h1>
