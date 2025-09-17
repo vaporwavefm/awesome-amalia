@@ -397,7 +397,7 @@ const Page = () => {
                       onUpdateStats={(id, updatedStats) => {
                         setQueenCards((prev) =>
                           prev.map((q) =>
-                            // @ts-expect-error
+                            // @ts-expect-error girllll like
                             q.id === id ? { ...q, stats: { ...(q.stats ?? {}), ...updatedStats } } : q
                           )
                         );
