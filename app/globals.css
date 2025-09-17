@@ -169,8 +169,27 @@
   @apply bg-violet-600 text-white;
 }
 
+.e-title-msg {
+  @apply m-6 p-6 bg-gradient-to-r from-pink-300 via-purple-200 to-pink-300
+         rounded-2xl shadow-lg border border-purple-400
+         text-center text-gray-900 font-semibold
+         transition transform duration-300 ease-in-out
+         hover:scale-105 hover:shadow-xl;
+}
+
+.e-title-h2 {
+  @apply font-semibold text-2xl text-center text-purple-700 tracking-normal;
+}
+
+.e-title-descr {
+  @apply mt-2 text-base text-center text-gray-700 leading-snug;
+}
+
 .general-msg {
-  @apply inline-block max-w-2xl bg-gradient-to-r from-pink-300 via-purple-200 to-pink-200 rounded-2xl shadow-xl py-4 px-8 text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl;
+  @apply inline-block max-w-2xl bg-gradient-to-r from-pink-200 via-purple-200 to-pink-200 
+         rounded-xl shadow-md py-3 px-6 text-center 
+         transform transition duration-300 ease-in-out 
+         hover:scale-105 hover:shadow-lg;
 }
 
 .tabs-list {

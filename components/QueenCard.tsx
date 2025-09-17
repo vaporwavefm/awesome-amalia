@@ -93,7 +93,7 @@ const QueenCard = ({ q,
             className="w-full max-w-[13rem] self-center"
           >
             <AccordionItem value="stats">
-              <AccordionTrigger>Stats</AccordionTrigger>
+              <AccordionTrigger className="text-sm font-medium hover:text-purple-900">Stats</AccordionTrigger>
               <AccordionContent className="pt-2 text-sm text-gray-700">
                 {q.stats ? (
                   <div className="grid grid-cols-2 gap-2">

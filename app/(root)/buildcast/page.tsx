@@ -43,6 +43,7 @@ import {
 } from "@/components/ui/tooltip"
 
 import { CSS } from "@dnd-kit/utilities";
+import Image from "next/image";
 
 const Page = () => {
   const [queenCards, setQueenCards] = useState<typeof queens>([]);
@@ -53,6 +54,7 @@ const Page = () => {
   const [reqEpsMet, setReqEpsMet] = useState(false);
   const [finaleSet, setFinaleSet] = useState(false);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
+  const [minFinalists, setMinFinalists] = useState('3');
 
   const router = useRouter();
 
@@ -105,7 +107,10 @@ const Page = () => {
 
   useEffect(() => {
 
-    const requiredEps = queenCards.length > 0 && (queenCards.length - 2 + Number(minNonElimEps) > 2) ? queenCards.length - 2 + Number(minNonElimEps) : 2;
+    const requiredEps = queenCards.length > 0 && (queenCards.length - 2 + Number(minNonElimEps) > 2)
+      ? queenCards.length - 2 + Number(minNonElimEps) - (Number(minFinalists) - 3)
+      : 2;
+
     setMinEps(requiredEps);
     setReqQueensMet(queenCards.length >= 4);
     setReqEpsMet(episodeCards.length === requiredEps);
@@ -117,7 +122,7 @@ const Page = () => {
       setFinaleSet(false);
     }
 
-  }, [queenCards, episodeCards, minNonElimEps]);
+  }, [queenCards, episodeCards, minNonElimEps, minFinalists]);
 
   function SortableEpisode({
     episode,
@@ -191,7 +196,9 @@ const Page = () => {
 
             {/* General Tab */}
             <TabsContent value="general">
-              <div className="p-6 flex flex-col min-h-screen items-center">
+              <div className="p-6 flex flex-col min-h-screen items-center relative">
+
+                {/* general message and instructions */}
                 <div className="p-2 mb-3 flex flex-col items-center justify-center">
                   <div className="flex items-center gap-2 general-msg">
                     <h2 className="font-extrabold text-2xl text-black tracking-wide">
@@ -201,98 +208,144 @@ const Page = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-2 w-[300px] pb-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">Select season mode:</span>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button
-                          type="button"
-                          className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
-                        >
-                          <Info className="w-4 h-4" />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent className="max-w-xs text-sm">
-                        <p>
-                          <strong>Old-School Finale:</strong> The finalists are judged on their overall
-                          performance throughout the season, and the winner is chosen based off track record.
-                        </p>
-                        <p className="mt-2">
-                          <strong>Lipsync for the Crown:</strong> The finalists compete in a lipsync smackdown,
-                          and the winner is determined by their performance in a final Lipsync for the Crown.
-                        </p>
-                        <br /><Separator />
-                        <p className="mt-2">
-                          <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
-                          will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
-                        </p>
-                        <p className="mt-2">
-                          <strong>Lipsync Assassins:</strong> The top All-Star faces off against a
-                          secret Lipsync Assassin. If the top All-Star wins, they choose a queen to
-                          eliminate. If the Lipsync Assassin wins, the group vote decides who goes home. If the vote is a tie,
-                          the decision will go back to the top All-Star.
-                        </p>
-                        <br />
-                      </TooltipContent>
-                    </Tooltip>
+                <div className="mt-4 flex flex-col space-y-2 w-[300px] relative">
+                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-gray-800">Select season mode:</span>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p>
+                            <strong>Old-School Finale:</strong> The finalists are judged on their overall
+                            performance throughout the season, and the winner is chosen based off track record.
+                          </p>
+                          <p className="mt-2">
+                            <strong>Lipsync for the Crown:</strong> The finalists compete in a lipsync smackdown,
+                            and the winner is determined by their performance in a final Lipsync for the Crown.
+                          </p>
+                          <br /><Separator />
+                          <p className="mt-2">
+                            <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
+                            will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
+                          </p>
+                          <p className="mt-2">
+                            <strong>Lipsync Assassins:</strong> The top All-Star faces off against a
+                            secret Lipsync Assassin. If the top All-Star wins, they choose a queen to
+                            eliminate. If the Lipsync Assassin wins, the group vote decides who goes home. If the vote is a tie,
+                            the decision will go back to the top All-Star.
+                          </p>
+                          <br />
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+
+                    {/* Select dropdown */}
+                    <Select defaultValue="osf">
+                      <SelectTrigger id="seasonMode" className="w-full">
+                        <SelectValue placeholder="Select a series type:" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>Regular</SelectLabel>
+                          <SelectItem value="osf">Old-School Finale</SelectItem>
+                          <SelectItem disabled value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
+                        </SelectGroup>
+                        <SelectGroup>
+                          <SelectLabel>All-Stars</SelectLabel>
+                          <SelectItem disabled value="osas">Old-School All-Stars (coming soon!)</SelectItem>
+                          <SelectItem disabled value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
+                          <SelectItem disabled value="laas">Lipsync Assassins (coming soon!)</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </div>
 
-                  {/* Select dropdown */}
-                  <Select defaultValue="osf">
-                    <SelectTrigger id="seasonMode" className="w-full">
-                      <SelectValue placeholder="Select a series type:" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectLabel>Regular</SelectLabel>
-                        <SelectItem value="osf">Old-School Finale</SelectItem>
-                        <SelectItem disabled value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
-                      </SelectGroup>
-                      <SelectGroup>
-                        <SelectLabel>All-Stars</SelectLabel>
-                        <SelectItem disabled value="osas">Old-School All-Stars (coming soon!)</SelectItem>
-                        <SelectItem disabled value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
-                        <SelectItem disabled value="laas">Lipsync Assassins (coming soon!)</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </div>
+                  {/* number of finalists */}
+                  <div className="flex flex-col space-y-2 w-[300px]">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-gray-800">Number of finalists:</span>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p>
+                            How many queens will be included in the finale?
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
 
-                <div className="flex flex-col space-y-2 w-[300px]">
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">Number of double shantays:</span>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button
-                          type="button"
-                          className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
-                        >
-                          <Info className="w-4 h-4" />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent className="max-w-xs text-sm">
-                        <p>
-                          A double shantay means that in an episode, nobody goes home. All the queens in the bottom are safe to slay another day!
-                        </p>
-                      </TooltipContent>
-                    </Tooltip>
+                    {/* Select dropdown */}
+                    <Select value={minFinalists} defaultValue="3" onValueChange={(value) => setMinFinalists(value)}>
+                      <SelectTrigger id="numFinalists" className="w-full">
+                        <SelectValue placeholder="Select a number:" />
+                      </SelectTrigger>
+                      <SelectContent>
+
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
-                  {/* Select dropdown */}
-                  <Select value={minNonElimEps} defaultValue="0" onValueChange={(value) => setMinNonElimEps(value)}>
-                    <SelectTrigger id="numNonElim" className="w-full">
-                      <SelectValue placeholder="Select a number:" />
-                    </SelectTrigger>
-                    <SelectContent>
+                  {/* double shantays options */}
+                  <div className="flex flex-col space-y-2 w-[300px]">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-gray-800">Number of double shantays:</span>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p>
+                            A double shantay means that in an episode, nobody goes home. All the queens in the bottom are safe to slay another day!
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
 
-                      <SelectItem value="0">0</SelectItem>
-                      <SelectItem value="1">1</SelectItem>
-                      <SelectItem value="2">2</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    {/* Select dropdown */}
+                    <Select value={minNonElimEps} defaultValue="0" onValueChange={(value) => setMinNonElimEps(value)}>
+                      <SelectTrigger id="numNonElim" className="w-full">
+                        <SelectValue placeholder="Select a number:" />
+                      </SelectTrigger>
+                      <SelectContent>
+
+                        <SelectItem value="0">0</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Image
+                    src="/assets/graphics/heels.jpg"
+                    alt="heels accent"
+                    width={120}
+                    height={120}   
+                    className="absolute -right-25 top-full mt-2 opacity-40 pointer-events-none"
+                  />
                 </div>
               </div>
+
             </TabsContent>
 
             {/* Queens Tab */}
@@ -452,7 +505,7 @@ const Page = () => {
                 </span>
               </div>
               <p className="text-sm text-gray-500 leading-snug">
-                To accommodate {queenCards.length} queens, 3 finalists, and {minNonElimEps} double shantays.
+                To accommodate {queenCards.length} queens, {minFinalists} finalists, and {minNonElimEps} double shantay(s).
               </p>
             </div>
 

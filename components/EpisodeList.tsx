@@ -30,7 +30,7 @@ const EpisodeList = ({
   };
 
   return (
-    <div className="max-h-[calc(100vh-100px)] overflow-y-auto space-y-2 pr-2 pl-2 pb-2">
+    <div className="max-h-[calc(100vh-100px)] overflow-y-auto space-y-2 pr-2 pl-2 pb-2 pt-2">
       <div
         onClick={() => {
           setSelectedEpisode(0);
