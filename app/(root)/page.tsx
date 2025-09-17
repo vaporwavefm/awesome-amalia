@@ -4,6 +4,7 @@ import React from "react";
 const Page = () => {
 
   const updates = [
+    { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
 

@@ -124,6 +124,14 @@ const Page = () => {
 
   }, [queenCards, episodeCards, minNonElimEps, minFinalists]);
 
+  const generateRandomStats = () => ({
+    Acting: Math.floor(Math.random() * 101),
+    Dance: Math.floor(Math.random() * 101),
+    Comedy: Math.floor(Math.random() * 101),
+    Design: Math.floor(Math.random() * 101),
+    Singing: Math.floor(Math.random() * 101),
+  });
+
   function SortableEpisode({
     episode,
     index,
@@ -340,7 +348,7 @@ const Page = () => {
                     src="/assets/graphics/heels.jpg"
                     alt="heels accent"
                     width={120}
-                    height={120}   
+                    height={120}
                     className="absolute -right-25 top-full mt-2 opacity-40 pointer-events-none"
                   />
                 </div>
@@ -356,7 +364,8 @@ const Page = () => {
                     <h2 className="font-extrabold text-2xl text-black tracking-wide">
                       Queens
                     </h2>
-                    <p className="mt-2 text-sm font-medium text-purple-800">Select the queens that you wish you wish to compete in this season:</p>
+                    <p className="mt-2 text-sm font-medium text-purple-800">Select the queens that you wish you wish to compete in this season!
+                     <br/> You can also edit their stats by entering a number between 1-100 - the higher the stat the better! (or keep them randomly generated)</p>
                   </div>
                 </div>
 
@@ -365,11 +374,17 @@ const Page = () => {
                   field="name"
                   type="queen"
                   onSelect={(queen) => {
-                    setQueenCards((prev) =>
-                      prev.some((q) => q.id === queen.id) ? prev : [...prev, queen]
-                    )
-                  }
-                  }
+                    setQueenCards((prev) => {
+                      if (prev.some((q) => q.id === queen.id)) return prev;
+                      return [
+                        ...prev,
+                        {
+                          ...queen,
+                          stats: generateRandomStats(),
+                        },
+                      ];
+                    });
+                  }}
                 />
 
                 <div className="mt-6 flex flex-wrap justify-center gap-4 ">
@@ -379,6 +394,14 @@ const Page = () => {
                       q={queen}
                       isBuildCast={true}
                       onRemove={handleRemoveQueen}
+                      onUpdateStats={(id, updatedStats) => {
+                        setQueenCards((prev) =>
+                          prev.map((q) =>
+                            // @ts-ignore
+                            q.id === id ? { ...q, stats: { ...(q.stats ?? {}), ...updatedStats } } : q
+                          )
+                        );
+                      }}
                     />
                   ))}
                 </div>

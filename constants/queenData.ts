@@ -454,6 +454,77 @@ export const queens = [
     name: "Tynomi Banks",
     franchise: 'CA'
   },
+  {
+    id: 'W9v56wQTLUPXbb442hMY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/ArantxaCastillaLaManchaDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173400',
+    seasons: 'ES1,UKvtW2',
+    name: "Arantxa Castilla La Mancha",
+    franchise: 'ES'
+  },
+  {
+    id: 'rhW7XEpJLNAVxjeRoOL2',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/94/CarmenFaralaDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173440',
+    seasons: 'ES1',
+    name: "Carmen Farala",
+    franchise: 'ES'
+  },
+  {
+    id: 'I59kSghZXTEQDjOJSFU1',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/55/DovimaNurmiDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173525',
+    seasons: 'ES1',
+    name: "Dovima Nurmi",
+    franchise: 'ES'
+  },
+  {
+    id: 'A1LhMLT6cjthzR7D8t39',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0e/DragVulcanoDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173559',
+    seasons: 'ES1',
+    name: "Drag Vulcano",
+    franchise: 'ES'
+  },
+  {
+    id: 'oYVUpLhGy7qWV1g1OmKW',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/81/Hug%C3%A1ceoCrujienteDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173633',
+    seasons: 'ES1',
+    name: "Hugáceo Crujiente",
+    franchise: 'ES'
+  },
+  {
+    id: '8yJ8xiTV5AWqgqYZU4D6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/29/IntiDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173705',
+    seasons: 'ES1',
+    name: "Inti",
+    franchise: 'ES'
+  },
+  {
+    id: 'goeWbfm2IqODbmKaWv5P',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e7/KillerQueenDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173749',
+    seasons: 'ES1',
+    name: "Killer Queen",
+    franchise: 'ES'
+  },
+  {
+    id: 'VgGLNNoQ8mUmAujmttX0',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/16/PupiPoissonDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173831',
+    seasons: 'ES1,ESAS1',
+    name: "Pupi Poisson",
+    franchise: 'ES'
+  },
+
+  {
+    id: '23bt2oXQeevItWa71cCL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/13/SagittariaDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173904',
+    seasons: 'ES1,ESAS1',
+    name: "Sagittaria",
+    franchise: 'ES'
+  },
+  {
+    id: 'VNTZx8o3WYqUkW1o87fS',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/88/TheMacarenaDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173939',
+    seasons: 'ES1,ES3',
+    name: "The Macarena",
+    franchise: 'ES'
+  },
 ].sort((a, b) =>
   a.name.localeCompare(b.name)
 );

@@ -11,6 +11,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+type QueenStats = {
+
+  Acting: number;
+  Dance: number;
+  Comedy: number;
+  Design: number;
+  Singing: number;
+};
+
 type Queen = {
   id: string;
   name: string;
@@ -22,7 +31,7 @@ type Queen = {
   lows?: number;
   bottoms?: number;
   isEliminated?: boolean;
-  stats?: any;
+  stats?: QueenStats;
 };
 
 const QueenCard = ({ q,
@@ -30,7 +39,8 @@ const QueenCard = ({ q,
   viewMode,
   isWinner,
   isBuildCast,
-  onRemove
+  onRemove,
+  onUpdateStats,
 }:
   {
     q: Queen,
@@ -39,6 +49,7 @@ const QueenCard = ({ q,
     isWinner?: boolean,
     isBuildCast?: boolean,
     onRemove?: (id: string) => void;
+    onUpdateStats?: (id: string, updatedStats: Partial<QueenStats>) => void;
   }
 ) => {
 
@@ -86,7 +97,22 @@ const QueenCard = ({ q,
           {q.bottoms != null && (<p>Bottoms: {q.bottoms}</p>)}
         </div>
 
-        {!isBuildCast && (
+        {isBuildCast && (
+          <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700 text-center">
+            <p className="flex items-center justify-center gap-2">
+              Country:{" "}
+              {(() => {
+                const Flag = Flags[q.franchise as keyof typeof Flags];
+                return Flag ? (
+                  <Flag className="w-6 h-4 rounded-sm shadow-sm" />
+                ) : null;
+              })()}
+            </p>
+            <p>Original Season(s): {q.seasons}</p>
+          </div>
+        )}
+
+        {!isBuildCast ? (
           <Accordion
             type="single"
             collapsible
@@ -113,21 +139,49 @@ const QueenCard = ({ q,
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-        )}
+        ) : (
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full max-w-[13rem] self-center"
+          >
+            <AccordionItem value="stats">
+              <AccordionTrigger className="text-sm font-medium hover:text-purple-900">Edit Stats</AccordionTrigger>
+              <AccordionContent className="pt-2 text-sm text-gray-800">
+                {q.stats ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    {Object.entries(q.stats).map(([statName, statValue]) => (
+                      <label
+                        key={statName}
+                        className="flex flex-col gap-2 text-sm font-medium text-gray-700"
+                      >
+                        <span className="capitalize">{statName}</span>
+                        <input
+                          type="number"
+                          min={1}
+                          max={100}
+                          step={1}
+                          value={statValue as number}
+                          onChange={(e) => {
+                            let val = Number(e.target.value);
+                            if (val < 1) val = 1;
+                            if (val > 100) val = 100;
+                            onUpdateStats?.(q.id, { [statName]: val });
+                          }}
+                          className="rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm 
+                     focus:border-purple-500 focus:ring-2 focus:ring-purple-300
+                     transition-colors"
+                        />
+                      </label>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-gray-500 italic">No stats available</p>
+                )}
 
-        {isBuildCast && (
-          <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700 text-center">
-            <p className="flex items-center justify-center gap-2">
-              Country:{" "}
-              {(() => {
-                const Flag = Flags[q.franchise as keyof typeof Flags];
-                return Flag ? (
-                  <Flag className="w-6 h-4 rounded-sm shadow-sm" />
-                ) : null;
-              })()}
-            </p>
-            <p>Original Season(s): {q.seasons}</p>
-          </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         )}
 
         {(q.isEliminated && !isMainScreen) ? (

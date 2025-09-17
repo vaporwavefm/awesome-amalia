@@ -21,7 +21,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
       highs: 0,
       lows: 0,
       isEliminated: false,
-      stats: {
+      stats: q.stats ?? {
         Acting: Math.floor(Math.random() * 100) + 1,
         Dance: Math.floor(Math.random() * 100) + 1,
         Comedy: Math.floor(Math.random() * 100) + 1,
