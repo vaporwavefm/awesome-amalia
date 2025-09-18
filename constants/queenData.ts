@@ -1456,7 +1456,7 @@ export const episodes = [
     episodeNumber: 1,
     season: '9',
     title: 'Oh. My. Gaga!',
-    description: "Lady Gaga drops by to meet the 13 new queens competing to become America's Next Drag Superstar. Their first test is to compete in the Miss Charisma Uniqueness Nerve and Talent pageant.",
+    description: "Lady Gaga drops by to meet the new queens competing to become America's Next Drag Superstar. Their first test is to compete in the Miss Charisma Uniqueness Nerve and Talent pageant.",
     type: 'premiere,runway',
     franchise: 'US'
   },

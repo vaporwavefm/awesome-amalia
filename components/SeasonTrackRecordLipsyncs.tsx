@@ -115,7 +115,6 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) =>
             </TableCell>
 
             <TableCell className="text-center py-3 px-2 flex items-center justify-center gap-4">
-              {/* Queen 1 */}
               <div className="flex flex-col items-center">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-300 shadow-sm">
                   <Image
@@ -130,7 +129,6 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) =>
 
               <span className="mx-2 font-bold text-purple-500">vs</span>
 
-              {/* Queen 2 */}
               <div className="flex flex-col items-center">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-300 shadow-sm">
                   <Image

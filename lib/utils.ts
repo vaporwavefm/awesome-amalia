@@ -194,11 +194,11 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
      bottomResults.push({
       bottomId: bottomQueens[b].id,
       name: bottomQueens[b].queen,
-      result: (Math.floor(Math.random() * 100) + 1) 
-      + (.25 * bottomQueens[b].wins)
-      + (.1 * bottomQueens[b].highs) 
-      - (.15 * bottomQueens[b].lows)
-      - (.35 * bottomQueens[b].bottoms),
+      result: (Math.floor(Math.random() * 10) + 1) 
+      + (1 * bottomQueens[b].wins)
+      + (.5 * bottomQueens[b].highs) 
+      - (.6 * bottomQueens[b].lows)
+      - (2 * bottomQueens[b].bottoms),
      }) 
   }
 
@@ -262,7 +262,6 @@ function getEpisodeScore(queen: any, episodeType: string, episodeNumber: number)
   
 
   //console.log(queen.name + ' ' + baseStat + ' ' + finalScore);
-
   //relevantStats.reduce((sum, stat) => sum + (queen.stats[stat] || 50), 0) / relevantStats.length;
 
   const randomFactor = Math.floor(Math.random() * 20) - 10;

@@ -77,8 +77,8 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
     setSelectedEpisode(episodeNumber);
 
     if (eventType === "results") {
-      setEpisodeEvent("results");   // <-- explicitly set it
-      setShowResults(true);          // <-- force results view
+      setEpisodeEvent("results");
+      setShowResults(true);         
       return;
     }
 
@@ -143,6 +143,12 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
       }
     };
 
+    let lipsyncTitle = '', lipsyncArtist = '';
+    if(lipsyncs[episodeNumber - 2]){
+      lipsyncTitle = lipsyncs[episodeNumber - 2]['lipsync'].title;
+      lipsyncArtist = lipsyncs[episodeNumber - 2]['lipsync'].artist;
+    }
+
     switch (event) {
       case 'announceSafe':
         return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
@@ -162,8 +168,8 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
       case 'bottom':
         return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')}, and ${last} have placed low.`;
       case 'bottom2':
-        return names.length === 1 ? `${names[0]} is up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber - 1].artist}. Good luck and don't fuck it up!`
-          : `${others.join(', ')}, and ${last} are up for elimination. They will now have to lipsync to ${lipsyncs[episodeNumber - 1].title} by ${lipsyncs[episodeNumber - 1].artist}. Good luck and don't fuck it up!`;
+        return names.length === 1 ? `${names[0]} is up for elimination. ${(lipsyncTitle && lipsyncArtist) && "They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!"}`
+          : `${others.join(', ')}, and ${last} are up for elimination. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;
       case 'eliminated':
         if (isNonElim) return 'Both queens have been given a chance to slay another day!';
         return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;

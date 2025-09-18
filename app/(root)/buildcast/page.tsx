@@ -56,8 +56,15 @@ const Page = () => {
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
   const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
-  
   const router = useRouter();
+
+  const generateRandomStats = () => ({
+    Acting: Math.floor(Math.random() * 101),
+    Dance: Math.floor(Math.random() * 101),
+    Comedy: Math.floor(Math.random() * 101),
+    Design: Math.floor(Math.random() * 101),
+    Singing: Math.floor(Math.random() * 101),
+  });
 
   const handleSaveToLocalStorage = () => {
     localStorage.setItem("selectedQueens", JSON.stringify(queenCards));
@@ -89,11 +96,8 @@ const Page = () => {
     setEpisodeCards((prev) => prev.filter((episode) => episode.id !== id));
   };
 
-  useEffect(() => {
+  useEffect(() => { // load existing queens and episodes config
 
-    for(const qs in queens){
-
-    }
     const savedQueens = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
 
@@ -114,10 +118,9 @@ const Page = () => {
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // validate requirements
 
     const minReqEps = queenCards.length - 2 + Number(minNonElimEps) - (Number(minFinalists) - 3);
-
     const requiredEps = queenCards.length > 0 && (queenCards.length - 2 + Number(minNonElimEps) > 2) && minReqEps > 2
       ? minReqEps
       : 2;
@@ -135,13 +138,10 @@ const Page = () => {
 
   }, [queenCards, episodeCards, minNonElimEps, minFinalists]);
 
-  const generateRandomStats = () => ({
-    Acting: Math.floor(Math.random() * 101),
-    Dance: Math.floor(Math.random() * 101),
-    Comedy: Math.floor(Math.random() * 101),
-    Design: Math.floor(Math.random() * 101),
-    Singing: Math.floor(Math.random() * 101),
-  });
+  useEffect(() => { // handle resetting double shantays to default value
+    if (minEps === 2 && (minNonElimEps === "1" || minNonElimEps === "2"))
+      setMinNonElimEps("0");
+  }, [minEps, minNonElimEps]);
 
   function SortableEpisode({
     episode,
@@ -496,82 +496,82 @@ const Page = () => {
           </Tabs>
         </div>
 
-        
+
         {/* Validation and submit button */}
 
-        {!isLoading && ( 
-        <div className="w-80 p-6 bg-white border border-gray-200 shadow-xl rounded-2xl sticky top-50 h-fit mr-8 hover:shadow-2xl transition-shadow">
-          {/* Container for text and button */}
-          <div className="flex flex-col gap-6 text-gray-700">
+        {!isLoading && (
+          <div className="w-80 p-6 bg-white border border-gray-200 shadow-xl rounded-2xl sticky top-50 h-fit mr-8 hover:shadow-2xl transition-shadow">
+            {/* Container for text and button */}
+            <div className="flex flex-col gap-6 text-gray-700">
 
-            {/* Intro / Instructions */}
-            <p className="text-sm leading-relaxed text-center">
-              To generate a brand-new simulation, you&apos;ll need to meet the minimum requirements below (These will adjust automatically as you add more queens and episodes!)
-            </p>
-
-            <hr className="border-gray-300" />
-
-            <div className={`flex items-center gap-2 ${reqQueensMet ? 'text-green-700' : 'text-red-700'}`}>
-              {reqQueensMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
-              <span className="font-medium">At least {Number(minFinalists) + 1} Queens</span>
-            </div>
-
-            <div className={`flex flex-col gap-1 ${reqEpsMet ? 'text-green-700' : 'text-red-700'}`}>
-              <div className="flex items-center gap-2">
-                {reqEpsMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
-
-                {/* Label with Tooltip */}
-                <span className="font-medium flex items-center gap-1">
-                  Exactly {minEps} Episodes
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
-                      >
-                        <Info className="w-4 h-4" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent className="max-w-xs text-sm">
-                      <p>
-                        This number adjusts automatically to allow the season to flow with the number of queens you have selected,
-                        number of finalists, and any double shantays you have selected.
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 leading-snug">
-                To accommodate {queenCards.length < Number(minFinalists) + 1 ? (`a minimum of ${Number(minFinalists) + 1}`)
-                : `${queenCards.length}`} queens, {minFinalists} finalists, and {minNonElimEps} double shantay(s).
+              {/* Intro / Instructions */}
+              <p className="text-sm leading-relaxed text-center">
+                To generate a brand-new simulation, you&apos;ll need to meet the minimum requirements below (These will adjust automatically as you add more queens and episodes!)
               </p>
-            </div>
 
+              <hr className="border-gray-300" />
 
-            <div className={`flex flex-col gap-1 ${finaleSet ? 'text-green-700' : 'text-red-700'}`}>
-              <div className="flex items-center gap-2">
-                {finaleSet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
-                <span className="font-medium">Finale Episode {finaleSet ? "Set" : "Not Set"}</span>
+              <div className={`flex items-center gap-2 ${reqQueensMet ? 'text-green-700' : 'text-red-700'}`}>
+                {reqQueensMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+                <span className="font-medium">At least {Number(minFinalists) + 1} Queens</span>
               </div>
-              <p className="text-sm text-gray-500 leading-snug">
-                Ensure the last episode is of type &quot;finale&quot;.
-              </p>
-            </div>
 
-            <hr className="border-gray-200" />
-            <Button
-              onClick={handleSaveToLocalStorage}
-              disabled={!(reqEpsMet && queenCards.length >= 4 && finaleSet)}
-              className="mt-4 px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg transition-all
+              <div className={`flex flex-col gap-1 ${reqEpsMet ? 'text-green-700' : 'text-red-700'}`}>
+                <div className="flex items-center gap-2">
+                  {reqEpsMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+
+                  {/* Label with Tooltip */}
+                  <span className="font-medium flex items-center gap-1">
+                    Exactly {minEps} Episodes
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                        >
+                          <Info className="w-4 h-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-xs text-sm">
+                        <p>
+                          This number adjusts automatically to allow the season to flow with the number of queens you have selected,
+                          number of finalists, and any double shantays you have selected.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </span>
+                </div>
+                <p className="text-sm text-gray-500 leading-snug">
+                  To accommodate {queenCards.length < Number(minFinalists) + 1 ? (`a minimum of ${Number(minFinalists) + 1}`)
+                    : `${queenCards.length}`} queens, {minFinalists} finalists, and {minNonElimEps} double shantay(s).
+                </p>
+              </div>
+
+
+              <div className={`flex flex-col gap-1 ${finaleSet ? 'text-green-700' : 'text-red-700'}`}>
+                <div className="flex items-center gap-2">
+                  {finaleSet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
+                  <span className="font-medium">Finale Episode {finaleSet ? "Set" : "Not Set"}</span>
+                </div>
+                <p className="text-sm text-gray-500 leading-snug">
+                  Ensure the last episode is of type &quot;finale&quot;.
+                </p>
+              </div>
+
+              <hr className="border-gray-200" />
+              <Button
+                onClick={handleSaveToLocalStorage}
+                disabled={!(reqEpsMet && queenCards.length >= 4 && finaleSet)}
+                className="mt-4 px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg transition-all
       disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 hover:shadow-2xl"
-            >
-              Show me the results!
-            </Button>
+              >
+                Show me the results!
+              </Button>
+            </div>
           </div>
-        </div>
         )}
       </div>
-      
+
     </>
   );
 };
