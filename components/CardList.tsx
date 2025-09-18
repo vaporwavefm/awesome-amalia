@@ -23,10 +23,13 @@ type Queen = {
 };
 
 type Lipsync = {
-    id: string;
+    episodeNumber: number;
+    lipsync: {
+        id: string;
     title: string;
     episode: string;
     artist: string;
+    }
 };
 
 const CardList = ({

@@ -4,6 +4,7 @@ import React from "react";
 const Page = () => {
 
   const updates = [
+    { date: "2025-09-17", note: "Fixed issue where buildCast would render huge red Xs on load (will need to fix the sim page too where it render the Not Found button for a second..). Imported queens from seasons 1-8 and episodes from season 9!" },
     { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
@@ -47,9 +48,14 @@ const Page = () => {
           <p className="text-gray-700">
             The main reason I wanted to bring this project back was to{" "}
             <span className="font-semibold">
-              challenge myself with ReactJS
+              play around with ReactJS
             </span>{" "}
             and build a full application from the ground up.
+          </p>
+
+          <p className="text-gray-700">
+            With this simulator, you can build your own casts and your own episode lists (you can even influence the outcome by 
+            setting queens with different stats!).
           </p>
 
           <p className="text-gray-700">

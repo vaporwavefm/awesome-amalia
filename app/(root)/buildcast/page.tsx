@@ -55,7 +55,8 @@ const Page = () => {
   const [finaleSet, setFinaleSet] = useState(false);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
-
+  const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
+  
   const router = useRouter();
 
   const handleSaveToLocalStorage = () => {
@@ -68,7 +69,10 @@ const Page = () => {
       const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + episodeCards[e].episodeNumber;
       for (const l in lipsyncs) {
         if (lipsyncs[l].episode === eNum) {
-          savedLipsyncs.push(lipsyncs[l])
+          savedLipsyncs.push({
+            episodeNumber: episodeCards[e].episodeNumber,
+            lipsync: lipsyncs[l]
+          })
         }
       }
     }
@@ -86,6 +90,10 @@ const Page = () => {
   };
 
   useEffect(() => {
+
+    for(const qs in queens){
+
+    }
     const savedQueens = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
 
@@ -103,16 +111,19 @@ const Page = () => {
       setEpisodeCards(parsedEps);
     }
 
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
 
-    const requiredEps = queenCards.length > 0 && (queenCards.length - 2 + Number(minNonElimEps) > 2)
-      ? queenCards.length - 2 + Number(minNonElimEps) - (Number(minFinalists) - 3)
+    const minReqEps = queenCards.length - 2 + Number(minNonElimEps) - (Number(minFinalists) - 3);
+
+    const requiredEps = queenCards.length > 0 && (queenCards.length - 2 + Number(minNonElimEps) > 2) && minReqEps > 2
+      ? minReqEps
       : 2;
 
     setMinEps(requiredEps);
-    setReqQueensMet(queenCards.length >= 4);
+    setReqQueensMet(queenCards.length >= 4 && queenCards.length >= Number(minFinalists) + 1);
     setReqEpsMet(episodeCards.length === requiredEps);
 
     if (episodeCards.length > 0) {
@@ -339,8 +350,8 @@ const Page = () => {
                       <SelectContent>
 
                         <SelectItem value="0">0</SelectItem>
-                        <SelectItem value="1">1</SelectItem>
-                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="1" disabled={minEps == 2}>1</SelectItem>
+                        <SelectItem value="2" disabled={minEps == 2}>2</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -365,7 +376,7 @@ const Page = () => {
                       Queens
                     </h2>
                     <p className="mt-2 text-sm font-medium text-purple-800">Select the queens that you wish you wish to compete in this season!
-                     <br/> You can also edit their stats by entering a number between 1-100 - the higher the stat the better! (or keep them randomly generated)</p>
+                      <br /> You can also edit their stats by entering a number between 1-100 - the higher the stat the better! (or keep them randomly generated)</p>
                   </div>
                 </div>
 
@@ -485,7 +496,10 @@ const Page = () => {
           </Tabs>
         </div>
 
+        
         {/* Validation and submit button */}
+
+        {!isLoading && ( 
         <div className="w-80 p-6 bg-white border border-gray-200 shadow-xl rounded-2xl sticky top-50 h-fit mr-8 hover:shadow-2xl transition-shadow">
           {/* Container for text and button */}
           <div className="flex flex-col gap-6 text-gray-700">
@@ -499,7 +513,7 @@ const Page = () => {
 
             <div className={`flex items-center gap-2 ${reqQueensMet ? 'text-green-700' : 'text-red-700'}`}>
               {reqQueensMet ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faX} />}
-              <span className="font-medium">At least 4 Queens</span>
+              <span className="font-medium">At least {Number(minFinalists) + 1} Queens</span>
             </div>
 
             <div className={`flex flex-col gap-1 ${reqEpsMet ? 'text-green-700' : 'text-red-700'}`}>
@@ -528,7 +542,8 @@ const Page = () => {
                 </span>
               </div>
               <p className="text-sm text-gray-500 leading-snug">
-                To accommodate {queenCards.length} queens, {minFinalists} finalists, and {minNonElimEps} double shantay(s).
+                To accommodate {queenCards.length < Number(minFinalists) + 1 ? (`a minimum of ${Number(minFinalists) + 1}`)
+                : `${queenCards.length}`} queens, {minFinalists} finalists, and {minNonElimEps} double shantay(s).
               </p>
             </div>
 
@@ -554,8 +569,9 @@ const Page = () => {
             </Button>
           </div>
         </div>
-
+        )}
       </div>
+      
     </>
   );
 };

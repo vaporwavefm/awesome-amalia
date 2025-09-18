@@ -34,10 +34,13 @@ type Episode = {
 };
 
 type Lipsync = {
-  id: string;
-  title: string;
-  episode: string;
-  artist: string;
+  episodeNumber: number;
+  lipsync: {
+    id: string;
+    title: string;
+    episode: string;
+    artist: string;
+  }
 };
 
 type Props = {
@@ -46,7 +49,8 @@ type Props = {
   lipsyncNames: Lipsync[];
 };
 
-const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames}: Props) => {
+const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) => {
+  //console.log(lipsyncNames);
   const lipsyncs = episodes
     .map((ep) => {
       const bottoms = queens.filter((q) =>
@@ -66,7 +70,7 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames}: Props) => 
             (p.placement === "eliminated" ||
               (q.isEliminated &&
                 Number(q.placements[q.placements.length - 1]?.episodeNumber) ===
-                  Number(ep.episodeNumber)))
+                Number(ep.episodeNumber)))
         )
       );
 
@@ -88,7 +92,7 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames}: Props) => 
         <TableRow>
           <TableHead className="text-center py-2 px-4 border-b">Episode</TableHead>
           <TableHead className="text-center py-2 px-4 border-b">Song</TableHead>
-          <TableHead className="text-center py-2 px-4 border-b">Bottom 2</TableHead>    
+          <TableHead className="text-center py-2 px-4 border-b">Bottom 2</TableHead>
           <TableHead className="text-center py-2 px-4 border-b">Eliminated</TableHead>
         </TableRow>
       </TableHeader>
@@ -100,7 +104,14 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames}: Props) => 
             </TableCell>
 
             <TableCell className="text-center py-3 px-2 font-medium text-purple-700">
-              {lipsyncNames[i]?.title} – {lipsyncNames[i]?.artist}
+              {(() => {
+                const lipsync = lipsyncNames.find(
+                  (l) => Number(l.episodeNumber) === Number(i + 1)
+                )?.lipsync;
+                return lipsync
+                  ? `${lipsync.title} – ${lipsync.artist}`
+                  : "No Lipsync Assigned";
+              })()}
             </TableCell>
 
             <TableCell className="text-center py-3 px-2 flex items-center justify-center gap-4">

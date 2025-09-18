@@ -1,5 +1,691 @@
 export const queens = [
   {
+    "id": "ynhgkYtxYcYEicg4EDU0",
+    "seasons": "1",
+    "name": "Akashia",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/AkashiaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220911"
+  },
+  {
+    "id": "ygS9Yphd8K6oFU1mYu5d",
+    "seasons": "1,AS3",
+    "name": "BeBe Zahara Benet",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954"
+  },
+  {
+    "id": "MLqx8KGpXk7AWRg1SHUW",
+    "seasons": "1",
+    "name": "Jade Sotomayor",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/57/JadeSotomayorS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221034"
+  },
+  {
+    "id": "69LARRc9IroxGxTisN84",
+    "seasons": "1,AS1",
+    "name": "Nina Flowers",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6f/NinaFlowersS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221108"
+  },
+  {
+    "id": "vLbZCniWlga6Dy3BFWfM",
+    "seasons": "1,AS5",
+    "name": "Ongina",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/OnginaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221201"
+  },
+  {
+    "id": "4vpfdIi0056xjzlCGtgU",
+    "seasons": "1,AS9",
+    "name": "Shannel",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/ShannelS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221334"
+  },
+  {
+    "id": "luzWpObIapu146qe5vvi",
+    "seasons": "1",
+    "name": "Rebecca Glasscock",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ae/RebeccaGlasscockS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221254"
+  },
+  {
+    "id": "2pptEiLWsi21qwFQoJ4j",
+    "seasons": "1,AS1",
+    "name": "Tammie Brown",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/TammieBrownS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221428"
+  },
+  {
+    "id": "qcoymxap9ojQaVm6PwtT",
+    "seasons": "1",
+    "name": "Victoria Parker",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5c/VictoriaParkerS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221612"
+  },
+  {
+    "id": "N6zB4JjYyVq7kL9mLpST",
+    "seasons": "2",
+    "name": "Tyra Sanchez",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/TyraSanchezS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225535"
+  },
+  {
+    "id": "O7aC5KkZzWr8mM0nNqUV",
+    "seasons": "2,AS1",
+    "name": "Raven",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/RavenS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225637"
+  },
+  {
+    "id": "P8bD6LlYyXs9nO1pOrWX",
+    "seasons": "2,AS1,AS5,UKvtW1",
+    "name": "Jujubee",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/JujubeeS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225724"
+  },
+  {
+    "id": "Q9cE7MmZzYt0pP2qPsYZ",
+    "seasons": "2,AS2",
+    "name": "Tatianna",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/TatiannaS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225734"
+  },
+  {
+    "id": "R0dF8NnZzZu1qQ3rQtZA",
+    "seasons": "2,AS1,AS6",
+    "name": "Pandora Boxx",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/PandoraBoxxS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225746"
+  },
+  {
+    "id": "S1eG9OoZzVv2rR4sRuAB",
+    "seasons": "2,AS8",
+    "name": "Jessica Wild",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/JessicaWildS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225756"
+  },
+  {
+    "id": "T2fH0PpZzWw3sS5tSvBC",
+    "seasons": "2",
+    "name": "Sahara Davenport",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b1/SaharaDavenportS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225810"
+  },
+  {
+    "id": "T2fH0frt75w3sS5tSvBC",
+    "seasons": "2",
+    "name": "Morgan McMichaels",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/76/MorganMcMichaelsS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225820"
+  },
+  {
+    "id": "T2fH0PpZzvtDD35tSvBC",
+    "seasons": "2,AS6",
+    "name": "Kylie Sonique Love",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/SoniqueS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225838"
+  },
+  {
+    "id": "56g00PpZzWw3sS5tSvBC",
+    "seasons": "2",
+    "name": "Mystique Summers Madison",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d6/MystiqueSummersMadisonS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225847"
+  },
+  {
+    "id": "56g00PpZz56g885tSvBC",
+    "seasons": "2",
+    "name": "Nicole Paige Brooks",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c5/NicolePaigeBrooksS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225859"
+  },
+  {
+    "id": "56g45gFFr56g885tSvBC",
+    "seasons": "3,AW1",
+    "name": "Raja",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/RajaS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153542"
+  },
+  {
+    "id": "B4mNp0XzWqJr1sU7aZfG",
+    "seasons": "3,AS1,AS4",
+    "name": "Manila Luzon",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/88/ManilaLuzonS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153322"
+  },
+  {
+    "id": "C5oQp1YyXrKs2tV8bAgH",
+    "seasons": "3,AS1,AS5,CvtW2",
+    "name": "Alexis Mateo",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ee/AlexisMateoS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901152949"
+  },
+  {
+    "id": "D6pRr2ZzYsLt3uW9cBhI",
+    "seasons": "3,AS1,AS6",
+    "name": "Yara Sofia",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c8/YaraSofiaS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153820"
+  },
+  {
+    "id": "E7qS5AaZzMt8vX0dCiJK",
+    "seasons": "3",
+    "name": "Carmen Carrera",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/66/CarmenCarreraS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153024"
+  },
+  {
+    "id": "F8rT6BbZzNu9wY1eDjKL",
+    "seasons": "2,3,AS3",
+    "name": "Shangela",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7f/ShangelaS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225914"
+  },
+  {
+    "id": "G9sU7CcYyOv0xZ2fEkLM",
+    "seasons": "3",
+    "name": "Delta Work",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/95/DeltaWorkS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153220"
+  },
+  {
+    "id": "H0tV8DdZzPw1yA3gFlMN",
+    "seasons": "3",
+    "name": "Stacy Layne Matthews",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/53/StacyLayneMatthewsS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153643"
+  },
+  {
+    "id": "I1uW9EeZzQx2zB4hGkNO",
+    "seasons": "3,AS5",
+    "name": "Mariah",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/20/MariahParisBalenciagaS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153356"
+  },
+  {
+    "id": "J2vX0FfZzRy3aC5iHlOP",
+    "seasons": "3,AS5",
+    "name": "India Ferrah",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/IndiaFerrahS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153250"
+  },
+  {
+    "id": "K3wY1GgZzSz4bD6jImPQ",
+    "seasons": "3,AS1",
+    "name": "Mimi Imfurst",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/66/MimiImfurstS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153428"
+  },
+  {
+    "id": "L4xZ2HhZzTa5cE7kJnQR",
+    "seasons": "3,AS10",
+    "name": "Phoenix",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/PhoenixS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153457"
+  },
+  {
+    "id": "M5yA3IiZzUb6dF8lKoRS",
+    "seasons": "3",
+    "name": "Venus D-Lite",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8b/VenusD-LiteS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153732"
+  },
+  {
+    "id": "aB3kLm9XyVPhQ0rT6z90",
+    "seasons": "4",
+    "name": "Alisa Summers",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/AlisaSummersS4CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901182614"
+  },
+  {
+    "id": "bC4mNp0XzWqJr1sU7aZf",
+    "seasons": "4,AS1",
+    "name": "Chad Michaels",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/ChadMichaelsS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901182655"
+  },
+  {
+    "id": "cD5oQp1YyXrKs2tV8bAg",
+    "seasons": "4",
+    "name": "Dida Ritz",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f9/DidaRitzS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901182729"
+  },
+  {
+    "id": "dE6pRr2ZzYsLt3uW9cBh",
+    "seasons": "4,AS6",
+    "name": "Jiggly Caliente",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/af/JigglyCalienteS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901182804"
+  },
+  {
+    "id": "eF7qS5AaZzMt8vX0dCiJ",
+    "seasons": "4",
+    "name": "Kenya Michaels",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/01/KenyaMichaelsS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901182838"
+  },
+  {
+    "id": "fG8rT6BbZzNu9wY1eDjK",
+    "seasons": "4",
+    "name": "Lashauwn Beyond",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a5/LashauwnBeyondS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901182915"
+  },
+  {
+    "id": "gH9sU7CcYyOv0xZ2fEkL",
+    "seasons": "4,AS1,AS4",
+    "name": "Latrice Royale",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7a/LatriceRoyaleS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901184848"
+  },
+  {
+    "id": "hI0tV8DdZzPw1yA3gFlM",
+    "seasons": "4",
+    "name": "Madame LaQueer",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/04/MadameLaQueerS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183034"
+  },
+  {
+    "id": "iJ1uW9EeZzQx2zB4hGkN",
+    "seasons": "4",
+    "name": "Milan",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6f/MilanS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183104"
+  },
+  {
+    "id": "jK2vX0FfZzRy3aC5iHlO",
+    "seasons": "4,AS2",
+    "name": "Phi Phi O'Hara",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/46/PhiPhiO%27HaraS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183241"
+  },
+  {
+    "id": "kL3wY1GgZzSz4bD6jImP",
+    "seasons": "4",
+    "name": "Sharon Needles",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fd/SharonNeedlesS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183314"
+  },
+  {
+    "id": "lM4xZ2HhZzTa5cE7kJnQ",
+    "seasons": "4",
+    "name": "The Princess",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d9/ThePrincessS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183203"
+  },
+  {
+    "id": "mN5yA3IiZzUb6dF8lKoR",
+    "seasons": "4",
+    "name": "Willam",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7c/WillamS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901183352"
+  },
+  {
+    "id": "Zy5WvT3JkP8LrX2Yb1F6",
+    "seasons": "5",
+    "name": "Jade Jolie",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f2/JadeJolieS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194014"
+  },
+  {
+    "id": "aB3kLm9ayVPhQ0rT6zYg",
+    "seasons": "5,AW1",
+    "name": "Jinkx Monsoon",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b4/JinkxMonsoonS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194046"
+  },
+  {
+    "id": "Xy7zQm2WvJkP8rU3LzVb",
+    "seasons": "5,AS2",
+    "name": "Alaska",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/AlaskaS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193454"
+  },
+  {
+    "id": "Qw9ErT4YbP2UoJ1KxV5Z",
+    "seasons": "5,AS9",
+    "name": "Roxxxy Andrews",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/RoxxxyAndrewsS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194328"
+  },
+  {
+    "id": "Zy8WvT3XcQ5LrP7JkY2N",
+    "seasons": "5",
+    "name": "Ivy Winters",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6c/IvyWintersS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193930"
+  },
+  {
+    "id": "Vb6QwR2JkP9LzX3YcT1F",
+    "seasons": "5,AS2",
+    "name": "Detox",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/DetoxS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193714"
+  },
+  {
+    "id": "Wz4XyT1JkQ7LrP9Vb2F3",
+    "seasons": "5,AS2",
+    "name": "Coco Montrese",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/00/CocoMontreseS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193644"
+  },
+  {
+    "id": "Uy2WvT5JkP8LrX3Zb7F1",
+    "seasons": "5,AS2,GAS",
+    "name": "Alyssa Edwards",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/45/AlyssaEdwardsS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193559"
+  },
+  {
+    "id": "Qw3ErYb9P2LkT1JxV5Z7",
+    "seasons": "5",
+    "name": "Honey Mahogany",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/90/HoneyMahoganyS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901193755"
+  },
+  {
+    "id": "Zy1WvT4JkP6LrX2Yb3F8",
+    "seasons": "5",
+    "name": "Vivienne Pinay",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/ViviennePinayS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194651"
+  },
+  {
+    "id": "Vb7QwR3JkP5LzX1Yc2T9",
+    "seasons": "5,AS6",
+    "name": "Serena ChaCha",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/da/SerenaChaChaS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194406"
+  },
+  {
+    "id": "Wz3XyT2JkP8LrX4Zb1F7",
+    "seasons": "5,AS8",
+    "name": "Monica Beverly Hillz",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2e/MonicaBeverlyHillzS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194202"
+  },
+  {
+    "id": "Uy4WvT1JkP9LrX2Zb3F8",
+    "seasons": "5",
+    "name": "Penny Tration",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/PennyTrationS5CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210901194246"
+  },
+  {
+    "id": "aB3kLm9XyVPhQ0rT6zdg",
+    "seasons": "6,AS2",
+    "name": "Adore Delano",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d2/AdoreDelanoS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221400"
+  },
+  {
+    "id": "dF4jKp8VwUqL7zT5nM1J",
+    "seasons": "6",
+    "name": "April Carrion",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/cd/AprilCarri%C3%B3nS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221431"
+  },
+  {
+    "id": "eG5mNq2XrZsO8vP3kL0F",
+    "seasons": "6,AS3",
+    "name": "BenDeLaCreme",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/BenDeLaCremeS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221456"
+  },
+  {
+    "id": "fH6oPq3YrVtS9wQ4jM2K",
+    "seasons": "6",
+    "name": "Bianca Del Rio",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e7/BiancaDelRioS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221642"
+  },
+  {
+    "id": "gI7pRr4XsUuT0xN5kL3L",
+    "seasons": "6",
+    "name": "Courtney Act",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f6/CourtneyActS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221731"
+  },
+  {
+    "id": "hJ8qSx5YwVvU1yO6lM4M",
+    "seasons": "6,AS8",
+    "name": "Darienne Lake",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/61/DarienneLakeS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221802"
+  },
+  {
+    "id": "iK9rTz6Z45lfEzP7mN5N",
+    "seasons": "6,AS4",
+    "name": "Gia Gunn",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2a/GiaGunnS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221834"
+  },
+  {
+    "id": "iK9rTz6ZxWwV2zP7mN5N",
+    "seasons": "6",
+    "name": "Joslyn Fox",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/JoslynFoxS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221905"
+  },
+  {
+    "id": "iK34dCCZxWwV2zP7mN5N",
+    "seasons": "6",
+    "name": "Kelly Mantle",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/KellyMantleS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831221948"
+  },
+  {
+    "id": "jL0sUu7YyXxW3zQ8nO6O",
+    "seasons": "6",
+    "name": "Laganja Estranja",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/55/LaganjaEstranjaS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831222017"
+  },
+  {
+    "id": "kM1tVv8ZzYyX4wR9oP7P",
+    "seasons": "6",
+    "name": "Magnolia Crawford",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/43/MagnoliaCrawfordS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831222049"
+  },
+  {
+    "id": "lN2uWw9ZzYzX5vS0pQ8Q",
+    "seasons": "6,AS3",
+    "name": "Milk",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/72/MilkS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831222122"
+  },
+  {
+    "id": "mO3vXx0YyZzW6uR1qR9R",
+    "seasons": "6,AS6",
+    "name": "Trinity K. Bonet",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/00/TrinityKBonetS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831222201"
+  },
+  {
+    "id": "nP4wYy1ZzZzX7vS2rS0S",
+    "seasons": "6",
+    "name": "Vivacious",
+    "franchise": "US",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1f/VivaciousS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831222243"
+  },
+  {
+    id: 'aB3kpm9XyVPhQ0rT6zYg',
+    seasons: '7,AS8',
+    name: "Mrs. Kasha Davis",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/91/MrsKashaDavisS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214011'
+  },
+  {
+    id: 'aB3kLm3XyVPhQ0rTdzYg',
+    seasons: '7,AS2',
+    name: "Katya Zamolodchikova",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/23/KatyaS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213652'
+  },
+  {
+    id: 'N8fYgJ6L0RbQuMnsWVcT',
+    seasons: '7',
+    name: "Violet Chachki",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c7/VioletChachkiS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214337'
+  },
+  {
+    id: 'Qx7TvP3cFe56Y56LudRo',
+    seasons: '7,AS2,AS10',
+    name: "Ginger Minj",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1d/GingerMinjS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213428'
+  },
+  {
+    id: 'O5uXbZ1mGhCvPqDkRQ8L',
+    seasons: '7,AS3,CvtW2',
+    name: "Kennedy Davenport",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/83/KennedyDavenportS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213752'
+  },
+  {
+    id: 'L34Nc0RPGqZdSy8xEuJT',
+    seasons: '7',
+    name: "Pearl",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c0/PearlS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214103'
+  },
+  {
+    id: 'H2rKXTVqLNCiMfY7Pj9W',
+    seasons: '7',
+    name: "Miss Fame",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/95/MissFameS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213916'
+  },
+  {
+    id: 'M9ncJQYVpKuHz4t0gBoE',
+    seasons: '7',
+    name: "Jaidynn Diore Fierce",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/50/JaidynnDioreFierceS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213517'
+  },
+  {
+    id: 'U1XIr7G4kQvPmZBt0NjO',
+    seasons: '7,AS4',
+    name: "Jasmine Masters",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/19/JasmineMastersS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213547'
+  },
+  {
+    id: 'Z5otyld3DWk8Q4gIgSPb',
+    seasons: '7,AS3',
+    name: "Trixie Mattel",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6d/TrixieMattelS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214237'
+  },
+  {
+    id: 'D0UtEe5MHoSNw7pjIB2F',
+    seasons: '7',
+    name: "Max",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/27/MaxS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213840'
+  },
+  {
+    id: 'J8yZcPnBO3VXwLm45LLe',
+    seasons: '7',
+    name: "Kandy Ho",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e1/KandyHoS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831213618'
+  },
+  {
+    id: 'C9s45g6LZxVNB2YdemIR',
+    seasons: '7',
+    name: "Tempest DuJour",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/TempestDuJourS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214209'
+  },
+  {
+    id: 'bY42VqztrKPlh5Nc9UXe',
+    seasons: '7',
+    name: "Sasha Belle",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/21/SashaBelleS7CastMug.png/revision/latest/scale-to-width-down/105?cb=20210831214141'
+  },
+  {
+    id: 'aB3kLm9XyVPsQ0rT6zYg',
+    seasons: '8',
+    name: "Bob the Drag Queen",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1a/BobTheDragQueenS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831180959'
+  },
+  {
+    id: 'N890gJ6L0RbQuMnsWVcT',
+    seasons: '8',
+    name: "Kim Chi",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5b/KimChiS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181350'
+  },
+  {
+    id: 'Qx7TvP3cFeW9YjKLudRo',
+    seasons: '8,AS4',
+    name: "Naomi Smalls",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/13/NaomiSmallsS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181512'
+  },
+  {
+    id: 'O5uXbZ1mGhCvPqDkRQ7L',
+    seasons: '8,AS3',
+    name: "Chi Chi DeVayne",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2a/ChiChiDeVayneS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181131'
+  },
+  {
+    id: 'L4wNc0RPGqZdSy8xEuJT',
+    seasons: '8,AS5',
+    name: "Derrick Barry",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/aa/DerrickBarryS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181307'
+  },
+  {
+    id: 'H2rKXTVqLNCiMfY7P56W',
+    seasons: '8,AS3',
+    name: "Thorgy Thor",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/27/ThorgyThorS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181822'
+  },
+  {
+    id: 'M9ncJQYVpKuHz4t0gBoR',
+    seasons: '8',
+    name: "Robbie Turner",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f0/RobbieTurnerS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181632'
+  },
+  {
+    id: 'U1XIr7G4XXvPmZBt0NjO',
+    seasons: '8,AS10',
+    name: "Acid Betty",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0b/AcidBettyS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831180922'
+  },
+  {
+    id: 'Z5oLhRxYDWk8Q4gIgSPb',
+    seasons: '8,AS8',
+    name: "Naysha Lopez",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ac/NayshaLopezS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181543'
+  },
+  {
+    id: 'J8yZcPnBO3VXwLmi6rUg',
+    seasons: '8',
+    name: "Dax ExclamationPoint",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8b/DaxExclamationPointS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181240'
+  },
+  {
+    id: 'C9sOLf1PZxVNB2YdemIR',
+    seasons: '8',
+    name: "Laila McQueen",
+    franchise: 'US',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a0/LailaMcQueenS8CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831181435'
+  },
+  {
     id: 'U0KAevjrECayIEJGY7Wm',
     seasons: '9,AS3,AS10',
     name: "Aja",
@@ -765,10 +1451,226 @@ export const episodes = [
     type: 'finale,lipsyncSmackdown',
     franchise: 'US'
   },
+  {
+    id: 'OTPg9KMZGWNuVAQqRDsk',
+    episodeNumber: 1,
+    season: '9',
+    title: 'Oh. My. Gaga!',
+    description: "Lady Gaga drops by to meet the 13 new queens competing to become America's Next Drag Superstar. Their first test is to compete in the Miss Charisma Uniqueness Nerve and Talent pageant.",
+    type: 'premiere,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'ATraXNQflUpcoZRTFIZf',
+    episodeNumber: 2,
+    season: '9',
+    title: 'She Done Already Done Brought It On',
+    description: "Lisa Kudrow from Friends stops by. The queens are challenged to perform in an epic cheer battle, with the guest judges The B-52’s.",
+    type: 'dance,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'iUPiamVEBO4dxDID3F6s',
+    episodeNumber: 3,
+    season: '9',
+    title: 'Draggily Ever After',
+    description: "The queens must create fairytale drag princesses, and transform themselves into sassy sidekicks. With guest judges Todrick Hall and Cheyenne Jackson.",
+    type: 'makeover,design,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'iXLtvOzPXaTPPX3suqkm',
+    episodeNumber: 4,
+    season: '9',
+    title: 'Good Morning Bitches',
+    description: "The queens join the cutthroat Morning Talk Show wars. Guest judges are Naya Rivera and Jeffrey Bowyer-Chapman.",
+    type: 'imrprov,talkShow,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'fyK3OXw99aQbpDhV9Tfu',
+    episodeNumber: 5,
+    season: '9',
+    title: 'Reality Stars: The Musical',
+    description: "Todrick Hall directs the queens in Broadway's newest mega-sensation, the Kardashian musical. Singer Meghan Trainor guest judges.",
+    type: 'musical,dance',
+    franchise: 'US'
+  },
+  {
+    id: '0soY0RbssPvga5YoCmsW',
+    episodeNumber: 6,
+    season: '9',
+    title: 'Snatch Game',
+    description: "The queens impersonate celebrities in a quick-witted TV game show. Candis Cayne and Denis O'Hare guest judge.",
+    type: 'snatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'k722NWNSIuXDrpavK9YI',
+    episodeNumber: 7,
+    season: '9',
+    title: '9021-HO',
+    description: 'The queens act in a classic 90s high-school drama directed by original "Beverly Hills 90210" stars Tori Spelling and Jennie Garth.',
+    type: 'acting',
+    franchise: 'US'
+  },
+  {
+    id: 'jlqTazlLkttWQy1LNp47',
+    episodeNumber: 8,
+    season: '9',
+    title: 'RuPaul Roast',
+    description: "The queens perform a comedy roast on Michelle Visage in front of a live audience. Singer Tamar Braxton and Fortune Feimster (The Mindy Project) guest judge.",
+    type: 'roast,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'pk7yeMiFqlRL3j27PnWk',
+    episodeNumber: 9,
+    season: '9',
+    title: 'Your Pilot’s on Fire',
+    description: "The queens create, write, and star in their TV pilots. Noah Galvin (The Real O'Neals) and QVC queen Lisa Robertson guest judge.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'ned2JjzQNPAdQcONYU2u',
+    episodeNumber: 10,
+    season: '9',
+    title: 'Makeovers: Crew Better Work',
+    description: "The remaining drag queens were asked by RuPaul to give make-overs of themselves, and six crew members of RuPaul's Drag Race.",
+    type: 'makeover',
+    franchise: 'US'
+  },
+  {
+    id: 'x76U6ax4m3JtBlHoWm15',
+    episodeNumber: 11,
+    season: '9',
+    title: 'Gayest Ball Ever',
+    description: "The queens must participate in the Gayest Ball Ever and create three different outfits based off three categories: Rainbow-She-Betta-Do, Sexy Unicorn and Village People Eleganza Extravaganza.",
+    type: 'ball,design',
+    franchise: 'US'
+  },
+  {
+    id: 'BHcrpcsTEnvYRjZJanmo',
+    episodeNumber: 12,
+    season: '9',
+    title: 'Category Is',
+    description: 'The four remaining drag queens were asked by RuPaul to write, produce and choreograph an original verse for the remix of his song "Category Is"; additionally, each queen were ask to guest star on RuPauls podcast Whats the Tee?, featuring panel judge Michelle Visage.',
+    type: 'rap,dance',
+    franchise: 'US'
+  },
+  {
+    id: 'kO4ipiO8hKZ0jyjIg4fh',
+    episodeNumber: 14,
+    season: '9',
+    title: 'Grand Finale',
+    description: "The final contestants lip-sync in groups of two to see who will become America's Next Drag Superstar.",
+    type: 'finale,lipsyncSmackdown',
+    franchise: 'US'
+  }
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
 export const lipsyncs = [
+  {
+    id: 'bY56VqztrKPlh5Nc9UXe',
+    title: "Love Shack",
+    episode: 'us9e2',
+    genre: "pop rock,dance rock,new wave",
+    artist: "The B-52's",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'Kmv0HzAGJ9XUILpRr2yE',
+    title: "Holding Out for a Hero",
+    episode: 'us9e3',
+    genre: "pop rock,power pop",
+    artist: "Bonnie Tyler",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'nz7GSAqvHDMCoiRWXx9b',
+    title: "I Wanna Go",
+    episode: 'us9e4',
+    genre: "dance pop,electropop",
+    artist: "Britney Spears",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'Q4lZRUyx5vEipMg2sOhT',
+    title: "Woman Up",
+    episode: 'us9e5',
+    genre: "pop",
+    artist: "Meghan Trainor",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'wUeJmT3N0PbGl4qV5rk8',
+    title: "Music",
+    episode: 'us9e6',
+    genre: "dance pop",
+    artist: "Madonna",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'pZMyuFNK0Gojtq9XiVc1',
+    title: "Finally",
+    episode: 'us9e7',
+    genre: "house, dance",
+    artist: "CeCe Peniston",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'Rys2GBuvz9QXnpT0caYW',
+    title: "Baby I'm Burnin'",
+    episode: 'us9e8',
+    genre: "country pop, country",
+    artist: "Dolly Parton",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'j5Q6XURsLYeIzt1nk7dv',
+    title: "Greedy",
+    episode: 'us9e9',
+    genre: "pop",
+    artist: "Ariana Grande",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'D2wzjK4ILxoNqVS8Pm9c',
+    title: "Cool For The Summer",
+    episode: 'us9e10',
+    genre: "electropop",
+    artist: "Demi Lovato",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'X0GnYfzEbHL9w5UtZsIr',
+    title: "Macho Man",
+    episode: 'us9e11',
+    genre: "disco",
+    artist: "Village People",
+    season: '9',
+    franchise: 'US'
+  },
+  {
+    id: 'LwN5g9FUGaxIeTVR34oQ',
+    title: "U Wear It Well",
+    episode: 'us9e12',
+    genre: "pop",
+    artist: "RuPaul",
+    season: '9',
+    franchise: 'US'
+  },
   {
     id: 'Dk5qXIHU1ZPjloNCdrsc',
     title: "Ain't No Other Man",
@@ -988,6 +1890,11 @@ export const lipsyncs = [
 ];
 
 export const seasons = [
+  {
+    id: 'txf82f5ld0gwEZBcNCVl',
+    seasonNumber: '9',
+    franchise: 'US',
+  },
   {
     id: 'e4QVuMqKSe300LfZ8BF2',
     seasonNumber: '10',

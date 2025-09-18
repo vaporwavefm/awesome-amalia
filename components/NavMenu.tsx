@@ -9,15 +9,14 @@ import {
 } from "@/components/ui/navigation-menu";
 
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
 const NavMenu = () => {
   return (
     <header className="w-full border-b bg-pink-100 backdrop-blur-md shadow-sm">
       <NavigationMenu className="max-w-7xl mx-auto px-6 py-3">
         <NavigationMenuList className="flex items-center justify-between w-full">
-          {/* Left side (main links) */}
           <div className="flex items-center gap-6">
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -55,8 +54,6 @@ const NavMenu = () => {
               </NavigationMenuLink>
             </NavigationMenuItem>
           </div>
-
-          {/* Right side (socials / actions) */}
           <div className="flex items-center gap-4">
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -67,6 +64,18 @@ const NavMenu = () => {
                   title="Go to my GitHub page"
                 >
                   <FontAwesomeIcon icon={faGithub} size="lg" />
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
+                <Link
+                  href="https://linkedin.com/in/jorge-juarez-0b0a8a85"
+                  target="_blank"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  title="Go to my LinkedIn page"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
