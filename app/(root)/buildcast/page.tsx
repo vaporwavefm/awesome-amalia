@@ -63,6 +63,7 @@ const Page = () => {
     Dance: Math.floor(Math.random() * 101),
     Comedy: Math.floor(Math.random() * 101),
     Design: Math.floor(Math.random() * 101),
+    Runway: Math.floor(Math.random() * 101),
     Singing: Math.floor(Math.random() * 101),
   });
 
@@ -73,7 +74,8 @@ const Page = () => {
 
     const savedLipsyncs = [];
     for (const e in episodeCards) {
-      const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + episodeCards[e].episodeNumber;
+      const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + Number(episodeCards[e].episodeNumber);
+      console.log(eNum);
       for (const l in lipsyncs) {
         if (lipsyncs[l].episode === eNum) {
           savedLipsyncs.push({
@@ -177,7 +179,7 @@ const Page = () => {
               <span className="text-purple-500 font-bold mr-2">
                 Episode {index + 1}:
               </span>
-              {episode.type.includes("finale") && <FontAwesomeIcon icon={faCrown} />}{episode.type.includes("premiere") && <FontAwesomeIcon icon={faPlay} />} {episode.title}
+              {episode.type.includes("finale") ? <FontAwesomeIcon icon={faCrown} /> : ''}{episode.type.includes("premiere") ? <FontAwesomeIcon icon={faPlay} /> : ''}{episode.title}
             </p>
             <p className="text-sm text-gray-600">Original Season: {episode.season}</p>
             <p className="text-sm text-gray-600">Description: {episode.description}</p>

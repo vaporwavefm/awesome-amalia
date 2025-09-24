@@ -4,14 +4,18 @@ export const queens = [
     "seasons": "1",
     "name": "Akashia",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/AkashiaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220911"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/AkashiaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220911",
   },
   {
     "id": "ygS9Yphd8K6oFU1mYu5d",
     "seasons": "1,AS3",
     "name": "BeBe Zahara Benet",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/93/BeBeZaharaBenetAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100331"
+    ]
   },
   {
     "id": "MLqx8KGpXk7AWRg1SHUW",
@@ -1211,6 +1215,581 @@ export const queens = [
     name: "The Macarena",
     franchise: 'ES'
   },
+  {
+    id: 'TAeDYw8IoUuLI3mUCJTY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/26/AidenZhaneS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901203704',
+    seasons: '12',
+    name: "Aiden Zhane",
+    franchise: 'US'
+  },
+  {
+    id: 'QzaVzVIRTv6W9DWpfCWn',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3e/BritaS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901203733',
+    seasons: '12',
+    name: "Brita",
+    franchise: 'US'
+  },
+  {
+    id: 'nqSclxkel8lPyWGTOwja',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d8/CrystalMethydS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901203840',
+    seasons: '12',
+    name: "Crystal Methyd",
+    franchise: 'US'
+  },
+  {
+    id: 'zXWH0aaCC7WvDWUW86W6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6a/DahliaSinS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901203910',
+    seasons: '12',
+    name: "Dahlia Sin",
+    franchise: 'US'
+  },
+  {
+    id: 'VcJDoxJVuyCDJJ0gwcHN',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b8/GigiGoodeS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901203939',
+    seasons: '12',
+    name: "Gigi Goode",
+    franchise: 'US'
+  },
+  {
+    id: 'WoKqNMJ3G5JnY8Jxh5ER',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/56/HeidiNClosetS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204007',
+    seasons: '12,AS8',
+    name: "Heidi N Closet",
+    franchise: 'US'
+  },
+  {
+    id: 'KieG26lvXl9JBkGVYsjL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e7/JackieCoxS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204041',
+    seasons: '12',
+    name: "Jackie Cox",
+    franchise: 'US'
+  },
+  {
+    id: 'XncIJESh2TDiVUu1YYWr',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/JaidaEssenceHallS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204134',
+    seasons: '12,AW1',
+    name: "Jaida Essence Hall",
+    franchise: 'US'
+  },
+  {
+    id: 'CaAebo9SVT8vSkenW2yI',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a9/JanS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204227',
+    seasons: '12,AS6',
+    name: "Jan",
+    franchise: 'US'
+  },
+  {
+    id: 'sccscsPOLvshQMPy8wLn',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5f/NickyDollS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204259',
+    seasons: '12',
+    name: "Nicky Doll",
+    franchise: 'US'
+  },
+  {
+    id: 'nNBc0j7IKeyhyjF2WAqx',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/RockMSakuraS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204420',
+    seasons: '12',
+    name: "Rock M. Sakura",
+    franchise: 'US'
+  },
+  {
+    id: 'LwcmqMVXmbRb2AUSQpeZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3d/WidowVon%27DuS12CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901204655',
+    seasons: '12',
+    name: "Widow Von'Du",
+    franchise: 'US'
+  },
+  {
+    id: 'WQjSgfopsQuaqcAXkw7Q',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/36/DenaliS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902181626',
+    seasons: '13,AS10',
+    name: "Denali",
+    franchise: 'US'
+  },
+  {
+    id: 'VDzrunSAdFpQsPiB22dI',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0b/ElliottWith2T%27sS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902181745',
+    seasons: '13',
+    name: "Elliott With 2 Ts",
+    franchise: 'US'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bd/GottmikS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902181947',
+    seasons: '13',
+    name: "Joey Jay",
+    franchise: 'US'
+  },
+  {
+    id: 'auLfJozI92gMgdLs2UDb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bd/GottmikS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902181947',
+    seasons: '13,AS9',
+    name: "Gottmik",
+    franchise: 'US'
+  },
+  {
+    id: '7iFdqehdbL0JjOcwdWBy',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e5/KahmoraHallS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182128',
+    seasons: '13',
+    name: "Kahmora Hall",
+    franchise: 'US'
+  },
+  {
+    id: 'rhOn7RHexb27Hx02pd4u',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/KandyMuseS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182209',
+    seasons: '13,AS8',
+    name: "Kandy Muse",
+    franchise: 'US'
+  },
+  {
+    id: 'G5HVACaVRzQcVzDRbzlY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e0/LaLaRiS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182255',
+    seasons: '13,AS8',
+    name: "Lala Ri",
+    franchise: 'US'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4f/OliviaLuxS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182353',
+    seasons: '13,AS10',
+    name: "Olivia Luxx",
+    franchise: 'US'
+  },
+  {
+    id: '5jQ3YcBfH0fYLJZupGQL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/74/Ros%C3%A9S13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182428',
+    seasons: '13',
+    name: "Rosé",
+    franchise: 'US'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7d/SymoneS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211216235826',
+    seasons: '13',
+    name: "Symone",
+    franchise: 'US'
+  },
+  {
+    id: 'tKLXASuGPeb05fVfW55Y',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/35/TamishaImanS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182545',
+    seasons: '13',
+    name: "Tamisha Iman",
+    franchise: 'US'
+  },
+  {
+    id: 'E0PWgyI0x3sQ4ucHxhe4',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/TinaBurnerS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182624',
+    seasons: '13,AS10',
+    name: "Tina Burner",
+    franchise: 'US'
+  },
+  {
+    id: 'jpacB8Bl9pJuxad0nSxA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/UticaQueenS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182704',
+    seasons: '13',
+    name: "Utica Queen",
+    franchise: 'US'
+  },
+  {
+    id: 'ZsPFngAr2xqFXDayn1Vb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ec/AlyssaHunterS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020245',
+    seasons: '14',
+    name: "Alyssa Hunter",
+    franchise: 'US'
+  },
+  {
+    id: 'wgnMnY9P2h5fHeiLX3BB',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5e/AngeriaParisVanMichealsS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14,AS9',
+    name: "Angeria Paris VanMicheals",
+    franchise: 'US'
+  },
+  {
+    id: 'L1Qda8yUt1o7MvAnij61',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/56/BoscoS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020202',
+    seasons: '14,AS10',
+    name: "Bosco",
+    franchise: 'US'
+  },
+  {
+    id: 'oVYLwoQI41EhceVYi2qM',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/69/DayaBettyS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14,AS10',
+    name: "Daya Betty",
+    franchise: 'US'
+  },
+  {
+    id: '5gj96ennePcoB3c45aH1',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/DeJaSkyeS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14,AS10',
+    name: "DeJa Skye",
+    franchise: 'US'
+  },
+  {
+    id: 'MLrF1VmwhtDp8XYZAYEJ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0c/JasmineKennedieS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14',
+    name: "Jasmine Kennedie",
+    franchise: 'US'
+  },
+  {
+    id: '5s0SjjGdmoSxbE2guQKO',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fa/JorgeousS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14,AS9,AS10',
+    name: "Jorgeous",
+    franchise: 'US'
+  },
+  {
+    id: 'B69WdsFM6kqxFZYN2GEp',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3c/JuneJambalayaS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14',
+    name: "June Jambalaya",
+    franchise: 'US'
+  },
+  {
+    id: 'Vvgaq9ZgFojXtY39foEj',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/30/KerriColbyS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020203',
+    seasons: '14,AS10',
+    name: "Kerri Colby",
+    franchise: 'US'
+  },
+  {
+    id: '6bJTwtVk1w04r0B1oKXe',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3c/KornbreadJet%C3%A9S14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020204',
+    seasons: '14',
+    name: 'Kornbread "The Snack" Jeté',
+    franchise: 'US'
+  },
+  {
+    id: 'h7mCrGerb2gEl1hkW9gw',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c1/LadyCamdenS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020204',
+    seasons: '14',
+    name: "Lady Camden",
+    franchise: 'US'
+  },
+  {
+    id: 'CMQ5XCDtegywm5Wo8KYz',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/MaddyMorphosisS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020204',
+    seasons: '14',
+    name: "Maddy Morphosis",
+    franchise: 'US'
+  },
+  {
+    id: 'yumYzSAEa8WDXZeUPXgt',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4a/OrionStoryS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020204',
+    seasons: '14',
+    name: "Orion Story",
+    franchise: 'US'
+  },
+  {
+    id: 'h2P86re33bNzqQr61B6n',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b4/WillowPillS14CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211203020201',
+    seasons: '14',
+    name: "Willow Pill",
+    franchise: 'US'
+  },
+  {
+    id: 'BVVBrI9porMz1TTEcNfI',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bc/AmethystS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213180206',
+    seasons: '15',
+    name: "Amethyst",
+    franchise: 'US'
+  },
+  {
+    id: 'zN2dHW9HjlUoWNkOnSXc',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c7/AnetraS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213193201',
+    seasons: '15',
+    name: "Anetra",
+    franchise: 'US'
+  },
+  {
+    id: 'CV87lyzA6W5zdm0oyXsf',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0b/AuraMayariS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213184850',
+    seasons: '15',
+    name: "Aura Mayari",
+    franchise: 'US'
+  },
+  {
+    id: '7SsAxjSrc0ScusNUNHg3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/72/IreneDuboisS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213180636',
+    seasons: '15,AS10',
+    name: "Irene The Alien",
+    franchise: 'US'
+  },
+  {
+    id: 'xfe6rAjJjgXeRvEWIwiO',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/27/JaxS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185104',
+    seasons: '15',
+    name: "Jax",
+    franchise: 'US'
+  },
+  {
+    id: '6t8RyhRodLp1J8hRD7fK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/31/LooseyLaDucaS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213190343',
+    seasons: '15',
+    name: "Loosey LaDuca",
+    franchise: 'US'
+  },
+  {
+    id: 'qgYaN4VqKdi31hIVCb1r',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f7/LuxxNoirLondonS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185232',
+    seasons: '15',
+    name: "Luxx Noir London",
+    franchise: 'US'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/ba/MalaysiaBabydollFoxxS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213181120',
+    seasons: '15',
+    name: "Malaysia Babydoll Foxx",
+    franchise: 'US'
+  },
+  {
+    id: 'FbiQFQpVpUc4OitdTMKL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ae/MarciaMarciaMarciaS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185337',
+    seasons: '15',
+    name: "Marcia Marcia Marcia",
+    franchise: 'US'
+  },
+  {
+    id: 'JeGCWGcECUW57Z6oK5np',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3e/MistressIsabelleBrooksS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185615',
+    seasons: '15,AS10',
+    name: "Mistress Isabelle Brooks",
+    franchise: 'US'
+  },
+  {
+    id: 'yTSb63LkzJBNVI6ywKKf',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c0/RobinFierceS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185708',
+    seasons: '15',
+    name: "Robin Fierce",
+    franchise: 'US'
+  },
+  {
+    id: '6hzgaTNLjsXtuh3PFhdZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/20/SalinaEsTittiesS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185822',
+    seasons: '15',
+    name: "Salina EsTitties",
+    franchise: 'US'
+  },
+  {
+    id: '9jVOpGMYlrIboPySbXZA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/60/SashaColbyS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213185937',
+    seasons: '15',
+    name: "Sasha Colby",
+    franchise: 'US'
+  },
+  {
+    id: 'WmeZ8u0tFhYA3xQpR2zU',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/15/SpiceS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213190113',
+    seasons: '15',
+    name: "Spice",
+    franchise: 'US'
+  },
+  {
+    id: 'kTROiBODPj35KYeRAnML',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0a/SugarS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213190212',
+    seasons: '15',
+    name: "Sugar",
+    franchise: 'US'
+  },
+  {
+    id: 'iv3ydKqaORx0PaZkVghH',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/AmandaToriMeatingS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012214',
+    seasons: '16',
+    name: "Amanda Tori Meating",
+    franchise: 'US'
+  },
+  {
+    id: 'tGTtL0dB4OAXKYLHzrTX',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/de/DawnS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012730',
+    seasons: '16',
+    name: "Dawn",
+    franchise: 'US'
+  },
+  {
+    id: 'bAlnHvDplS4pBwiExYrR',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/57/GenevaKarrS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012706',
+    seasons: '16',
+    name: "Geneva Karr",
+    franchise: 'US'
+  },
+  {
+    id: 'RHm8hFqxAjc6MAThXHPm',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/08/HershiiLiqCour-Jet%C3%A9S16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012303',
+    seasons: '16',
+    name: "Hershii LiqCour-Jeté",
+    franchise: 'US'
+  },
+  {
+    id: '7p9ix01h3puOuAgImfIR',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/89/MegamiS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012313',
+    seasons: '16',
+    name: "Megami",
+    franchise: 'US'
+  },
+  {
+    id: 'ifqF2F3jQO9nXQg9aobg',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/61/Mhi%27yaImanLe%27PaigeS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012322',
+    seasons: '16',
+    name: "Mhi'ya Iman Le'Paige",
+    franchise: 'US'
+  },
+  {
+    id: 'm8pWKjkZ33hWBXXuCfnO',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/MirageS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012347',
+    seasons: '16',
+    name: "Mirage",
+    franchise: 'US'
+  },
+  {
+    id: 'thR67RFriQtHW32L6Q0q',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2c/MorphineLoveDionS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012357',
+    seasons: '16',
+    name: "Morphine Love Dion",
+    franchise: 'US'
+  },
+  {
+    id: 'H5aklvC1kH3OnoOeZGvz',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/NymphiaWindS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012409',
+    seasons: '16',
+    name: "Nymphia Wind",
+    franchise: 'US'
+  },
+  {
+    id: 'RW06dhn5tvUlQBC5NBZi',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5e/PlaneJaneS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012428',
+    seasons: '16',
+    name: "Plane Jane",
+    franchise: 'US'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f0/PlasmaS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012439',
+    seasons: '16',
+    name: "Plasma",
+    franchise: 'US'
+  },
+  {
+    id: '9UVjWqnI3WAULIRsWwZn',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/03/QS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012449',
+    seasons: '16',
+    name: "Q",
+    franchise: 'US'
+  },
+  {
+    id: 'vrzkyBhqXgA0ZsSFlCh6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/SapphiraCrist%C3%A1lS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012501',
+    seasons: '16',
+    name: "Sapphira Cristál",
+    franchise: 'US'
+  },
+  {
+    id: 'U9cIr8fniCLoEdxXwbFj',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/XunamiMuseS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012510',
+    seasons: '16',
+    name: "Xunami Muse",
+    franchise: 'US'
+  },
+  {
+    id: 'zxClwrDnG60i2q1uOZRZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9a/AcaciaForgotS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204225608',
+    seasons: '17',
+    name: "Acacia Forgot",
+    franchise: 'US'
+  },
+  {
+    id: 'WPejW1N1nNoFITlDuSTv',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/cd/ArriettyS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204225754',
+    seasons: '17',
+    name: "Arrietty",
+    franchise: 'US'
+  },
+  {
+    id: 'MNX0vQCsnYiLfC9Zrsyn',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/69/CrystalEnvyS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241206064226',
+    seasons: '17',
+    name: "Crystal Envy",
+    franchise: 'US'
+  },
+  {
+    id: 'X0eNbS6D25nbznA21kAP',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/26/HormonaLisaS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204224951',
+    seasons: '17',
+    name: "Hormona Lisa",
+    franchise: 'US'
+  },
+  {
+    id: 'baBDp4Ym8La79GAwH2mC',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fb/JewelsSparklesS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241220192743',
+    seasons: '17',
+    name: "Jewels Sparkles",
+    franchise: 'US'
+  },
+  {
+    id: '2VQdzYZG3Sl8kqfx1075',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/ba/JoellaS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204225658',
+    seasons: '17',
+    name: "Joella",
+    franchise: 'US'
+  },
+  {
+    id: 'xswuGhJ9WpBEJneBCPT6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d7/KoriKingS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204225634',
+    seasons: '17',
+    name: "Kori King",
+    franchise: 'US'
+  },
+  {
+    id: 'XUSNvOaAnPwyACUllmRF',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/09/LanaJa%27RaeS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241205014055',
+    seasons: '17',
+    name: "Lana Ja'Rae",
+    franchise: 'US'
+  },
+  {
+    id: 'b6DKH1ZCIbsWSMIH8w15',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e6/LexiLoveS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241205013840',
+    seasons: '17',
+    name: "Lexi Love",
+    franchise: 'US'
+  },
+  {
+    id: 'MzxS65pW9KZSsuBDwjgE',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9a/LuckyStarzzzS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241205015218',
+    seasons: '17',
+    name: "Lucky Starzzz",
+    franchise: 'US'
+  },
+  {
+    id: '3lkExLsRZdseTau69kCb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f2/LydiaBKollinsS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204223017',
+    seasons: '17,AS10',
+    name: "Lydia B Kollins",
+    franchise: 'US'
+  },
+  {
+    id: 'ilYjAMxitFINMqf87xYc',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ee/OnyaNurveS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204224923',
+    seasons: '17',
+    name: "Onya Nurve",
+    franchise: 'US'
+  },
+  {
+    id: 'bLrPueaH3slDqI7S5LcZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f6/SamStarS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204224524',
+    seasons: '17',
+    name: "Sam Star",
+    franchise: 'US'
+  },
+  {
+    id: 'ZkigO80U79pdRTGwCVvh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/SuzieTootS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204223733',
+    seasons: '17',
+    name: "Suzie Toot",
+    franchise: 'US'
+  },
+
 ].sort((a, b) =>
   a.name.localeCompare(b.name)
 );
@@ -1385,7 +1964,7 @@ export const episodes = [
     season: '11',
     description: 'The queens get physical in the 69th International Draglympics. Choreographer Travis Wall and Olympian figure skaters Mirai Nagasu and Adam Rippon guest judge. Camp aerobicise queen Love Connie makes a guest appearance.',
     title: 'The Draglympics',
-    type: 'comedy,dance',
+    type: 'comedy,dancing',
     franchise: 'US'
   },
   {
@@ -1466,7 +2045,7 @@ export const episodes = [
     season: '9',
     title: 'She Done Already Done Brought It On',
     description: "Lisa Kudrow from Friends stops by. The queens are challenged to perform in an epic cheer battle, with the guest judges The B-52’s.",
-    type: 'dance,improv',
+    type: 'dancing,improv',
     franchise: 'US'
   },
   {
@@ -1493,7 +2072,7 @@ export const episodes = [
     season: '9',
     title: 'Reality Stars: The Musical',
     description: "Todrick Hall directs the queens in Broadway's newest mega-sensation, the Kardashian musical. Singer Meghan Trainor guest judges.",
-    type: 'musical,dance',
+    type: 'musical,dancing',
     franchise: 'US'
   },
   {
@@ -1556,7 +2135,7 @@ export const episodes = [
     season: '9',
     title: 'Category Is',
     description: 'The four remaining drag queens were asked by RuPaul to write, produce and choreograph an original verse for the remix of his song "Category Is"; additionally, each queen were ask to guest star on RuPauls podcast Whats the Tee?, featuring panel judge Michelle Visage.',
-    type: 'rap,dance',
+    type: 'rap,dancing',
     franchise: 'US'
   },
   {
@@ -1567,11 +2146,1533 @@ export const episodes = [
     description: "The final contestants lip-sync in groups of two to see who will become America's Next Drag Superstar.",
     type: 'finale,lipsyncSmackdown',
     franchise: 'US'
-  }
+  },
+  {
+    id: 'Yt0QnL4pM1rSfW9hD6zU',
+    episodeNumber: 1,
+    season: '8',
+    title: 'Keeping It 100!',
+    description: "For the 100th episode, Ru challenges a new crop of hens to craft outfits based on design challenges from seasons past. Nicole Richie guest judges.",
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'R8vJwKd7NxPlC0eGh5Uf',
+    episodeNumber: 2,
+    season: '8',
+    title: 'Bitch Perfect',
+    description: 'Ru divides the remaining queens into two competing teams to perform in a dance-driven, drag-appella sing-off dubbed "Bitch Perfect."',
+    type: 'dancing,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'Q3mZsLu5XwTp9bFa8KoR',
+    episodeNumber: 3,
+    season: '8',
+    title: "RuCo's Empire",
+    description: 'After a stunning runway showdown, a dismissed queen gets a second chance in a team-based challenge: acting in a pilot inspired by the TV drama "Empire."',
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'Z1oPqAj6UgVmS8xDe4Yn',
+    episodeNumber: 4,
+    season: '8',
+    title: 'New Wave Queens',
+    description: "The remaining queens take the stage to sing live in a 1980s-style salute to New Wave girl bands. Guest judges include Blondie’s Debbie Harry.",
+    type: 'sing',
+    franchise: 'US'
+  },
+  {
+    id: 'M5rXuKc9JbLp3fTa7sVe',
+    episodeNumber: 5,
+    season: '8',
+    title: 'Supermodel Snatch Game',
+    description: 'Competitive queens take on shades of well-known celebrities in another round of “Snatch Game.” Later, they all strike a pose in homage to Madonna.',
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'U7tBnFq0WoRvP6lXe1Kd',
+    episodeNumber: 6,
+    season: '8',
+    title: 'Wizards of Drag',
+    description: ' The queens dish out mini drag makeovers in the style of "The Wizard of Oz." Fashion designer Marc Jacobs and entertainer Todrick Hall guest judge.',
+    type: 'design',
+    franchise: 'US'
+  },
+  {
+    id: 'L9dCgHn2KjXp8zRf3YoB',
+    episodeNumber: 7,
+    season: '8',
+    title: 'Shady Politics',
+    description: 'The top six queens campaign hard for the title of First Drag President of the United States. Guest judges include Vivica A. Fox ("Independence Day").',
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'V2pHxTz4MqEsY5uB1gDf',
+    episodeNumber: 8,
+    season: '8',
+    title: 'RuPaul Book Ball',
+    description: 'The queens prep paper-thin looks for a "Book Ball" and pay homage to "Strangers with Candy" icon Jerii Blank. Sibs Amy and David Sedaris guest judge.',
+    type: 'ball,design',
+    franchise: 'US'
+  },
+  {
+    id: 'E0wQrKp3LhJuX8tZn5Mb',
+    episodeNumber: 9,
+    season: '8',
+    title: 'The Realness',
+    description: "No one's safe as the remaining four queens square off for their final challenge: starring in the music video for Ru's hit single 'The Realness.'",
+    type: 'musicVideo,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'P4nFsL0ZxWvYrT1kB9qe',
+    episodeNumber: 10,
+    season: '8',
+    title: 'Grand Finale',
+    description: "Fabulousness flares when this season's queens reconvene for the crowning of Miss Congeniality -- and America's Next Drag Superstar.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'A1bC2dE3fG4hI5jK6lMn',
+    episodeNumber: 1,
+    season: '7',
+    title: 'Born Naked',
+    description: 'Fourteen queens enter the workroom, walk a spring and winter runway, then hit the main stage with nude illusion designs.',
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'B2cD3eF4gH5iJ6kL7mNo',
+    episodeNumber: 2,
+    season: '7',
+    title: 'Glamazonian Airways',
+    description: 'In this episode, the queens perform in Glamazonian Airways, a lip syncing group challenge. On the runway the queen show off their best first class jet setting looks.',
+    type: 'dancing,comedy,musical',
+    franchise: 'US'
+  },
+  {
+    id: 'C3dE4fG5hI6jK7lM8nOp',
+    episodeNumber: 3,
+    season: '7',
+    title: 'ShakesQueer',
+    description: 'The queens perform in a Shakespeare-themed acting challenge then hit the main stage in their best bearded looks.',
+    type: 'comedy,acting,parody',
+    franchise: 'US'
+  },
+  {
+    id: 'D4eF5gH6iJ7kL8mN9oPq',
+    episodeNumber: 4,
+    season: '7',
+    title: 'Spoof! (There It Is)',
+    description: ' Three teams of queens face off in a performance challenge, creating parodies of Rus "Dance with U," "Sissy That Walk," and "Let the Music Play."',
+    type: 'comedy,parody',
+    franchise: 'US'
+  },
+  {
+    id: 'E5fG6hI7jK8lM9nO0pQr',
+    episodeNumber: 5,
+    season: '7',
+    title: 'The DESPY Awards',
+    description: 'The queens partner up and pay tribute to the iconic red carpet looks, then amp up the drama when they stage their own awards show.',
+    type: 'comedy,hosting',
+    franchise: 'US'
+  },
+  {
+    id: 'F6gH7iJ8kL9mN0oPqRsT',
+    episodeNumber: 6,
+    season: '7',
+    title: 'Ru-Hollywood Stories',
+    description: 'The queens play Monster in Your Pants for the mini-challenge and re-enact a "Drag Race" scandal. Ariana Grande and Merle Ginsberg guest judge.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'G7hI8jK9lM0nOpQrStU',
+    episodeNumber: 7,
+    season: '7',
+    title: 'Snatch Game',
+    description: 'When "Snatch Game" returns, two queens pick the same famous fashionista to impersonate, while another contestant makes a shocking confession.',
+    type: 'smatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'H8iJ9kL0mN1oPqRsTuV',
+    episodeNumber: 8,
+    season: '7',
+    title: 'Conjoined Queens',
+    description: 'The seven eliminated queens pair up with current contestants in a conjoined drag twin challenge, fighting for a chance to get back in the game.',
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'I9jK0lM1nO2pQrStUvW',
+    episodeNumber: 9,
+    season: '7',
+    title: 'Divine Inspiration',
+    description: 'John Waters joins the judging panel when the queens performing musical versions of scenes from his movies in a tribute to drag legend Divine.',
+    type: 'musical,singing,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'J0kL1mN2oP3qRsTuVwX',
+    episodeNumber: 10,
+    season: '7',
+    title: 'Prancing Queens',
+    description: 'The queens transform themselves into "Fake Housewives" then create half-man, half-woman looks for a dance challenge on the main stage.',
+    type: 'dancing,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'K1lM2nO3pQ4rStUvWxY',
+    episodeNumber: 11,
+    season: '7',
+    title: 'Hello, Kitty Girls!',
+    description: 'Ru challenges the queens to create Hello-Kitty inspired looks for their runway looks. Rebecca Romijn and Santino Rice guest judge.',
+    type: 'runway,design,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'L2mN3oP4qR5sTuVxWyZ',
+    episodeNumber: 12,
+    season: '7',
+    title: 'And the Rest Is Drag',
+    description: ' The final queens star with Ru in a music video for "Born Naked" and face off in an acting challenge before bringing their best drag to the runway.',
+    type: 'musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: 'N4oP5qR6sT7uVxYzAbB',
+    episodeNumber: 14,
+    season: '7',
+    title: 'The Grand Finale',
+    description: 'The eliminated queens and favourites from seasons past join Ru as Americas Next Drag Superstar and Miss Congeniality are crowned.',
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'A9xT7vP4kQmW2eR1sUfJ',
+    episodeNumber: 1,
+    season: '6',
+    title: "RuPaul’s Big Opening: Part 1",
+    description: ' The first half of contestants enter the work room, participate in a photo challenge and hit the runway in television inspired couture.',
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'B3pL9kS2nVtR8yQ6oFdG',
+    episodeNumber: 2,
+    season: '6',
+    title: "RuPaul’s Big Opening: Part 2",
+    description: ' The second half of contestants enter the workroom, participate in a photo shoot and create couture from celebratory themed boxes.',
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'C1oK8lQ5sXjM3aV9zRwP',
+    episodeNumber: 3,
+    season: '6',
+    title: 'Scream Queens',
+    description: 'The remaining queens participate in a horror movie acting challenge after being split into two teams. On the runway the queens don their best drag and stun the judges.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'D7qN2mR6wYvP5oL1cTfB',
+    episodeNumber: 4,
+    season: '6',
+    title: 'Shade: The Rusical',
+    description: 'The remaining queens participate in a musical called Shade: The Rusical. After, the contestants take on the runway in their best red carpet gowns.',
+    type: 'musical,acting,dancing,singing',
+    franchise: 'US'
+  },
+  {
+    id: 'E5rT9uJ3kLpO6qF8vXcZ',
+    episodeNumber: 5,
+    season: '6',
+    title: 'Snatch Game',
+    description: 'The remaining queens compete as celebrities in the infamous Snatch Game. On the runway the dolls dress up in RuPaul inspired drag.',
+    type: 'snatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'F8yP3dS7vHbK1mN4oGtC',
+    episodeNumber: 6,
+    season: '6',
+    title: "Oh No She Betta Don’t!",
+    description: "The queens make a music video for Oh No She Betta Don't and wear their crazy, sexy cool that accentuate their favorite body part.",
+    type: 'rap,musicVideo,dance,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'G6mQ2aV5xLnC9zK7rYpD',
+    episodeNumber: 7,
+    season: '6',
+    title: 'Glamazon by Colorevolution',
+    description: "On this episode, the remaining queens pair up into teams of two and create advertisements for RuPaul's Glamazon by Colorevolution. Then, the queens stomp the runway in black and white.",
+    type: 'commercial,branding,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'I2kR7jM9pLbQ6vY4dNxF',
+    episodeNumber: 8,
+    season: '6',
+    title: 'Drag Queens of Comedy',
+    description: 'The remaining queens participate in a stand up comedy challenge that results in one of the girls becoming emotional.',
+    type: 'comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'H4nZ1cX6oKvR8bW3pJtE',
+    episodeNumber: 9,
+    season: '6',
+    title: 'Drag Queens of Talk',
+    description: 'The remaining contestants host a talk show segment then hit the runway in their best animal inspired drag.',
+    type: 'talkShow,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'J5uN8vP3sLqR1tK7yXbG',
+    episodeNumber: 10,
+    season: '6',
+    title: 'Drag My Wedding',
+    description: 'The queens are paired up with men that they must transform into wedding clad drag daughters before giving them away for marriage.',
+    type: 'makeover',
+    franchise: 'US'
+  },
+  {
+    id: 'K3rY9xW5mNpO7jV1lTbH',
+    episodeNumber: 11,
+    season: '6',
+    title: 'Glitter Ball',
+    description: 'The finalists compete in The Glitter Ball where they must show three looks; Banjie Girl Realness, Executive Realness and Glitter Extravaganza.',
+    type: 'ball,design',
+    franchise: 'US'
+  },
+  {
+    id: 'L2mN3oP4qR5sTuVxWyZq',
+    episodeNumber: 12,
+    season: '6',
+    title: 'Sissy That Walk',
+    description: "The final queens star in RuPaul's 'Sissy That Walk' music video then campaign their reasons for being America's Next Drag Superstar.",
+    type: 'musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: 'N4oP5qR6sT7uVxYzAbBc',
+    episodeNumber: 14,
+    season: '6',
+    title: 'Reunited!',
+    description: "The queens of season 6 of RuPaul's Drag Race reunite and a winner is crowned.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'A9kLmN0pQ1rS2tUvWxYz',
+    episodeNumber: 1,
+    season: '5',
+    title: 'RuPaullywood or Bust',
+    description: 'In the season five premiere, fourteen new drag queens compete for the title of Americas Next Drag Superstar with a prize package including a life time supply of Color Evolution cosmetics, a one of a kind trip courtesy of ALandCHUCK.travel, headline Logos Drag Race tour featuring Absolut Vodka cocktails perfected, and $100,000. In the mini challenge, they have an "underwater serving glamor" photo shoot. In the main challenge, they dumpster dive for materials to create an "award winning look that screams Hollywood red carpet couture" to wear on the runway.',
+    type: 'premiere,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'B8jKlM7nO6pQ5rStUvWx',
+    episodeNumber: 2,
+    season: '5',
+    title: 'Lip Synch Extravaganza Eleganza',
+    description: "The contestants must lip-synch to the spoken word, as they recreate classic moments from Drag Race history in scene-stealing viral videos.",
+    type: 'comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'C7iJkL8mN9oP0qRsTuVw',
+    episodeNumber: 3,
+    season: '5',
+    title: 'Draggle Rock',
+    description: "The queens connect with their inner child as they star in a fun-filled kids TV show!",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'D6hIjK7lM8nO9pQrStUv',
+    episodeNumber: 4,
+    season: '5',
+    title: 'Black Swan: Why It Gotta Be Black?',
+    description: "This week, the queens are challenged to prove their elegance and dancing skills by starring in a ballet based on the life of RuPaul, and on the runway, are asked to present 'extravaganza' looks.",
+    type: 'dancing,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'E5gHiJ6kL7mN8oPqRsTu',
+    episodeNumber: 5,
+    season: '5',
+    title: 'Snatch Game',
+    description: "The one we've all been waiting for! The queens compete in a star-studded TV game show that showcases their celebrity impersonations.",
+    type: 'snatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'F4fGhI5jK6lM7nOpQrSt',
+    episodeNumber: 6,
+    season: '5',
+    title: 'Can I Get an Amen?',
+    description: 'The queens test their vocal abilities as they sing in RuPauls 1980s "We Are The World"-inspired charity single.',
+    type: 'comedy,singing',
+    franchise: 'US'
+  },
+  {
+    id: 'G3eFgH4iJ5kL6mNoPqRs',
+    episodeNumber: 7,
+    season: '5',
+    title: 'RuPaul Roast',
+    description: "The queens' comedy skills are put on the spot as they must roast RuPaul and the celebrity judges in front of a live audience.",
+    type: 'comedy,roast',
+    franchise: 'US'
+  },
+  {
+    id: 'H2dEfG3hI4jK5lMnOpQr',
+    episodeNumber: 8,
+    season: '5',
+    title: 'Scent of a Drag Queen',
+    description: "The queens create, market and film a commercial for their own signature fragrance, then celebrate with a launch party!",
+    type: 'commerical,branding,design,comedy,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'I1cDeF2gH3iJ4kLmNoPq',
+    episodeNumber: 9,
+    season: '5',
+    title: 'Drama Queens',
+    description: 'The competition gets spicy as the queens star with Wilmer Valderrama in a sexy Latin telenovela acting challenge."',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'J0bCdE1fG2hI3jKlMnOp',
+    episodeNumber: 10,
+    season: '5',
+    title: 'Super Troopers',
+    description: "The queens transform gay veterans into gorgeous queens! Then, they perform a patriotic flag salute before walking the runway showing off their new drag mothers and sisters.",
+    type: 'makeover',
+    franchise: 'US'
+  },
+  {
+    id: 'K9aBcD0eF1gH2iJkLmNo',
+    episodeNumber: 11,
+    season: '5',
+    title: 'Sugar Ball',
+    description: "The race gets sticky and sweet when the queens compete in a pageant of candy inspired couture.",
+    type: 'ball,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'L8zAbC9dE0fG1hIjKlMn',
+    episodeNumber: 12,
+    season: '5',
+    title: 'The Final Three, Hunty',
+    description: ' The top three queens go to court, as Judge Ru presents their final challenge - starring in the music video for RuPauls hit "The Beginning."',
+    type: 'musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: 'M7yZaB8cD9eF0gHiJkLm',
+    episodeNumber: 13,
+    season: '5',
+    title: 'Reunited!',
+    description: 'Wigs fly as the queens discuss the drama of the season. Plus, both "Americas Next Drag Superstar" and "Miss Congeniality" are crowned.',
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'cGBStvuIgLFTIKNVplsm',
+    episodeNumber: 1,
+    season: '1',
+    title: 'Drag On A Dime',
+    description: 'Nine contestants must re-invent their glam drag looks using thrift store clothing and tschotchkes from the 99-cent store. Guest judge Bob Mackie stops by to help RuPaul weed out the drag queen with the least style.',
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'FHx5Ph7hErDEM6JN0DPc',
+    episodeNumber: 2,
+    season: '1',
+    title: 'Girl Group Challenge',
+    description: "Wigs fly when the contestants split up into 2 rival girl groups, something guest judge Michelle Williams of Destiny's Child would know plenty about. Can the girls impress RuPaul with their lip-synching skills",
+    type: 'dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'S7YzTvXaDt6W3B2OcIp3',
+    episodeNumber: 3,
+    season: '1',
+    title: 'Queens of All Media',
+    description: 'The queens are tested on their multi-media prowess as they show off their talents as newscaster, product spokesperson, and talk show host to RuPaul and guest judge Debra Wilson of MADtv.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'F0M90yUQYPkRry4DbtM9',
+    episodeNumber: 4,
+    season: '1',
+    title: 'Mac Viva-Glam Challenge',
+    description: "Hoping to follow in the footsteps of MAC Cosmetics' first Viva Glam girl, RuPaul, the queens make their own Viva Glam screen test. Jenny Shimizu joins the panel to help judge the girls' drag queen status.",
+    type: 'commercial',
+    franchise: 'US'
+  },
+  {
+    id: 'sGzsYCeFnsRjQOD6ociw',
+    episodeNumber: 5,
+    season: '1',
+    title: 'Drag School of Charm',
+    description: "The contestants make over a group of female extreme fighters into their drag daughters. Xena herself, Lucy Lawless, makes a guest appearance to judge the girls' combat prowess.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'wGX2NriJBMVfbUQOGlQU',
+    episodeNumber: 6,
+    season: '1',
+    title: 'Absolut Drag Ball',
+    description: "RuPaul makes the queens hit the floor in a good old fashioned drag ball inspired by Absolut's real fruit flavored vodka.",
+    type: 'ball,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'IG9XLh7uB16yxQMWoAsP',
+    episodeNumber: 8,
+    season: '1',
+    title: 'Grand Finale',
+    description: 'The last 3 queens face their final challenge while shooting the music video for RuPauls new single "Cover Girl (Put The Bass In Your Walk)." Out artist Cazwell stops by to help the judges cast their final vote.',
+    type: 'finale,musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: 'Mqh1p3RiEqLPi70JjFeM',
+    episodeNumber: 1,
+    season: '2',
+    title: 'Gone with the Windows',
+    description: 'After walking into the workroom, the queens meet RuPaul on set for a windy photoshoot. Then, the queens hit the runway in Gone with the Wind Couture.',
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'wMdueOt5UYnznKnMTwTS',
+    episodeNumber: 2,
+    season: '2',
+    title: 'Starrbootylicious',
+    description: 'The remaining queens make their own doll, then hit the streets and the club in an all out bootylicious challenge before hitting the runway on the main stage.',
+    type: 'dancing,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'vSKD4lTiCZiYXIvsGJxl',
+    episodeNumber: 3,
+    season: '2',
+    title: 'Country Queens',
+    description: "The queens chow down on some good ole' southern hospitality before they participate in a commercial campaign for home goods. Then, they hit the runway in their best western wear.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'EzPSQolbsIBh6yco3xY9',
+    episodeNumber: 4,
+    season: '2',
+    title: 'The Snatch Game',
+    description: 'The queens participate in the first ever Snatch Game, where they must impersonate popular figures from pop culture.',
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: '5BRxr3tLWCpcqLWj2VGJ',
+    episodeNumber: 5,
+    season: '2',
+    title: 'Here Comes the Bride',
+    description: 'The queens participate in a photo challenge featuring the contestants in and out of drag before they hit the runway in their best wedding gown couture.',
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'hukxS7AGmOf0146zMbUd',
+    episodeNumber: 6,
+    season: '2',
+    title: 'Rocker Chicks',
+    description: 'The queens compete in a rock n roll challenge on the main stage. An emotional lip-sync leaves one queen on the floor.',
+    type: 'singing,performance',
+    franchise: 'US'
+  },
+  {
+    id: 'lQWs3Io1NQoHGJKIdORx',
+    episodeNumber: 7,
+    season: '2',
+    title: 'Once Upon a Queen',
+    description: 'In the main challenge the queens write and start on the cover of their own book. On the runway, the queens show off their book release press part realness.',
+    type: 'branding,commercial,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'wu7buBiBQcl57vgujpRy',
+    episodeNumber: 8,
+    season: '2',
+    title: 'Golden Gals',
+    description: 'The remaining queens are paired with older gay gentlemen who they must transform into their mothers complete with cohesive looks and a sickening performance.',
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'WkSA4I2rVa4Z0sLl5flm',
+    episodeNumber: 9,
+    season: '2',
+    title: 'The Diva Awards',
+    description: 'The remaining queens compete in the Diva Awards, a special awards show just for them. On the runway they must present multiple looks to the judges in the style of a classic NYC ball.',
+    type: 'ball,design',
+    franchise: 'US'
+  },
+  {
+    id: 'jAeploDwll1q5mZYoQMh',
+    episodeNumber: 11,
+    season: '2',
+    title: 'Music Video Finale',
+    description: "One queen is crowned America's Next Drag Superstar!",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'USX5aQ8jbUW8W0vp1n1v',
+    episodeNumber: 2,
+    season: '3',
+    title: 'The Queen Who Mopped Xmas',
+    description: "The claws come out in the first challenge of the season when the girls are asked to create a holiday look with nothing but some tinsel, ornaments and a few well placed mistletoe.",
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'i5bbpMnn3H4aDLzZas3T',
+    episodeNumber: 3,
+    season: '3',
+    title: 'Queens in Space',
+    description: "The queens participate in a psychic challenge. After, they film spoof space films before hitting the runway in their best space themed drag.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'OaVBVOJKaqsy72qdNFOo',
+    episodeNumber: 4,
+    season: '3',
+    title: 'Totally Leotarded',
+    description: "The girls get physical as they produce their own inspirational workout videos directed by fitness guru Susan Powter.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'QbAanqihLBysriDdsqlM',
+    episodeNumber: 5,
+    season: '3',
+    title: 'QNN News',
+    description: "The queens get a wake up call in the competition when they're asked to produce two morning news shows.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'foraxhiWR17Dim5IgoeD',
+    episodeNumber: 6,
+    season: '3',
+    title: 'The Snatch Game',
+    description: "The queens compete in a star-studded TV game show where they must pull out their best celebrity impersonations.",
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'IpTW0Vk7xC894yhFBMFj',
+    episodeNumber: 7,
+    season: '3',
+    title: 'Face,Face,Face of Cakes',
+    description: "The queens look good enough to eat in this episode where they're challenged to find fashion inspiration from the world of cakes.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'cnjxax07mDwW4SADs6rF',
+    episodeNumber: 8,
+    season: '3',
+    title: 'Ru Ha Ha',
+    description: "The queens perform stand-up comedy routines in front of a live studio audience!",
+    type: 'comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'SSvOd0SCZQP529fGCt4o',
+    episodeNumber: 9,
+    season: '3',
+    title: 'Life, Liberty & the Pursuit of Style',
+    description: "The queens create patriotic video messages for the troops.",
+    type: 'comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'SSvOd9SCZQP529fGCt4o',
+    episodeNumber: 10,
+    season: '3',
+    title: 'RuPaul-a-Palooza',
+    description: 'The queens record and perform their own version of Rus new song, "Superstar", in one of six distinct musical styles!',
+    type: 'singing',
+    franchise: 'US'
+  },
+  {
+    id: 'eTyxjlhGRnpFSEKCmeEf',
+    episodeNumber: 11,
+    season: '3',
+    title: "RuPaul's Hair Extravaganza",
+    description: "The queens wig out when they have to compete in a fantasy hair show.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'tn0bBBhe7SQmFxJSSmBe',
+    episodeNumber: 12,
+    season: '3',
+    title: 'Jocks in Frocks',
+    description: "The queens must transform a group of All-American straight jocks into their drag sisters.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'qAg4vpHxUFLo4TecPkEi',
+    episodeNumber: 13,
+    season: '3',
+    title: 'Make Dat Money',
+    description: "The queens break the bank as they perform in a pageant of dresses made out of money.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'qqUvS27r16qHVVRUjH8i',
+    episodeNumber: 15,
+    season: '3',
+    title: 'Grand Finale',
+    description: 'The remaining three queens face their final challenge when they are asked to transform into video vixens for the music video to Rus latest single, "Champion."',
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'dMxaevygPUv9TfbTMY27',
+    episodeNumber: 1,
+    season: '4',
+    title: 'RuPocalypse Now!',
+    description: 'In the season 4 premiere, a new crop of queens enter the workroom, participate in an atomic photoshoot then hit the runway in their best post-apocalyptic drag.',
+    type: 'premiere,design',
+    franchise: 'US'
+  },
+  {
+    id: 'roXKIrbcMD8Td8XeCnjG',
+    episodeNumber: 2,
+    season: '4',
+    title: "WTF!: Wrestling's Trashiest Fighters",
+    description: 'The remaining queens participate in a group acting challenge all about wrestling! On the runway, the queens don their most girly-girl drag.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: '3HRsnfjNSaUhcjrFv7zV',
+    episodeNumber: 3,
+    season: '4',
+    title: 'Glamazons vs. Champions',
+    description: 'The queens participate in an infomercial-style challenge where they must sell one of two albums, Glamazon and Champion. On the runway, the queens dress up in silver and gold.',
+    type: '',
+    franchise: 'US'
+  },
+  {
+    id: 'pL7F8by3HhciEdqFNPgp',
+    episodeNumber: 4,
+    season: '4',
+    title: 'Queens Behind Bars',
+    description: 'The queens participate in an acting challenge where they split into two casts and create a spoof of a classic sitcom. On the runway, the queens are asked to dress up for their television premiere.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'cXFymOug9STDeSI8HRGv',
+    episodeNumber: 5,
+    season: '4',
+    title: 'Snatch Game',
+    description: 'The queens participate in the infamous Snatch Game, where they must impersonate pop culture celebrities. On the runway they are challenged to dress to impress.',
+    type: 'snatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'Nxbsvo7evL5hEJ0oOtky',
+    episodeNumber: 6,
+    season: '4',
+    title: 'Float Your Boat',
+    description: 'The remaining queens are assigned various colors of the pride flag and must decorate a parade boat to hit the main stage in.',
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: '5vZJvlAIEoTi2avwtRSn',
+    episodeNumber: 7,
+    season: '4',
+    title: 'Dragazines',
+    description: 'The remaining queens design magazine covers that are sure to sell hot off the press. On the runway, the queens dress for their magazine release party!',
+    type: 'branding',
+    franchise: 'US'
+  },
+  {
+    id: 'VESroECLZ4qWifubH0z0',
+    episodeNumber: 8,
+    season: '4',
+    title: 'Frenemies',
+    description: 'The queens participate in a polygraph test. After, the queens participate in a musical challenge where they are paired up with their perfect frenemy.',
+    type: 'singing,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'Ma66JpRr8v9x9sTS8sB9',
+    episodeNumber: 9,
+    season: '4',
+    title: 'Frock the Vote!',
+    description: 'The remaining queens participate in an election challenge hosted by Dan Savage. After, the dolls hit the runway in their best inaugural drag.',
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'WKMOia8CxtyXS7MKKWBD',
+    episodeNumber: 10,
+    season: '4',
+    title: "DILFs: Dads I'd Like to Frock",
+    description: 'The remaining queens must turn hot dads into their drag sisters.',
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'zfF9QJUuzukdxxE1qIzB',
+    episodeNumber: 11,
+    season: '4',
+    title: 'The Fabulous Bitch Ball',
+    description: 'The finalists must compete in the Fabulous Bitch Ball where they must serve their different looks and perform a musical number in front of the judges.',
+    type: '',
+    franchise: 'US'
+  },
+  {
+    id: 'Hid9puJ8Yw5YAsSdtNvk',
+    episodeNumber: 13,
+    season: '4',
+    title: 'The Final Three',
+    description: "The final three film a music video for RuPaul's song Glamazon. Then the queens walk the runway in their best drag for their final walk on the main stage.",
+    type: 'musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: 'kRnUaFcMnBh5OQ0pkOtV',
+    episodeNumber: 14,
+    season: '4',
+    title: 'Reunited',
+    description: "The queens of season 4 of RuPaul's Drag Race Reunite and a winner is announced!",
+    type: 'finale',
+    franchise: 'US'
+  },
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
 export const lipsyncs = [
+
+  {
+    id: 'Q9wErT7yLpZ2xV5nHaKb',
+    title: "Supermodel (You Better Work)",
+    episode: 'us1e1',
+    genre: "dance,pop",
+    artist: "RuPaul",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'M2cVxT8nWpQ5zJ6rYfLh',
+    title: "We Break the Dawn",
+    episode: 'us1e2',
+    genre: "dance,pop",
+    artist: "Michelle Williams",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'S1vXyT4kZ7rNpM6wQbUf',
+    title: "The Greatest Love of All",
+    episode: 'us1e3',
+    genre: "ballad,pop",
+    artist: "Whitney Houston",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'P5zNwX8rLcY2jH9mTqVk',
+    title: "Would I Lie to You?",
+    episode: 'us1e4',
+    genre: "pop,soul",
+    artist: "Eurythmics",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'R4kLpV2yW9xNtH5mQzJs',
+    title: "Stronger",
+    episode: 'us1e5',
+    genre: "pop",
+    artist: "Britney Spears",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'A7kLpN3vX9bJtQ2rWsMf',
+    title: "Shackles (Praise You)",
+    episode: 'us1e6',
+    genre: "gospel,R&B",
+    artist: "Mary Mary",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'J6nQwV3xP8zMrT1cYfKa',
+    title: "Cover Girl",
+    episode: 'us1e9',
+    genre: "dance,pop",
+    artist: "RuPaul",
+    season: '1',
+    franchise: 'US'
+  },
+  {
+    id: 'F9tXwQ3pVb7sMz6hYcKr',
+    title: "Cover Girl",
+    episode: 'us2e1',
+    genre: "dance,pop",
+    artist: "RuPaul",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'F9t5f6hg6b7sMz6hYcKr',
+    title: "My Lovin' (You're Never Gonna Get It)",
+    episode: 'us2e2',
+    genre: "funk,pop,r&b",
+    artist: "En Vogue",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'F45g645g6b7sMz6h90Kr',
+    title: "I Hear You Knocking",
+    episode: 'us2e3',
+    genre: "country",
+    artist: "Wynonna Judd",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'Q1sLpT9nXv4qMw6bHaYr',
+    title: "Two of Hearts",
+    episode: 'us2e4',
+    genre: "dance,pop",
+    artist: "Stacey Q",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'T8mQwK5rVp1tLn3xHaFs',
+    title: "Carry On",
+    episode: 'us2e5',
+    genre: "electronica,house,disco,techno",
+    artist: "Martha Wash",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'M7pXvB2mLq5sWn9tHaYs',
+    title: "Black Velvet",
+    episode: 'us2e6',
+    genre: "rock,blues",
+    artist: "Alannah Myles",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'Z4nQxY2vLp6sHw9bMzFr',
+    title: "He's the Greatest Dancer",
+    episode: 'us2e7',
+    genre: "disco,r&b,funk,soul",
+    artist: "Sister Sledge",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'Z4nQxY2vLp6sHw9bMzFr',
+    title: "Shake Your Love",
+    episode: 'us2e8',
+    genre: "dance,pop",
+    artist: "Debbie Gibson",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'N6qVrP1lYb8tXw3sHaMz',
+    title: "Something He Can Feel",
+    episode: 'us2e9',
+    genre: "r&b,soul",
+    artist: "Aretha Franklin",
+    season: '2',
+    franchise: 'US'
+  },
+  {
+    id: 'K2rLpN8yWb3tQx6sHaVm',
+    title: "The Right Stuff",
+    episode: 'us3e2',
+    genre: "pop",
+    artist: "Vanessa Williams",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'qR3bVt9YkL6nFw2pxZdM',
+    title: "Bad Romance",
+    episode: 'us3e3',
+    genre: "pop,rock",
+    artist: "Lady Gaga",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'tS5kNz1WoVrQ8hYdPfLg',
+    title: "Don’t Leave Me This Way",
+    episode: 'us3e4',
+    genre: "soul,disco",
+    artist: "Thelma Houston",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'tS5kNz1W4f45GhYdPfL0',
+    title: "Meeting in the Ladies Room",
+    episode: 'us3e5',
+    genre: "pop,r&b",
+    artist: "Klymaxx",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: '4f5gVV1W4f45GhYdPfL0',
+    title: "Looking for a New Love",
+    episode: 'us3e6',
+    genre: "r&b,soul",
+    artist: "Jody Watley",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: '4f5gVV1W4f45GhYdPfL0',
+    title: "Knock on Wood",
+    episode: 'us3e7',
+    genre: "pop,disco",
+    artist: "Amii Stewart",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'X8tQwL3pVr7sMz6hYbKe',
+    title: "MacArthur Park",
+    episode: 'us3e8',
+    genre: "disco,pop",
+    artist: "Donna Summer",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'mH6zPt4YkL9qRv1jXbSw',
+    title: "Mickey (Spanish Version)",
+    episode: 'us3e9',
+    genre: "dance,pop",
+    artist: "Toni Basil",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'zF9vWt8YoPlQ2rNkHsDm',
+    title: "Believe",
+    episode: 'us3e10',
+    genre: "dance,pop",
+    artist: "Cher",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'zF9vWt845f672rNkHsDm',
+    title: "Even Angels",
+    episode: 'us3e11',
+    genre: "r&b",
+    artist: "Fantasia Barrino",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'zF9vW909op672rNkHsDm',
+    title: "Straight Up",
+    episode: 'us3e12',
+    genre: "dance pop,funk",
+    artist: "Paula Abdul",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'zed456S45f672rNkHsDm',
+    title: "I Think About You",
+    episode: 'us3e13',
+    genre: "classic soul,disco",
+    artist: "Patti LaBelle",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'vP5qLr8YkMnW2xFaZtJs',
+    title: "Champion (DJ BunJoe’s Olympic Mix)",
+    episode: 'us3e15',
+    genre: "dance,electronic",
+    artist: "RuPaul",
+    season: '3',
+    franchise: 'US'
+  },
+  {
+    id: 'Zfj7QxY3KdPmNrT9sLaH',
+    title: "Toxic",
+    episode: 'us4e1',
+    genre: "pop",
+    artist: "Britney Spears",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Gq2WvN8yLpRmX5tHaUkM',
+    title: "Bad Girls",
+    episode: 'us4e2',
+    genre: "disco,classic",
+    artist: "Donna Summer",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Yp4KtL9wQrXvM2hBaUsN',
+    title: "This Will Be (An Everlasting Love)",
+    episode: 'us4e3',
+    genre: "soul",
+    artist: "Natalie Cole",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Nw6JrX1pLdQfY8tSvBaK',
+    title: "Trouble",
+    episode: 'us4e4',
+    genre: "pop",
+    artist: "Pink",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Mt5XsV2yQoRjP9kLaUhG',
+    title: "Vogue",
+    episode: 'us4e5',
+    genre: "dance,pop",
+    artist: "Madonna",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Fp8YzR7nKqLcB1vMaUsN',
+    title: "Born This Way",
+    episode: 'us4e6',
+    genre: "pop",
+    artist: "Lady Gaga",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Ra3QvK5pLdXnM8hTyUsZ',
+    title: "Mi Vida Loca (My Crazy Life)",
+    episode: 'us4e7',
+    genre: "country,pop",
+    artist: "Pam Tillis",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Uw1PzV9yQoRjX4kLaHtM',
+    title: "It’s Raining Men... The Sequel",
+    episode: 'us4e8',
+    genre: "dance,house",
+    artist: "Martha Wash & RuPaul",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Bx6YnQ2wLoRtP9kMaUsZ',
+    title: "I've Got to Use My Imagination",
+    episode: 'us4e9',
+    genre: "soul",
+    artist: "Gladys Knight & the Pips",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Cz7QtL5pRdVmB2nXaUsH',
+    title: "(You Make Me Feel Like) A Natural Woman",
+    episode: 'us4e10',
+    genre: "soul,R&B",
+    artist: "Aretha Franklin",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Vz8LpK1yQwRmX3tHaUsN',
+    title: "No One Else on Earth",
+    episode: 'us4e11',
+    genre: "country,rock",
+    artist: "Wynonna Judd",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'Jy3RxQ5pLdTvM2hKaUsZ',
+    title: "Glamazon",
+    episode: 'us4e13',
+    genre: "dance,pop",
+    artist: "RuPaul",
+    season: '4',
+    franchise: 'US'
+  },
+  {
+    id: 'T4hK9qLpW2xMvZ7bSdEr',
+    title: "Party in the U.S.A.",
+    episode: 'us5e1',
+    genre: "pop",
+    artist: "Miley Cyrus",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'F8yUvB3pZ1nWqJ0mRgHt',
+    title: "Only Girl (In the World)",
+    episode: 'us5e2',
+    genre: "dance,pop",
+    artist: "Rihanna",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'L2sFpY6mQ4rXzT9nVoJa',
+    title: "When I Grow Up",
+    episode: 'us5e3',
+    genre: "pop",
+    artist: "The Pussycat Dolls",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'U1cJnK8tP5xRqY3bLmVz',
+    title: "Oops!... I Did It Again",
+    episode: 'us5e4',
+    genre: "pop",
+    artist: "Britney Spears",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'M7dNxR2vK9bCeW0tPyLs',
+    title: "Take Me Home",
+    episode: 'us5e5',
+    genre: "classic,pop",
+    artist: "Cher",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'E3vQkL8mBpX2fNtY4sUw',
+    title: "I’m So Excited",
+    episode: 'us5e6',
+    genre: "pop,disco",
+    artist: "The Pointer Sisters",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'C5rJpN4uVmK7xQ1bWzHs',
+    title: "Whip My Hair",
+    episode: 'us5e7',
+    genre: "pop",
+    artist: "Willow Smith",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'C5r456fGVmK7xQ1bWzHs',
+    title: "Ain't Nothin' Goin' on But the Rent",
+    episode: 'us5e8',
+    genre: "dance,r&b",
+    artist: "Gwen Guthrie",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: '4f5S2N4uVmK7xQ1bWzHs',
+    title: "Cold Hearted",
+    episode: 'us5e9',
+    genre: "pop,dance pop",
+    artist: "Paula Abdul",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'C5rJpN4ulolsWQ1bWzH0',
+    title: "(It Takes) Two to Make It Right",
+    episode: 'us5e10',
+    genre: "pop,dance pop,house",
+    artist: "Seduction",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: '4f5RRp0ulolsWQ1bWzH0',
+    title: "Malambo No. 1",
+    episode: 'us5e11',
+    genre: "classical,musica tropicale",
+    artist: "Yma Sumac",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: '4f54f5dEE3lsWQ1bWzH0',
+    title: "The Beginning",
+    episode: 'us5e12',
+    genre: "dance,electronic",
+    artist: "RuPaul",
+    season: '5',
+    franchise: 'US'
+  },
+  {
+    id: 'Z1xW2vT3qE4rS5yU6oLp',
+    title: "Express Yourself",
+    episode: 'us6e1',
+    genre: "pop,classic",
+    artist: "Madonna",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'Y7kJ8hF9mN0bQlR2pXzS',
+    title: "Turn the Beat Around",
+    episode: 'us6e2',
+    genre: "disco",
+    artist: "Vicki Sue Robinson",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'X3dC4vB5nM6yL7qW8eRt',
+    title: "Shake It Up",
+    episode: 'us6e3',
+    genre: "pop",
+    artist: "Selena Gomez",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'W9fV0gH1jK2lM3oN4pQg',
+    title: "I'm Every Woman",
+    episode: 'us6e4',
+    genre: "soul,disco",
+    artist: "Chaka Khan",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'V5rN6tB7yU8iO9pA0sDf',
+    title: "Head to Toe",
+    episode: 'us6e5',
+    genre: "pop",
+    artist: "Lisa Lisa & Cult Jam",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'U1qJ2wK3eL4oZ5pX6cVb',
+    title: "Whatta Man",
+    episode: 'us6e6',
+    genre: "hip-hop,r&b",
+    artist: "Salt-N-Pepa, En Vogue",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'T7yH8uJ9iK0lM1nOpQrS',
+    title: "Point of No Return",
+    episode: 'us6e7',
+    genre: "freestyle,pop",
+    artist: "Exposé",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'S2dF3gH4jK5lM6nPoRtU',
+    title: "Stupid Girls",
+    episode: 'us6e8',
+    genre: "pop",
+    artist: "P!nk",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'R9zY0xC1vB2nM3oNpQwL',
+    title: "Vibeology",
+    episode: 'us6e9',
+    genre: "pop,dance",
+    artist: "Paula Abdul",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'Q8eR7tY6uI5oP4lK3pNz',
+    title: "Think",
+    episode: 'us6e10',
+    genre: "soul,r&b",
+    artist: "Aretha Franklin",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'P3oI4uY5tR6eW7qM8aSv',
+    title: "Stronger (What Doesn’t Kill You)",
+    episode: 'us6e11',
+    genre: "pop,rock",
+    artist: "Kelly Clarkson",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'O0pQ1wE2rT3yU4iO5pLa',
+    title: "Sissy That Walk",
+    episode: 'us6e12',
+    genre: "dance,pop",
+    artist: "RuPaul",
+    season: '6',
+    franchise: 'US'
+  },
+  {
+    id: 'aH3kLm9XyVPq0rT6zHgS',
+    title: "Geronimo",
+    episode: 'us7e1',
+    genre: "pop",
+    artist: "RuPaul ft. Lucian Piane",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'B8fYgJ6L0RbQuMnsWVcT',
+    title: "Twist of Fate",
+    episode: 'us7e2',
+    genre: "pop",
+    artist: "Olivia Newton-John",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'Cq7TvP3cFeW9YjKLudRo',
+    title: "I Was Gonna Cancel",
+    episode: 'us7e3',
+    genre: "dance,pop",
+    artist: "Kylie Minogue",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'D5uXbZ1mGhCvPqDkRQ7L',
+    title: "Dreaming",
+    episode: 'us7e4',
+    genre: "new wave,rock",
+    artist: "Blondie",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'E4wNc0RPGqZdSy8xEuJT',
+    title: "Lovergirl",
+    episode: 'us7e5',
+    genre: "r&b",
+    artist: "Teena Marie",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'F2rKXTVqLNCiMfY7Pj9W',
+    title: "Break Free",
+    episode: 'us7e6',
+    genre: "pop,dance",
+    artist: "Ariana Grande ft. Zedd",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'G9ncJQYVpKuHz4t0gBoR',
+    title: "No More Lies",
+    episode: 'us7e7',
+    genre: "r&b",
+    artist: "Michel'le",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'H1XIr7G4kQvPmZBt0NjO',
+    title: "I Think We're Alone Now",
+    episode: 'us7e8',
+    genre: "pop,rock",
+    artist: "Tiffany",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'I5oLhRxYDWk8Q4gIgSPb',
+    title: "Really Don't Care",
+    episode: 'us7e9',
+    genre: "pop",
+    artist: "Demi Lovato ft. Cher Lloyd",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'J0UtEe5MHoSNw7pjIB2F',
+    title: "Show Me Love",
+    episode: 'us7e10',
+    genre: "house,club",
+    artist: "Robin S.",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'K7yZcPnBO3VXwLmi6rUg',
+    title: "Roar",
+    episode: 'us7e11',
+    genre: "pop",
+    artist: "Katy Perry",
+    season: '7',
+    franchise: 'US'
+  },
+  {
+    id: 'L9sOLf1PZxVNB2YdemIR',
+    title: "Born Naked",
+    episode: 'us7e12',
+    genre: "dance,ruPaul",
+    artist: "RuPaul",
+    season: '7',
+    franchise: 'US'
+  },
   {
     id: 'bY56VqztrKPlh5Nc9UXe',
     title: "Love Shack",
@@ -1887,9 +3988,130 @@ export const lipsyncs = [
     season: '11',
     franchise: 'US'
   },
+  {
+    id: 'F3qLm7XyZpRt9Uv2KdHs',
+    title: "Applause",
+    episode: 'us8e1',
+    genre: "pop,dance,electropop",
+    artist: "Lady Gaga",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'Q6pXo2JmVkNr9Lb7ZwTy',
+    title: "I Will Survive",
+    episode: 'us8e2',
+    genre: "disco,soul,pop",
+    artist: "Gloria Gaynor",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'M7nYh5QvWxZo8Lp4EkJr',
+    title: "Mesmerized (FreeMasons Remix)",
+    episode: 'us8e3',
+    genre: "pop,disco,funk",
+    artist: "Faith Evans",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'A9wTr2KjXpBm6Zn3VyLf',
+    title: "Call Me",
+    episode: 'us8e4',
+    genre: "rock,new wave,pop",
+    artist: "Blondie",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'B1xVq8LzRpSn4Gy6KdPf',
+    title: "Causing a Commotion",
+    episode: 'us8e5',
+    genre: "pop,dance,pop rock",
+    artist: "Madonna",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'K8rGh4WnDzLm7Jp3VsQy',
+    title: "I Love It",
+    episode: 'us8e6',
+    genre: "pop,dance pop",
+    artist: "Icona Pop",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'R2mBn9XpWtQy3Fk6JsLv',
+    title: "And I Am Telling You I'm Not Going",
+    episode: 'us8e7',
+    genre: "musical",
+    artist: "Jennifer Holliday",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'Z5lJr7TkVpQo8Xn4DhFs',
+    title: "You Make Me Feel (Mighty Real)",
+    episode: 'us8e8',
+    genre: "disco,r&b",
+    artist: "Sylvester",
+    season: '8',
+    franchise: 'US'
+  },
+  {
+    id: 'N4dQm1YkZsWc6Jp8HvLt',
+    title: "The Realness",
+    episode: 'us8e9',
+    genre: "dance,house,pop",
+    artist: "RuPaul",
+    season: '8',
+    franchise: 'US'
+  },
 ];
 
 export const seasons = [
+  {
+    id: '5KJbVdxQKsW8ON9ogXiq',
+    seasonNumber: '1',
+    franchise: 'US',
+  },
+  {
+    id: 'en1MU7un0ZfxGHINEaZu',
+    seasonNumber: '2',
+    franchise: 'US',
+  },
+  {
+    id: 'bQSUeaq0vyw92zHmKQ3f',
+    seasonNumber: '3',
+    franchise: 'US',
+  },
+  {
+    id: 'H0laHTBJT4ApWASo0r17',
+    seasonNumber: '4',
+    franchise: 'US',
+  },
+  {
+    id: 'txf84f43S7HHEZluh2Vl',
+    seasonNumber: '5',
+    franchise: 'US',
+  },
+  {
+    id: 'txf8d5E897HHEZBcNCVl',
+    seasonNumber: '6',
+    franchise: 'US',
+  },
+  {
+    id: 'txf8d5E2LXgwEZBcNCVl',
+    seasonNumber: '7',
+    franchise: 'US',
+  },
+  {
+    id: 'txf8456ld0gwEZBOOCVl',
+    seasonNumber: '8',
+    franchise: 'US',
+  },
   {
     id: 'txf82f5ld0gwEZBcNCVl',
     seasonNumber: '9',

@@ -13,14 +13,15 @@ const episodeTypeToStats: Record<string, (keyof any)[]> = {
   branding: ["Acting", "Comedy"],
   commercial: ["Acting", "Comedy"],
   comedy: ["Comedy", "Acting"],
-  design: ["Design"],
-  dance: ["Dance"],
+  design: ["Design", "Runway"],
+  dancing: ["Dance"],
   singing: ["Singing", "Dance"],
   improv: ["Comedy", "Acting"],
   roast: ["Comedy"],
-  makeover: ["Design"],
+  parody: ["Comedy", "Acting"],
+  makeover: ["Design", "Runway"],
   musical: ['Acting', 'Singing', 'Dance', 'Comedy'],
-  default: ["Acting", "Comedy", "Dance", "Design", "Singing"],
+  default: ["Acting", "Comedy", "Dance", "Design", "Singing", "Runway"],
 };
 
 export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false, episodeType: string) {
@@ -97,18 +98,18 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
 
     return {
       ...q,
-      scores: [...q.scores, { 
-        episodeNumber, 
-        score: finalScore, 
-        baseStat: baseStat, 
-        statIncrease: statIncrease, 
+      scores: [...q.scores, {
+        episodeNumber,
+        score: finalScore,
+        baseStat: baseStat,
+        statIncrease: statIncrease,
         relevantStatsLen: relevantStats.length,
-        bias:bias,
+        bias: bias,
         wins: q.wins,
         highs: q.highs,
-      lows: q.lows,
+        lows: q.lows,
         bottoms: q.bottoms
-       }]
+      }]
     };
   });
 
@@ -121,8 +122,9 @@ export function mainChallenge(trackRecord: any[], episodeNumber: string | number
   const regularBottomQueens = bottomQueens.slice(1);
 
   let eliminatedId = null;
-  if(!nonElimination){
-    if(topCount == 2 && bottomCount == 2){
+  if (!nonElimination) {
+    if (topCount == 2 && bottomCount == 2) {
+      
       eliminatedId = lipsync(bottomQueens);
     } else eliminatedId = lipsync(bottomQueens.slice(1));
   }
@@ -186,24 +188,24 @@ function nittyGritty({ size }: { size: number }) {
 }
 
 function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[]) {
-  
+
   const bottomResults = [];
-  
-  for(let b = 0; b < bottomQueens.length; b++){
-    
-     bottomResults.push({
+
+  for (let b = 0; b < bottomQueens.length; b++) {
+
+    bottomResults.push({
       bottomId: bottomQueens[b].id,
       name: bottomQueens[b].queen,
-      result: (Math.floor(Math.random() * 10) + 1) 
-      + (1 * bottomQueens[b].wins)
-      + (.5 * bottomQueens[b].highs) 
-      - (.6 * bottomQueens[b].lows)
-      - (2 * bottomQueens[b].bottoms),
-     }) 
+      result: (Math.floor(Math.random() * 10) + 1)
+        + (1 * bottomQueens[b].wins)
+        + (.5 * bottomQueens[b].highs)
+        - (.6 * bottomQueens[b].lows)
+        - (2 * bottomQueens[b].bottoms),
+    })
   }
 
-  console.log(bottomResults);
-    // Handle empty array case
+  //console.log(bottomResults);
+  // Handle empty array case
   if (bottomResults.length === 0) {
     return null;
   }
@@ -259,7 +261,7 @@ function getEpisodeScore(queen: any, episodeType: string, episodeNumber: number)
   }
 
   statIncrease = statIncrease / relevantStats.length;
-  
+
 
   //console.log(queen.name + ' ' + baseStat + ' ' + finalScore);
   //relevantStats.reduce((sum, stat) => sum + (queen.stats[stat] || 50), 0) / relevantStats.length;
@@ -267,7 +269,7 @@ function getEpisodeScore(queen: any, episodeType: string, episodeNumber: number)
   const randomFactor = Math.floor(Math.random() * 20) - 10;
   const bias = getQueenBiasFromStats(queen);
 
-  const finalScore = (baseStat + statIncrease) ;
+  const finalScore = (baseStat + statIncrease);
   //const finalScore = Math.min(100, Math.max(1, baseStat + randomFactor + bias));
 
   return {

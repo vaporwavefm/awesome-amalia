@@ -26,6 +26,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
         Dance: Math.floor(Math.random() * 100) + 1,
         Comedy: Math.floor(Math.random() * 100) + 1,
         Design: Math.floor(Math.random() * 100) + 1,
+        Runway: Math.floor(Math.random() * 100) + 1,
         Singing: Math.floor(Math.random() * 100) + 1,
       }
     }));
@@ -78,7 +79,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
 
     if (eventType === "results") {
       setEpisodeEvent("results");
-      setShowResults(true);         
+      setShowResults(true);
       return;
     }
 
@@ -144,9 +145,21 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
     };
 
     let lipsyncTitle = '', lipsyncArtist = '';
-    if(lipsyncs[episodeNumber - 2]){
+    if (lipsyncs[episodeNumber - 2] && lipsyncs[episodeNumber - 2]['lipsync'].season == 9) {
       lipsyncTitle = lipsyncs[episodeNumber - 2]['lipsync'].title;
       lipsyncArtist = lipsyncs[episodeNumber - 2]['lipsync'].artist;
+    }
+else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].season != 9) {
+      lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
+      lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
+    }
+    else if (episodeNumber == 1 && lipsyncs[episodeNumber]['lipsync'].season == 3) { // temp fix for season 3
+      lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
+      lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
+    }
+    else if (lipsyncs[episodeNumber - 2] && lipsyncs[episodeNumber - 2]['lipsync'].season === 3) {
+      lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
+      lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
     }
 
     switch (event) {

@@ -23,7 +23,7 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
   const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
-    if (!debouncedQuery || (debouncedQuery.length < 2 && type != "season")) {
+    if (!debouncedQuery || (debouncedQuery.length < 2 && (type != "season" && (type == 'queen' && debouncedQuery.toLowerCase() != 'q') ))) {
       setResults([]);
       setIsOpen(false);
       return;

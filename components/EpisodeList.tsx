@@ -58,7 +58,7 @@ const EpisodeList = ({
           return placement?.placement === "safe";
         });
 
-        const isFinale = ep.title?.toLowerCase().includes("finale");
+        const isFinale = ep.type?.toLowerCase().includes("finale");
 
         return (
           <div

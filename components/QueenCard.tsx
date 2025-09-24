@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import * as Flags from 'country-flag-icons/react/3x2';
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+
 import {
   Accordion,
   AccordionContent,
@@ -24,6 +25,8 @@ type Queen = {
   id: string;
   name: string;
   url: string;
+  urls?: string[];
+  urlObj?: string[];
   franchise?: string;
   seasons?: string;
   wins?: number;
@@ -56,6 +59,24 @@ const QueenCard = ({ q,
   const isTopWinner = (maxWins != null) ? q.wins === maxWins && maxWins > 0 : false;
   const isMainScreen = viewMode != null && viewMode != 'eliminated';
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    if (q.urls && q.urls.length > 0)
+      setCurrentIndex((prev) =>
+        prev === 0 && q.urls ? q.urls.length - 1 : prev - 1
+      );
+
+
+  };
+
+  const handleNext = () => {
+    if (q.urls && q.urls.length > 0)
+      setCurrentIndex((prev) =>
+        q.urls && prev === q.urls.length - 1 ? 0 : prev + 1
+      );
+  };
+
   return (
     <Card
       className={`relative flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl 
@@ -81,13 +102,31 @@ const QueenCard = ({ q,
       </CardHeader>
 
       <CardContent className="flex flex-col items-center justify-start space-y-3">
-        <div className="relative w-24 h-24">
+        <div className="relative w-26 h-26 flex items-center justify-center group">
           <Image
-            src={q.url || ''}
+            src={q.urls ? q.urls[currentIndex] : q.url}
             alt={q.name}
             fill
-            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? 'grayscale' : ''}`}
+            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? "grayscale" : ""}`}
           />
+          {q.urls && q.urls.length > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute left-0 bg-white rounded-full shadow p-1 hover:bg-purple-100 
+                   opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                onClick={handleNext}
+                className="absolute right-0 bg-white rounded-full shadow p-1 hover:bg-purple-100 
+                   opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
         </div>
 
         <div className="grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">

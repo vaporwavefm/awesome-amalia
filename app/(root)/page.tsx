@@ -1,17 +1,22 @@
 import Image from "next/image";
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const Page = () => {
 
+  const bugs = [
+    { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3)' },
+  ]
   const updates = [
+    { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs)." },
     { date: "2025-09-17", note: "Fixed issue where buildCast would render huge red Xs on load (will need to fix the sim page too where it render the Not Found button for a second..). Imported queens from seasons 1-8 and episodes from season 9!" },
     { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
 
   return (
-    <>
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-violet-50 to-white px-6 relative overflow-hidden">
+    <div className="bg-gradient-to-b from-violet-50 to-white">
+      <div className="flex justify-center items-center min-h-screen  px-6 relative overflow-hidden">
 
         <div className="absolute bottom-70 inset-x-0 flex justify-between opacity-20 pointer-events-none">
           {Array.from({ length: 10 }).map((_, idx) => (
@@ -54,7 +59,7 @@ const Page = () => {
           </p>
 
           <p className="text-gray-700">
-            With this simulator, you can build your own casts and your own episode lists (you can even influence the outcome by 
+            With this simulator, you can build your own casts and your own episode lists (you can even influence the outcome by
             setting queens with different stats!).
           </p>
 
@@ -87,17 +92,67 @@ const Page = () => {
         </section>
       </div>
 
-      <section className="max-w-3xl mx-auto mt-10 mb-10 p-6 bg-white shadow-md rounded-2xl space-y-4">
-        <h2 className="text-2xl font-bold text-violet-700 mb-4">Update Log</h2>
-        <ul className="space-y-2 text-gray-700">
-          {updates.map((update, idx) => (
-            <li key={idx} className="border-l-4 border-violet-500 pl-3">
-              <span className="font-semibold">{update.date}:</span> {update.note}
-            </li>
-          ))}
-        </ul>
+      <section className="max-w-3xl mx-auto mt-10 mb-10 p-0 shadow-md rounded-2xl overflow-hidden">
+        <Tabs defaultValue="updates" className="w-full pt-8">
+
+            <TabsList className="flex space-x-2 bg-violet-100/60 p-2 rounded-xl justify-center mb-6 gap-2 rounded-full p-1 shadow-inner max-w-4xl mx-auto ">
+              <TabsTrigger
+                value="updates"
+                className="px-4 py-2 text-sm font-medium text-violet-700 rounded-lg 
+                   data-[state=active]:bg-violet-600 data-[state=active]:text-white 
+                   hover:bg-violet-200 transition"
+              >
+                Updates
+              </TabsTrigger>
+              <TabsTrigger
+                value="bugs"
+                className="px-4 py-2 text-sm font-medium text-red-700 rounded-lg 
+                   data-[state=active]:bg-red-600 data-[state=active]:text-white 
+                   hover:bg-red-200 transition"
+              >
+                Werk in Progress
+              </TabsTrigger>
+            </TabsList>
+    
+          {/* Updates Tab */}
+          <TabsContent value="updates" className="mt-6 space-y-6">
+            <h2 className="text-2xl font-bold text-violet-700">Update Log</h2>
+            <ul className="space-y-6 pl-4 pr-4 mb-4">
+              {updates.map((update, idx) => (
+                <li
+                  key={idx}
+                  className="relative bg-white border-l-4 border-violet-500 rounded-md shadow-sm hover:shadow-md transition p-4"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="font-semibold text-violet-700">{update.date}</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{update.note}</p>
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+
+          {/* Bugs Tab */}
+          <TabsContent value="bugs" className="mt-6 space-y-6">
+            <h2 className="text-2xl font-bold text-red-600">Werk in Progress</h2>
+            <ul className="space-y-6 pl-4 pr-4 mb-4">
+              {bugs.map((bug, idx) => (
+                <li
+                  key={idx}
+                  className="relative bg-red-50 border-l-4 border-red-500 rounded-md shadow-sm hover:shadow-md transition p-4 mb-2"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="font-semibold text-red-600">{bug.date}</span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">{bug.note}</p>
+                </li>
+              ))}
+            </ul>
+          </TabsContent>
+        </Tabs>
       </section>
-    </>
+
+    </div>
   );
 };
 
