@@ -164,6 +164,10 @@
          hover:bg-purple-300 transition-colors duration-300;
 }
 
+.gen-config-select {
+  @apply w-full h-11 px-3 rounded-xl border border-gray-300 bg-white text-sm shadow-sm;
+}
+
 /* Active state (shadcn tabs add `data-[state=active]` attribute) */
 .tabs-trigger[data-state="active"] {
   @apply bg-violet-600 text-white;

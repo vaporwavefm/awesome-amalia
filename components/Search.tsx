@@ -75,7 +75,9 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
         </div>
 
         {isOpen && (
-          <div className="absolute top-full left-0 w-full mt-3 bg-white shadow-xl rounded-xl border border-gray-200 z-10">
+          <div className="absolute top-full left-0 w-full mt-3 bg-white shadow-2xl rounded-2xl border border-gray-200 z-20 
+                  max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent
+                  ">
             {results.length === 0 && debouncedQuery ? (
               <p className="p-3 text-gray-500 text-center">No results found</p>
             ) : (
@@ -83,7 +85,7 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                 {results.map((res) => (
                   <li
                     key={res.id}
-                    className="flex items-center p-3 hover:bg-gray-50 cursor-pointer transition"
+                    className="flex items-center p-3 hover:bg-gray-50 cursor-pointer transition-colors duration-200"
                     onClick={() => handleClickItem(res)}
                   >
                     {type === "queen" && (
@@ -91,8 +93,8 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                         <Image
                           src={res.url || ""}
                           alt={res.name}
-                          width={36}
-                          height={36}
+                          width={40}
+                          height={40}
                           className="rounded-full mr-3 border border-gray-200 object-cover"
                         />
                         <span className="font-medium text-gray-700">{res.name}</span>

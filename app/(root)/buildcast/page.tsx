@@ -230,9 +230,10 @@ const Page = () => {
                 </div>
 
                 <div className="mt-4 flex flex-col space-y-2 w-[300px] relative">
+                  {/* season style */}
                   <div className="flex flex-col space-y-2 w-[300px] pb-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-800">Select season mode:</span>
+                      <span className="font-medium text-gray-800">Select season style:</span>
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <button
@@ -244,7 +245,7 @@ const Page = () => {
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs text-sm">
                           <p>
-                            <strong>Old-School Finale:</strong> The finalists are judged on their overall
+                            <strong>Classic Finale:</strong> The finalists are judged on their overall
                             performance throughout the season, and the winner is chosen based off track record.
                           </p>
                           <p className="mt-2">
@@ -252,6 +253,10 @@ const Page = () => {
                             and the winner is determined by their performance in a final Lipsync for the Crown.
                           </p>
                           <br /><Separator />
+                          <p className="mt-2">
+                            <strong>Classic All-Stars:</strong> The all-stars are judged on their overall
+                            performance throughout the season, and the winner is chosen based off track record.
+                          </p>
                           <p className="mt-2">
                             <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
                             will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
@@ -269,18 +274,18 @@ const Page = () => {
 
                     {/* Select dropdown */}
                     <Select defaultValue="osf">
-                      <SelectTrigger id="seasonMode" className="w-full">
+                      <SelectTrigger id="seasonStyle" className="gen-config-select">
                         <SelectValue placeholder="Select a series type:" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Regular</SelectLabel>
-                          <SelectItem value="osf">Old-School Finale</SelectItem>
+                          <SelectItem value="osf">Classic Finale</SelectItem>
                           <SelectItem disabled value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
                         </SelectGroup>
                         <SelectGroup>
                           <SelectLabel>All-Stars</SelectLabel>
-                          <SelectItem disabled value="osas">Old-School All-Stars (coming soon!)</SelectItem>
+                          <SelectItem disabled value="osas">Classic All-Stars (coming soon!)</SelectItem>
                           <SelectItem disabled value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
                           <SelectItem disabled value="laas">Lipsync Assassins (coming soon!)</SelectItem>
                         </SelectGroup>
@@ -288,8 +293,46 @@ const Page = () => {
                     </Select>
                   </div>
 
+                  {/* season mode */}
+                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-gray-800">Select season mode:</span>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p>
+                            <strong>Classic Season:</strong> The queens will enter the competition all at once
+                            and will be eliminated each week.
+                          </p>
+                          <p>
+                            <strong>Split Premiere:</strong> The queens will be divided into two groups and be judged
+                            before making a merge.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+
+                    {/* Select dropdown */}
+                    <Select defaultValue="csp">
+                      <SelectTrigger id="seasonMode" className="gen-config-select">
+                        <SelectValue placeholder="Select a series type:" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="csp">Classic Season</SelectItem>
+                        <SelectItem disabled value="sp">Split Premiere (coming soon!)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   {/* number of finalists */}
-                  <div className="flex flex-col space-y-2 w-[300px]">
+                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-gray-800">Number of finalists:</span>
                       <Tooltip>
@@ -311,7 +354,7 @@ const Page = () => {
 
                     {/* Select dropdown */}
                     <Select value={minFinalists} defaultValue="3" onValueChange={(value) => setMinFinalists(value)}>
-                      <SelectTrigger id="numFinalists" className="w-full">
+                      <SelectTrigger id="numFinalists" className="gen-config-select">
                         <SelectValue placeholder="Select a number:" />
                       </SelectTrigger>
                       <SelectContent>
@@ -324,7 +367,7 @@ const Page = () => {
                   </div>
 
                   {/* double shantays options */}
-                  <div className="flex flex-col space-y-2 w-[300px]">
+                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-gray-800">Number of double shantays:</span>
                       <Tooltip>
@@ -346,7 +389,7 @@ const Page = () => {
 
                     {/* Select dropdown */}
                     <Select value={minNonElimEps} defaultValue="0" onValueChange={(value) => setMinNonElimEps(value)}>
-                      <SelectTrigger id="numNonElim" className="w-full">
+                      <SelectTrigger id="numNonElim" className="gen-config-select">
                         <SelectValue placeholder="Select a number:" />
                       </SelectTrigger>
                       <SelectContent>

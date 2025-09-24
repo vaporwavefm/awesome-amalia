@@ -8,7 +8,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3)' },
   ]
   const updates = [
-    { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs)." },
+    { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs). Added menu options in general configuration tab for seasons style/mode." },
     { date: "2025-09-17", note: "Fixed issue where buildCast would render huge red Xs on load (will need to fix the sim page too where it render the Not Found button for a second..). Imported queens from seasons 1-8 and episodes from season 9!" },
     { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
