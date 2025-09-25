@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 const Page = () => {
 
   const bugs = [
+    { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted.' },
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3)' },
   ]
   const updates = [
