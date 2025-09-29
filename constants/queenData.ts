@@ -1399,8 +1399,8 @@ export const queens = [
     franchise: 'US'
   },
   {
-    id: '',
-    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bd/GottmikS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902181947',
+    id: '4fCfJozI92fuhdLs2UDb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/JoeyJayS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182023',
     seasons: '13',
     name: "Joey Jay",
     franchise: 'US'
