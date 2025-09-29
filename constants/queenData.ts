@@ -845,7 +845,7 @@ export const queens = [
   },
   {
     id: 'lTWffBQjI3kDqV1zUv0s',
-    seasons: '10',
+    seasons: '10,SR1',
     name: 'Yuhua Hamasaki',
     franchise: 'US',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/62/YuhuaHamasakiS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210831164124'
@@ -1145,6 +1145,91 @@ export const queens = [
     franchise: 'CA'
   },
   {
+    id: 'rDc82a529FEwSinLXiDh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/45/AdrianaCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205333',
+    seasons: 'C2',
+    name: "Adriana",
+    franchise: 'CA'
+  },
+  {
+    id: 'ObF2MxwMDM6pKtuSnNrq',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/BethCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205404',
+    seasons: 'C2',
+    name: "Beth",
+    franchise: 'CA'
+  },
+  {
+    id: 'AiCHusQSXUfxl8WKbHe3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4b/Eve6000CDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205429',
+    seasons: 'C2',
+    name: "Eve 6000",
+    franchise: 'CA'
+  },
+  {
+    id: 'dUU6hWhkcQ9s4pJhbZh4',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/79/GiaMetricCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205604',
+    seasons: 'C2',
+    name: "Gia Metric",
+    franchise: 'CA'
+  },
+  {
+    id: 'mJASXtZDfhapb3spKLmJ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/55/IcesisCoutureCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205635',
+    seasons: 'C2',
+    name: "Icesis Couture",
+    franchise: 'CA'
+  },
+  {
+    id: 'd50fTRhC1dcXZcHfszZ3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1f/KendallGenderCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205659',
+    seasons: 'C2',
+    name: "Kendall Gender",
+    franchise: 'CA'
+  },
+  {
+    id: '01TjWHDQwpdZP8tcTVnV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ad/KimoraAmourCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220725181818',
+    seasons: 'C2',
+    name: "Kimora Amour",
+    franchise: 'CA'
+  },
+  {
+    id: 'sIS0bwRGtC2J2l2Szgu3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/Oc%C3%A9aneAqua-BlackCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205759',
+    seasons: 'C2',
+    name: "Océane Aqua-Black",
+    franchise: 'CA'
+  },
+  {
+    id: 'iH7RFbkNLNu2LHimFCiV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/12/PythiaCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205835',
+    seasons: 'C2,GAS1',
+    name: "Pythia",
+    franchise: 'CA'
+  },
+  {
+    id: 'O0GIRmwdwhudAqxNntV5',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f5/StephaniePrinceCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205858',
+    seasons: 'C2,CvtW1',
+    name: "Stephanie Prince",
+    franchise: 'CA'
+  },
+  {
+    id: '5ywHLWl8uW2OzJ7GP2cM',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d6/SukiDollCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205923',
+    seasons: 'C2,SR1',
+    name: "Suki Doll",
+    franchise: 'CA'
+  },
+  {
+    id: 'EUYC9bCVccRELaoxWEKk',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0a/SynthiaKissCDR2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210914205948',
+    seasons: 'C2',
+    name: "Synthia Kiss",
+    franchise: 'CA'
+  },
+
+  {
     id: 'W9v56wQTLUPXbb442hMY',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/ArantxaCastillaLaManchaDRES1CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210902173400',
     seasons: 'ES1,UKvtW2',
@@ -1349,7 +1434,7 @@ export const queens = [
     franchise: 'US'
   },
   {
-    id: '',
+    id: 'G4fVACaVRzQcVzDRbzlY',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4f/OliviaLuxS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902182353',
     seasons: '13,AS10',
     name: "Olivia Luxx",
@@ -1363,7 +1448,7 @@ export const queens = [
     franchise: 'US'
   },
   {
-    id: '',
+    id: '5j4f5cBfH0fYLJZupGQL',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7d/SymoneS13CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211216235826',
     seasons: '13',
     name: "Symone",
@@ -1538,7 +1623,7 @@ export const queens = [
     franchise: 'US'
   },
   {
-    id: '',
+    id: '4f57FQpVpUc4OitdTMKL',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/ba/MalaysiaBabydollFoxxS15CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221213181120',
     seasons: '15',
     name: "Malaysia Babydoll Foxx",
@@ -1664,7 +1749,7 @@ export const queens = [
     franchise: 'US'
   },
   {
-    id: '',
+    id: '4fDDehn5tvUlQBC5NBZi',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f0/PlasmaS16CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240107012439',
     seasons: '16',
     name: "Plasma",
@@ -1765,7 +1850,7 @@ export const queens = [
     id: '3lkExLsRZdseTau69kCb',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f2/LydiaBKollinsS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241204223017',
     seasons: '17,AS10',
-    name: "Lydia B Kollins",
+    name: "Lydia B. Kollins",
     franchise: 'US'
   },
   {
@@ -1788,6 +1873,160 @@ export const queens = [
     seasons: '17',
     name: "Suzie Toot",
     franchise: 'US'
+  },
+  {
+    id: '5g6hO80U79pdRTGwCVvh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/BagaChipzDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095448',
+    seasons: 'UK1,UKvtW1',
+    name: "Baga Chipz",
+    franchise: 'GB'
+  },
+  {
+    id: 'Gx6AjBjxb1rmv8cUspDB',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/81/BluHydrangeaDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210907152327',
+    seasons: 'UK1,UKvtW1',
+    name: "Blu Hydrangea",
+    franchise: 'GB'
+  },
+  {
+    id: 'nzTOIHLA1GRXlQOTzhF7',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/64/CherylHoleDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095648',
+    seasons: 'UK1,CvtW2',
+    name: "Cheryl Hole",
+    franchise: 'GB'
+  },
+  {
+    id: '5eMGXpFngu6b1lBJnZb5',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1d/CrystalDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095718',
+    seasons: 'UK1',
+    name: "Crystal",
+    franchise: 'GB'
+  },
+  {
+    id: 'jpSuN2qvQzLQ5JLtfpK3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e8/DivinaDeCampoDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095754',
+    seasons: 'UK1',
+    name: "Divina De Campo",
+    franchise: 'GB'
+  },
+  {
+    id: 'inMtbtfXwGRl2UbWU9sm',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b3/GothyKendollDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095838',
+    seasons: 'UK1,UKvtW2',
+    name: "Gothy Kendoll",
+    franchise: 'GB'
+  },
+  {
+    id: 'wM34dcK87O2iyuoqqX8L',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/26/ScaredyKatDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830095933',
+    seasons: 'UK1',
+    name: "Scaredy Kat",
+    franchise: 'GB'
+  },
+  {
+    id: 'wM34w6K87O2iyuoqqX8L',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f1/SumTingWongDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830100017',
+    seasons: 'UK1,SR1',
+    name: "Sum Ting Wong",
+    franchise: 'GB'
+  },
+  {
+    id: '34owLWPsP5H3V18f1ogK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/92/TheVivienneDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830100105',
+    seasons: 'UK1,AW1',
+    name: "The Vivienne",
+    franchise: 'GB'
+  },
+  {
+    id: 'qI4XWqNfHzQJA0LZmQ2I',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/56/VinegarStrokesDRUK1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210830100140',
+    seasons: 'UK1',
+    name: "Vinegar Strokes",
+    franchise: 'GB'
+  },
+  {
+    id: '4f5GGqNfHzQJA0LZmQ2I',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fa/PanginaHealsUKvsTWCastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220117181132',
+    seasons: 'UKvtW1',
+    name: "Pangina Heals",
+    franchise: 'GB'
+  },
+  {
+    id: 'AcxD83FwZHzpj0XgUwiu',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1b/ArgennisDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808142758',
+    seasons: 'MX1',
+    name: "Argennis",
+    franchise: 'MX'
+  },
+  {
+    id: 'gXgQyBR3K9YcVSN0OdDw',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/38/CristianPeraltaDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808152413',
+    seasons: 'MX1',
+    name: "Cristian Peralta",
+    franchise: 'MX'
+  },
+  {
+    id: 'Z9eflznqLbpYUBpa6wkI',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/db/GalaVaroDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808155148',
+    seasons: 'MX1,GAS1',
+    name: "Gala Varo",
+    franchise: 'MX'
+  },
+  {
+    id: 'lxPnPOqmbCNMa5WnhbRH',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/11/LadyKeroDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808172448',
+    seasons: 'MX1',
+    name: "Lady Kero",
+    franchise: 'MX'
+  },
+  {
+    id: '28z2jrqceOJ8dVuNYp33',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/81/MargaretYYaDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808173405',
+    seasons: 'MX1',
+    name: "Margaret Y Ya",
+    franchise: 'MX'
+  },
+  {
+    id: 'iNPbRp7EaaaDEeKGkhHr',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d1/MatrakaDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230809042921',
+    seasons: 'MX1',
+    name: "Matraka",
+    franchise: 'MX'
+  },
+  {
+    id: 'pWIYPb5xcBRVGAyYQclV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/66/MissVallartaDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230808193907',
+    seasons: 'MX1',
+    name: "Miss Vallarta",
+    franchise: 'MX'
+  },
+  {
+    id: '3KoRithFuIVtVZxmbx7x',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e8/PixiePixieDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230809044243',
+    seasons: 'MX1',
+    name: "Pixie Pixie",
+    franchise: 'MX'
+  },
+  {
+    id: 'Q3YNoiK3gJt9WRTDyb8e',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/ReginaVoceDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230809045939',
+    seasons: 'MX1',
+    name: "Regina Voce",
+    franchise: 'MX'
+  },
+  {
+    id: 'BTFsOWj8dXcdaNKoHOxh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/SerenaMorenaDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20250211040907',
+    seasons: 'MX1',
+    name: "Serena Morena",
+    franchise: 'MX'
+  },
+  {
+    id: '5g6sOWjcdXcdaNKoHOxh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0d/VermelhaNoirDRMX1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230809051254',
+    seasons: 'MX1',
+    name: "Vermelha Noir",
+    franchise: 'MX'
   },
 
 ].sort((a, b) =>
@@ -3107,7 +3346,7 @@ export const lipsyncs = [
     franchise: 'US'
   },
   {
-    id: 'Z4nQxY2vLp6sHw9bMzFr',
+    id: 'Z4nQxY2vcd6sHw9bMzFr',
     title: "Shake Your Love",
     episode: 'us2e8',
     genre: "dance,pop",
@@ -3161,7 +3400,7 @@ export const lipsyncs = [
     franchise: 'US'
   },
   {
-    id: '4f5gVV1W4f45GhYdPfL0',
+    id: '4f5cfV1W4f45GhYdPfL0',
     title: "Looking for a New Love",
     episode: 'us3e6',
     genre: "r&b,soul",

@@ -106,7 +106,9 @@ const CardList = ({
                     */}
                     {/* Lipsync Tab */}
                     <TabsContent value="lipsyncs">
+                        <div className="w-7/8 mx-auto">
                         <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
+                        </div>
                     </TabsContent>
                 </Tabs>
             ) : (

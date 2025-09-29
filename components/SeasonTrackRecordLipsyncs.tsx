@@ -88,7 +88,7 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) =>
       <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">
         Season Lipsyncs (Bottom 2 + Eliminations)
       </TableCaption>
-      <TableHeader className="bg-purple-50">
+      <TableHeader className="bg-gradient-to-r from-purple-100 to-purple-50">
         <TableRow>
           <TableHead className="text-center py-2 px-4 border-b">Episode</TableHead>
           <TableHead className="text-center py-2 px-4 border-b">Song</TableHead>

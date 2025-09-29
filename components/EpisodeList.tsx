@@ -93,18 +93,6 @@ const EpisodeList = ({
                 </>
               ) : (
                 <>
-                  <button
-                    className="px-3 py-1 text-xs rounded-full bg-blue-200 hover:bg-blue-400 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
-                  >
-                    Winner
-                  </button>
-                  <button
-                    className="px-3 py-1 text-xs rounded-full bg-blue-100 hover:bg-blue-200 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}
-                  >
-                    High
-                  </button>
                   {hasSafeQueens && (
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-gray-200 hover:bg-gray-300 transition"
@@ -113,6 +101,18 @@ const EpisodeList = ({
                       Safe
                     </button>
                   )}
+                  <button
+                    className="px-3 py-1 text-xs rounded-full bg-blue-100 hover:bg-blue-200 transition"
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}
+                  >
+                    High
+                  </button>
+                  <button
+                    className="px-3 py-1 text-xs rounded-full bg-blue-200 hover:bg-blue-400 transition"
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
+                  >
+                    Winner
+                  </button>
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-200 hover:bg-red-300 transition"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom", ep.nonElimination || "")}

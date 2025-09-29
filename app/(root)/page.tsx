@@ -5,10 +5,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 const Page = () => {
 
   const bugs = [
-    { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted.' },
-    { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3)' },
+    { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted. TBD' },
+    { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) TBD' },
   ]
   const updates = [
+    { date: '2025-09-29', note: 'Fixed ID issues with certain queens having empty IDs. Added original seasons in search results for queens. Added queens from UK1,C2,MX1!' },
     { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs). Added menu options in general configuration tab for seasons style/mode." },
     { date: "2025-09-17", note: "Fixed issue where buildCast would render huge red Xs on load (will need to fix the sim page too where it render the Not Found button for a second..). Imported queens from seasons 1-8 and episodes from season 9!" },
     { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
@@ -96,25 +97,25 @@ const Page = () => {
       <section className="max-w-3xl mx-auto mt-10 mb-10 p-0 shadow-md rounded-2xl overflow-hidden">
         <Tabs defaultValue="updates" className="w-full pt-8">
 
-            <TabsList className="flex space-x-2 bg-violet-100/60 p-2 rounded-xl justify-center mb-6 gap-2 rounded-full p-1 shadow-inner max-w-4xl mx-auto ">
-              <TabsTrigger
-                value="updates"
-                className="px-4 py-2 text-sm font-medium text-violet-700 rounded-lg 
+          <TabsList className="flex space-x-2 bg-violet-100/60 p-2 rounded-xl justify-center mb-6 gap-2 rounded-full p-1 shadow-inner max-w-4xl mx-auto ">
+            <TabsTrigger
+              value="updates"
+              className="px-4 py-2 text-sm font-medium text-violet-700 rounded-lg 
                    data-[state=active]:bg-violet-600 data-[state=active]:text-white 
                    hover:bg-violet-200 transition"
-              >
-                Updates
-              </TabsTrigger>
-              <TabsTrigger
-                value="bugs"
-                className="px-4 py-2 text-sm font-medium text-red-700 rounded-lg 
+            >
+              Updates
+            </TabsTrigger>
+            <TabsTrigger
+              value="bugs"
+              className="px-4 py-2 text-sm font-medium text-red-700 rounded-lg 
                    data-[state=active]:bg-red-600 data-[state=active]:text-white 
                    hover:bg-red-200 transition"
-              >
-                Werk in Progress
-              </TabsTrigger>
-            </TabsList>
-    
+            >
+              Werk in Progress
+            </TabsTrigger>
+          </TabsList>
+
           {/* Updates Tab */}
           <TabsContent value="updates" className="mt-6 space-y-6">
             <h2 className="text-2xl font-bold text-violet-700">Update Log</h2>

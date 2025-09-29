@@ -23,15 +23,18 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
   const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
-    if (!debouncedQuery || (debouncedQuery.length < 2 && (type != "season" && (type == 'queen' && debouncedQuery.toLowerCase() != 'q') ))) {
+    if (!debouncedQuery || (debouncedQuery.length < 2 && (type != "season" && (type == 'queen' && debouncedQuery.toLowerCase() != 'q')))) {
       setResults([]);
       setIsOpen(false);
       return;
     }
 
-    const filtered = entity.filter((en) =>
+    const filtered = type == 'queen' ? entity
+    .filter((en) =>
       en[field].toLowerCase().includes(debouncedQuery.toLowerCase())
-    );
+    )
+    .sort((a, b) => a.name.localeCompare(b.name)) : entity.filter((en) =>
+      en[field].toLowerCase().includes(debouncedQuery.toLowerCase()));
 
     setResults(filtered);
     setIsOpen(true);
@@ -51,8 +54,8 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
   }, [searchQuery]);
 
   const placeHolder = type == 'season'
-  ? 'Search season (enter a season number)'
-  : 'Search ' + type + ' names... (enter at least 2 characters!)';
+    ? 'Search season (enter a season number)'
+    : 'Search ' + type + ' names... (enter at least 2 characters!)';
 
   return (
     <div className="flex  items-center justify-center  px-4">
@@ -97,7 +100,21 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                           height={40}
                           className="rounded-full mr-3 border border-gray-200 object-cover"
                         />
-                        <span className="font-medium text-gray-700">{res.name}</span>
+                        <div className="flex-1">
+                          <span className="font-medium text-gray-700">{res.name}</span>
+                          {res.seasons && (
+                            <div className="mt-1 text-sm text-gray-500">
+                              Original Season(s):{" "}
+                              {res.seasons.split(",").map((s: string, idx: number) => (
+                                <span key={idx} className="mr-2 inline-flex items-center gap-1">
+                                  <span className="px-2 py-0.5 bg-violet-100 text-violet-700 rounded-full text-xs font-medium shadow-sm">
+                                    {s.trim()}
+                                  </span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                         {(() => {
                           const Flag = Flags[res.franchise as keyof typeof Flags];
                           return Flag ? (
