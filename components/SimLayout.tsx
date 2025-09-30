@@ -4,6 +4,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import CardList from "./CardList";
 import { mainChallenge } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
+import EpisodeMessage from "./EpisodeMessage";
 
 type Placement = {
   episodeNumber: number | string;
@@ -149,7 +150,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
       lipsyncTitle = lipsyncs[episodeNumber - 2]['lipsync'].title;
       lipsyncArtist = lipsyncs[episodeNumber - 2]['lipsync'].artist;
     }
-else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].season != 9) {
+    else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].season != 9) {
       lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
       lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
     }
@@ -195,8 +196,6 @@ else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].s
     ? generateEventMessage(queensToDisplay, episodeEvent, selectedEpisode)
     : '';
 
-  //const maxWins = Math.max(...queensToDisplay.map(q => q.wins));
-
   return (
     <div className="flex justify-center gap-2 pt-2">
       <div className="w-1/4 p-4">
@@ -211,22 +210,10 @@ else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].s
       <div className="w-3/4 pt-2">
         {episodeEvent ? (
           <>
-            <div className="flex justify-center mb-4">
-              <div className="general-msg">
-                <h2 className="font-extrabold text-2xl text-black tracking-wide">
-                  {episodeEvent === 'announceSafe' ? 'Safe Queens' :
-                    episodeEvent === 'winner' ? 'Winner' :
-                      episodeEvent === 'high' ? 'High Queens' :
-                        episodeEvent === 'bottom' ? 'Bottom Queens' :
-                          episodeEvent === 'bottom2' ? 'Bottom 2' :
-                            episodeEvent === 'eliminated' ? 'Eliminated Queen' :
-                              episodeEvent === 'results' ? 'Season Results' :
-                                'Queens'}
-                </h2>
-                {eventMessage && <p className="mt-2 text-sm font-medium text-purple-800">{eventMessage}</p>}
-              </div>
-            </div>
-
+            <EpisodeMessage
+              episodeEvent={episodeEvent}
+              eventMessage={eventMessage}
+            />
             <CardList
               queens={queensToDisplay}
               lipsyncs={lipsyncs}
@@ -236,7 +223,6 @@ else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].s
               showResults={showResults}
               episodes={episodes}
             />
-
           </>
         ) : (
           <>

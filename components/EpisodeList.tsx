@@ -36,12 +36,14 @@ const EpisodeList = ({
           setSelectedEpisode(0);
           onEpisodeClick(0);
         }}
-        className={`p-5 rounded-2xl border bg-gradient-to-r from-pink-300 to-purple-300 
-          shadow-md hover:shadow-lg transition cursor-pointer text-center
-          ${selectedEpisode === 0 ? "ring-4 ring-purple-500" : ""}`}
+        className={`p-6 rounded-xl border border-gray-200
+          bg-gradient-to-r from-purple-100 via-purple-50 to-indigo-100
+          shadow-lg hover:shadow-2xl transform hover:scale-102
+          transition-all duration-300 cursor-pointer text-center
+          ${selectedEpisode === 0 ? "ring-4 ring-purple-400" : ""}`}
       >
-        <h2 className="font-extrabold text-lg text-purple-800">Start Your Engines!</h2>
-        <p className="text-sm text-gray-700 mt-1 font-bold">
+        <h2 className="font-bold text-2xl text-purple-600 mb-2">Start Your Engines!</h2>
+        <p className="text-sm text-gray-700 font-semibold">
           Click here or any card to see the season progress!
         </p>
       </div>
@@ -63,9 +65,11 @@ const EpisodeList = ({
         return (
           <div
             key={ep.id}
-            className={`p-4 rounded-2xl border bg-gradient-to-br from-pink-100 to-purple-100 
-              shadow-sm hover:shadow-md transition cursor-pointer
-              ${selectedEpisode === ep.episodeNumber ? "ring-4 ring-pink-400" : ""}`}
+            className={`p-5 rounded-xl border border-gray-200
+              bg-gradient-to-br from-purple-50 via-purple-100 to-indigo-50
+              shadow-md hover:shadow-lg transform hover:scale-102
+              transition-all duration-300 cursor-pointer
+              ${selectedEpisode === ep.episodeNumber ? "ring-4 ring-purple-400" : ""}`}
             onClick={() => {
               setSelectedEpisode(ep.episodeNumber);
               onEpisodeClick(ep.episodeNumber);

@@ -26,9 +26,9 @@ type Lipsync = {
     episodeNumber: number;
     lipsync: {
         id: string;
-    title: string;
-    episode: string;
-    artist: string;
+        title: string;
+        episode: string;
+        artist: string;
     }
 };
 
@@ -69,7 +69,6 @@ const CardList = ({
                     <TabsContent value="queens">
                         <div className="flex flex-wrap justify-center gap-4">
                             {filteredQueens.map((queen) => (
-
                                 <div
                                     key={queen.id}
                                     className={`transition duration-300 inline-flex max-w-xs justify-center 
@@ -107,7 +106,7 @@ const CardList = ({
                     {/* Lipsync Tab */}
                     <TabsContent value="lipsyncs">
                         <div className="w-7/8 mx-auto">
-                        <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
+                            <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
                         </div>
                     </TabsContent>
                 </Tabs>
