@@ -2028,6 +2028,475 @@ export const queens = [
     name: "Vermelha Noir",
     franchise: 'MX'
   },
+  {
+    id: '0g6sOWfr4CCcdaNKoHOxh',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/00/BrigidingDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135130',
+    seasons: 'PH1,SR1',
+    name: 'Brigiding',
+    franchise: 'PH'
+  },
+  {
+    id: 'stNRIRWIs4qP8L3d26xL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/48/CorazonDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135215',
+    seasons: 'PH1',
+    name: 'Corazon',
+    franchise: 'PH'
+  },
+  {
+    id: 'dlViH42rSYWc1bn7WpYQ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7f/EvaLeQueenDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135244',
+    seasons: 'PH1,GAS1',
+    name: 'Eva Le Queen',
+    franchise: 'PH'
+  },
+  {
+    id: 'epNFen8i0gn1DIL7kft6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/cc/GigiEraDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135316',
+    seasons: 'PH1',
+    name: 'Gigi Era',
+    franchise: 'PH'
+  },
+  {
+    id: 'nE0T9daRfjGepCfHqnpu',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/02/LadyMorganaDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135343',
+    seasons: 'PH1',
+    name: 'Lady Morgana',
+    franchise: 'PH'
+  },
+  {
+    id: 'XvK3EIhLnx48ZnjmSRcy',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b6/MarinaSummersDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135409',
+    seasons: 'PH1,UKvtW2',
+    name: 'Marina Summers',
+    franchise: 'PH'
+  },
+  {
+    id: 'xMVSsjW0RoZrArPNY2Th',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/MintyFreshDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135453',
+    seasons: 'PH1',
+    name: 'Minty Fresh',
+    franchise: 'PH'
+  },
+  {
+    id: 'aaVwPbCKBFpryikpIQA7',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f4/PreciousPaulaNicoleDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135525',
+    seasons: 'PH1',
+    name: 'Precious Paula Nicole',
+    franchise: 'PH'
+  },
+  {
+    id: 'i7EK9KthnOWqQMcDg2E4',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8a/PrinceDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135559',
+    seasons: 'PH1',
+    name: 'Prince',
+    franchise: 'PH'
+  },
+  {
+    id: '3z7vMl9oxNOISo36Og6A',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f1/TuringDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135631',
+    seasons: 'PH1',
+    name: 'Turing',
+    franchise: 'PH'
+  },
+  {
+    id: 'Y8u7uWbJuFPjZTB4vWxx',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/cd/Vi%C3%B1asDeluxeDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135723',
+    seasons: 'PH1,SR1',
+    name: 'Viñas DeLuxe',
+    franchise: 'PH'
+  },
+  {
+    id: '1j0kbGuy0snagEXUnuFA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/XilhoueteDRP1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220727135757',
+    seasons: 'PH1',
+    name: 'Xilhouete',
+    franchise: 'PH'
+  },
+  {
+    id: 'FM9XH4nPd28fJPX8KVl6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/47/AmadivaDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902150838',
+    seasons: 'TH1',
+    name: 'Amadiva',
+    franchise: 'TH'
+  },
+  {
+    id: 'KN8k4aiPGK1nTg2pFs4J',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/Ann%C3%A9eMaywongDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902150924',
+    seasons: 'TH1',
+    name: 'Année Maywong',
+    franchise: 'TH'
+  },
+  {
+    id: 'pKwZ8Rj6wVkbiO3YRNvl',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/BEllaDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151010',
+    seasons: 'TH1',
+    name: 'B Ella',
+    franchise: 'TH'
+  },
+  {
+    id: '0uwS1IPOxwx4nBkHiu0U',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bb/BunnyBeFlyDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151107',
+    seasons: 'TH1',
+    name: 'Bunny Be Fly',
+    franchise: 'TH'
+  },
+  {
+    id: 'RQvbVbInUARAplBJpiPi',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d4/DearisDollDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151143',
+    seasons: 'TH1',
+    name: 'Dearis Doll',
+    franchise: 'TH'
+  },
+  {
+    id: 'ddVJpPcS5vTOBVROL2cT',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/JAJADRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151227',
+    seasons: 'TH1',
+    name: 'JAJA',
+    franchise: 'TH'
+  },
+  {
+    id: 'ty3jHLNPyntzY7Qgxd9L',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8d/MeannieMinajDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151307',
+    seasons: 'TH1',
+    name: 'Meannie Minaj',
+    franchise: 'TH'
+  },
+  {
+    id: '8O09ZOFyClc1JYlSezJA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/MorriganDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151349',
+    seasons: 'TH1',
+    name: 'Morrigan',
+    franchise: 'TH'
+  },
+  {
+    id: 'tQIlZEOJjnyGBjLFGYF5',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/21/NataliaPliacamDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151421',
+    seasons: 'TH1',
+    name: 'Natalia Pilacam',
+    franchise: 'TH'
+  },
+  {
+    id: '5Rap8ozdRWsBdUrbeRGA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/PetchraDRTH1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902151527',
+    seasons: 'TH1',
+    name: 'Petchra',
+    franchise: 'TH'
+  },
+  {
+    id: 'dz6bxDdA0XGFXrRZm5Gr',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/65/ElipsDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603142739',
+    seasons: 'FR1,FRAS1',
+    name: 'Elips',
+    franchise: 'FR'
+  },
+  {
+    id: 'sI9dxeap0mNaR0aP9wIn',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/76/KamHughDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603143235',
+    seasons: 'FR1,FRAS1',
+    name: 'Kam Hugh',
+    franchise: 'FR'
+  },
+  {
+    id: 'LEP9HNO4tbZ4JUggj3ye',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7d/LaBigBerthaDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603143506',
+    seasons: 'FR1,FRAS1',
+    name: 'La Big Bertha',
+    franchise: 'FR'
+  },
+  {
+    id: 'zzeZrlLCL64gXwKa0H76',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/LaBrioch%C3%A9eDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603143810',
+    seasons: 'FR1',
+    name: 'La Briochée',
+    franchise: 'FR'
+  },
+  {
+    id: 'i77IIXzpHt5dbjW4ZboK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7a/LaGrandeDameDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603144046',
+    seasons: 'FR1,UKvtW2',
+    name: 'La Grande Dame',
+    franchise: 'FR'
+  },
+  {
+    id: 'RKjLDvq9pj4u5JwvoJvM',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e0/LaKahenaDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603144352',
+    seasons: 'FR1,CvtW2',
+    name: 'La Kahena',
+    franchise: 'FR'
+  },
+  {
+    id: 'Psc6Ht8uv87wa6TnKhCH',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/46/LolitaBananaDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603144903',
+    seasons: 'FR1',
+    name: 'Lolita Banana',
+    franchise: 'FR'
+  },
+  {
+    id: 'LX08zTQ3CMZJMIFOOhc9',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/73/LovaLadivaDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603145857',
+    seasons: 'FR1',
+    name: 'Lova Ladiva',
+    franchise: 'FR'
+  },
+  {
+    id: 'IYlAy0pRtku7kSNNs97r',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7d/PalomaDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603151816',
+    seasons: 'FR1',
+    name: 'Paloma',
+    franchise: 'FR'
+  },
+  {
+    id: 'g3DlZJMHsP995stIVeZD',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/13/SoadeMuseDRFR1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220603152735',
+    seasons: 'FR1,GAS1,FRAS1',
+    name: 'Soa de Muse',
+    franchise: 'FR'
+  },
+  {
+    id: 'HXZ0Z7AhcxspI3pU45PQ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6b/AnitaWigl%27itDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902161927',
+    seasons: 'DU1,CvtW1',
+    name: "Anita Wigl'it",
+    franchise: 'AU'
+  },
+  {
+    id: 'A8qyMddTPc99PGnn0hsV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1b/ArtSimoneDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162008',
+    seasons: 'DU1',
+    name: "Art Simone",
+    franchise: 'AU'
+  },
+  {
+    id: 'fYNncIGf0m9Xgtr9fZPK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a1/CocoJumboDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162056',
+    seasons: 'DU1',
+    name: "Coco Jumbo",
+    franchise: 'AU'
+  },
+  {
+    id: 'MNmIsb2lL0OaH7gOhtDb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7c/ElektraShockDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162217',
+    seasons: 'DU1',
+    name: "Elektra Shock",
+    franchise: 'AU'
+  },
+  {
+    id: 'KpEs7QjREo7IlyjN2olP',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9e/EtceteraEtceteraDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162137',
+    seasons: 'DU1',
+    name: "Etcetera Etcetera",
+    franchise: 'AU'
+  },
+  {
+    id: '4wWWPMmWnN6bieS27KnJ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/JojoZahoDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162259',
+    seasons: 'DU1',
+    name: "Jojo Zaho",
+    franchise: 'AU'
+  },
+  {
+    id: 'QEJTc3zLd4nfMcRjgPzZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/86/KarenFromFinanceDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902162337',
+    seasons: 'DU1',
+    name: "Karen From Finance",
+    franchise: 'AU'
+  },
+  {
+    id: 'V2jJxI6gU9xsYnnePLq7',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/69/KitaMeanDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902164338',
+    seasons: 'DU1',
+    name: "Kita Mean",
+    franchise: 'AU'
+  },
+  {
+    id: '0T3GmcxFE0P932Gog1Br',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e9/MaxiShieldDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902164433',
+    seasons: 'DU1',
+    name: "Maxi Shield",
+    franchise: 'AU'
+  },
+  {
+    id: 'ZEDg6wmkVde7D9ndDUCH',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ec/ScarletAdamsDRDU1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902164511',
+    seasons: 'DU1',
+    name: "Scarlet Adams",
+    franchise: 'AU'
+  },
+  {
+    id: 'Y7sMXuhCR7crcIDYMJab',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/34/AvaPocketDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524033547',
+    seasons: 'MX2',
+    name: "Ava Pocket",
+    franchise: 'MX'
+  },
+  {
+    id: 'jb5AEVuAiC3hWuUF4Fwb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/18/ElektraVandergeldDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524035155',
+    seasons: 'MX2',
+    name: "Elektra Vandergeld",
+    franchise: 'MX'
+  },
+  {
+    id: 'BPZuUJwrIhWyZWrXjTHK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ed/EvaBluntDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524041009',
+    seasons: 'MX2',
+    name: "Eva Blunt",
+    franchise: 'MX'
+  },
+  {
+    id: 'dtLSzjWZKJbdVZ1ibQgF',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6c/Gar%C3%A7onneDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524041707',
+    seasons: 'MX2',
+    name: "Garçonne",
+    franchise: 'MX'
+  },
+  {
+    id: '58abtkI2X8MG85yHHgFA',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/31/HoracioPotasioDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524042138',
+    seasons: 'MX2',
+    name: "Horacio Potasio",
+    franchise: 'MX'
+  },
+  {
+    id: 'PpUOiqiqsu6LkYZ1UdWl',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1b/IgnusArsDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524042558',
+    seasons: 'MX2',
+    name: "Ignus Ars",
+    franchise: 'MX'
+  },
+  {
+    id: 'EGFaAMnACARdOP6oQ00w',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f4/JenaryBloomDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524043146',
+    seasons: 'MX2',
+    name: "Jenary Bloom",
+    franchise: 'MX'
+  },
+  {
+    id: 'VGTmMTxm2aewMDwS4MJb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/82/LeexaFoxDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240526011935',
+    seasons: 'MX2',
+    name: "Leexa Fox",
+    franchise: 'MX'
+  },
+  {
+    id: 'FCkKxVQ6ewsxol8LdxNw',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/LunaLansmanDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524044019',
+    seasons: 'MX2',
+    name: "Luna Lansman",
+    franchise: 'MX'
+  },
+  {
+    id: 'BXngRBTh97yUY0gIj7Su',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/84/Mar%C3%ADaBonitaDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524045617',
+    seasons: 'MX2',
+    name: "María Bonita",
+    franchise: 'MX'
+  },
+  {
+    id: 'jr9UlKoNM9Wapi3tUUjG',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/41/NinadelaFuenteDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524053651',
+    seasons: 'MX2',
+    name: "Nina de la Fuente",
+    franchise: 'MX'
+  },
+  {
+    id: 'H6B0AOX0X05OV2JVxqBr',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/52/SuculentaDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524054419',
+    seasons: 'MX2',
+    name: "Suculenta",
+    franchise: 'MX'
+  },
+  {
+    id: 'oGtg2Kk0LQEDv9Kpgzo6',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/15/UniqueDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524054733',
+    seasons: 'MX2',
+    name: "Unique",
+    franchise: 'MX'
+  },
+  {
+    id: 'K2ft5puJ7Dt6aOK6P9V3',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ec/BombaeCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615192425',
+    seasons: 'CA3',
+    name: "Bombae",
+    franchise: 'CA'
+  },
+  {
+    id: '5ijtkM3tXNLRlT3Kiuvz',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ae/ChelazonLerouxCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615192602',
+    seasons: 'CA3',
+    name: "Chelazon Leroux",
+    franchise: 'CA'
+  },
+  {
+    id: 'hen4nrccRd3Wa0fqlSU1',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/34/Gis%C3%A8leLullabyCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615192743',
+    seasons: 'CA3',
+    name: "Gisèle Lullaby",
+    franchise: 'CA'
+  },
+  {
+    id: 'WZvVoW4yFY22tTFN6ETB',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/80/HalalBaeCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615192902',
+    seasons: 'CA3',
+    name: "Halal Bae",
+    franchise: 'CA'
+  },
+  {
+    id: 'lfU247wPlkovbE9G0cpe',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a1/IrmaGerdCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193037',
+    seasons: 'CA3',
+    name: "Irma Gerd",
+    franchise: 'CA'
+  },
+  {
+    id: '2Gzqd4ctW1l33B2Fk8a1',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9d/JadaShadaHudsonCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193226',
+    seasons: 'CA3',
+    name: "Jada Shada Hudson",
+    franchise: 'CA'
+  },
+  {
+    id: 'jHwja0yTqfVOB3D4tU7Z',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ed/KaosCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193334',
+    seasons: 'CA3',
+    name: "Kaos",
+    franchise: 'CA'
+  },
+  {
+    id: 'NDOxyPVJVwPblxV3cjct',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/KimmyCoutureCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193430',
+    seasons: 'CA3',
+    name: "Kimmy Couture",
+    franchise: 'CA'
+  },
+  {
+    id: '7JDgeaymroOALN9q8QPG',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/be/LadyBoomBoomCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193609',
+    seasons: 'CA3',
+    name: "Lady Boom Boom",
+    franchise: 'CA'
+  },
+  {
+    id: 'pICBIXAQWC8CMbSoo3Bl',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/72/MissFiercaliciousCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615193722',
+    seasons: 'CA3,CvtW2',
+    name: "Miss Fiercalicious",
+    franchise: 'CA'
+  },
+  {
+    id: 'k4qC6EbooPHzpeFHM5AG',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6d/MissMo%C3%A7oCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615194134',
+    seasons: 'CA3',
+    name: "Miss Moço",
+    franchise: 'CA'
+  },
+  {
+    id: 'QsUKKv8GMpGupRwstZfq',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/VivianVanderpussCDR3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20220615194241',
+    seasons: 'CA3',
+    name: "Vivian Vanderpuss",
+    franchise: 'CA'
+  },
 
 ].sort((a, b) =>
   a.name.localeCompare(b.name)

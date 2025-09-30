@@ -22,6 +22,23 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [debouncedQuery] = useDebounce(query, 300);
 
+  function highlightMatch(text: string, query: string) {
+    if (!query) return text;
+
+    const regex = new RegExp(`(${query})`, "ig");
+    const parts = text.split(regex);
+
+    return parts.map((part, idx) =>
+      part.toLowerCase() === query.toLowerCase() ? (
+        <strong key={idx} className="text-violet-700 font-bold">
+          {part}
+        </strong>
+      ) : (
+        part
+      )
+    );
+  }
+
   useEffect(() => {
     if (!debouncedQuery || (debouncedQuery.length < 2 && (type != "season" && (type == 'queen' && debouncedQuery.toLowerCase() != 'q')))) {
       setResults([]);
@@ -30,11 +47,11 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
     }
 
     const filtered = type == 'queen' ? entity
-    .filter((en) =>
-      en[field].toLowerCase().includes(debouncedQuery.toLowerCase())
-    )
-    .sort((a, b) => a.name.localeCompare(b.name)) : entity.filter((en) =>
-      en[field].toLowerCase().includes(debouncedQuery.toLowerCase()));
+      .filter((en) =>
+        en[field].toLowerCase().includes(debouncedQuery.toLowerCase())
+      )
+      .sort((a, b) => a.name.localeCompare(b.name)) : entity.filter((en) =>
+        en[field].toLowerCase().includes(debouncedQuery.toLowerCase()));
 
     setResults(filtered);
     setIsOpen(true);
@@ -101,7 +118,9 @@ const Search = ({ entity, field, onSelect, type }: SearchProps) => {
                           className="rounded-full mr-3 border border-gray-200 object-cover"
                         />
                         <div className="flex-1">
-                          <span className="font-medium text-gray-700">{res.name}</span>
+                          <span className="font-medium text-gray-700">
+                            {highlightMatch(res.name, debouncedQuery)}
+                          </span>
                           {res.seasons && (
                             <div className="mt-1 text-sm text-gray-500">
                               Original Season(s):{" "}

@@ -102,6 +102,11 @@ const Page = () => {
 
     const savedQueens = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
+    const savedNonElim = localStorage.getItem("minNonElimEps");
+
+    if (savedNonElim !== null) {
+      setMinNonElimEps(savedNonElim);
+    }
 
     let parsedQueens: any[] = [];
     let parsedEps: any[] = [];
@@ -388,7 +393,7 @@ const Page = () => {
                     </div>
 
                     {/* Select dropdown */}
-                    <Select value={minNonElimEps} defaultValue="0" onValueChange={(value) => setMinNonElimEps(value)}>
+                    <Select value={minNonElimEps} onValueChange={(value) => setMinNonElimEps(value)}>
                       <SelectTrigger id="numNonElim" className="gen-config-select">
                         <SelectValue placeholder="Select a number:" />
                       </SelectTrigger>
