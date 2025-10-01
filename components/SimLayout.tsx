@@ -11,7 +11,8 @@ type Placement = {
   placement: string;
 };
 
-const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[]; episodes: any[]; lipsyncs: any[]; minNonElimEps: number }) => {
+const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps, seasonMode }:
+  { queens: any[]; episodes: any[]; lipsyncs: any[]; minNonElimEps: number; seasonMode: string }) => {
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
       ...q,
@@ -38,19 +39,26 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
   const [episodeEvent, setEpisodeEvent] = useState('');
   const [showResults, setShowResults] = useState(false);
 
-  // Precompute all episode results
-  useEffect(() => {
+  useEffect(() => { // Precompute all episode results
+
     let trackRecord = initialTrackRecord.map(q => ({ ...q }));
     const preHistory: { [key: number]: any[] } = {};
     const postHistory: { [key: number]: any[] } = {};
     const sortedEpisodes = [...episodes].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
-    // Reset all nonElim flags
-    sortedEpisodes.forEach(e => { e.nonElimination = false; });
+    sortedEpisodes.forEach(e => { e.nonElimination = false; }); // Reset all nonElim flags
 
-    // Eligible = non-finale AND episodeNumber <= 9
+    if (seasonMode === "sp") { // for split premiere, shuffle the queens into 2 seperate groups
+      const shuffled = [...trackRecord].sort(() => Math.random() - 0.5);
+      const half = Math.ceil(shuffled.length / 2);
+      const group1 = shuffled.slice(0, half).map(q => ({ ...q, group: 1 }));
+      const group2 = shuffled.slice(half).map(q => ({ ...q, group: 2 }));
+      trackRecord = [...group1, ...group2];
+    }
+
     const eligible = sortedEpisodes.filter(
-      e => !e.title.toLowerCase().includes("finale") && e.episodeNumber <= 9
+      e => !e.title.toLowerCase().includes("finale") &&
+        e.episodeNumber < episodes.length - 2
     );
 
     if (eligible.length > 0 && Number(minNonElimEps) > 0) {
@@ -61,12 +69,47 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
     }
 
     for (const e of sortedEpisodes) {
-      preHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
-      trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination, e.type);
-      postHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
+
+      preHistory[e.episodeNumber] = trackRecord.map(q => ({ // snapshot pre-episode
+        ...q,
+        placements: [...q.placements],
+        scores: [...q.scores],
+      }));
+
+      let activeGroup = trackRecord;
+      if (seasonMode === "sp") {
+        if (e.episodeNumber === 1) {
+          activeGroup = trackRecord.filter(q => q.group === 1);
+        } else if (e.episodeNumber === 2) {
+          activeGroup = trackRecord.filter(q => q.group === 2);
+        }
+      }
+
+      const updatedGroup = mainChallenge(
+        activeGroup,
+        e.episodeNumber,
+        e.nonElimination,
+        e.type
+      );
+
+      trackRecord = trackRecord.map(q => {
+        const updated = updatedGroup.find(u => u.id === q.id);
+        return updated ? updated : q;
+      });
+
+      //trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination, e.type);
+      //postHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
+
+      postHistory[e.episodeNumber] = trackRecord.map(q => ({ // snapshot post-episode
+        ...q,
+        placements: [...q.placements],
+        scores: [...q.scores],
+      }));
+
     }
 
     setEpisodeHistory({ pre: preHistory, post: postHistory });
+
   }, [initialTrackRecord, episodes]);
 
   const handleEpisodeClick = (episodeNumber: number) => {
@@ -167,8 +210,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
       case 'announceSafe':
         return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
       case 'winner':
-        if (episode?.title.toLowerCase().includes("finale")) {
-          // Finale special case
+        if (episode?.title.toLowerCase().includes("finale")) { // Finale special case
           return names.length === 1
             ? `${names[0]} is crowned the WINNER of the season! `
             : `${others.join(', ')}, and ${last} are crowned co-winners of the season!`;
@@ -183,18 +225,28 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
         return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')}, and ${last} have placed low.`;
       case 'bottom2':
         return names.length === 1 ? `${names[0]} is up for elimination. ${(lipsyncTitle && lipsyncArtist) && "They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!"}`
-          : `${others.join(', ')}, and ${last} are up for elimination. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;
+          : `${others.join(', ')} and ${last} are up for elimination. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;
       case 'eliminated':
         if (isNonElim) return 'Both queens have been given a chance to slay another day!';
         return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;
       default:
         return '';
     }
+
   };
 
   const eventMessage = selectedEpisode && episodeEvent
     ? generateEventMessage(queensToDisplay, episodeEvent, selectedEpisode)
     : '';
+
+  let queensForCardList = queensToDisplay;
+  if (seasonMode === "sp" && selectedEpisode) {
+    if (selectedEpisode === 1) {
+      queensForCardList = queensToDisplay.filter(q => q.group === 1);
+    } else if (selectedEpisode === 2) {
+      queensForCardList = queensToDisplay.filter(q => q.group === 2);
+    }
+  }
 
   return (
     <div className="flex justify-center gap-2 pt-2">
@@ -215,7 +267,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
               eventMessage={eventMessage}
             />
             <CardList
-              queens={queensToDisplay}
+              queens={queensForCardList}
               lipsyncs={lipsyncs}
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
               viewMode={episodeEvent}
@@ -244,7 +296,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps }: { queens: any[
               </div>
             )}
 
-            <CardList queens={filteredQueens} episodes={episodes} lipsyncs={lipsyncs} />
+            <CardList  queens={queensForCardList} episodes={episodes} lipsyncs={lipsyncs} />
           </>
         )}
       </div>

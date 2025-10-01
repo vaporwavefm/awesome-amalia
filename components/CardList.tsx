@@ -91,11 +91,15 @@ const CardList = ({
 
                     {/* Table Tab */}
                     <TabsContent value="table-min">
-                        <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} />
+                        <div className="w-[95%] mx-auto">
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} />
+                        </div>
                     </TabsContent>
 
                     <TabsContent value="table-full">
-                        <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                        <div className="w-[97%] mx-auto">
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                        </div>
                     </TabsContent>
                     {/* Chart Tab */}
                     {/*
@@ -105,7 +109,7 @@ const CardList = ({
                     */}
                     {/* Lipsync Tab */}
                     <TabsContent value="lipsyncs">
-                        <div className="w-7/8 mx-auto">
+                        <div className="w-[95%] mx-auto">
                             <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
                         </div>
                     </TabsContent>

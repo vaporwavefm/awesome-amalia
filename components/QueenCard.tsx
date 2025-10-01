@@ -77,9 +77,18 @@ const QueenCard = ({ q,
       );
   };
 
+  const statColors: Record<string, string> = {
+    Acting: "#ef4444",
+    Dance: "#10b981",
+    Comedy: "#f59e0b",
+    Design: "#d946ef",
+    Runway: "#6b7280",
+    Singing: "#0ea5e9",
+  };
+
   return (
     <Card
-      className={`relative flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl 
+      className={`relative flex flex-col justify-between rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1
     ${q.isEliminated && !isMainScreen ? 'border-2 border-red-400 bg-red-50' : 'border border-gray-200'}
     ${q.isEliminated && !isMainScreen ? 'opacity-40 grayscale' : ''}
     w-56 min-h-80`}
@@ -161,18 +170,34 @@ const QueenCard = ({ q,
               <AccordionTrigger className="text-sm font-medium hover:text-purple-900">Stats</AccordionTrigger>
               <AccordionContent className="pt-2 text-sm text-gray-700">
                 {q.stats ? (
-                  <div className="grid grid-cols-2 gap-2">
-                    {Object.entries(q.stats).map(([statName, statValue]) => (
-                      <div
-                        key={statName}
-                        className="flex justify-between border-b border-gray-200 py-1 text-xs sm:text-sm"
-                      >
-                        <span className="capitalize truncate">{statName}</span>
-                        <span className="font-medium">{statValue as number}</span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
+          <div className="grid grid-cols-3 gap-2 justify-items-center w-full">
+            {Object.entries(q.stats).map(([statName, statValue]) => {
+              const radius = 20;
+              const circumference = 2 * Math.PI * radius;
+              const offset = circumference - (statValue / 100) * circumference;
+              return (
+                <div key={statName} className="flex flex-col items-center">
+                  <svg width="50" height="50" className="transform -rotate-90">
+                    <circle cx="25" cy="25" r={radius} stroke="#e5e7eb" strokeWidth="4" fill="transparent" />
+                    <circle
+                      cx="25" cy="25"
+                      r={radius}
+                      stroke={statColors[statName] || "#111827"}
+                      strokeWidth="4"
+                      fill="transparent"
+                      strokeDasharray={circumference}
+                      strokeDashoffset={offset}
+                      strokeLinecap="round"
+                      className="transition-all duration-500"
+                    />
+                  </svg>
+                  <span className="text-xs font-medium mt-1 capitalize">{statName}</span>
+                  <span className="text-xs text-gray-600">{statValue}</span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
                   <p className="text-xs text-gray-500">No stats available</p>
                 )}
               </AccordionContent>

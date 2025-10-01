@@ -84,7 +84,7 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) =>
     .filter(Boolean);
 
   return (
-    <Table className="table-auto border-collapse border border-gray-300 shadow-md">
+    <Table className="p-6 mr-10 bg-white rounded-md shadow-lg border border-gray-200 w-full overflow-auto">
       <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">
         Season Lipsyncs (Bottom 2 + Eliminations)
       </TableCaption>

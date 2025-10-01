@@ -55,6 +55,7 @@ const Page = () => {
   const [finaleSet, setFinaleSet] = useState(false);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
+  const [seasonMode, setSeasonMode] = useState('');
   const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
   const router = useRouter();
 
@@ -71,6 +72,7 @@ const Page = () => {
     localStorage.setItem("selectedQueens", JSON.stringify(queenCards));
     localStorage.setItem("selectedEpisodes", JSON.stringify(episodeCards));
     localStorage.setItem("minNonElimEps", minNonElimEps);
+    localStorage.setItem("seasonMode", seasonMode);
 
     const savedLipsyncs = [];
     for (const e in episodeCards) {
@@ -103,9 +105,14 @@ const Page = () => {
     const savedQueens = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
     const savedNonElim = localStorage.getItem("minNonElimEps");
+    const savedMode = localStorage.getItem("seasonMode");
 
     if (savedNonElim !== null) {
       setMinNonElimEps(savedNonElim);
+    }
+
+    if (savedMode !== null) {
+      setSeasonMode(savedMode);
     }
 
     let parsedQueens: any[] = [];
@@ -325,13 +332,16 @@ const Page = () => {
                     </div>
 
                     {/* Select dropdown */}
-                    <Select defaultValue="csp">
+                    <Select
+                      value={seasonMode}
+                      onValueChange={(value) => setSeasonMode(value)}
+                    >
                       <SelectTrigger id="seasonMode" className="gen-config-select">
                         <SelectValue placeholder="Select a series type:" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="csp">Classic Season</SelectItem>
-                        <SelectItem disabled value="sp">Split Premiere (coming soon!)</SelectItem>
+                        <SelectItem value="csp"> Classic Season </SelectItem>
+                        <SelectItem value="sp"> Split Premiere </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -358,7 +368,7 @@ const Page = () => {
                     </div>
 
                     {/* Select dropdown */}
-                    <Select value={minFinalists} defaultValue="3" onValueChange={(value) => setMinFinalists(value)}>
+                    <Select value={minFinalists} onValueChange={(value) => setMinFinalists(value)}>
                       <SelectTrigger id="numFinalists" className="gen-config-select">
                         <SelectValue placeholder="Select a number:" />
                       </SelectTrigger>
@@ -405,6 +415,7 @@ const Page = () => {
                       </SelectContent>
                     </Select>
                   </div>
+
                   <Image
                     src="/assets/graphics/heels.jpg"
                     alt="heels accent"
@@ -412,6 +423,7 @@ const Page = () => {
                     height={120}
                     className="absolute -right-25 top-full mt-2 opacity-40 pointer-events-none"
                   />
+
                 </div>
               </div>
 

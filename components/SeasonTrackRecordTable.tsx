@@ -170,10 +170,10 @@ const SeasonTrackRecordTable = ({
     <div className="relative">
       <div
         ref={tableRef}
-        className="p-6 mr-10 bg-white rounded-m shadow-sm w-full overflow-auto"
+        className="p-6 mr-10 bg-white rounded-md shadow-lg border border-gray-200 w-full overflow-auto"
       >
         <Table>
-          <TableCaption>Contestant Progress</TableCaption>
+          <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">Contestant Progress</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Queen</TableHead>
@@ -244,6 +244,7 @@ const SeasonTrackRecordTable = ({
                         className={`text-center 
                           ${isElimEp ? "bg-red-400 font-bold text-black-700" : ""}
                           ${isAfterElim ? "text-gray-400 bg-gray-200 italic" : ""}
+                          ${placement == ' ' ? "text-gray-400 bg-gray-200 italic" : ""}
                           ${placement === "HIGH" ? "bg-sky-300 text-black-200" : ""}
                           ${placement === "WIN" ? "bg-blue-400 text-black-200" : ""}
                           ${placement === "LOW" ? "bg-pink-200 text-black-200" : ""}

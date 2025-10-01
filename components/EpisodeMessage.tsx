@@ -10,22 +10,13 @@ const EVENT_LBLS: Record<string, string> = {
     results: "Season Results",
 };
 
-const EpisodeMessage = (
-    {
-        episodeEvent,
-        eventMessage,
-        lipsyncTitle,
-        lipsyncArtist
-    }:
-        {
-            episodeEvent: string, eventMessage: string, lipsyncTitle?: string;
-            lipsyncArtist?: string;
-        }) => {
+const EpisodeMessage = ({ episodeEvent, eventMessage } : { episodeEvent: string, eventMessage: string }) => {
 
     const label = EVENT_LBLS[episodeEvent] || "Queens";
     let mainMessage = eventMessage;
     let lipsyncMessage = "";
     let afterStr = '';
+    
     if (episodeEvent === "bottom2" && eventMessage.includes("lipsync to")) {
         const [before, after] = eventMessage.split("They will now have to lipsync to");
         mainMessage = before.trim();
@@ -58,7 +49,7 @@ const EpisodeMessage = (
                                 </span>
                             </p> <br />
                             <p className="text-base font-semibold text-purple-800 italic">
-                                . Good luck and don&apos;t fuck it up!
+                                Good luck and don&apos;t fuck it up!
                             </p>
                         </div>
                     </>
