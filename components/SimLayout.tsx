@@ -95,7 +95,7 @@ const SimLayout = (
       let activeGroup = trackRecord;
       if (seasonMode === "sp") {
         if (e.episodeNumber === 1) {
-          activeGroup = trackRecord.filter(q => q.group === 1);
+          activeGroup = trackRecord.filter(q => q.group === 1)
         } else if (e.episodeNumber === 2) {
           activeGroup = trackRecord.filter(q => q.group === 2);
         }
@@ -261,8 +261,10 @@ const SimLayout = (
   if (seasonMode === "sp" && selectedEpisode) {
     if (selectedEpisode === 1) {
       queensForCardList = queensToDisplay.filter(q => q.group === 1);
+      queensForCardList.sort((a, b) => a.name.localeCompare(b.name));
     } else if (selectedEpisode === 2) {
       queensForCardList = queensToDisplay.filter(q => q.group === 2);
+      queensForCardList.sort((a, b) => a.name.localeCompare(b.name));
     }
   }
 

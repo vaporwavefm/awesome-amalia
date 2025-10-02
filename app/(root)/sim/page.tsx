@@ -42,7 +42,6 @@ const Page = () => {
       const parsedEps = JSON.parse(savedEpisodes ?? "[]");
       const parsedLipsyncs = JSON.parse(savedLipsyncs ?? "[]");
 
-      console.log(parsedLipsyncs);
       if (parsedQueens.length > 0 && parsedEps.length > 0) {
 
         const sorted = parsedQueens.sort((a: any, b: any) =>
