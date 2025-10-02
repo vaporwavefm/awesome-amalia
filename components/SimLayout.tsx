@@ -11,8 +11,24 @@ type Placement = {
   placement: string;
 };
 
-const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps, seasonMode }:
-  { queens: any[]; episodes: any[]; lipsyncs: any[]; minNonElimEps: number; seasonMode: string }) => {
+const SimLayout = (
+  {
+    queens,
+    episodes,
+    lipsyncs,
+    minNonElimEps,
+    seasonMode,
+    seasonStyle
+  }:
+    {
+      queens: any[];
+      episodes: any[];
+      lipsyncs: any[];
+      minNonElimEps: number;
+      seasonMode: string;
+      seasonStyle: string
+    }) => {
+
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
       ...q,
@@ -89,7 +105,8 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps, seasonMode }:
         activeGroup,
         e.episodeNumber,
         e.nonElimination,
-        e.type
+        e.type,
+        seasonStyle
       );
 
       trackRecord = trackRecord.map(q => {
@@ -239,7 +256,8 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps, seasonMode }:
     ? generateEventMessage(queensToDisplay, episodeEvent, selectedEpisode)
     : '';
 
-  let queensForCardList = queensToDisplay;
+  let queensForCardList = [...queensToDisplay].sort((a, b) => a.name.localeCompare(b.name));
+
   if (seasonMode === "sp" && selectedEpisode) {
     if (selectedEpisode === 1) {
       queensForCardList = queensToDisplay.filter(q => q.group === 1);
@@ -296,7 +314,7 @@ const SimLayout = ({ queens, episodes, lipsyncs, minNonElimEps, seasonMode }:
               </div>
             )}
 
-            <CardList  queens={queensForCardList} episodes={episodes} lipsyncs={lipsyncs} />
+            <CardList queens={queensForCardList} episodes={episodes} lipsyncs={lipsyncs} />
           </>
         )}
       </div>

@@ -55,6 +55,7 @@ const Page = () => {
   const [finaleSet, setFinaleSet] = useState(false);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
+  const [seasonStyle, setSeasonStyle] = useState("osf");
   const [seasonMode, setSeasonMode] = useState('');
   const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
   const router = useRouter();
@@ -72,6 +73,7 @@ const Page = () => {
     localStorage.setItem("selectedQueens", JSON.stringify(queenCards));
     localStorage.setItem("selectedEpisodes", JSON.stringify(episodeCards));
     localStorage.setItem("minNonElimEps", minNonElimEps);
+    localStorage.setItem("seasonStyle", seasonStyle);
     localStorage.setItem("seasonMode", seasonMode);
 
     const savedLipsyncs = [];
@@ -99,6 +101,8 @@ const Page = () => {
   const handleRemoveEpisode = (id: string) => {
     setEpisodeCards((prev) => prev.filter((episode) => episode.id !== id));
   };
+
+  //------------- effects and validation ----------------------------
 
   useEffect(() => { // load existing queens and episodes config
 
@@ -156,6 +160,14 @@ const Page = () => {
     if (minEps === 2 && (minNonElimEps === "1" || minNonElimEps === "2"))
       setMinNonElimEps("0");
   }, [minEps, minNonElimEps]);
+
+  useEffect(() => {
+    if (seasonStyle === "lsftc") {
+      setMinFinalists("4");
+    }
+  }, [seasonStyle]);
+
+  //-------------------------------------------------------------------
 
   function SortableEpisode({
     episode,
@@ -265,10 +277,12 @@ const Page = () => {
                             and the winner is determined by their performance in a final Lipsync for the Crown.
                           </p>
                           <br /><Separator />
+                          {/*
                           <p className="mt-2">
                             <strong>Classic All-Stars:</strong> The all-stars are judged on their overall
                             performance throughout the season, and the winner is chosen based off track record.
                           </p>
+                          */}
                           <p className="mt-2">
                             <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
                             will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
@@ -285,7 +299,7 @@ const Page = () => {
                     </div>
 
                     {/* Select dropdown */}
-                    <Select defaultValue="osf">
+                    <Select value={seasonStyle} onValueChange={setSeasonStyle}>
                       <SelectTrigger id="seasonStyle" className="gen-config-select">
                         <SelectValue placeholder="Select a series type:" />
                       </SelectTrigger>
@@ -297,12 +311,13 @@ const Page = () => {
                         </SelectGroup>
                         <SelectGroup>
                           <SelectLabel>All-Stars</SelectLabel>
-                          <SelectItem disabled value="osas">Classic All-Stars (coming soon!)</SelectItem>
-                          <SelectItem disabled value="ttwalas">Top-Two and Lipsticks (coming soon!)</SelectItem>
-                          <SelectItem disabled value="laas">Lipsync Assassins (coming soon!)</SelectItem>
+                          {/*<SelectItem value="osas" disabled>Classic All-Stars (coming soon!)</SelectItem>*/}
+                          <SelectItem value="ttwalas" disabled>Top-Two and Lipsticks (coming soon!)</SelectItem>
+                          <SelectItem value="laas" disabled>Lipsync Assassins (coming soon!)</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
+
                   </div>
 
                   {/* season mode */}
@@ -347,7 +362,7 @@ const Page = () => {
                   </div>
 
                   {/* number of finalists */}
-                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
+                  {seasonStyle !== "lsftc" && (<div className="flex flex-col space-y-2 w-[300px] pb-2">
                     <div className="flex items-center justify-between">
                       <span className="font-medium text-gray-800">Number of finalists:</span>
                       <Tooltip>
@@ -379,7 +394,7 @@ const Page = () => {
                         <SelectItem value="5">5</SelectItem>
                       </SelectContent>
                     </Select>
-                  </div>
+                  </div>)}
 
                   {/* double shantays options */}
                   <div className="flex flex-col space-y-2 w-[300px] pb-2">

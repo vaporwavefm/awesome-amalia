@@ -24,7 +24,13 @@ const episodeTypeToStats: Record<string, (keyof any)[]> = {
   default: ["Acting", "Comedy", "Dance", "Design", "Singing", "Runway"],
 };
 
-export function mainChallenge(trackRecord: any[], episodeNumber: string | number, nonElimination: boolean = false, episodeType: string) {
+export function mainChallenge(
+  trackRecord: any[], 
+  episodeNumber: string | number, 
+  nonElimination: boolean = false, 
+  episodeType: string,
+  seasonStyle: string
+) {
   //const episodeNum = Number(episodeNumber);
 
   const isFinale = episodeType.toLowerCase().includes("finale");

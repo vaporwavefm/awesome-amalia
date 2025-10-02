@@ -16,6 +16,7 @@ const Page = () => {
   const [canSim, setCanSim] = useState(false);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [seasonMode, setSeasonMode] = useState('');
+  const [seasonStyle, setSeasonStyle] = useState('');
   const router = useRouter();
 
   //async function getUsers() {
@@ -33,6 +34,7 @@ const Page = () => {
 
     setMinNonElimEps(localStorage.getItem("minNonElimEps") || '0');
     setSeasonMode(localStorage.getItem("seasonMode") || 'csp');
+    setSeasonStyle(localStorage.getItem("seasonStyle") || 'osf');
 
     if (saved && savedEpisodes && savedLipsyncs) {
 
@@ -68,6 +70,7 @@ const Page = () => {
           lipsyncs={selectedLipsyncs}
           minNonElimEps={Number(minNonElimEps)}
           seasonMode={seasonMode}
+          seasonStyle={seasonStyle}
         />
         : (
           <div className="flex flex-col items-center justify-center min-h-100 gap-4">
