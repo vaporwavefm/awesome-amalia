@@ -1,20 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client';
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const Page = () => {
 
+  const [updatePage, setUpdatePage] = useState(1);
+  const [bugPage, setBugPage] = useState(1);
+
   const bugs = [
     { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted. TBD' },
-    { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) TBD' },
+    { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    { date: '2025-10-07', note: 'Lipsync for the Crown is now available to try out! Updated styling for queen cards. Added pagination to this update log!' },
     { date: '2025-09-29', note: 'Fixed ID issues with certain queens having empty IDs. Added original seasons in search results for queens. Added queens from UK1,C2,C3,MX1,MX2,PH1,TH1,FR1,DU1!' },
     { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs). Added menu options in general configuration tab for seasons style/mode." },
     { date: "2025-09-17", note: "Fixed issue where buildCast would render huge red Xs on load (will need to fix the sim page too where it render the Not Found button for a second..). Imported queens from seasons 1-8 and episodes from season 9!" },
     { date: "2025-09-16", note: "Updated Simulation Builder page to allow stats to be manually set. Imported ES1 queens! Made the episode lists on the simulation page to be scrollable." },
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
+
+  const ITEMS_PER_PAGE = 3;
+  const paginate = (data: any[], page: number) => {
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    return data.slice(start, start + ITEMS_PER_PAGE);
+  };
+  const totalUpdatePages = Math.ceil(updates.length / ITEMS_PER_PAGE);
+  const totalBugPages = Math.ceil(bugs.length / ITEMS_PER_PAGE);
 
   return (
     <div className="bg-gradient-to-b from-violet-50 to-white">
@@ -120,7 +134,7 @@ const Page = () => {
           <TabsContent value="updates" className="mt-6 space-y-6">
             <h2 className="text-2xl font-bold text-violet-700">Update Log</h2>
             <ul className="space-y-6 pl-4 pr-4 mb-4">
-              {updates.map((update, idx) => (
+              {paginate(updates, updatePage).map((update, idx) => (
                 <li
                   key={idx}
                   className="relative bg-white border-l-4 border-violet-500 rounded-md shadow-sm hover:shadow-md transition p-4"
@@ -132,13 +146,33 @@ const Page = () => {
                 </li>
               ))}
             </ul>
+
+            <div className="flex justify-center gap-4 pb-6"> {/* buttons for pagination */}
+              <button
+                onClick={() => setUpdatePage((p) => Math.max(p - 1, 1))}
+                disabled={updatePage === 1}
+                className="px-3 py-1 bg-violet-200 hover:bg-violet-300 rounded-md text-sm disabled:opacity-40"
+              >
+                Prev
+              </button>
+              <span className="text-gray-700">
+                Page {updatePage} of {totalUpdatePages}
+              </span>
+              <button
+                onClick={() => setUpdatePage((p) => Math.min(p + 1, totalUpdatePages))}
+                disabled={updatePage === totalUpdatePages}
+                className="px-3 py-1 bg-violet-200 hover:bg-violet-300 rounded-md text-sm disabled:opacity-40"
+              >
+                Next
+              </button>
+            </div>
           </TabsContent>
 
           {/* Bugs Tab */}
           <TabsContent value="bugs" className="mt-6 space-y-6">
             <h2 className="text-2xl font-bold text-red-600">Werk in Progress</h2>
             <ul className="space-y-6 pl-4 pr-4 mb-4">
-              {bugs.map((bug, idx) => (
+              {paginate(bugs, bugPage).map((bug, idx) => (
                 <li
                   key={idx}
                   className="relative bg-red-50 border-l-4 border-red-500 rounded-md shadow-sm hover:shadow-md transition p-4 mb-2"
@@ -150,10 +184,29 @@ const Page = () => {
                 </li>
               ))}
             </ul>
+
+            <div className="flex justify-center gap-4 pb-6"> {/* buttons for pagination */}
+              <button
+                onClick={() => setBugPage((p) => Math.max(p - 1, 1))}
+                disabled={bugPage === 1}
+                className="px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md text-sm disabled:opacity-40"
+              >
+                Prev
+              </button>
+              <span className="text-gray-700">
+                Page {bugPage} of {totalBugPages}
+              </span>
+              <button
+                onClick={() => setBugPage((p) => Math.min(p + 1, totalBugPages))}
+                disabled={bugPage === totalBugPages}
+                className="px-3 py-1 bg-red-200 hover:bg-red-300 rounded-md text-sm disabled:opacity-40"
+              >
+                Next
+              </button>
+            </div>
           </TabsContent>
         </Tabs>
       </section>
-
     </div>
   );
 };

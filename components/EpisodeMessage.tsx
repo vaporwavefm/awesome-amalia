@@ -1,4 +1,5 @@
 import React from "react";
+import { SavedLipsync } from "@/lib/utils";
 
 const EVENT_LBLS: Record<string, string> = {
     announceSafe: "Safe Queens",
@@ -7,25 +8,40 @@ const EVENT_LBLS: Record<string, string> = {
     bottom: "Bottom Queens",
     bottom2: "Bottom 2",
     eliminated: "Eliminated Queen",
+    lsftc1: 'Lipsync For The Crown: Round 1',
+    lsftc1win: 'Lipsync For The Crown: Round 1 Results',
+    lsftc2: 'Lipsync For The Crown: Round 2',
+    lsftc2win: 'Lipsync For The Crown: Round 2 Results',
+    lsftcFinal: 'Final Lipsync For the Crown',
     results: "Season Results",
 };
 
-const EpisodeMessage = ({ episodeEvent, eventMessage } : { episodeEvent: string, eventMessage: string }) => {
+const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle }:
+    { episodeEvent: string, eventMessage: string; lipsyncObj: SavedLipsync | null; seasonTitle: string; }) => {
 
-    const label = EVENT_LBLS[episodeEvent] || "Queens";
+    let label = EVENT_LBLS[episodeEvent] || "Queens";
+    if(episodeEvent === 'results') label = seasonTitle +  ' Results';
     let mainMessage = eventMessage;
     let lipsyncMessage = "";
     let afterStr = '';
-    
+
     if (episodeEvent === "bottom2" && eventMessage.includes("lipsync to")) {
         const [before, after] = eventMessage.split("They will now have to lipsync to");
         mainMessage = before.trim();
-        lipsyncMessage = "They will now have to lipsync to" + after;
-        afterStr = after.split('.')[0];
+        lipsyncMessage = "They will now have to lipsync to";
+        afterStr = lipsyncObj?.lipsync?.title
+            ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
+            : "";
+    }
+    if (['lsftc1', 'lsftc2', 'lsftcFinal'].includes(episodeEvent)) {
+        lipsyncMessage = "They will now have to lipsync to" + '';
+        afterStr = lipsyncObj?.lipsync?.title
+            ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
+            : "";
     }
 
     return <>
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-4 py-4">
             <div className="general-msg">
                 <h2 className="font-extrabold text-2xl text-black tracking-wide">
                     {label}

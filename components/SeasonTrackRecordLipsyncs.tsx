@@ -35,6 +35,8 @@ type Episode = {
 
 type Lipsync = {
   episodeNumber: number;
+  lsftcRound?: number;
+  order: number;
   lipsync: {
     id: string;
     title: string;
@@ -106,7 +108,7 @@ const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) =>
             <TableCell className="text-center py-3 px-2 font-medium text-purple-700">
               {(() => {
                 const lipsync = lipsyncNames.find(
-                  (l) => Number(l.episodeNumber) === Number(i + 1)
+                  (l) => Number(l.order) === Number(i) && l.lsftcRound != 1 && l.lsftcRound != 2 && l.lsftcRound != 3
                 )?.lipsync;
                 return lipsync
                   ? `${lipsync.title} – ${lipsync.artist}`

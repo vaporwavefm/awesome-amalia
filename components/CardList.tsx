@@ -23,13 +23,15 @@ type Queen = {
 };
 
 type Lipsync = {
-    episodeNumber: number;
-    lipsync: {
-        id: string;
-        title: string;
-        episode: string;
-        artist: string;
-    }
+  episodeNumber: number;
+  lsftcRound?: number;
+  order: number;
+  lipsync: {
+    id: string;
+    title: string;
+    episode: string;
+    artist: string;
+  }
 };
 
 const CardList = ({
@@ -40,6 +42,7 @@ const CardList = ({
     nonElimination,
     showResults,
     episodes,
+    seasonStyle
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -48,6 +51,7 @@ const CardList = ({
     nonElimination?: boolean;
     showResults?: boolean;
     episodes: { episodeNumber: number | string; title: string }[];
+    seasonStyle: string;
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -92,13 +96,13 @@ const CardList = ({
                     {/* Table Tab */}
                     <TabsContent value="table-min">
                         <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle}/>
                         </div>
                     </TabsContent>
 
                     <TabsContent value="table-full">
                         <div className="w-[97%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} />
                         </div>
                     </TabsContent>
                     {/* Chart Tab */}

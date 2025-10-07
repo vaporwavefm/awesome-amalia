@@ -31,12 +31,14 @@ type SeasonTrackRecordTableProps = {
   queens: Queen[];
   episodes: { episodeNumber: number | string; title: string; id?: string }[];
   isMinified?: boolean;
+  seasonStyle: string;
 };
 
 const SeasonTrackRecordTable = ({
   queens,
   episodes,
   isMinified = false,
+  seasonStyle,
 }: SeasonTrackRecordTableProps) => {
   const tableRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +48,6 @@ const SeasonTrackRecordTable = ({
 
   const handleExport = async () => {
     if (!tableRef.current) return;
-
     const node = tableRef.current;
     const originalOverflow = node.style.overflow;
     const originalWidth = node.style.width;
@@ -79,9 +80,13 @@ const SeasonTrackRecordTable = ({
     const epNum = Number(episodeNumber);
 
     if (epNum === finaleEpNum) {
-      if (!queen.isEliminated) {
+      if (seasonStyle.toLowerCase().includes("lsftc")) {
         if (p?.placement === "win") return "WINNER";
-        return "RUNNER-UP";
+        if (p?.placement === "finale" && !queen.isEliminated) return "RUNNER-UP";
+        if (p?.placement === "finale" && queen.isEliminated) return "OUT";
+      } else {
+        if (p?.placement === "win") return "WINNER";
+        if (p?.placement === "finale") return "RUNNER-UP";
       }
     }
 
@@ -109,56 +114,37 @@ const SeasonTrackRecordTable = ({
         return "BTM2";
       case "eliminated":
         return "OUT";
-      case "finale":
-        return "WINNER";
       default:
         return p.placement;
     }
   };
 
   const sortedQueens = [...queens].sort((a, b) => {
-    const aLast = a.placements.at(-1);
-    const bLast = b.placements.at(-1);
+    const getCategory = (q: Queen) => {
+      const last = q.placements.at(-1);
+      const pFinal =
+        !last || Number(last.episodeNumber) !== finaleEpNum
+          ? null
+          : last.placement;
 
-    const aFinal =
-      !a.isEliminated && Number(aLast?.episodeNumber) === finaleEpNum
-        ? aLast?.placement
-        : null;
-    const bFinal =
-      !b.isEliminated && Number(bLast?.episodeNumber) === finaleEpNum
-        ? bLast?.placement
-        : null;
+      if (pFinal === "win") return 0; // winner
+      if (pFinal === "finale" && !q.isEliminated) return 1; // runner-up
+      if (pFinal === "finale" && q.isEliminated) return 2; // elim lsftc
+      return 3; // everyone else
+    };
 
-    if (aFinal === "win") return -1;
-    if (bFinal === "win") return 1;
+    const catA = getCategory(a);
+    const catB = getCategory(b);
+    if (catA !== catB) return catA - catB;
 
-    if (!a.isEliminated && aFinal !== "win") return -1;
-    if (!b.isEliminated && bFinal !== "win") return 1;
-
-    const aLastBottomEp =
-      Math.max(
-        ...a.placements
-          .filter((p) => p.placement === "bottom")
-          .map((p) => Number(p.episodeNumber))
-      ) || 0;
-
-    const bLastBottomEp =
-      Math.max(
-        ...b.placements
-          .filter((p) => p.placement === "bottom")
-          .map((p) => Number(p.episodeNumber))
-      ) || 0;
-
-    if (aLastBottomEp !== bLastBottomEp) return bLastBottomEp - aLastBottomEp;
-
-    const aElimEp = a.isEliminated
-      ? Number(aLast?.episodeNumber)
+    const elimEpA = a.isEliminated
+      ? Number(a.placements.at(-1)?.episodeNumber)
       : finaleEpNum;
-    const bElimEp = b.isEliminated
-      ? Number(bLast?.episodeNumber)
+    const elimEpB = b.isEliminated
+      ? Number(b.placements.at(-1)?.episodeNumber)
       : finaleEpNum;
 
-    return bElimEp - aElimEp;
+    return elimEpB - elimEpA;
   });
 
   const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -173,7 +159,9 @@ const SeasonTrackRecordTable = ({
         className="p-6 mr-10 bg-white rounded-md shadow-lg border border-gray-200 w-full overflow-auto"
       >
         <Table>
-          <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">Contestant Progress</TableCaption>
+          <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">
+            Contestant Progress
+          </TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Queen</TableHead>
@@ -244,7 +232,7 @@ const SeasonTrackRecordTable = ({
                         className={`text-center 
                           ${isElimEp ? "bg-red-400 font-bold text-black-700" : ""}
                           ${isAfterElim ? "text-gray-400 bg-gray-200 italic" : ""}
-                          ${placement == ' ' ? "text-gray-400 bg-gray-200 italic" : ""}
+                          ${placement == " " ? "text-gray-400 bg-gray-200 italic" : ""}
                           ${placement === "HIGH" ? "bg-sky-300 text-black-200" : ""}
                           ${placement === "WIN" ? "bg-blue-400 text-black-200" : ""}
                           ${placement === "LOW" ? "bg-pink-200 text-black-200" : ""}
@@ -259,38 +247,34 @@ const SeasonTrackRecordTable = ({
                   })}
 
                   <TableCell
-                    className={`text-center ${
-                      q.wins === maxWins ? "ml-1 bg-yellow-200 font-bold" : ""
-                    }`}
+                    className={`text-center ${q.wins === maxWins ? "ml-1 bg-yellow-200 font-bold" : ""
+                      }`}
                   >
                     {q.wins}{" "}
                     {q.wins === maxWins && <FontAwesomeIcon icon={faCrown} />}
                   </TableCell>
 
                   <TableCell
-                    className={`text-center ${
-                      q.highs === maxHighs ? "ml-1 bg-yellow-200 font-bold" : ""
-                    }`}
+                    className={`text-center ${q.highs === maxHighs ? "ml-1 bg-yellow-200 font-bold" : ""
+                      }`}
                   >
                     {q.highs}{" "}
                     {q.highs === maxHighs && <FontAwesomeIcon icon={faCrown} />}
                   </TableCell>
 
                   <TableCell
-                    className={`text-center ${
-                      q.lows === maxLows ? "ml-1 bg-yellow-200 font-bold" : ""
-                    }`}
+                    className={`text-center ${q.lows === maxLows ? "ml-1 bg-yellow-200 font-bold" : ""
+                      }`}
                   >
                     {q.lows}{" "}
                     {q.lows === maxLows && <FontAwesomeIcon icon={faCrown} />}
                   </TableCell>
 
                   <TableCell
-                    className={`text-center ${
-                      q.bottoms === maxBottoms
+                    className={`text-center ${q.bottoms === maxBottoms
                         ? "ml-1 bg-yellow-200 font-bold"
                         : ""
-                    }`}
+                      }`}
                   >
                     {q.bottoms}{" "}
                     {q.bottoms === maxBottoms && (
@@ -304,7 +288,6 @@ const SeasonTrackRecordTable = ({
         </Table>
       </div>
 
-      
       <button
         onClick={handleExport}
         className="m-2 px-3 py-1 bg-purple-600 text-white rounded-md shadow hover:bg-purple-700 flex items-center gap-2"

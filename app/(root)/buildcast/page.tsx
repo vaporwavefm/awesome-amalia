@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown, faPlay, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator"
+import { Input } from "@/components/ui/input";
 
 import {
   DndContext,
@@ -53,6 +54,7 @@ const Page = () => {
   const [reqQueensMet, setReqQueensMet] = useState(false);
   const [reqEpsMet, setReqEpsMet] = useState(false);
   const [finaleSet, setFinaleSet] = useState(false);
+  const [seasonTitle, setSeasonTitle] = useState('');
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
   const [seasonStyle, setSeasonStyle] = useState("osf");
@@ -75,20 +77,41 @@ const Page = () => {
     localStorage.setItem("minNonElimEps", minNonElimEps);
     localStorage.setItem("seasonStyle", seasonStyle);
     localStorage.setItem("seasonMode", seasonMode);
+    localStorage.setItem("seasonTitle", seasonTitle);
 
     const savedLipsyncs = [];
     for (const e in episodeCards) {
+      let found = false;
       const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + Number(episodeCards[e].episodeNumber);
-      console.log(eNum);
+      //console.log(eNum);
+
       for (const l in lipsyncs) {
         if (lipsyncs[l].episode === eNum) {
           savedLipsyncs.push({
             episodeNumber: episodeCards[e].episodeNumber,
             lipsync: lipsyncs[l]
           })
+          found = true;
         }
       }
+
+      if (!found) {
+        const usedIds = new Set(savedLipsyncs.map((l: any) => l.lipsync?.id)); // track used lipsyncs
+        let randomItem;
+        const cutoff = 0;
+        do {
+          const randomIndex = Math.floor(Math.random() * lipsyncs.length);
+          randomItem = lipsyncs[randomIndex];
+        } while (usedIds.has(randomItem.id) && cutoff < 50);
+
+        usedIds.add(randomItem.id);
+        savedLipsyncs.push({
+          episodeNumber: Number(episodeCards[e].episodeNumber),
+          lipsync: randomItem,
+        });
+      }
     }
+
     localStorage.setItem('savedLipsyncs', JSON.stringify(savedLipsyncs));
     router.push("/sim");
   };
@@ -110,14 +133,12 @@ const Page = () => {
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
     const savedNonElim = localStorage.getItem("minNonElimEps");
     const savedMode = localStorage.getItem("seasonMode");
+    const savedSeasonTitle = localStorage.getItem("seasonTitle");
+    const savedStyle = localStorage.getItem("seasonStyle");
 
-    if (savedNonElim !== null) {
-      setMinNonElimEps(savedNonElim);
-    }
-
-    if (savedMode !== null) {
-      setSeasonMode(savedMode);
-    }
+    if (savedNonElim !== null) setMinNonElimEps(savedNonElim);
+    if (savedMode !== null) setSeasonMode(savedMode);
+    if (savedStyle !== null) setSeasonStyle(savedStyle);
 
     let parsedQueens: any[] = [];
     let parsedEps: any[] = [];
@@ -132,6 +153,8 @@ const Page = () => {
       parsedEps = JSON.parse(savedEpisodes);
       setEpisodeCards(parsedEps);
     }
+
+    if (savedSeasonTitle) setSeasonTitle(savedSeasonTitle);
 
     setIsLoading(false);
   }, []);
@@ -253,6 +276,35 @@ const Page = () => {
                   </div>
                 </div>
 
+                {/* Season Title */}
+                <div className="flex flex-col space-y-2 w-[300px] pb-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-gray-800">Season title:</span>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                        >
+                          <Info className="w-4 h-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-xs text-sm">
+                        <p> Enter a custom title for your season! (Or just stick to Rupaul&apos;s Drag Race) </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
+                  <Input
+                    id="seasonTitle"
+                    type="text"
+                    placeholder="Enter your custom season title..."
+                    value={seasonTitle}
+                    onChange={(e) => setSeasonTitle(e.target.value)}
+                    className="border-gray-300 focus:ring-2 focus:ring-purple-400"
+                    maxLength={100}
+                  />
+                </div>
+
                 <div className="mt-4 flex flex-col space-y-2 w-[300px] relative">
                   {/* season style */}
                   <div className="flex flex-col space-y-2 w-[300px] pb-2">
@@ -307,7 +359,7 @@ const Page = () => {
                         <SelectGroup>
                           <SelectLabel>Regular</SelectLabel>
                           <SelectItem value="osf">Classic Finale</SelectItem>
-                          <SelectItem disabled value="lsftc">Lipsync for the Crown (coming soon!)</SelectItem>
+                          <SelectItem value="lsftc">Lipsync for the Crown </SelectItem>
                         </SelectGroup>
                         <SelectGroup>
                           <SelectLabel>All-Stars</SelectLabel>

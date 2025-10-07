@@ -8,12 +8,14 @@ const EpisodeList = ({
   onEpisodeEventClick,
   episodeHistory,
   initialTrackRecord,
+  seasonStyle
 }: {
   episodes: any[];
   onEpisodeClick: (epNum: number) => void;
   onEpisodeEventClick: (epNum: number, eventType: string, nonElimination: boolean) => void;
   episodeHistory: { pre: { [key: number]: any[] }; post: { [key: number]: any[] } };
   initialTrackRecord: any[];
+  seasonStyle: string;
 }) => {
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(0);
 
@@ -81,20 +83,67 @@ const EpisodeList = ({
 
             <div className="flex flex-wrap gap-1 text-xs mt-2">
               {isFinale ? (
-                <>
-                  <button
-                    className="px-3 py-1 text-xs rounded-full bg-blue-600 hover:bg-blue-700 transition text-white"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
-                  >
-                    Winner
-                  </button>
-                  <button
-                    className="px-3 py-1 text-xs rounded-full bg-gray-700 hover:bg-gray-800 transition text-white"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}
-                  >
-                    Show Results
-                  </button>
-                </>
+                seasonStyle == 'lsftc' ? (
+                  <>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1", false)}
+                    >
+                      Round 1
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1win", false)}
+                    >
+                      Round 1 Results
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2", false)}
+                    >
+                      Round 2
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2win", false)}
+                    >
+                      Round 2 Results
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-red-700 hover:bg-red-800 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftcFinal", false)}
+                    >
+                     Final Lipsync
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-blue-600 hover:bg-blue-700 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", false)}
+                    >
+                      Winner
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-gray-700 hover:bg-gray-800 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}
+                    >
+                      Show Results
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-blue-600 hover:bg-blue-700 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
+                    >
+                      Winner
+                    </button>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-gray-700 hover:bg-gray-800 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}
+                    >
+                      Show Results
+                    </button>
+                  </>
+                )
               ) : (
                 <>
                   {hasSafeQueens && (

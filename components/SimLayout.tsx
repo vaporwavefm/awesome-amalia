@@ -2,7 +2,7 @@
 'use client';
 import React, { useMemo, useState, useEffect } from "react";
 import CardList from "./CardList";
-import { mainChallenge } from "@/lib/utils";
+import { mainChallenge, SavedLipsync } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
 import EpisodeMessage from "./EpisodeMessage";
 
@@ -18,7 +18,8 @@ const SimLayout = (
     lipsyncs,
     minNonElimEps,
     seasonMode,
-    seasonStyle
+    seasonStyle,
+    seasonTitle
   }:
     {
       queens: any[];
@@ -26,7 +27,8 @@ const SimLayout = (
       lipsyncs: any[];
       minNonElimEps: number;
       seasonMode: string;
-      seasonStyle: string
+      seasonStyle: string;
+      seasonTitle:string;
     }) => {
 
   const initialTrackRecord = useMemo(() => {
@@ -53,7 +55,9 @@ const SimLayout = (
   const [episodeHistory, setEpisodeHistory] = useState<{ pre: { [key: number]: any[] }, post: { [key: number]: any[] } }>({ pre: {}, post: {} });
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [episodeEvent, setEpisodeEvent] = useState('');
+  const [selectedLipsync, setSelectedLipsync] = useState<SavedLipsync | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const lsftcEvents = ["lsftc1", "lsftc2", "lsftcFinal", "lsftc1win", "lsftc2win", "lsftcFinalWin"];
 
   useEffect(() => { // Precompute all episode results
 
@@ -114,9 +118,6 @@ const SimLayout = (
         return updated ? updated : q;
       });
 
-      //trackRecord = mainChallenge(trackRecord, e.episodeNumber, e.nonElimination, e.type);
-      //postHistory[e.episodeNumber] = trackRecord.map(q => ({ ...q, placements: [...q.placements], scores: [...q.scores] }));
-
       postHistory[e.episodeNumber] = trackRecord.map(q => ({ // snapshot post-episode
         ...q,
         placements: [...q.placements],
@@ -141,6 +142,12 @@ const SimLayout = (
     if (eventType === "results") {
       setEpisodeEvent("results");
       setShowResults(true);
+      return;
+    }
+
+    if (lsftcEvents.includes(eventType)) {
+      setEpisodeEvent(eventType);
+      setShowResults(false);
       return;
     }
 
@@ -206,19 +213,8 @@ const SimLayout = (
     };
 
     let lipsyncTitle = '', lipsyncArtist = '';
-    if (lipsyncs[episodeNumber - 2] && lipsyncs[episodeNumber - 2]['lipsync'].season == 9) {
-      lipsyncTitle = lipsyncs[episodeNumber - 2]['lipsync'].title;
-      lipsyncArtist = lipsyncs[episodeNumber - 2]['lipsync'].artist;
-    }
-    else if (lipsyncs[episodeNumber - 1] && lipsyncs[episodeNumber - 1]['lipsync'].season != 9) {
-      lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
-      lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
-    }
-    else if (episodeNumber == 1 && lipsyncs[episodeNumber]['lipsync'].season == 3) { // temp fix for season 3
-      lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
-      lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
-    }
-    else if (lipsyncs[episodeNumber - 2] && lipsyncs[episodeNumber - 2]['lipsync'].season === 3) {
+  
+    if (lipsyncs[episodeNumber - 1]) {
       lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
       lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
     }
@@ -229,7 +225,7 @@ const SimLayout = (
       case 'winner':
         if (episode?.title.toLowerCase().includes("finale")) { // Finale special case
           return names.length === 1
-            ? `${names[0]} is crowned the WINNER of the season! `
+            ? `${names[0]} is crowned the WINNER of ${seasonTitle}! `
             : `${others.join(', ')}, and ${last} are crowned co-winners of the season!`;
         }
         // Normal weekly challenge
@@ -246,27 +242,89 @@ const SimLayout = (
       case 'eliminated':
         if (isNonElim) return 'Both queens have been given a chance to slay another day!';
         return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;
+      case 'lsftc1':
+        return names.length === 2
+          ? `${names[0]} and ${names[1]} must face off for a spot in the final lipsync!`
+          : 'The top 4 are split into two pairs for battle!';
+      case 'lsftc2':
+        return names.length === 2
+          ? `${names[0]} and ${names[1]} must face off for a spot in the final lipsync!`
+          : 'The second group now battles for a spot in the finale!';
+      case 'lsftcFinal':
+        return names.length === 2
+          ? `${names[0]} and ${names[1]} face off for the title of America's Next Drag Superstar!`
+          : "The winners from both rounds face off for the title of America's Next Drag Superstar!";
+      case 'lsftc1win':
+        return names.length === 1
+          ? `${names[0]} wins Round 1 of the Lipsync for the Crown!`
+          : `${others.join(', ')} and ${last} win Round 1 of the Lipsync for the Crown!`;
+
+      case 'lsftc2win':
+        return names.length === 1
+          ? `${names[0]} wins Round 2 of the Lipsync for the Crown!`
+          : `${others.join(', ')} and ${last} win Round 2 of the Lipsync for the Crown!`;
       default:
         return '';
     }
 
   };
 
-  const eventMessage = selectedEpisode && episodeEvent
-    ? generateEventMessage(queensToDisplay, episodeEvent, selectedEpisode)
-    : '';
+  useEffect(() => {
 
-  let queensForCardList = [...queensToDisplay].sort((a, b) => a.name.localeCompare(b.name));
+    if (!selectedEpisode || !episodeEvent) return;
+    if (seasonStyle == 'lsftc' && lsftcEvents.includes(episodeEvent)) {
+      let roundNum = 0;
+
+      if (episodeEvent === 'lsftc1') roundNum = 1;
+      else if (episodeEvent === 'lsftc2') roundNum = 2;
+      else if (episodeEvent === 'lsftcFinal') roundNum = 3;
+
+      const lipsyncData = lipsyncs.find(ls => ls.lsftcRound === roundNum);
+
+      if (lipsyncData) {
+        setSelectedLipsync(lipsyncData);
+      } else {
+        setSelectedLipsync(null);
+      }
+      return;
+    }
+
+    const episodeIndex = selectedEpisode - 1;
+    const lipsyncData = lipsyncs[episodeIndex];
+    if (lipsyncData) {
+      setSelectedLipsync(lipsyncData);
+    }
+
+  }, [selectedEpisode, episodeEvent, lipsyncs]);
+
+  let queensForCardList = [...queensToDisplay].filter(Boolean);
 
   if (seasonMode === "sp" && selectedEpisode) {
     if (selectedEpisode === 1) {
       queensForCardList = queensToDisplay.filter(q => q.group === 1);
-      queensForCardList.sort((a, b) => a.name.localeCompare(b.name));
     } else if (selectedEpisode === 2) {
       queensForCardList = queensToDisplay.filter(q => q.group === 2);
-      queensForCardList.sort((a, b) => a.name.localeCompare(b.name));
     }
   }
+
+  if (lsftcEvents.includes(episodeEvent)) {
+    if (episodeEvent === "lsftc1") {
+      queensForCardList = queensForCardList.filter(q => q.isInSemiFinal && q.group === 1);
+    } else if (episodeEvent === "lsftc2") {
+      queensForCardList = queensForCardList.filter(q => q.isInSemiFinal && q.group === 2);
+    } else if (episodeEvent === "lsftcFinal") {
+      queensForCardList = queensForCardList.filter(q => q.isInFinal);
+    } else if (episodeEvent === "lsftc1win") {
+      queensForCardList = queensForCardList.filter(q => q.isInFinal && q.group === 1);
+    } else if (episodeEvent === "lsftc2win") {
+      queensForCardList = queensForCardList.filter(q => q.isInFinal && q.group === 2);
+    }
+  }
+
+  queensForCardList.sort((a, b) => a.name.localeCompare(b.name)); // sort queens again regardless of filtering
+  const eventMessage = selectedEpisode && episodeEvent
+    ? generateEventMessage(queensForCardList, episodeEvent, selectedEpisode)
+    : '';
 
   return (
     <div className="flex justify-center gap-2 pt-2">
@@ -277,6 +335,7 @@ const SimLayout = (
           onEpisodeEventClick={handleEpisodeEventClick}
           episodeHistory={episodeHistory}
           initialTrackRecord={initialTrackRecord}
+          seasonStyle={seasonStyle}
         />
       </div>
       <div className="w-3/4 pt-2">
@@ -285,6 +344,8 @@ const SimLayout = (
             <EpisodeMessage
               episodeEvent={episodeEvent}
               eventMessage={eventMessage}
+              lipsyncObj={selectedLipsync}
+              seasonTitle={seasonTitle}
             />
             <CardList
               queens={queensForCardList}
@@ -294,6 +355,7 @@ const SimLayout = (
               nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
               showResults={showResults}
               episodes={episodes}
+              seasonStyle={seasonStyle}
             />
           </>
         ) : (
@@ -301,22 +363,22 @@ const SimLayout = (
             {selectedEpisode ? (
               // existing episode preview box
               <div className="e-title-msg">
-                <h2 className="e-title-h2">
-                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.title}
-                </h2>
-                <p className="e-title-descr">
-                  {episodes.find(e => e.episodeNumber === selectedEpisode)?.description}
-                </p>
+                <h2 className="e-title-h2"> {episodes.find(e => e.episodeNumber === selectedEpisode)?.title} </h2>
+                <p className="e-title-descr"> {episodes.find(e => e.episodeNumber === selectedEpisode)?.description} </p>
               </div>
             ) : (
               // initial message
               <div className="e-title-msg">
-                <h2 className="e-title-h2"> Mama, the race is on! </h2>
+                <h2 className="e-title-h2"> Welcome to {seasonTitle}! </h2>
                 <p className="e-title-descr">  Who will snatch the crown? Click on any episode to follow their journey!</p>
               </div>
             )}
 
-            <CardList queens={queensForCardList} episodes={episodes} lipsyncs={lipsyncs} />
+            <CardList
+              queens={queensForCardList}
+              episodes={episodes}
+              lipsyncs={lipsyncs}
+              seasonStyle={seasonStyle} />
           </>
         )}
       </div>
