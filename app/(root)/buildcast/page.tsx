@@ -256,7 +256,7 @@ const Page = () => {
             onValueChange={(val) => setActiveTab(val)}
             className="w-full pt-8 bg-gradient-to-b from-violet-50 to-white"
           >
-            <TabsList className="tabs-list">
+            <TabsList className="tabs-list flex overflow-x-auto whitespace-nowrap scrollbar-hide">
               <TabsTrigger value="general" className="tabs-trigger" > General Configuration </TabsTrigger>
               <TabsTrigger value="queens" className="tabs-trigger" > Queens </TabsTrigger>
               <TabsTrigger value="episodes" className="tabs-trigger" > Episodes </TabsTrigger>
