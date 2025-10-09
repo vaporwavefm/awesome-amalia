@@ -8,6 +8,7 @@ import SimLayout from "@/components/SimLayout";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button"; // since you're already using shadcn/ui buttons
 import { lipsyncs } from "@/constants/queenData";
+import { Spinner } from "@/components/ui/spinner"
 
 const Page = () => {
 
@@ -15,6 +16,7 @@ const Page = () => {
   const [selectedEpisodes, setSelectedEpisodes] = useState<any[]>([]);
   const [selectedLipsyncs, setSelectedLipsyncs] = useState<any[]>([]);
   const [canSim, setCanSim] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [seasonTitle, setSeasonTitle] = useState('');
   const [seasonMode, setSeasonMode] = useState('');
@@ -22,70 +24,86 @@ const Page = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const saved = localStorage.getItem("selectedQueens");
-    const savedEpisodes = localStorage.getItem("selectedEpisodes");
-    const savedLipsyncs = localStorage.getItem("savedLipsyncs");
-    const savedSeasonStyle = localStorage.getItem("seasonStyle") || 'osf';
+    const loadData = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 300));
 
-    setMinNonElimEps(localStorage.getItem("minNonElimEps") || '0');
-    setSeasonMode(localStorage.getItem("seasonMode") || 'csp');
-    setSeasonStyle(savedSeasonStyle);
+        const saved = localStorage.getItem("selectedQueens");
+        const savedEpisodes = localStorage.getItem("selectedEpisodes");
+        const savedLipsyncs = localStorage.getItem("savedLipsyncs");
+        const savedSeasonStyle = localStorage.getItem("seasonStyle") || "osf";
 
-    const seasonTitle = localStorage.getItem("seasonTitle");
-    if (seasonTitle && seasonTitle.trim() !== "") setSeasonTitle(seasonTitle);
-    else setSeasonTitle("Rupaul's Drag Race");
-    
-    if (saved && savedEpisodes && savedLipsyncs) {
+        setMinNonElimEps(localStorage.getItem("minNonElimEps") || "0");
+        setSeasonMode(localStorage.getItem("seasonMode") || "csp");
+        setSeasonStyle(savedSeasonStyle);
 
-      const parsedQueens = JSON.parse(saved) ?? [];
-      const parsedEps = JSON.parse(savedEpisodes ?? "[]");
-      const parsedLipsyncs = JSON.parse(savedLipsyncs ?? "[]");
+        const seasonTitle = localStorage.getItem("seasonTitle");
+        if (seasonTitle && seasonTitle.trim() !== "") setSeasonTitle(seasonTitle);
+        else setSeasonTitle("Rupaul's Drag Race");
 
-      if (savedSeasonStyle === "lsftc") { // grab random lipsyncs for LSFTC
-        const usedIds = new Set(parsedLipsyncs.map((l: any) => l.lipsync?.id)); // track used lipsyncs
+        if (saved && savedEpisodes && savedLipsyncs) {
+          const parsedQueens = JSON.parse(saved) ?? [];
+          const parsedEps = JSON.parse(savedEpisodes ?? "[]");
+          const parsedLipsyncs = JSON.parse(savedLipsyncs ?? "[]");
 
-        for (let i = 0; i < 3; i++) {
+          if (savedSeasonStyle === "lsftc") {
+            const usedIds = new Set(parsedLipsyncs.map((l: any) => l.lipsync?.id));
+            for (let i = 0; i < 3; i++) {
+              let randomItem, cutoff = 0;
+              do {
+                const randomIndex = Math.floor(Math.random() * lipsyncs.length);
+                randomItem = lipsyncs[randomIndex];
+                cutoff++;
+              } while (usedIds.has(randomItem.id) && cutoff < 50);
+              usedIds.add(randomItem.id);
+              parsedLipsyncs.push({
+                episodeNumber: i + 1,
+                lipsync: randomItem,
+                order: parsedLipsyncs.length,
+                lsftcRound: i + 1,
+              });
+            }
+          }
 
-          let randomItem, cutoff = 0;
-          do {
-            const randomIndex = Math.floor(Math.random() * lipsyncs.length);
-            randomItem = lipsyncs[randomIndex];
-            cutoff++;
-          } while (usedIds.has(randomItem.id) && cutoff < 50);
+          for (let i = 0; i < parsedLipsyncs.length; i++) {
+            parsedLipsyncs[i].order = i;
+          }
 
-          usedIds.add(randomItem.id);
-          parsedLipsyncs.push({
-            episodeNumber: i + 1,
-            lipsync: randomItem,
-            order: parsedLipsyncs.length,
-            lsftcRound: i + 1,
-          });
+          if (parsedQueens.length > 0 && parsedEps.length > 0) {
+            const sorted = parsedQueens.sort((a: any, b: any) =>
+              a.name.localeCompare(b.name)
+            );
+            let i = 1;
+            for (const ep in parsedEps) {
+              parsedEps[ep].episodeNumber = i;
+              i++;
+            }
+            setSelectedQueens(sorted);
+            setSelectedEpisodes(parsedEps);
+            setSelectedLipsyncs(parsedLipsyncs);
+            setCanSim(true);
+          }
         }
+      } catch (err) {
+        console.error("Error loading localStorage data:", err);
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-      for (let i = 0; i < parsedLipsyncs.length; i++) {
-        parsedLipsyncs[i].order = i;
-      }
-
-      console.log(JSON.stringify(parsedLipsyncs));
-      if (parsedQueens.length > 0 && parsedEps.length > 0) {
-
-        const sorted = parsedQueens.sort((a: any, b: any) =>
-          a.name.localeCompare(b.name)
-        ); // sort alphabetically by name
-
-        let i = 1;
-        for (const ep in parsedEps) {
-          parsedEps[ep].episodeNumber = i;
-          i++;
-        }
-        setSelectedQueens(sorted);
-        setSelectedEpisodes(parsedEps);
-        setSelectedLipsyncs(parsedLipsyncs);
-        setCanSim(true);
-      }
-    }
+    loadData();
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+        <Spinner />
+        <p className="text-lg font-semibold text-gray-700">
+          Loading simulation data (please wait!)...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>
