@@ -5,7 +5,7 @@ const EVENT_LBLS: Record<string, string> = {
     announceSafe: "Safe Queens",
     winner: "Winner",
     high: "High Queens",
-    bottom: "Bottom Queens",
+    bottom: "Low",
     bottom2: "Bottom 2",
     eliminated: "Eliminated Queen",
     lsftc1: 'Lipsync For The Crown: Round 1',
@@ -16,14 +16,22 @@ const EVENT_LBLS: Record<string, string> = {
     results: "Season Results",
 };
 
-const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle }:
-    { episodeEvent: string, eventMessage: string; lipsyncObj: SavedLipsync | null; seasonTitle: string; }) => {
+const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, episodeNumber, episodeType }:
+    {
+        episodeEvent: string;
+        eventMessage: string;
+        lipsyncObj: SavedLipsync | null;
+        seasonTitle: string;
+        episodeNumber: number;
+        episodeType: string;
+    }) => {
 
     let label = EVENT_LBLS[episodeEvent] || "Queens";
-    if(episodeEvent === 'results') label = seasonTitle +  ' Results';
+    if (episodeEvent === 'results') label = seasonTitle + ' Results';
     let mainMessage = eventMessage;
     let lipsyncMessage = "";
     let afterStr = '';
+    const isLSFTC = ['lsftc1', 'lsftc2', 'lsftcFinal'].includes(episodeEvent);
 
     if (episodeEvent === "bottom2" && eventMessage.includes("lipsync to")) {
         const [before, after] = eventMessage.split("They will now have to lipsync to");
@@ -33,11 +41,13 @@ const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle }:
             ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
             : "";
     }
-    if (['lsftc1', 'lsftc2', 'lsftcFinal'].includes(episodeEvent)) {
+    if (isLSFTC) {
         lipsyncMessage = "They will now have to lipsync to" + '';
         afterStr = lipsyncObj?.lipsync?.title
             ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
             : "";
+    } else if (!isLSFTC && episodeEvent != 'results' && !episodeType.includes('finale')) {
+        label = 'Episode ' + episodeNumber + ': ' + label;
     }
 
     return <>

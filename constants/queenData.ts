@@ -3683,6 +3683,258 @@ export const episodes = [
     type: 'finale',
     franchise: 'US'
   },
+  {
+    id: 'bAgRzoYolgEHutPTOghm',
+    episodeNumber: 1,
+    season: '12',
+    title: "I'm That Bitch",
+    description: "Nicki Minaj guest judges the new cast of queens competing for $100,000 and the title of America's Next Drag Superstar. The first step toward the crown is having to write and perform an original rap number.",
+    type: 'premiere,singing,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'sTb0EP910e8kue4zI9Pr',
+    episodeNumber: 2,
+    season: '12',
+    title: "You Don't Know Me",
+    description: "Thandie Newton (Westworld) and Swedish singer Robyn guest judge. And as the race for the crown continues, the queens must write and perform a Fosse-inspired jazz number.",
+    type: 'premiere,singing,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'bzOn8cayiEjn6ZChFnRy',
+    episodeNumber: 3,
+    season: '12',
+    title: "World's Worst",
+    description: "The queens must flex their comedy improv skills when they audition for the new TV show World's Worst - a talent show for people with little talent. Olivia Munn (X-Men: Apocalypse) guest judges.",
+    type: 'comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'EmC0B6ag3yYlmPrASS1m',
+    episodeNumber: 4,
+    season: '12',
+    title: "The Ball Ball",
+    description: "The queens' creativity comes to life when they compete in a pageant of sports-inspired couture, and strutting the runway in three 'ball-themed' looks. Leslie Jones (Saturday Night Live) guest judges.",
+    type: 'design,ball,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'vC00TcY1Dw9vbiU96xQk',
+    episodeNumber: 5,
+    season: '12',
+    title: "Gay's Anatomy",
+    description: "The queens are challenged to take part in TV's longest running drag queen scripted show, Gay's Anatomy. Pop superstar, Normani guest judges.",
+    type: 'comedy,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'fa45EJL2tBk2SHaIbg8f',
+    episodeNumber: 6,
+    season: '12',
+    title: "Snatch Game",
+    description: "The queens compete in the legendary Snatch Game. Mean Girls co-stars Jonathan Bennett and Daniel Franzese guest judge. Drag queen Vanessa Vanjie Mateo makes a guest appearance.",
+    type: 'comedy,improv,snatchGame',
+    franchise: 'US'
+  },
+  {
+    id: 'CQTGOikZgAen13k24mtb',
+    episodeNumber: 7,
+    season: '12',
+    title: "Madonna: The Unauthorized Rusical",
+    description: "The queens get into the groove in a Queen of Pop inspired musical. U.S. Representative Alexandria Ocasio-Cortez and supermodel Winnie Harlow guest judge.",
+    type: 'musical,singing,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'W7kTEfMR3eufpQSQZgSI',
+    episodeNumber: 8,
+    season: '12',
+    title: "Droop",
+    description: 'The queens must create and market ridiculously extravagant products, for the new drag queen lifestyle brand "Droop." Chaka Khan guest judges. Personal trainer Bob Harper makes a guest appearance.',
+    type: 'comedy,branding,commercial',
+    franchise: 'US'
+  },
+  {
+    id: 'QesXmW3nvdDG2V7Ppa96',
+    episodeNumber: 9,
+    season: '12',
+    title: "Choices 2020",
+    description: "It's time for America's first drag queen president! The queens argue in a fabulous presidential debate. Actors Jeff Goldblum (Jurassic Park) and Rachel Bloom (Crazy Ex-Girlfriend) guest judge.",
+    type: 'comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: '49z9f3LhgujODIpVEOTB',
+    episodeNumber: 10,
+    season: '12',
+    title: "Superfan Makeover",
+    description: "The queens must makeover Drag Race superfans. But there's one thing…the superfans have no idea what's about to happen to them. Actress Daisy Ridley (Star Wars) guest judges.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'AMS4LodmmzWpyWQ3stmf',
+    episodeNumber: 11,
+    season: '12',
+    title: "One-Queen Show",
+    description: "The queens must create and perform their own solo show. Whoopi Goldberg (The View; Ghost) coaches the queens and guest judges.",
+    type: 'comedy,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'vfcKCayFzZG4lULaDg3f',
+    episodeNumber: 12,
+    season: '12',
+    title: "Viva Drag Vegas",
+    description: "The queens must perform a medley of songs from RuPaul's Drag Race Live!, a hit show on the Las Vegas strip. Choreographer Jamal Sims (Disney’s Aladdin) guest judges.",
+    type: 'musical,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'jYqfdL3eSaGY1hGINJEK',
+    episodeNumber: 14,
+    season: '12',
+    title: "Grand Finale",
+    description: "The top queens compete in a revolutionary lip sync battle for the crown. The finale boasts special celeb appearances, the announcement of Miss Congeniality and show-stopping performances.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'EmDOaNMKCoXRVgDhhmlf',
+    episodeNumber: 1,
+    season: '13',
+    title: "The Pork Chop",
+    description: "In an epic twist, RuPaul makes all contestants lip sync for their lives as soon as they enter the competition. Some will stay, some will sashay away.",
+    type: 'premiere,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'EoW8jkcJtPpG3XAI8dVj',
+    episodeNumber: 2,
+    season: '13',
+    title: "Condragulations",
+    description: "Queens form a pop group to write lyrics and perform choreography to a new version of RuPaul’s song Condragulations. Choreographer Jamal Sims (Disney’s Aladdin) guest judges.",
+    type: 'dancing,singing,rap',
+    franchise: 'US'
+  },
+  {
+    id: 'v0yGVFr6N41VaLag7mIS',
+    episodeNumber: 3,
+    season: '13',
+    title: "Phenomenon",
+    description: "As the race for the crown continues, queens must write lyrics and perform choreography in a performance of RuPaul’s song Phenomenon. Comedian and host Nicole Byer (Nailed It!) guest judges.",
+    type: '',
+    franchise: 'US'
+  },
+  {
+    id: 'Te2iROKmqmDafjULmLUO',
+    episodeNumber: 4,
+    season: '13',
+    title: "RuPaulmark Channel",
+    description: "The queens are challenged to overact in cheesy RuPaulmark holiday movies. Comedian and host Loni Love (Soul Plane) guest judges.",
+    type: 'comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'LBOgtyCfUGvgcCZyFRkQ',
+    episodeNumber: 5,
+    season: '13',
+    title: "The Bag Ball",
+    description: "Tensions rise as queens put their design skills to the test in a pageant of bag-inspired couture and showcase three bag-themed looks. Comedian and host Nicole Byer (Nailed It!) guest judges.",
+    type: 'design,ball,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'kdhtB4rNqyhlzjzPXHGe',
+    episodeNumber: 6,
+    season: '13',
+    title: "Disco-Mentary",
+    description: "The queens funk it up in a disco-dancing documentary, complete with 70s fashions. Comedian and host Loni Love (Soul Plane, The Real) guest judges.",
+    type: 'dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'qXN186mzbQXuRhnCUgby',
+    episodeNumber: 7,
+    season: '13',
+    title: "Bossy Rossy Ruboot",
+    description: 'The queens flex their improv skills in a reboot of the salacious talk show "Bossy Rossy", hosted by Ross Mathews; LGBT activist TS Madison guest judges.',
+    type: 'comedy,improv',
+    franchise: 'US'
+  }, 
+  {
+    id: 'RQlUSavRvCXDsvfO6WxD',
+    episodeNumber: 8,
+    season: '13',
+    title: "Social Media: The Unverified Rusical",
+    description: "It’s time for the Rusical! Queens must record lyrics and learn choreography as they perform in a tale on social media. Choreographer Jamal Sims guest judges; Anne Hathaway (The Devil Wears Prada) makes a virtual appearance in the workroom.",
+    type: 'musical,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'vKrWjJTRrSmHTbpDsUZK',
+    episodeNumber: 9,
+    season: '13',
+    title: "The Snatch Game",
+    description: "The queens impersonate celebrities in the legendary Snatch Game. LGBT activist TS Madison guest judges.",
+    type: 'snatchGame,comedy,improv',
+    franchise: 'US'
+  },
+  {
+    id: 'XLIhSzISf4KChdziCKB4',
+    episodeNumber: 10,
+    season: '13',
+    title: "Freaky Friday Queens",
+    description: "It’s Freaky Friday! The queens are challenged to make over each other into their own drag doppelgängers. Comedian and host Loni Love (Soul Plane) guest judges; psychic Char Margolis makes an appearance.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'VXj2Om4ZWQfAhVz48wOG',
+    episodeNumber: 11,
+    season: '13',
+    title: "Pop! Goes the Queens",
+    description: "The queens must create and brand their own versions of extravagant soft drinks. Current reigning America’s Next Drag Superstar Jaida Essence Hall makes a virtual appearance in the workroom.",
+    type: 'comedy,branding,commercial',
+    franchise: 'US'
+  },
+  {
+    id: 'cgqCMiCvLFs9cY5NNdDK',
+    episodeNumber: 12,
+    season: '13',
+    title: "Nice Girls Roast",
+    description: 'The queens take part in a comedy roast of former Drag Race "Miss Congeniality” winners - Heidi N Closet, Nina West and Valentina. Comedian and host Loni Love (Soul Plane) guest judges; Norvina (President of Anastasia Beverly Hills) makes a guest appearance.',
+    type: 'roast,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'H3C5hq6iXHFqMDd3DsTy',
+    episodeNumber: 13,
+    season: '13',
+    title: "Henny, I Shrunk The Drag Queens!",
+    description: 'The queens flex their acting skills in a new sci-fi adventure, playing tiny shrunken drag queens. Cynthia Erivo (Genius: Aretha) guest judges; Scarlett Johansson (Black Widow) makes a virtual appearance in the workroom.',
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'ElzWLN8wvz1q08npKBdg',
+    episodeNumber: 14,
+    season: '13',
+    title: "Gettin' Lucky",
+    description: ' The queens write and record lyrics as they perform to the world premiere of RuPauls new song “Lucky”. Choreographer Jamal Sims makes a guest appearance.',
+    type: 'rap,dancing,singing',
+    franchise: 'US'
+  },
+  {
+    id: 'KvCqRTJ0K0FPO3uyhjll',
+    episodeNumber: 16,
+    season: '13',
+    title: "Grand Finale",
+    description: "It’s time to crown our winner, baby! The top 4 queens compete in a finale lip sync smackdown in the race to crown America’s Next Drag Superstar. The queens also pick a Miss Congeniality.",
+    type: 'finale,lipsyncSmackdown',
+    franchise: 'US'
+  },
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
@@ -4777,6 +5029,231 @@ export const lipsyncs = [
     season: '8',
     franchise: 'US'
   },
+  {
+    id: 'mg527m6FLBOVPEqqtaUm',
+    title: "Starships",
+    episode: 'us12e1',
+    genre: "dance pop,europop",
+    artist: "Nicki Minaj",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'uphNWhUTTSyaLIEm2oHT',
+    title: "Call Your Girlfriend",
+    episode: 'us12e2',
+    genre: "dance,electronic,russian dance",
+    artist: "Robyn",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'KjTCbwoaVSsBjHl4KxD0',
+    title: "Problem",
+    episode: 'us12e3',
+    genre: "dance pop,pop,r&b",
+    artist: "Ariana Grande ft. Iggy Azalea",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'H1wb19pE9axVflQyYnxU',
+    title: "S&M",
+    episode: 'us12e4',
+    genre: "dance pop,hi-NRG,electronic",
+    artist: "Rihanna",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: '2FBg4mYGRvfrIWrdYhGl',
+    title: "Heart to Break",
+    episode: 'us12e5',
+    genre: "dance pop",
+    artist: "Kim Petras",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'spIkHyPn53chJi5zjIgX',
+    title: "Let it Go",
+    episode: 'us12e6',
+    genre: "msucial",
+    artist: "Caissie Levy",
+    season: '12',
+    franchise: 'US'
+  }, 
+  {
+    id: 'OQfnkwb2jY7eZJSdEuDK',
+    title: "Burning Up",
+    episode: 'us12e7',
+    genre: "alternative,r&b,rock,dance,new wave",
+    artist: "Madonna",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: '3xh6TmOpPJfss48uJQea',
+    title: "This Is My Night",
+    episode: 'us12e8',
+    genre: "r&b,soul",
+    artist: "Chaka Khan",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'HlZNtV7NxqGlTsF6VQzH',
+    title: "Firework",
+    episode: 'us12e9',
+    genre: "dance pop,electronic",
+    artist: "Katy Perry",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: '1dXpEQWefxjkub659l9V',
+    title: "Kill the Lights",
+    episode: 'us12e10',
+    genre: "dance,electronic,funk",
+    artist: "Alex Newell and DJ Cassidy ft. Nile",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'RmFevJ1aviCbJQ7eeDDm',
+    title: "1999",
+    episode: 'us12e11',
+    genre: "r&b,soul,MPB",
+    artist: "Prince",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'zdVbYwKc9KgbvziZgwMK',
+    title: "On The Floor",
+    episode: 'us12e12',
+    genre: "pop,r&b",
+    artist: "Jennifer Lopez feat. Pitbull",
+    season: '12',
+    franchise: 'US'
+  },
+  {
+    id: 'dvqJNpRrc9XKSAb0k6T5',
+    title: "Break My Heart",
+    episode: "us13e2",
+    genre: "pop",
+    artist: "Dua Lipa",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'ZobqNeO8eRSTXYiKgRyB',
+    title: "If U Seek Amy",
+    episode: "us13e3",
+    genre: "pop",
+    artist: "Britney Spears",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'Q67DIJPAOJPrL9bNGAei',
+    title: "100% Pure Love",
+    episode: "us13e4",
+    genre: "house,dance",
+    artist: "Crystal Waters",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: '2MZ45joeB6WCzBz5lyEY',
+    title: "Fancy",
+    episode: "us13e5",
+    genre: "hip-hop,pop",
+    artist: "Iggy Azalea ft. Charli XCX",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'nI1jhI1xClBrSGAI9Rg7',
+    title: "Hit ’Em Up Style (Oops!)",
+    episode: "us13e6",
+    genre: "R&B,pop",
+    artist: "Blu Cantrell",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'zyxgY6PtkUnuhbqbYRcS',
+    title: "Whole Lotta Woman",
+    episode: "us13e7",
+    genre: "pop,singer-songwriter",
+    artist: "Kelly Clarkson",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'zbWJGo450UgLr1D1JOfI',
+    title: "BO$$",
+    episode: "us13e8",
+    genre: "pop,R&B",
+    artist: "Fifth Harmony",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'CTjyPg7XkyOATS9f7AjP',
+    title: "Fascinated",
+    episode: "us13e9",
+    genre: "freestyle,dance",
+    artist: "Company B",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'hNm8ncNRNCp99zrA1q8p',
+    title: "Shackles (Praise You)",
+    episode: "us13e10",
+    genre: "gospel,R&B",
+    artist: "Mary Mary",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: '165Pj5sAAkQyUVwLLKG7',
+    title: "My Humps",
+    episode: "us13e11",
+    genre: "hip-hop,pop",
+    artist: "Black Eyed Peas",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: '2T2mA5AWZRm7M59kJdou',
+    title: "No Tears Left to Cry",
+    episode: "us13e12",
+    genre: "pop",
+    artist: "Ariana Grande",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 'ZhaB028lIQ8bE729yFZe',
+    title: "Strong Enough",
+    episode: "us13e13",
+    genre: "pop,dance",
+    artist: "Cher",
+    season: "13",
+    franchise: "US"
+  },
+  {
+    id: 't9ntjVNMsLCGVbFZIVNg',
+    title: "I Learned from the Best",
+    episode: "us13e14",
+    genre: "pop,ballad",
+    artist: "Whitney Houston",
+    season: "13",
+    franchise: "US"
+  },
 ];
 
 export const seasons = [
@@ -4833,6 +5310,16 @@ export const seasons = [
   {
     id: 'txf82x1awXgwEZBcNCVl',
     seasonNumber: '11',
+    franchise: 'US',
+  },
+  {
+    id: 'iGLLMmPhow0NSs4LQqZ3',
+    seasonNumber: '12',
+    franchise: 'US',
+  },
+  {
+    id: 'swwEy0xEc7VUTC6ePjgo',
+    seasonNumber: '13',
     franchise: 'US',
   },
 ];

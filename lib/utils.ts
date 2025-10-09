@@ -8,19 +8,19 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export interface LipsyncData {
-    id: string;
-    title: string;
-    artist: string;
-    episode: string;
-    genre: string;
-    season: string;
-    franchise: string;
+  id: string;
+  title: string;
+  artist: string;
+  episode: string;
+  genre: string;
+  season: string;
+  franchise: string;
 }
 
 export interface SavedLipsync {
-    episodeNumber: number;
-    lipsync: LipsyncData;
-    order: number;
+  episodeNumber: number;
+  lipsync: LipsyncData;
+  order: number;
 }
 
 const episodeTypeToStats: Record<string, (keyof any)[]> = {
@@ -54,6 +54,10 @@ export function mainChallenge(
     if (seasonStyle.toLowerCase().includes("lsftc")) {
       const activeQueens = trackRecord.filter(q => !q.isEliminated);
 
+      if (activeQueens.length < 4) {
+        console.warn("Not enough active queens for LSFTC. Skipping semifinal grouping.");
+        return trackRecord;
+      }
       // --- Semi-finals ---
       const shuffled = [...activeQueens].sort(() => Math.random() - 0.5);
       const group1 = [shuffled[0], shuffled[1]];
@@ -241,7 +245,7 @@ export function mainChallenge(
 }
 
 function nittyGritty({ size }: { size: number }) {
-  
+
   if (size === 4) { // Explicit rules for 4 queens left
     return [2, 2]; // Return topCount = 2 (winner + high), bottomCount = 2
   }

@@ -2,13 +2,34 @@
 "use client";
 import React, { useState } from "react";
 
+type CloseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  closeSheet?: () => void;
+};
+
+const CloseButton = ({ closeSheet, onClick, ...props }: CloseButtonProps) => {
+  return (
+    <button
+      {...props}
+      onClick={(e) => {
+        onClick?.(e);
+        closeSheet?.();
+      }}
+    />
+  );
+};
+
+
 const EpisodeList = ({
   episodes,
   onEpisodeClick,
   onEpisodeEventClick,
   episodeHistory,
   initialTrackRecord,
-  seasonStyle
+  seasonStyle,
+  closeSheet,
+  selectedEpisode,
+  setSelectedEpisode
+
 }: {
   episodes: any[];
   onEpisodeClick: (epNum: number) => void;
@@ -16,9 +37,13 @@ const EpisodeList = ({
   episodeHistory: { pre: { [key: number]: any[] }; post: { [key: number]: any[] } };
   initialTrackRecord: any[];
   seasonStyle: string;
-}) => {
-  const [selectedEpisode, setSelectedEpisode] = useState<number | null>(0);
+  closeSheet?: () => void;
+  selectedEpisode: number | null;
+  setSelectedEpisode: React.Dispatch<React.SetStateAction<number | null>>;
 
+}) => {
+  
+  //const [selectedEpisode, setSelectedEpisode] = useState<number | null>(0);
   // helper to update selected + fire event
   const handleEventClick = (
     e: React.MouseEvent,
@@ -29,15 +54,19 @@ const EpisodeList = ({
     e.stopPropagation();
     setSelectedEpisode(epNum);
     onEpisodeEventClick(epNum, eventType, nonElimination);
+    closeSheet?.();
+  };
+
+  const handleCardClick = (epNum: number) => {
+    setSelectedEpisode(epNum);
+    onEpisodeClick(epNum);
+    closeSheet?.();
   };
 
   return (
     <div className="max-h-[calc(100vh-100px)] overflow-y-auto space-y-2 pr-2 pl-2 pb-2 pt-2">
       <div
-        onClick={() => {
-          setSelectedEpisode(0);
-          onEpisodeClick(0);
-        }}
+        onClick={() => handleCardClick(0)}
         className={`p-6 rounded-xl border border-gray-200
           bg-gradient-to-r from-purple-100 via-purple-50 to-indigo-100
           shadow-lg hover:shadow-2xl transform hover:scale-102
@@ -75,6 +104,7 @@ const EpisodeList = ({
             onClick={() => {
               setSelectedEpisode(ep.episodeNumber);
               onEpisodeClick(ep.episodeNumber);
+              handleCardClick(ep.episodeNumber);
             }}
           >
             <div className="font-semibold text-md">
@@ -87,61 +117,34 @@ const EpisodeList = ({
                   <>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1", false)}
-                    >
-                      Round 1
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1", false)}> Round 1 </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1win", false)}
-                    >
-                      Round 1 Results
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc1win", false)}> Round 1 Results </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2", false)}
-                    >
-                      Round 2
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2", false)}> Round 2 </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2win", false)}
-                    >
-                      Round 2 Results
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftc2win", false)}> Round 2 Results </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-red-700 hover:bg-red-800 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftcFinal", false)}
-                    >
-                     Final Lipsync
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lsftcFinal", false)}> Final Lipsync </button>
                     <button
-                      className="px-3 py-1 text-xs rounded-full bg-blue-600 hover:bg-blue-700 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", false)}
-                    >
-                      Winner
-                    </button>
+                      className="px-3 py-1 text-xs rounded-full sparkle-gold transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", false)}> Winner </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-gray-700 hover:bg-gray-800 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}
-                    >
-                      Show Results
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}> Show Results </button>
                   </>
                 ) : (
                   <>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-blue-600 hover:bg-blue-700 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
-                    >
-                      Winner
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}> Winner </button>
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-gray-700 hover:bg-gray-800 transition text-white"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}
-                    >
-                      Show Results
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "results", false)}> Show Results </button>
                   </>
                 )
               ) : (
@@ -149,41 +152,23 @@ const EpisodeList = ({
                   {hasSafeQueens && (
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-gray-200 hover:bg-gray-300 transition"
-                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "announceSafe", ep.nonElimination || "")}
-                    >
-                      Safe
-                    </button>
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "announceSafe", ep.nonElimination || "")}> Safe </button>
                   )}
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-blue-100 hover:bg-blue-200 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}
-                  >
-                    High
-                  </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}> High </button>
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-blue-200 hover:bg-blue-400 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}
-                  >
-                    Winner
-                  </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "winner", ep.nonElimination || "")}> Winner </button>
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-200 hover:bg-red-300 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom", ep.nonElimination || "")}
-                  >
-                    Bottom
-                  </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom", ep.nonElimination || "")}> Low </button>
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-300 hover:bg-red-400 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom2", ep.nonElimination || "")}
-                  >
-                    Bottom 2
-                  </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom2", ep.nonElimination || "")}> Bottom 2 </button>
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-600 hover:bg-red-800 transition text-white"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "eliminated", ep.nonElimination || "")}
-                  >
-                    Elimination
-                  </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "eliminated", ep.nonElimination || "")}> Elimination </button>
                 </>
               )}
             </div>

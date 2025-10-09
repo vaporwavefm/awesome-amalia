@@ -5,6 +5,18 @@ import CardList from "./CardList";
 import { mainChallenge, SavedLipsync } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
 import EpisodeMessage from "./EpisodeMessage";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type Placement = {
   episodeNumber: number | string;
@@ -28,7 +40,7 @@ const SimLayout = (
       minNonElimEps: number;
       seasonMode: string;
       seasonStyle: string;
-      seasonTitle:string;
+      seasonTitle: string;
     }) => {
 
   const initialTrackRecord = useMemo(() => {
@@ -58,6 +70,9 @@ const SimLayout = (
   const [selectedLipsync, setSelectedLipsync] = useState<SavedLipsync | null>(null);
   const [showResults, setShowResults] = useState(false);
   const lsftcEvents = ["lsftc1", "lsftc2", "lsftcFinal", "lsftc1win", "lsftc2win", "lsftcFinalWin"];
+  const [open, setOpen] = useState(false);
+  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
 
   useEffect(() => { // Precompute all episode results
 
@@ -134,10 +149,26 @@ const SimLayout = (
     setEpisodeEvent('');
     setShowResults(false); // reset show results
     setSelectedEpisode(episodeNumber);
+    setOpen(false);
+
+    const epIndex = episodes.findIndex(e => e.episodeNumber === episodeNumber);
+    if (epIndex !== -1) {
+      setCurrentEpisodeIndex(epIndex);
+      setCurrentEventIndex(0);
+    }
   };
 
   const handleEpisodeEventClick = (episodeNumber: number, eventType: string) => {
     setSelectedEpisode(episodeNumber);
+
+    const epIndex = episodes.findIndex(e => e.episodeNumber === episodeNumber);
+    if (epIndex !== -1) {
+      setCurrentEpisodeIndex(epIndex);
+
+      const eventOrder = eventOrderByEpisode[epIndex];
+      const eventIndex = eventOrder.indexOf(eventType);
+      setCurrentEventIndex(eventIndex !== -1 ? eventIndex : 0);
+    }
 
     if (eventType === "results") {
       setEpisodeEvent("results");
@@ -153,6 +184,7 @@ const SimLayout = (
 
     setEpisodeEvent(eventType);
     setShowResults(false);
+    setOpen(false);
   };
 
   const filteredQueens = selectedEpisode
@@ -180,7 +212,7 @@ const SimLayout = (
           case 'high':
             return placement?.placement === 'high';
           case 'bottom':
-            return placement?.placement === 'low' || placement?.placement === 'bottom';
+            return placement?.placement === 'low';
           case 'bottom2':
             return placement?.placement === 'bottom';
           case 'eliminated':
@@ -213,7 +245,7 @@ const SimLayout = (
     };
 
     let lipsyncTitle = '', lipsyncArtist = '';
-  
+
     if (lipsyncs[episodeNumber - 1]) {
       lipsyncTitle = lipsyncs[episodeNumber - 1]['lipsync'].title;
       lipsyncArtist = lipsyncs[episodeNumber - 1]['lipsync'].artist;
@@ -269,12 +301,12 @@ const SimLayout = (
 
   };
 
+  // effect to display the correct lipsync for episode or LSFTC event
   useEffect(() => {
 
     if (!selectedEpisode || !episodeEvent) return;
     if (seasonStyle == 'lsftc' && lsftcEvents.includes(episodeEvent)) {
       let roundNum = 0;
-
       if (episodeEvent === 'lsftc1') roundNum = 1;
       else if (episodeEvent === 'lsftc2') roundNum = 2;
       else if (episodeEvent === 'lsftcFinal') roundNum = 3;
@@ -298,6 +330,69 @@ const SimLayout = (
   }, [selectedEpisode, episodeEvent, lipsyncs]);
 
   let queensForCardList = [...queensToDisplay].filter(Boolean);
+
+  // logic for navigating through episodes and episode events 
+  const eventOrderByEpisode = episodes.map((ep) => {
+    const isFinale = ep.type?.toLowerCase().includes("finale");
+    const hasSafe = true;
+
+    if (isFinale) {
+      return seasonStyle === "lsftc"
+        ? ["lsftc1", "lsftc1win", "lsftc2", "lsftc2win", "lsftcFinal", "winner", "results"]
+        : ["winner", "results"];
+    }
+    return hasSafe
+      ? ["announceSafe", "high", "winner", "bottom", "bottom2", "eliminated"]
+      : ["high", "winner", "bottom", "bottom2", "eliminated"];
+  });
+
+  const isAtResults =
+    currentEventIndex === eventOrderByEpisode[currentEpisodeIndex].length - 1 &&
+    eventOrderByEpisode[currentEpisodeIndex][currentEventIndex] === "results";
+
+  const handleNextButton = () => {
+    const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
+    const nextEventIndex = currentEventIndex + 1;
+
+    if (nextEventIndex < currentEvents.length) {
+      setCurrentEventIndex(nextEventIndex);
+      handleEpisodeEventClick(
+        episodes[currentEpisodeIndex].episodeNumber,
+        currentEvents[nextEventIndex]
+      );
+    } else if (currentEpisodeIndex + 1 < episodes.length) { // move to next episode
+      setCurrentEpisodeIndex(currentEpisodeIndex + 1);
+      setCurrentEventIndex(0);
+      handleEpisodeClick(episodes[currentEpisodeIndex + 1].episodeNumber);
+    }
+  };
+
+  const handlePrevButton = () => {
+    if (currentEventIndex > 0) {
+      const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
+      const prevEventIndex = currentEventIndex - 1;
+      setCurrentEventIndex(prevEventIndex);
+      handleEpisodeEventClick(
+        episodes[currentEpisodeIndex].episodeNumber,
+        currentEvents[prevEventIndex]
+      );
+    } else if (currentEpisodeIndex > 0) {
+      const prevEpisodeIndex = currentEpisodeIndex - 1;
+      const prevEvents = eventOrderByEpisode[prevEpisodeIndex];
+      setCurrentEpisodeIndex(prevEpisodeIndex);
+      setCurrentEventIndex(prevEvents.length - 1);
+      handleEpisodeEventClick(
+        episodes[prevEpisodeIndex].episodeNumber,
+        prevEvents[prevEvents.length - 1]
+      );
+    } else {
+      setSelectedEpisode(null);
+      setEpisodeEvent('');
+      setCurrentEpisodeIndex(0);
+      setCurrentEventIndex(0);
+    }
+  };
+
 
   if (seasonMode === "sp" && selectedEpisode) {
     if (selectedEpisode === 1) {
@@ -327,8 +422,9 @@ const SimLayout = (
     : '';
 
   return (
-    <div className="flex justify-center gap-2 pt-2">
-      <div className="w-1/4 p-4">
+    <div className="md:flex md:justify-center gap-2 pt-2">
+      {/* Display episode cards */}
+      <div className="hidden md:block w-1/4 p-4"> {/* for regular desktop screens */}
         <EpisodeList
           episodes={episodes}
           onEpisodeClick={handleEpisodeClick}
@@ -336,9 +432,46 @@ const SimLayout = (
           episodeHistory={episodeHistory}
           initialTrackRecord={initialTrackRecord}
           seasonStyle={seasonStyle}
+          selectedEpisode={selectedEpisode}
+          setSelectedEpisode={setSelectedEpisode}
         />
       </div>
-      <div className="w-3/4 pt-2">
+      <div className="block md:hidden p-2">{/* for mobile screens */}
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+              <Menu className="w-4 h-4" /> View Episodes
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-[85vw] sm:w-[400px] overflow-y-auto pt-4">
+            <VisuallyHidden>
+              <SheetTitle>Episodes</SheetTitle>
+            </VisuallyHidden>
+            <div className="mt-8">
+              <EpisodeList
+                episodes={episodes}
+                onEpisodeClick={(num) => {
+                  handleEpisodeClick(num);
+                }}
+                onEpisodeEventClick={(num, event) => {
+                  handleEpisodeEventClick(num, event);
+                }}
+                episodeHistory={episodeHistory}
+                initialTrackRecord={initialTrackRecord}
+                seasonStyle={seasonStyle}
+                closeSheet={() => setOpen(false)}
+                selectedEpisode={selectedEpisode}
+                setSelectedEpisode={setSelectedEpisode}
+              />
+            </div>
+            <SheetClose asChild>
+              <Button variant="secondary" className="w-full mt-4">Close</Button>
+            </SheetClose>
+          </SheetContent>
+        </Sheet>
+      </div>
+      {/* Display main screen */}
+      <div className="sm:w-full md:w-3/4 pt-2">
         {episodeEvent ? (
           <>
             <EpisodeMessage
@@ -346,6 +479,8 @@ const SimLayout = (
               eventMessage={eventMessage}
               lipsyncObj={selectedLipsync}
               seasonTitle={seasonTitle}
+              episodeNumber={episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}
+              episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
             />
             <CardList
               queens={queensForCardList}
@@ -363,14 +498,14 @@ const SimLayout = (
             {selectedEpisode ? (
               // existing episode preview box
               <div className="e-title-msg">
-                <h2 className="e-title-h2"> {episodes.find(e => e.episodeNumber === selectedEpisode)?.title} </h2>
+                <h2 className="e-title-h2"> Episode {episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}: {episodes.find(e => e.episodeNumber === selectedEpisode)?.title} </h2>
                 <p className="e-title-descr"> {episodes.find(e => e.episodeNumber === selectedEpisode)?.description} </p>
               </div>
             ) : (
               // initial message
               <div className="e-title-msg">
                 <h2 className="e-title-h2"> Welcome to {seasonTitle}! </h2>
-                <p className="e-title-descr">  Who will snatch the crown? Click on any episode to follow their journey!</p>
+                <p className="e-title-descr">  Who will snatch the crown? Click on any episode or click next below to follow their journey!</p>
               </div>
             )}
 
@@ -381,6 +516,20 @@ const SimLayout = (
               seasonStyle={seasonStyle} />
           </>
         )}
+
+        <div className="flex justify-between items-center mb-6 mt-6 gap-4 ml-20 mr-20">
+          <Button
+            variant="outline"
+            onClick={handlePrevButton}
+            disabled={selectedEpisode === null && currentEventIndex === 0}
+          >
+            ← Previous
+          </Button>
+          <Button variant="outline" onClick={handleNextButton} disabled={isAtResults}>
+            Next →
+          </Button>
+        </div>
+
       </div>
     </div>
   );

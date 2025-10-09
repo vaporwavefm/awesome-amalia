@@ -97,11 +97,11 @@ const Page = () => {
 
       if (!found) {
         const usedIds = new Set(savedLipsyncs.map((l: any) => l.lipsync?.id)); // track used lipsyncs
-        let randomItem;
-        const cutoff = 0;
+        let randomItem, cutoff = 0;
         do {
           const randomIndex = Math.floor(Math.random() * lipsyncs.length);
           randomItem = lipsyncs[randomIndex];
+          cutoff++;
         } while (usedIds.has(randomItem.id) && cutoff < 50);
 
         usedIds.add(randomItem.id);
@@ -246,7 +246,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <div className="flex-1 p-6">
 
           {/* main tabs (general configuration, queens, episodes) */}
@@ -279,7 +279,7 @@ const Page = () => {
                 {/* Season Title */}
                 <div className="flex flex-col space-y-2 w-[300px] pb-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">Season title:</span>
+                    <span className="font-medium text-gray-800">Season Title:</span>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <button

@@ -46,11 +46,11 @@ const Page = () => {
 
         for (let i = 0; i < 3; i++) {
 
-          let randomItem;
-          const cutoff = 0;
+          let randomItem, cutoff = 0;
           do {
             const randomIndex = Math.floor(Math.random() * lipsyncs.length);
             randomItem = lipsyncs[randomIndex];
+            cutoff++;
           } while (usedIds.has(randomItem.id) && cutoff < 50);
 
           usedIds.add(randomItem.id);
