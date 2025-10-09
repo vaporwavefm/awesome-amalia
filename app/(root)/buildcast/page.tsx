@@ -488,8 +488,10 @@ const Page = () => {
                     alt="heels accent"
                     width={120}
                     height={120}
-                    className="absolute -right-25 top-full mt-2 opacity-40 pointer-events-none"
+                    className="absolute right-[-40px] sm:right-[-60px] lg:right-[-100px] top-full sm:top-[90%] mt-2 opacity-40
+                    pointer-events-none w-20 sm:w-28 md:w-32 md:top-full h-auto"
                   />
+
 
                 </div>
               </div>
