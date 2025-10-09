@@ -14,7 +14,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
-    {date: '2025-10-08', note: 'Website is now mobile friendly! (Unless theres still some stuff that renders weird...)'},
+    { date: '2025-10-08', note: 'Website is now mobile friendly! (Unless theres still some stuff that renders weird...)' },
     { date: '2025-10-07', note: 'Lipsync for the Crown is now available to try out! Updated styling for queen cards. Added pagination to this update log!' },
     { date: '2025-09-29', note: 'Fixed ID issues with certain queens having empty IDs. Added original seasons in search results for queens. Added queens from UK1,C2,C3,MX1,MX2,PH1,TH1,FR1,DU1!' },
     { date: "2025-09-24", note: "Imported all US queens from 1-17, episodes and lipsyncs from 1-7! (Noted some bugs that I will have to fix concerning the lipsyncs). Added menu options in general configuration tab for seasons style/mode." },
@@ -33,8 +33,7 @@ const Page = () => {
 
   return (
     <div className="bg-gradient-to-b from-violet-50 to-white">
-      <div className="flex justify-center items-center min-h-screen  px-6 relative overflow-hidden">
-
+      <div className="relative flex flex-col justify-center items-center min-h-screen px-4 sm:px-6 pt-24 sm:pt-32 pb-16 overflow-hidden">
         <div className="absolute bottom-70 inset-x-0 flex justify-between opacity-20 pointer-events-none">
           {Array.from({ length: 10 }).map((_, idx) => (
             <Image

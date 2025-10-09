@@ -203,6 +203,15 @@
   @apply flex justify-center mb-6 gap-2 bg-gray-200 rounded-full p-1 shadow-inner max-w-4xl mx-auto w-full;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
 @layer base {
   :root {
     --chart-1: oklch(0.646 0.222 41.116);

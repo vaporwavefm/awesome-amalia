@@ -61,7 +61,7 @@ const CardList = ({
         <div className="w-full">
             {showResults ? (
                 <Tabs defaultValue="queens" className="w-full">
-                    <TabsList className="tabs-list">
+                    <TabsList className="tabs-list flex overflow-x-auto whitespace-nowrap scrollbar-hide">
                         <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
                         <TabsTrigger value="table-min" className="tabs-trigger" >Contestant Progess (Minified)</TabsTrigger>
                         <TabsTrigger value="table-full" className="tabs-trigger" >Contestant Progess</TabsTrigger>

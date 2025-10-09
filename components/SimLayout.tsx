@@ -465,7 +465,7 @@ const SimLayout = (
               />
             </div>
             <SheetClose asChild>
-              <Button variant="secondary" className="w-full mt-4">Close</Button>
+              <Button variant="secondary" className="w-full ">Close</Button>
             </SheetClose>
           </SheetContent>
         </Sheet>
@@ -517,7 +517,7 @@ const SimLayout = (
           </>
         )}
 
-        <div className="flex justify-between items-center mb-6 mt-6 gap-4 ml-20 mr-20">
+        <div className="flex justify-between items-center mb-6 mt-6 gap-4 ml-24 mr-24">
           <Button
             variant="outline"
             onClick={handlePrevButton}
