@@ -14,7 +14,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
-    { date: '2025-10-30', note: 'Deployed beta version of relationships amongst queens! Currently set to random for each at the start of the season. Added queens from C4,UK3,UK4,UK5,BR1,PH2!' },
+    { date: '2025-10-28', note: 'Deployed beta version of relationships amongst queens! Currently set to random for each at the start of the season. Added queens from C4,UK3,UK4,UK5,BR1,PH2!' },
     { date: '2025-10-08', note: 'Website is now mobile friendly! (Unless theres still some stuff that renders weird...) Also added episodes for US12 and US13!' },
     { date: '2025-10-07', note: 'Lipsync for the Crown is now available to try out! Updated styling for queen cards. Added pagination to this update log!' },
     { date: '2025-09-29', note: 'Fixed ID issues with certain queens having empty IDs. Added original seasons in search results for queens. Added queens from UK1,C2,C3,MX1,MX2,PH1,TH1,FR1,DU1!' },
