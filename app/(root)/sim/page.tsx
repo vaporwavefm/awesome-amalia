@@ -23,6 +23,41 @@ const Page = () => {
   const [seasonStyle, setSeasonStyle] = useState('');
   const router = useRouter();
 
+  function generateRelationships(queens: any[]): any[] {
+    const updatedQueens = [...queens];
+
+    for (let i = 0; i < queens.length; i++) {
+      const queen = queens[i];
+      const relationships = [];
+
+      for (let j = 0; j < queens.length; j++) {
+        if (i === j) continue;
+
+        const other = queens[j];
+        const weightedTypes = [
+          "friend", "friend", "ally", "neutral", "neutral", "rival"
+        ];
+        const type = weightedTypes[Math.floor(Math.random() * weightedTypes.length)]; // try to set initial relationships as friendly or neutral
+
+        let baseStrength = 0; // keep strength not as high and on the positive note
+        if (type === "friend" || type === "ally") baseStrength = 20 + Math.random() * 20;
+        else if (type === "rival") baseStrength = -10 + Math.random() * 10;
+        else baseStrength = Math.random() * 10;
+
+        relationships.push({
+          targetId: other.id,
+          type,
+          strength: Math.round(baseStrength),
+        });
+      }
+
+      updatedQueens[i] = { ...queen, relationships };
+    }
+
+    return updatedQueens;
+  }
+
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -45,6 +80,8 @@ const Page = () => {
           const parsedQueens = JSON.parse(saved) ?? [];
           const parsedEps = JSON.parse(savedEpisodes ?? "[]");
           const parsedLipsyncs = JSON.parse(savedLipsyncs ?? "[]");
+
+          const queensWithRelationships = generateRelationships(parsedQueens);
 
           if (savedSeasonStyle === "lsftc") {
             const usedIds = new Set(parsedLipsyncs.map((l: any) => l.lipsync?.id));
@@ -70,14 +107,19 @@ const Page = () => {
           }
 
           if (parsedQueens.length > 0 && parsedEps.length > 0) {
-            const sorted = parsedQueens.sort((a: any, b: any) =>
+            //const sorted = parsedQueens.sort((a: any, b: any) =>
+            //a.name.localeCompare(b.name)
+            // );
+            const sorted = queensWithRelationships.sort((a: any, b: any) =>
               a.name.localeCompare(b.name)
             );
+
             let i = 1;
             for (const ep in parsedEps) {
               parsedEps[ep].episodeNumber = i;
               i++;
             }
+            //console.log(JSON.stringify(sorted));
             setSelectedQueens(sorted);
             setSelectedEpisodes(parsedEps);
             setSelectedLipsyncs(parsedLipsyncs);

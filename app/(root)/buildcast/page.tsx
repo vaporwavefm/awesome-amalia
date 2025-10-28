@@ -627,9 +627,7 @@ const Page = () => {
           </Tabs>
         </div>
 
-
         {/* Validation and submit button */}
-
         {!isLoading && (
           <div className="w-full md:w-80 p-6 bg-white border border-gray-200 shadow-xl rounded-2xl relative md:sticky md:top-50 h-fit mr-8 hover:shadow-2xl transition-shadow">
             {/* Container for text and button */}

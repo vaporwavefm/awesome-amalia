@@ -155,6 +155,9 @@ const EpisodeList = ({
                       onClick={(e) => handleEventClick(e, ep.episodeNumber, "announceSafe", ep.nonElimination || "")}> Safe </button>
                   )}
                   <button
+                    className="px-3 py-1 text-xs rounded-full bg-emerald-100 hover:bg-emerald-200 transition"
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "untucked", ep.nonElimination || "")}> Untucked </button>
+                  <button
                     className="px-3 py-1 text-xs rounded-full bg-blue-100 hover:bg-blue-200 transition"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}> High </button>
                   <button

@@ -14,6 +14,7 @@ const EVENT_LBLS: Record<string, string> = {
     lsftc2win: 'Lipsync For The Crown: Round 2 Results',
     lsftcFinal: 'Final Lipsync For the Crown',
     results: "Season Results",
+    untucked: "Untucked Highlights",
 };
 
 const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, episodeNumber, episodeType }:

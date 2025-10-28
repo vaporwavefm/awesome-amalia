@@ -17,7 +17,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-
+import { Relationship, getQueenNameById } from "@/lib/utils";
+import EpisodeEventContainer from "./EpisodeEventContainer";
 type Placement = {
   episodeNumber: number | string;
   placement: string;
@@ -74,6 +75,47 @@ const SimLayout = (
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
 
+
+  const getRelationshipChanges = (episodeNumber: number) => {
+    const preEpisode = episodeHistory.pre[episodeNumber];
+    const postEpisode = episodeHistory.post[episodeNumber];
+    if (!preEpisode || !postEpisode) return [];
+
+    const changes: { queen: string; target: string; from: Relationship; to: Relationship }[] = [];
+
+    for (const preQ of preEpisode) {
+      const postQ = postEpisode.find((pq) => pq.id === preQ.id);
+      if (!postQ) continue;
+
+      const preRel: Relationship[] = preQ.relationships || [];
+      const postRel: Relationship[] = postQ.relationships || [];
+
+      for (const postR of postRel) {
+        const preR = preRel.find(r => r.targetId === postR.targetId);
+        if (!preR) continue;
+
+        // --- ONLY include relationship changes if queens are in the same group for split premiere ---
+        if (seasonMode === "sp") {
+          const preQueenObj = postEpisode.find(q => q.id === preQ.id);
+          const targetQueenObj = postEpisode.find(q => q.id === postR.targetId);
+          if (preQueenObj?.group !== targetQueenObj?.group) continue;
+        }
+
+        if (preR.strength !== postR.strength || preR.type !== postR.type) {
+          const targetQueenName = getQueenNameById(queens, postR.targetId);
+          changes.push({
+            queen: preQ.name,
+            target: targetQueenName,
+            from: preR,
+            to: postR,
+          });
+        }
+      }
+    }
+
+    return changes;
+  };
+
   useEffect(() => { // Precompute all episode results
 
     let trackRecord = initialTrackRecord.map(q => ({ ...q }));
@@ -127,6 +169,15 @@ const SimLayout = (
         e.type,
         seasonStyle
       );
+
+      if (e.episodeNumber == 4 || e.episodeNumber == 10) {
+        for (const u in updatedGroup) {
+          if (updatedGroup[u].id == '3lkExLsRZdseTau69kCb') {
+            //console.log(e.episodeNumber);
+            //console.log(JSON.stringify(updatedGroup[u]['relationships']))
+          }
+        }
+      }
 
       trackRecord = trackRecord.map(q => {
         const updated = updatedGroup.find(u => u.id === q.id);
@@ -290,15 +341,28 @@ const SimLayout = (
         return names.length === 1
           ? `${names[0]} wins Round 1 of the Lipsync for the Crown!`
           : `${others.join(', ')} and ${last} win Round 1 of the Lipsync for the Crown!`;
-
       case 'lsftc2win':
         return names.length === 1
           ? `${names[0]} wins Round 2 of the Lipsync for the Crown!`
           : `${others.join(', ')} and ${last} win Round 2 of the Lipsync for the Crown!`;
+      case 'untucked': {
+        /*
+        const randomDrama = [
+          "The queens return backstage to recovene and the shade starts flying!",
+          "Back in Untucked, emotions run high and alliances are tested.",
+          "Arguments break out over the judges feedback.",
+          "Tension is in the air, and secrets are revealed.",
+          "The queens are not holding back tonight! Who's after Peppermint??",
+          "The mood is peaceful tonight in Untucked as some queens bond over others.",
+        ];
+        const seed = episodeNumber * 9301 + 49297;
+        const seededIndex = Math.abs(Math.floor((Math.sin(seed) * 10000)) % randomDrama.length);
+        */
+        return 'Check out the summary of how relationships changed this episode!'; //randomDrama[seededIndex];
+      }
       default:
         return '';
     }
-
   };
 
   // effect to display the correct lipsync for episode or LSFTC event
@@ -342,8 +406,9 @@ const SimLayout = (
         : ["winner", "results"];
     }
     return hasSafe
-      ? ["announceSafe", "high", "winner", "bottom", "bottom2", "eliminated"]
-      : ["high", "winner", "bottom", "bottom2", "eliminated"];
+      ? ["announceSafe", "untucked", "high", "winner", "bottom", "bottom2", "eliminated"]
+      : ["untucked", "high", "winner", "bottom", "bottom2", "eliminated"];
+
   });
 
   const isAtResults =
@@ -368,31 +433,40 @@ const SimLayout = (
   };
 
   const handlePrevButton = () => {
-    if (currentEventIndex > 0) {
-      const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
-      const prevEventIndex = currentEventIndex - 1;
-      setCurrentEventIndex(prevEventIndex);
-      handleEpisodeEventClick(
-        episodes[currentEpisodeIndex].episodeNumber,
-        currentEvents[prevEventIndex]
-      );
-    } else if (currentEpisodeIndex > 0) {
-      const prevEpisodeIndex = currentEpisodeIndex - 1;
-      const prevEvents = eventOrderByEpisode[prevEpisodeIndex];
-      setCurrentEpisodeIndex(prevEpisodeIndex);
-      setCurrentEventIndex(prevEvents.length - 1);
-      handleEpisodeEventClick(
-        episodes[prevEpisodeIndex].episodeNumber,
-        prevEvents[prevEvents.length - 1]
-      );
+    const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
+
+    if (episodeEvent) {
+      if (currentEventIndex > 0) {
+        const prevEventIndex = currentEventIndex - 1; // get previous event button in same ep
+        setCurrentEventIndex(prevEventIndex);
+        handleEpisodeEventClick(
+          episodes[currentEpisodeIndex].episodeNumber,
+          currentEvents[prevEventIndex]
+        );
+      } else {
+        setEpisodeEvent(""); // go back to main screen for episode
+        setShowResults(false);
+      }
     } else {
-      setSelectedEpisode(null);
-      setEpisodeEvent('');
-      setCurrentEpisodeIndex(0);
-      setCurrentEventIndex(0);
+      if (currentEpisodeIndex > 0) {
+        const prevEpisodeIndex = currentEpisodeIndex - 1; // go to last episode before
+        const prevEvents = eventOrderByEpisode[prevEpisodeIndex];
+        const lastEventIndex = prevEvents.length - 1;
+
+        setCurrentEpisodeIndex(prevEpisodeIndex);
+        setCurrentEventIndex(lastEventIndex);
+        handleEpisodeEventClick(
+          episodes[prevEpisodeIndex].episodeNumber,
+          prevEvents[lastEventIndex]
+        );
+      } else {
+        setSelectedEpisode(null); // go to start your engines
+        setEpisodeEvent("");
+        setCurrentEpisodeIndex(0);
+        setCurrentEventIndex(0);
+      }
     }
   };
-
 
   if (seasonMode === "sp" && selectedEpisode) {
     if (selectedEpisode === 1) {
@@ -420,6 +494,14 @@ const SimLayout = (
   const eventMessage = selectedEpisode && episodeEvent
     ? generateEventMessage(queensForCardList, episodeEvent, selectedEpisode)
     : '';
+
+  let relationshipChanges: any[] = [];
+  if (episodeEvent === "untucked" && selectedEpisode) {
+    relationshipChanges = getRelationshipChanges(selectedEpisode);
+  }
+
+  const isSplitPremiere =
+    seasonMode === "sp" && selectedEpisode && selectedEpisode <= 2; // only for first 2 eps
 
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
@@ -470,6 +552,7 @@ const SimLayout = (
           </SheetContent>
         </Sheet>
       </div>
+
       {/* Display main screen */}
       <div className="sm:w-full md:w-3/4 pt-2">
         {episodeEvent ? (
@@ -482,16 +565,28 @@ const SimLayout = (
               episodeNumber={episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
             />
-            <CardList
-              queens={queensForCardList}
-              lipsyncs={lipsyncs}
-              episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
-              viewMode={episodeEvent}
-              nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
-              showResults={showResults}
-              episodes={episodes}
-              seasonStyle={seasonStyle}
-            />
+
+            {episodeEvent === "untucked" ? (
+              (
+                <EpisodeEventContainer
+                  relationshipChanges={relationshipChanges}
+                  queens={queens}
+                />
+              )
+            ) : (
+              <CardList
+                queens={queensForCardList}
+                lipsyncs={lipsyncs}
+                episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
+                viewMode={episodeEvent}
+                nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
+                showResults={showResults}
+                episodes={episodes}
+                seasonStyle={seasonStyle}
+                allQueens={queens}
+              />
+            )}
+
           </>
         ) : (
           <>
@@ -513,7 +608,9 @@ const SimLayout = (
               queens={queensForCardList}
               episodes={episodes}
               lipsyncs={lipsyncs}
-              seasonStyle={seasonStyle} />
+              seasonStyle={seasonStyle}
+              allQueens={queens}
+            />
           </>
         )}
 

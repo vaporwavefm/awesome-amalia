@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import * as Flags from 'country-flag-icons/react/3x2';
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Relationship, QueenStats, getQueenNameById } from "@/lib/utils";
 
 import {
   Accordion,
@@ -11,15 +12,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-
-type QueenStats = {
-
-  Acting: number;
-  Dance: number;
-  Comedy: number;
-  Design: number;
-  Singing: number;
-};
 
 type Queen = {
   id: string;
@@ -35,6 +27,7 @@ type Queen = {
   bottoms?: number;
   isEliminated?: boolean;
   stats?: QueenStats;
+  relationships?: Relationship[];
 };
 
 const QueenCard = ({ q,
@@ -44,6 +37,7 @@ const QueenCard = ({ q,
   isBuildCast,
   onRemove,
   onUpdateStats,
+  allQueens,
 }:
   {
     q: Queen,
@@ -53,6 +47,7 @@ const QueenCard = ({ q,
     isBuildCast?: boolean,
     onRemove?: (id: string) => void;
     onUpdateStats?: (id: string, updatedStats: Partial<QueenStats>) => void;
+    allQueens?: Queen[];
   }
 ) => {
 
@@ -66,8 +61,6 @@ const QueenCard = ({ q,
       setCurrentIndex((prev) =>
         prev === 0 && q.urls ? q.urls.length - 1 : prev - 1
       );
-
-
   };
 
   const handleNext = () => {
@@ -193,7 +186,53 @@ const QueenCard = ({ q,
                 )}
               </AccordionContent>
             </AccordionItem>
+            <AccordionItem value="relationships">
+              <AccordionTrigger className="text-sm font-medium hover:text-purple-900">
+                Relationships
+              </AccordionTrigger>
+              <AccordionContent className="pt-2 text-sm text-gray-700">
+                {q.relationships && q.relationships.length > 0 ? (
+                  <ul className="flex flex-col gap-2">
+                    {q.relationships
+                      .slice()
+                      .sort((a, b) => {
+                        const nameA = allQueens ? getQueenNameById(allQueens, a.targetId) || '' : '';
+                        const nameB = allQueens ? getQueenNameById(allQueens, b.targetId) || '' : '';
+                        return nameA.localeCompare(nameB);
+                      })
+                      .map((rel) => {
+                        const targetName = allQueens ? getQueenNameById(allQueens, rel.targetId) : '';
+                        return (
+                          <li
+                            key={rel.targetId}
+                            className={`flex justify-between px-2 py-1 rounded-md border
+                ${rel.type === "friend"
+                                ? "bg-green-50 border-green-200 text-green-800"
+                                : rel.type === "rival"
+                                  ? "bg-red-50 border-red-200 text-red-700"
+                                  : rel.type === "ally"
+                                    ? "bg-blue-50 border-blue-200 text-blue-700"
+                                    : rel.type === "crush"
+                                      ? "bg-pink-50 border-pink-200 text-pink-700"
+                                      : "bg-gray-50 border-gray-200 text-gray-700"
+                              }`}
+                          >
+                            <span className="font-medium capitalize">
+                              {targetName}: {rel.type}
+                            </span>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-gray-500">No relationships yet.</p>
+                )}
+              </AccordionContent>
+
+            </AccordionItem>
+
           </Accordion>
+
         ) : (
           <Accordion
             type="single"
@@ -244,6 +283,7 @@ const QueenCard = ({ q,
             Eliminated
           </span>
         ) : ''}
+
       </CardContent>
     </Card>
 

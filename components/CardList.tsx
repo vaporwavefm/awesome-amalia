@@ -23,15 +23,15 @@ type Queen = {
 };
 
 type Lipsync = {
-  episodeNumber: number;
-  lsftcRound?: number;
-  order: number;
-  lipsync: {
-    id: string;
-    title: string;
-    episode: string;
-    artist: string;
-  }
+    episodeNumber: number;
+    lsftcRound?: number;
+    order: number;
+    lipsync: {
+        id: string;
+        title: string;
+        episode: string;
+        artist: string;
+    }
 };
 
 const CardList = ({
@@ -42,7 +42,8 @@ const CardList = ({
     nonElimination,
     showResults,
     episodes,
-    seasonStyle
+    seasonStyle,
+    allQueens
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -52,6 +53,7 @@ const CardList = ({
     showResults?: boolean;
     episodes: { episodeNumber: number | string; title: string }[];
     seasonStyle: string;
+    allQueens: Queen[];
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -87,6 +89,7 @@ const CardList = ({
                                         maxWins={maxWins}
                                         viewMode={viewMode}
                                         isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
+                                        allQueens={allQueens}
                                     />
                                 </div>
                             ))}
@@ -96,7 +99,7 @@ const CardList = ({
                     {/* Table Tab */}
                     <TabsContent value="table-min">
                         <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle}/>
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle} />
                         </div>
                     </TabsContent>
 
@@ -135,6 +138,7 @@ const CardList = ({
                                 q={queen}
                                 maxWins={maxWins}
                                 viewMode={viewMode}
+                                allQueens={allQueens}
                             />
                         </div>
                     ))}
