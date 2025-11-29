@@ -15,6 +15,7 @@ const EVENT_LBLS: Record<string, string> = {
     lsftcFinal: 'Final Lipsync For the Crown',
     results: "Season Results",
     untucked: "Untucked Highlights",
+    lipsyncsmackdown: "Lipsync Smackdown",
 };
 
 const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, episodeNumber, episodeType }:
@@ -50,7 +51,9 @@ const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, e
     } else if (!isLSFTC && episodeEvent != 'results' && !episodeType.includes('finale')) {
         label = 'Episode ' + episodeNumber + ': ' + label;
     }
-
+if(episodeEvent == 'announceSafe'){
+    console.log('ddddd');
+}
     return <>
         <div className="flex justify-center mb-4 py-4">
             <div className="general-msg">

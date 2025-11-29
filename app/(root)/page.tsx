@@ -10,10 +10,12 @@ const Page = () => {
   const [bugPage, setBugPage] = useState(1);
 
   const bugs = [
+    { date: '2025-11-28', note: 'Issue with the navigation button. When you click on Previous when you are on the Safe screen you should be greeted with the main episode card and not just a list view of the queens. WIP' },
     { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted. FIXED: added sheet component to jump through episodes and navigation buttons to allow users to traverse through episode and episode events.' },
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    { date: '2025-11-28', note: 'Added a lipsync smackdown episode feature! Look up A Very Special Episode when building your season (from season 14!)' },
     { date: '2025-10-28', note: 'Deployed beta version of relationships amongst queens! Currently set to random for each at the start of the season. Added queens from C4,UK3,UK4,UK5,BR1,PH2!' },
     { date: '2025-10-08', note: 'Website is now mobile friendly! (Unless theres still some stuff that renders weird...) Also added episodes for US12 and US13!' },
     { date: '2025-10-07', note: 'Lipsync for the Crown is now available to try out! Updated styling for queen cards. Added pagination to this update log!' },

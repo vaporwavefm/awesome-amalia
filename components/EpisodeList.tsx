@@ -18,7 +18,6 @@ const CloseButton = ({ closeSheet, onClick, ...props }: CloseButtonProps) => {
   );
 };
 
-
 const EpisodeList = ({
   episodes,
   onEpisodeClick,
@@ -42,7 +41,7 @@ const EpisodeList = ({
   setSelectedEpisode: React.Dispatch<React.SetStateAction<number | null>>;
 
 }) => {
-  
+
   //const [selectedEpisode, setSelectedEpisode] = useState<number | null>(0);
   // helper to update selected + fire event
   const handleEventClick = (
@@ -66,7 +65,12 @@ const EpisodeList = ({
   return (
     <div className="max-h-[calc(100vh-100px)] overflow-y-auto space-y-2 pr-2 pl-2 pb-2 pt-2">
       <div
-        onClick={() => handleCardClick(0)}
+        onClick={() => {
+          setSelectedEpisode(0);
+          onEpisodeClick(0);
+           handleCardClick(0);
+          }
+          }
         className={`p-6 rounded-xl border border-gray-200
           bg-gradient-to-r from-purple-100 via-purple-50 to-indigo-100
           shadow-lg hover:shadow-2xl transform hover:scale-102
@@ -92,6 +96,7 @@ const EpisodeList = ({
         });
 
         const isFinale = ep.type?.toLowerCase().includes("finale");
+        const isLipsyncSmackdownEp = !ep.type?.toLowerCase().includes("finale") && ep.type?.toLowerCase().includes("lipsyncsmackdown");
 
         return (
           <div
@@ -112,6 +117,16 @@ const EpisodeList = ({
             </div>
 
             <div className="flex flex-wrap gap-1 text-xs mt-2">
+              {isLipsyncSmackdownEp ?
+                (
+                  <>
+                    <button
+                      className="px-3 py-1 text-xs rounded-full bg-purple-500 hover:bg-purple-600 transition text-white"
+                      onClick={(e) => handleEventClick(e, ep.episodeNumber, "lipsyncsmackdown", false)}> Smackdown </button>
+                   
+                  </>
+                ) : (<></>)
+              }
               {isFinale ? (
                 seasonStyle == 'lsftc' ? (
                   <>
@@ -149,14 +164,19 @@ const EpisodeList = ({
                 )
               ) : (
                 <>
-                  {hasSafeQueens && (
+                  {(!isLipsyncSmackdownEp)  && (
                     <button
                       className="px-3 py-1 text-xs rounded-full bg-gray-200 hover:bg-gray-300 transition"
                       onClick={(e) => handleEventClick(e, ep.episodeNumber, "announceSafe", ep.nonElimination || "")}> Safe </button>
                   )}
-                  <button
+
+                 {true && (<button
                     className="px-3 py-1 text-xs rounded-full bg-emerald-100 hover:bg-emerald-200 transition"
-                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "untucked", ep.nonElimination || "")}> Untucked </button>
+                    onClick={(e) => handleEventClick(e, ep.episodeNumber, "untucked", ep.nonElimination || "")}> Untucked </button> )}
+
+                  {!isLipsyncSmackdownEp && (
+                    <>
+                  
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-blue-100 hover:bg-blue-200 transition"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "high", ep.nonElimination || "")}> High </button>
@@ -166,6 +186,8 @@ const EpisodeList = ({
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-200 hover:bg-red-300 transition"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom", ep.nonElimination || "")}> Low </button>
+                    </>
+                  )}
                   <button
                     className="px-3 py-1 text-xs rounded-full bg-red-300 hover:bg-red-400 transition"
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, "bottom2", ep.nonElimination || "")}> Bottom 2 </button>

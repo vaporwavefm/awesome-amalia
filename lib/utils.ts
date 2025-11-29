@@ -2,6 +2,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { stat } from "fs";
 import { twMerge } from "tailwind-merge"
+import { queens as MAIN_QUEEN_DATA, lipsyncs as MAIN_LIPSYNC_DATA } from "@/constants/queenData";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -21,6 +22,14 @@ export interface SavedLipsync {
   episodeNumber: number;
   lipsync: LipsyncData;
   order: number;
+  round?: number;
+}
+
+export interface LipsyncPairResult {
+  pair: string[];
+  winnerId: string;
+  round: number;
+  lipsync?: SavedLipsync;
 }
 
 export interface Relationship {
@@ -30,7 +39,6 @@ export interface Relationship {
 }
 
 export type QueenStats = {
-
   Acting: number;
   Dance: number;
   Comedy: number;
@@ -38,7 +46,7 @@ export type QueenStats = {
   Singing: number;
 }
 
-type Queen = {
+export type Queen = {
   id: string;
   name: string;
   url: string;
@@ -71,6 +79,11 @@ const episodeTypeToStats: Record<string, (keyof any)[]> = {
   default: ["Acting", "Comedy", "Dance", "Design", "Singing", "Runway"],
 };
 
+export const getQueenNameByIdSingle = (id: string): string => {
+  const targetQueen = MAIN_QUEEN_DATA?.find((queen) => queen.id === id);
+  return targetQueen ? targetQueen.name : "Queen Not Found";
+};
+
 export const getQueenNameById = (allQueens: Queen[], id: string): string => {
   const targetQueen = allQueens?.find((queen) => queen.id === id);
   return targetQueen ? targetQueen.name : "Queen Not Found";
@@ -81,19 +94,20 @@ export function mainChallenge(
   episodeNumber: string | number,
   nonElimination: boolean = false,
   episodeType: string,
-  seasonStyle: string
+  seasonStyle: string,
+  lssdLipsyncs: any,
 ) {
 
   const isFinale = episodeType.toLowerCase().includes("finale");
 
   if (isFinale) { // handle finale logic including picking the winner 
 
-    if (seasonStyle.toLowerCase().includes("lsftc")) {
+    if (seasonStyle.toLowerCase().includes("lsftc")) { // lipsync for the crown
       const activeQueens = trackRecord.filter(q => !q.isEliminated);
 
       if (activeQueens.length < 4) {
         console.warn("Not enough active queens for LSFTC. Skipping semifinal grouping.");
-        return trackRecord;
+        return { updatedRecord: trackRecord };
       }
       // --- Semi-finals ---
       const shuffled = [...activeQueens].sort(() => Math.random() - 0.5);
@@ -104,47 +118,45 @@ export function mainChallenge(
       group2.forEach(q => { q.group = 2; q.isInSemiFinal = true; });
       //console.log('Group1:', group1.map(q => q.name), 'Group2:', group2.map(q => q.name));
 
-      const winner1Id = lipsync(group1);
-      const winner2Id = lipsync(group2);
+      const winner1Id = lipsync(group1, episodeType.toLowerCase());
+      const winner2Id = lipsync(group2, episodeType.toLowerCase());
 
       // --- Final lipsync ---
-      const finalPair = activeQueens.filter(q => q.id === winner1Id || q.id === winner2Id);
+      const finalPair = activeQueens.filter(q => q.id == winner1Id || q.id == winner2Id);
       finalPair.forEach(q => q.isInFinal = true);
-      const crownWinnerId = lipsync(finalPair);
+      const crownWinnerId = lipsync(finalPair, episodeType.toLowerCase());
 
-      return trackRecord.map(q => {
+      return {
+        updatedRecord: trackRecord.map(q => {
 
-        if (q.isEliminated) return q;
+          if (q.isEliminated) return q;
 
-        let placement: string;
-        let isEliminated = q.isEliminated;
+          let placement: string;
+          let isEliminated = q.isEliminated;
 
-        //let isInLipsync = false;
-        //if (group1.find(g => g.id === q.id) || group2.find(g => g.id === q.id)) isInLipsync = true;
-        //if (finalPair.find(f => f.id === q.id)) isInLipsync = true;
+          if (q.id == crownWinnerId) {
+            placement = "win"; // winner of the season
+            isEliminated = false;
+          } else if (q.id == winner1Id || q.id == winner2Id) {
+            placement = "finale"; // made it to final lipsync
+            isEliminated = false;
+          } else {
+            placement = "finale"; // semifinal elimination
+            isEliminated = true;
+          }
 
-        if (q.id === crownWinnerId) {
-          placement = "win"; // winner of the season
-          isEliminated = false;
-        } else if (q.id === winner1Id || q.id === winner2Id) {
-          placement = "finale"; // made it to final lipsync
-          isEliminated = false;
-        } else {
-          placement = "finale"; // semifinal elimination
-          isEliminated = true;
-        }
-
-        return {
-          ...q,
-          isInSemiFinal: q.isInSemiFinal || false,
-          isInFinal: q.isInFinal || false,
-          isEliminated,
-          placements: [
-            ...q.placements,
-            { episodeNumber, placement },
-          ],
-        };
-      });
+          return {
+            ...q,
+            isInSemiFinal: q.isInSemiFinal || false,
+            isInFinal: q.isInFinal || false,
+            isEliminated,
+            placements: [
+              ...q.placements,
+              { episodeNumber, placement },
+            ],
+          };
+        })
+      }
     }
 
     else {
@@ -158,23 +170,191 @@ export function mainChallenge(
 
       const winnerIndex = finalists[Math.floor(Math.random() * finalists.length)]; // Random winner
 
-      return trackRecord.map((q, idx) => {
-        //console.log(q);
-        if (q.isEliminated) return q; // do nothing
-        return {
-          ...q,
-          placements: [
-            ...q.placements,
-            {
-              episodeNumber,
-              placement: idx === winnerIndex ? "win" : "finale", // Only update active queens
-            },
-          ],
-        };
-      });
+      return {
+        updatedRecord: trackRecord.map((q, idx) => {
+          if (q.isEliminated) return q; // do nothing
+          return {
+            ...q,
+            placements: [
+              ...q.placements,
+              {
+                episodeNumber,
+                placement: idx === winnerIndex ? "win" : "finale", // Only update active queens
+              },
+            ],
+          };
+        })
+      }
 
     }
   } // end finale 
+
+  if (!isFinale && episodeType.toLowerCase().includes('lipsyncsmackdown')) {
+
+    // Extract the array for the season/episode key
+    const key = String(episodeNumber);
+    const lipsyncArray = lssdLipsyncs[key];
+    const availableLipsyncs = [...(lipsyncArray || [])]; // clone for safe splicing
+
+    const activeQueens = trackRecord.filter(q => !q.isEliminated);
+
+    const allPairs: LipsyncPairResult[] = []; 
+
+    // Track per-queen results by round
+    const roundResults: Record<string, number> = {};
+
+    // Helper to run one round of lipsyncs
+    const runRound = (
+      queens: Queen[],
+      roundNum: number
+    ): { winners: string[]; losers: Queen[] } => {
+      const shuffled = [...queens].sort(() => Math.random() - 0.5);
+      const winners: string[] = [];
+      const losers: Queen[] = [];
+
+      for (let i = 0; i < shuffled.length; i += 2) {
+        const remaining = shuffled.length - i;
+        const lipsyncForPair = pickRandomLipsync(availableLipsyncs);
+
+        if (remaining === 3) {
+          const trio = shuffled.slice(i, i + 3);
+          const winnerId = lipsync(
+            trio.map(q => ({
+              id: q.id,
+              queen: q.name,
+              wins: q.wins ?? 0,
+              highs: q.highs ?? 0,
+              lows: q.lows ?? 0,
+              bottoms: q.bottoms ?? 0,
+            })),
+            episodeType.toLowerCase()
+          ) || '';
+
+
+          winners.push(winnerId);
+          losers.push(...trio.filter(q => q.id !== winnerId));
+
+          //const allPairs: LipsyncPairResult[] = []; 
+
+          allPairs.push({
+            pair: trio.map(q => q.id),
+            winnerId,
+            round: roundNum,
+            lipsync: lipsyncForPair,
+          });
+
+          trio.forEach(q => roundResults[q.id] = roundNum);
+          break;
+        } else if (remaining >= 2) {
+          const pair = shuffled.slice(i, i + 2);
+          const winnerId = lipsync(pair.map(q => ({
+            id: q.id,
+            queen: q.name,
+            wins: q.wins ?? 0,
+            highs: q.highs ?? 0,
+            lows: q.lows ?? 0,
+            bottoms: q.bottoms ?? 0
+          })),
+            episodeType.toLowerCase()) || '';
+
+          winners.push(winnerId);
+          losers.push(...pair.filter(q => q.id !== winnerId));
+
+          allPairs.push({
+            pair: [pair[0].id, pair[1].id],
+            winnerId,
+            round: roundNum,
+            lipsync: lipsyncForPair,
+          });
+
+          pair.forEach(q => roundResults[q.id] = roundNum);
+        } else {
+          winners.push(shuffled[i].id);
+        }
+      }
+      return { winners, losers };
+    };
+
+
+    const safeQueens: string[] = [];
+    let remainingLosers: Queen[] = activeQueens;
+    let roundNum = 1;
+
+    // Keep running rounds until losers <= 2 (bottom 2)
+    while (remainingLosers.length > 2) {
+      const round = runRound(remainingLosers, roundNum);
+      safeQueens.push(...round.winners);
+      remainingLosers = round.losers;
+      roundNum++;
+    }
+
+    // Final round — bottom 2
+    const bottom2 = remainingLosers;
+    let eliminatedId: string | null = null;
+
+    if (!nonElimination && bottom2.length > 0) {
+      eliminatedId = lipsync(
+        bottom2.map(q => ({
+          id: q.id,
+          queen: q.name,
+          wins: q.wins ?? 0,
+          highs: q.highs ?? 0,
+          lows: q.lows ?? 0,
+          bottoms: q.bottoms ?? 0,
+        })),
+        episodeType.toLowerCase()
+      ) ?? '';
+
+      if (bottom2.length === 2) {
+        allPairs.push({
+          pair: [bottom2[0].id, bottom2[1].id],
+          winnerId: eliminatedId,
+          round: roundNum,
+        });
+        roundResults[bottom2[0].id] = roundNum;
+        roundResults[bottom2[1].id] = roundNum;
+      }
+    }
+
+    // Update placements
+    const updatedRecord = trackRecord.map(q => {
+      if (q.isEliminated) return q;
+
+      let placement: 'safe' | 'bottom';
+      if (safeQueens.includes(q.id)) placement = 'safe';
+      else if (q.id === eliminatedId) placement = 'bottom';
+      else placement = 'bottom';
+
+      return {
+        ...q,
+        isEliminated: q.id === eliminatedId,
+        bottoms: placement === 'bottom' ? q.bottoms + 1 : q.bottoms,
+        placements: [
+          ...q.placements,
+          {
+            episodeNumber,
+            placement,
+            round: roundResults[q.id] ?? null,
+          },
+        ],
+      };
+    });
+
+    const relationshipUpdated = updateRelationshipsAfterEpisode(
+      updatedRecord,
+      updatedRecord.map(q => ({
+        id: q.id,
+        placement: q.placements[q.placements.length - 1].placement,
+      })),
+      episodeType,
+      Number(episodeNumber)
+    );
+
+    return {
+      updatedRecord: relationshipUpdated,
+      lipsyncPairs: allPairs,
+    };
+  }
 
   // --- Normal episode logic ---
   //const tempScores: { id: string; queen: string; episodeNumber: string | number; score: number }[] = [];
@@ -242,10 +422,18 @@ export function mainChallenge(
 
   let eliminatedId = null;
   if (!nonElimination) {
-    if (topCount == 2 && bottomCount == 2) {
 
-      eliminatedId = lipsync(bottomQueens);
-    } else eliminatedId = lipsync(bottomQueens.slice(1));
+    if (topCount == 2 && bottomCount == 2) {
+      const eliminatedIdObj = bottomQueens.filter(q => q.id != lipsync(bottomQueens, episodeType.toLowerCase()));
+      for (const btms in eliminatedIdObj) {
+        eliminatedId = eliminatedIdObj[btms].id;
+      }
+    } else {
+      const eliminatedIdObj = bottomQueens.slice(1).filter(q => q.id != lipsync(bottomQueens.slice(1), episodeType.toLowerCase()));
+      for (const btms in eliminatedIdObj) {
+        eliminatedId = eliminatedIdObj[btms].id;
+      }
+    }
   }
 
   const updatedRecord = scoredRecord.map(q => {
@@ -269,6 +457,7 @@ export function mainChallenge(
     }
 
     if (bottomQueens.some(b => b.id === q.id)) {
+      //console.log(episodeNumber + '\nbottoms: ' + JSON.stringify(bottomQueens) + '\n ' + eliminatedId + ' ' + q.id);
       placementType = 'bottom';
       const isEliminated = q.id === eliminatedId;
       return { ...q, bottoms: q.bottoms + 1, isEliminated, placements: [...q.placements, { episodeNumber, placement: placementType }] };
@@ -285,8 +474,7 @@ export function mainChallenge(
 
   const relationshipUpdated = updateRelationshipsAfterEpisode(updatedRecord, episodeResults);
 
-  return relationshipUpdated;
-  //return updatedRecord;
+  return { updatedRecord: relationshipUpdated };
 }
 
 function nittyGritty({ size }: { size: number }) {
@@ -305,43 +493,48 @@ function nittyGritty({ size }: { size: number }) {
   return [3, 3]; // default
 }
 
-function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[]) {
+function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[], episodeType: string) {
 
   const bottomResults = [];
+  const randomSeed = (Math.floor(Math.random() * 10) + 1);
+  let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
+
+  if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
+    winWeight = 2; // override weights for smackdowns and finales
+    highWeight = .4;
+    lowWeight = .4;
+    bottomWeight = 1;
+  }
 
   for (let b = 0; b < bottomQueens.length; b++) {
 
     bottomResults.push({
       bottomId: bottomQueens[b].id,
       name: bottomQueens[b].queen,
-      result: (Math.floor(Math.random() * 10) + 1)
-        + (1 * bottomQueens[b].wins)
-        + (.5 * bottomQueens[b].highs)
-        - (.6 * bottomQueens[b].lows)
-        - (2 * bottomQueens[b].bottoms),
+      result: randomSeed
+        + (winWeight * bottomQueens[b].wins)
+        + (highWeight * bottomQueens[b].highs)
+        - (lowWeight * bottomQueens[b].lows)
+        - (bottomWeight * bottomQueens[b].bottoms),
     })
   }
 
-  //console.log(bottomResults);
-  // Handle empty array case
   if (bottomResults.length === 0) {
     return null;
   }
 
-  let lowestScore = Infinity;
-  let lowestId = null;
+  let highestScore = -Infinity;
+  let highestId = null;
 
-  // Loop through each queen to find the one with the lowest score
+  // Loop through each queen to find the one with the highest score (winner of lipsync)
   for (const q of bottomResults) {
-    if (q.result < lowestScore) {
-      lowestScore = q.result;
-      lowestId = q.bottomId;
+    if (q.result > highestScore) {
+      highestScore = q.result;
+      highestId = q.bottomId;
     }
   }
-  return lowestId;
 
-  //const eliminatedQueen = bottomQueens[Math.floor(Math.random() * bottomQueens.length)];
-  //return eliminatedQueen.id; // return ID instead of object
+  return highestId;
 }
 
 function getQueenBiasFromStats(queen: any): number {
@@ -367,22 +560,16 @@ function getEpisodeScore(queen: any, episodeType: string, episodeNumber: number,
 
   relevantStats = [...new Set(relevantStats)]; // Remove duplicates
   if (relevantStats.length === 0) {
-    console.log(episodeType);
     relevantStats = episodeTypeToStats["default"] as string[];
   }
 
   const baseStat = Math.floor(Math.random() * 100) + 1;
   let statIncrease = 0;
   for (const r in relevantStats) {
-    //console.log('episode ' + episodeNumber + ': ' + queen.name +  ' ' + queen.stats[relevantStats[r]] +  ' ' + relevantStats.length);
     statIncrease += queen.stats[relevantStats[r]];
   }
 
   statIncrease = statIncrease / relevantStats.length;
-
-  //console.log(queen.name + ' ' + baseStat + ' ' + finalScore);
-  //relevantStats.reduce((sum, stat) => sum + (queen.stats[stat] || 50), 0) / relevantStats.length;
-
   const randomFactor = Math.floor(Math.random() * 20) - 10;
   const bias = getQueenBiasFromStats(queen);
 
@@ -491,12 +678,12 @@ function syncMutualRelationships(queens: Queen[]): Queen[] {
     if (!q1 || !q2) continue;
 
     if (q1.relationships) {
-      q1.relationships = q1.relationships.map((r : Relationship) =>
+      q1.relationships = q1.relationships.map((r: Relationship) =>
         r.targetId === id2 ? { ...avgRel, targetId: id2 } : r
       );
     }
     if (q2.relationships) {
-      q2.relationships = q2.relationships.map((r : Relationship) =>
+      q2.relationships = q2.relationships.map((r: Relationship) =>
         r.targetId === id1 ? { ...avgRel, targetId: id1 } : r
       );
     }
@@ -522,6 +709,32 @@ function getRelationshipBias(queen: any, allQueens: any[]): number {
   return bias;
 }
 
+export function addNewLipsyncs(lipsyncs: any, limit: number) {
+  const newLipsyncSet = [];
+  const usedIds = new Set(lipsyncs.map((l: any) => l.lipsync?.id));
+  for (let i = 0; i < limit; i++) {
+    let randomItem, cutoff = 0;
+    do {
+      const randomIndex = Math.floor(Math.random() * MAIN_LIPSYNC_DATA.length);
+      randomItem = MAIN_LIPSYNC_DATA[randomIndex];
+      cutoff++;
+    } while (usedIds.has(randomItem.id) && cutoff < 50);
+    usedIds.add(randomItem.id);
+    newLipsyncSet.push({
+      episodeNumber: i + 1,
+      lipsync: randomItem,
+      order: lipsyncs.length,
+      lsftcRound: i + 1,
+    });
+  }
+  return newLipsyncSet;
+}
+
+function pickRandomLipsync(pool: any[]): any | null {
+  if (!pool || pool.length === 0) return null;
+  const index = Math.floor(Math.random() * pool.length);
+  return pool.splice(index, 1)[0]; // removes it from pool so it can't be reused
+}
 
 
 

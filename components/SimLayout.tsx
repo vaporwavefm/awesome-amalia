@@ -2,7 +2,7 @@
 'use client';
 import React, { useMemo, useState, useEffect } from "react";
 import CardList from "./CardList";
-import { mainChallenge, SavedLipsync } from "@/lib/utils";
+import { mainChallenge, SavedLipsync, addNewLipsyncs, getQueenNameByIdSingle } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
 import EpisodeMessage from "./EpisodeMessage";
 import {
@@ -19,6 +19,8 @@ import { Menu } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Relationship, getQueenNameById } from "@/lib/utils";
 import EpisodeEventContainer from "./EpisodeEventContainer";
+import QueenCard from "./QueenCard";
+import LipsyncSmackdownComp from "./LipsyncSmackdownComp";
 type Placement = {
   episodeNumber: number | string;
   placement: string;
@@ -65,7 +67,7 @@ const SimLayout = (
     }));
   }, [queens]);
 
-  const [episodeHistory, setEpisodeHistory] = useState<{ pre: { [key: number]: any[] }, post: { [key: number]: any[] } }>({ pre: {}, post: {} });
+  const [episodeHistory, setEpisodeHistory] = useState<{ pre: { [key: number]: any[] }, post: { [key: number]: any[] }, lipsyncPairs?: { [key: number]: SavedLipsync[] }; }>({ pre: {}, post: {}, lipsyncPairs: {} });
   const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [episodeEvent, setEpisodeEvent] = useState('');
   const [selectedLipsync, setSelectedLipsync] = useState<SavedLipsync | null>(null);
@@ -74,7 +76,7 @@ const SimLayout = (
   const [open, setOpen] = useState(false);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
-
+  const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, SavedLipsync[]>>({});
 
   const getRelationshipChanges = (episodeNumber: number) => {
     const preEpisode = episodeHistory.pre[episodeNumber];
@@ -122,7 +124,8 @@ const SimLayout = (
     const preHistory: { [key: number]: any[] } = {};
     const postHistory: { [key: number]: any[] } = {};
     const sortedEpisodes = [...episodes].sort((a, b) => a.episodeNumber - b.episodeNumber);
-
+    const tempLssdLipsyncs: Record<number, SavedLipsync[]> = {};
+    const lipsyncPairsByEpisode: Record<number, any> = {};
     sortedEpisodes.forEach(e => { e.nonElimination = false; }); // Reset all nonElim flags
 
     if (seasonMode === "sp") { // for split premiere, shuffle the queens into 2 seperate groups
@@ -153,6 +156,23 @@ const SimLayout = (
         scores: [...q.scores],
       }));
 
+      const remainingQueens = trackRecord.filter(q => !q.isEliminated).length;
+      if (e.type.toLowerCase().includes("lipsyncsmackdown") && !e.type.toLowerCase().includes("finale")) {
+        let totalLipsyncs = 0;
+        let queensLeft = remainingQueens;
+        while (queensLeft > 1) {
+          const roundLipsyncs = Math.floor(queensLeft / 2);
+          totalLipsyncs += roundLipsyncs;
+          queensLeft = roundLipsyncs;
+        }
+
+        if (!tempLssdLipsyncs[e.episodeNumber] || tempLssdLipsyncs[e.episodeNumber].length !== totalLipsyncs) {
+          tempLssdLipsyncs[e.episodeNumber] = addNewLipsyncs(lipsyncs, totalLipsyncs);
+        }
+
+        //console.log('tempLssdLipsyncs[e.episodeNumber]: ' + JSON.stringify(tempLssdLipsyncs[e.episodeNumber]));
+      }
+
       let activeGroup = trackRecord;
       if (seasonMode === "sp") {
         if (e.episodeNumber === 1) {
@@ -162,23 +182,27 @@ const SimLayout = (
         }
       }
 
-      const updatedGroup = mainChallenge(
+      const result = mainChallenge(
         activeGroup,
         e.episodeNumber,
         e.nonElimination,
         e.type,
-        seasonStyle
+        seasonStyle,
+        tempLssdLipsyncs
       );
 
-      if (e.episodeNumber == 4 || e.episodeNumber == 10) {
-        for (const u in updatedGroup) {
-          if (updatedGroup[u].id == '3lkExLsRZdseTau69kCb') {
-            //console.log(e.episodeNumber);
-            //console.log(JSON.stringify(updatedGroup[u]['relationships']))
-          }
-        }
+      const pairs = result.lipsyncPairs ?? [];
+
+      if (pairs.length > 0) {
+        lipsyncPairsByEpisode[e.episodeNumber] = pairs;
       }
 
+      if (!result || !result.updatedRecord) {
+        console.warn(`⚠️ mainChallenge returned no updatedRecord for episode ${e.episodeNumber}`, result);
+        continue; // skip this iteration 
+      }
+
+      const updatedGroup = result.updatedRecord;
       trackRecord = trackRecord.map(q => {
         const updated = updatedGroup.find(u => u.id === q.id);
         return updated ? updated : q;
@@ -192,9 +216,13 @@ const SimLayout = (
 
     }
 
-    setEpisodeHistory({ pre: preHistory, post: postHistory });
+    setEpisodeHistory({ pre: preHistory, post: postHistory, lipsyncPairs: lipsyncPairsByEpisode });
 
   }, [initialTrackRecord, episodes]);
+
+  useEffect(() => { // scroll back to top for new event
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [selectedEpisode, episodeEvent]);
 
   const handleEpisodeClick = (episodeNumber: number) => {
     setEpisodeEvent('');
@@ -219,6 +247,13 @@ const SimLayout = (
       const eventOrder = eventOrderByEpisode[epIndex];
       const eventIndex = eventOrder.indexOf(eventType);
       setCurrentEventIndex(eventIndex !== -1 ? eventIndex : 0);
+    }
+
+    if (eventType === "lipsyncsmackdown") {
+      setEpisodeEvent("lipsyncsmackdown");
+      setShowResults(false);
+
+      return;
     }
 
     if (eventType === "results") {
@@ -279,7 +314,10 @@ const SimLayout = (
   const generateEventMessage = (queens: any[], event: string, episodeNumber: number) => {
     const names = queens.map(q => q.name);
     const isEliminated = queens.map(q => q.isEliminated);
-    if (!names.length) return '';
+    if (!names.length) {
+      if (event != 'announceSafe')
+        return '';
+    }
     const last = names[names.length - 1];
     const others = names.slice(0, names.length - 1);
     const episode = episodes.find(e => e.episodeNumber === episodeNumber);
@@ -304,7 +342,10 @@ const SimLayout = (
 
     switch (event) {
       case 'announceSafe':
-        return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')}, and ${last} are declared safe.`;
+        if (names.length == 0) {
+          return 'All of the queens were asked to remain on the main stage.';
+        }
+        return names.length === 1 ? `${names[0]} is declared safe.` : `${others.join(', ')} and ${last} are declared safe.`;
       case 'winner':
         if (episode?.title.toLowerCase().includes("finale")) { // Finale special case
           return names.length === 1
@@ -346,19 +387,7 @@ const SimLayout = (
           ? `${names[0]} wins Round 2 of the Lipsync for the Crown!`
           : `${others.join(', ')} and ${last} win Round 2 of the Lipsync for the Crown!`;
       case 'untucked': {
-        /*
-        const randomDrama = [
-          "The queens return backstage to recovene and the shade starts flying!",
-          "Back in Untucked, emotions run high and alliances are tested.",
-          "Arguments break out over the judges feedback.",
-          "Tension is in the air, and secrets are revealed.",
-          "The queens are not holding back tonight! Who's after Peppermint??",
-          "The mood is peaceful tonight in Untucked as some queens bond over others.",
-        ];
-        const seed = episodeNumber * 9301 + 49297;
-        const seededIndex = Math.abs(Math.floor((Math.sin(seed) * 10000)) % randomDrama.length);
-        */
-        return 'Check out the summary of how relationships changed this episode!'; //randomDrama[seededIndex];
+        return 'Check out the summary of how relationships changed this episode!';
       }
       default:
         return '';
@@ -397,18 +426,20 @@ const SimLayout = (
 
   // logic for navigating through episodes and episode events 
   const eventOrderByEpisode = episodes.map((ep) => {
-    const isFinale = ep.type?.toLowerCase().includes("finale");
-    const hasSafe = true;
+    const type = ep.type?.toLowerCase() ?? "";
+    const isFinale = type.includes("finale");
+    const isSmackdown = type.includes("lipsyncsmackdown");
 
     if (isFinale) {
       return seasonStyle === "lsftc"
-        ? ["lsftc1", "lsftc1win", "lsftc2", "lsftc2win", "lsftcFinal", "winner", "results"]
+        ? ["main", "lsftc1", "lsftc1win", "lsftc2", "lsftc2win", "lsftcFinal", "winner", "results"]
         : ["winner", "results"];
     }
-    return hasSafe
-      ? ["announceSafe", "untucked", "high", "winner", "bottom", "bottom2", "eliminated"]
-      : ["untucked", "high", "winner", "bottom", "bottom2", "eliminated"];
+    if (isSmackdown) {
+      return ["main", "lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
+    }
 
+    return ["main", "announceSafe", "untucked", "high", "winner", "bottom", "bottom2", "eliminated"];
   });
 
   const isAtResults =
@@ -417,6 +448,17 @@ const SimLayout = (
 
   const handleNextButton = () => {
     const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
+
+    if (currentEventIndex === 0 && currentEvents[0] === "main") {
+      const firstRealEvent = 1;
+      setCurrentEventIndex(firstRealEvent);
+      handleEpisodeEventClick(
+        episodes[currentEpisodeIndex].episodeNumber,
+        currentEvents[firstRealEvent]
+      );
+      return;
+    }
+
     const nextEventIndex = currentEventIndex + 1;
 
     if (nextEventIndex < currentEvents.length) {
@@ -425,7 +467,7 @@ const SimLayout = (
         episodes[currentEpisodeIndex].episodeNumber,
         currentEvents[nextEventIndex]
       );
-    } else if (currentEpisodeIndex + 1 < episodes.length) { // move to next episode
+    } else if (currentEpisodeIndex + 1 < episodes.length) { // move to next ep
       setCurrentEpisodeIndex(currentEpisodeIndex + 1);
       setCurrentEventIndex(0);
       handleEpisodeClick(episodes[currentEpisodeIndex + 1].episodeNumber);
@@ -500,8 +542,31 @@ const SimLayout = (
     relationshipChanges = getRelationshipChanges(selectedEpisode);
   }
 
-  const isSplitPremiere =
-    seasonMode === "sp" && selectedEpisode && selectedEpisode <= 2; // only for first 2 eps
+  const handlePrintEpisodeResults = (episodeNumber: number | null) => {
+    if (!episodeNumber) return null;
+    const lipsyncPairs = episodeHistory.lipsyncPairs?.[episodeNumber] || [];
+    if (!lipsyncPairs.length) return <p>No lipsyncs this episode.</p>;
+
+    const rounds: Record<number, typeof lipsyncPairs> = {}; // group by round
+    for (const pair of lipsyncPairs) {
+      const round = pair.round ?? 1;
+      if (!rounds[round]) rounds[round] = [];
+      rounds[round].push(pair);
+    }
+
+    const sortedRounds = Object.keys(rounds)
+      .map(Number)
+      .sort((a, b) => a - b);
+
+    const roundsToShow = sortedRounds.slice(0, -1); // skip final round
+
+    return (
+      <LipsyncSmackdownComp
+        rounds={rounds}
+        roundsToShow={roundsToShow}
+        queens={queens} />
+    );
+  };
 
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
@@ -566,27 +631,36 @@ const SimLayout = (
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
             />
 
-            {episodeEvent === "untucked" ? (
+            {episodeEvent === "untucked" && (
               (
                 <EpisodeEventContainer
                   relationshipChanges={relationshipChanges}
                   queens={queens}
                 />
               )
-            ) : (
-              <CardList
-                queens={queensForCardList}
-                lipsyncs={lipsyncs}
-                episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
-                viewMode={episodeEvent}
-                nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
-                showResults={showResults}
-                episodes={episodes}
-                seasonStyle={seasonStyle}
-                allQueens={queens}
-              />
             )}
 
+            {episodeEvent === "lipsyncsmackdown" && selectedEpisode && (
+              <div className="mt-4">
+                {handlePrintEpisodeResults(selectedEpisode)}
+              </div>
+            )}
+
+            {
+              episodeEvent != 'untucked' && episodeEvent != 'lipsyncsmackdown' && (
+                <CardList
+                  queens={queensForCardList}
+                  lipsyncs={lipsyncs}
+                  episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
+                  viewMode={episodeEvent}
+                  nonElimination={episodes.find(e => e.episodeNumber === selectedEpisode)?.nonElimination || false}
+                  showResults={showResults}
+                  episodes={episodes}
+                  seasonStyle={seasonStyle}
+                  allQueens={queens}
+                />
+              )
+            }
           </>
         ) : (
           <>
@@ -594,7 +668,7 @@ const SimLayout = (
               // existing episode preview box
               <div className="e-title-msg">
                 <h2 className="e-title-h2"> Episode {episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}: {episodes.find(e => e.episodeNumber === selectedEpisode)?.title} </h2>
-                <p className="e-title-descr"> {episodes.find(e => e.episodeNumber === selectedEpisode)?.description} </p>
+                <p className="e-title-descr"> In this episode of {seasonTitle.trimEnd()}: {episodes.find(e => e.episodeNumber === selectedEpisode)?.description} </p>
               </div>
             ) : (
               // initial message
@@ -626,7 +700,6 @@ const SimLayout = (
             Next →
           </Button>
         </div>
-
       </div>
     </div>
   );

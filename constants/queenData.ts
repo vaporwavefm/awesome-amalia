@@ -2352,7 +2352,7 @@ export const queens = [
   },
   {
     id: '58abtkI2X8MG85yHHgFA',
-    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/31/HoracioPotasioDRMX2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240524042138',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/31/HoracioPotasioDRMX2CastMug.jpg/revision/latest/scale-to-width-down/110?cb=20240524042138',
     seasons: 'MX2',
     name: "Horacio Potasio",
     franchise: 'MX'
@@ -4411,11 +4411,146 @@ export const episodes = [
     type: 'finale,lipsyncSmackdown',
     franchise: 'US'
   },
+  {
+    id: '1Wdd21EkMndxBYLOfIos',
+    episodeNumber: 1,
+    season: '14',
+    title: "Big Opening No. 1",
+    description: "A new cast of queens, competing for $100,000, must show off their performance skills in a talent show. Superstar singer Lizzo guest judges.",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'NlzxbrekPh9r4S1NuMNF',
+    episodeNumber: 2,
+    season: '14',
+    title: "Big Opening No. 2",
+    description: "The remaining queens of the brand new cast bring their gifts to a talent show. Singer/songwriter Alicia Keys guest judges.",
+    type: 'talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'riq5lA10cZjXi9H5eI1p',
+    episodeNumber: 3,
+    season: '14',
+    title: "A Pair of Balls",
+    description: "The queens put their design skills to the test in a Double Ball challenge, stomping the runway in 42 fashion looks. Christine Chiu (Bling Empire) guest judges.",
+    type: 'ball,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'O9ArsuDLHOWRoOIHROxi',
+    episodeNumber: 4,
+    season: '14',
+    title: "She's A Super Tease",
+    description: "In their first acting challenge, the queens must create iconic moments for a Drag Race Supertease extended trailer. Comedian and host Loni Love (Soul Plane) guest judges.",
+    type: 'improv,comedy,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'XptaZdFW64noDuCzZYDU',
+    episodeNumber: 5,
+    season: '14',
+    title: "Save A Queen",
+    description: "The queens must make parody PSAs for a new charity supporting first-eliminated Drag Race queens; with queens Tempest DuJour, Jaymes Mansfield, and Kahmora Hall; popstar Ava Max guest judges.",
+    type: 'comedy,acting',
+    franchise: 'US'
+  },
+  {
+    id: 'Z6gWJGC4RDNOFpk0RGS0',
+    episodeNumber: 6,
+    season: '14',
+    title: "Glamazon Prime",
+    description: "Michelle Visage's online shopping has gotten out of hand; in making this design challenge, the queens are tasked with making outfits from junk she has ordered; Taraji P. Henson (Empire) guest judges.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'ZhTWJGC4RDNOFpk0RGS0',
+    episodeNumber: 7,
+    season: '14',
+    title: "The Daytona Wind",
+    description: 'The queens star in the over-the-top soap opera "The Daytona Wind" and serve Chaps on the Runway, and Ts Madison sits in with the judges.',
+    type: 'acting',
+    franchise: 'US'
+  },
+  {
+    id: 'qyU9Y6U7aYoQGuVY6Alo',
+    episodeNumber: 8,
+    season: '14',
+    title: "60s Girl Groups",
+    description: "The queens sing and dance in 60s girl groups The Rupremes and The Shangrulas. Comedian Alec Mapa guest judges.",
+    type: 'singing,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'ITFxjwB9hkSWOFr3MKSL',
+    episodeNumber: 9,
+    season: '14',
+    title: "Menzeses",
+    description: "The queens must lead Drag Con panel discussions about the multi-faceted world of menz: dating, fatherhood, and toxic masculinity; comedian Nicole Byer guest judges.",
+    type: 'improv',
+    franchise: 'US'
+  },
+  {
+    id: 'fDIsKM9gyahxn80wtpzi',
+    episodeNumber: 10,
+    season: '14',
+    title: "Snatch Game",
+    description: 'The queens impersonate celebrities in Snatch Game; Drag Race royalty Raven and actress Dove Cameron ("Descendants") play the game.',
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'Kv4ftRR0K0FPO3uyhjll',
+    episodeNumber: 11,
+    season: '14',
+    title: "An Extra Special Episode",
+    description: "RuPaul introduces a twist that leaves the dolls gagging.",
+    type: 'lipsyncSmackdown',
+    franchise: 'US'
+  },
+  {
+    id: 'CXN5gJMPyLGwD1GSkpd9',
+    episodeNumber: 12,
+    season: '14',
+    title: "Moulin Ru: The Rusical",
+    description: 'The queens go to Gay Paree, in the romantic musical, Moulin Ru; singer Andra Day ("The United States vs. Billie Holiday") guest judges; actor Leslie Jordan ("Will & Grace") guest stars.',
+    type: 'acting,musical',
+    franchise: 'US'
+  },
+  {
+    id: '51XQ9ThdkJ8XEGqYKztt',
+    episodeNumber: 13,
+    season: '14',
+    title: "The Ross Mathews Roast",
+    description: "The queens take part in a good old fashioned comedic roast, of Drag Race judge Ross Mathews. Dulce Sloan guest judges.",
+    type: 'roast,comedy',
+    franchise: 'US'
+  },
+  {
+    id: '2BfuqZ8YtWYY8ESVBx50',
+    episodeNumber: 14,
+    season: '14',
+    title: "Catwalk",
+    description: "The top queens must play catty supermodels battling for the spotlight in the music video for RuPaul's new hit song, Catwalk. Michelle Visage, Ross Mathews and Carson Kressley judge.",
+    type: 'musicVideo',
+    franchise: 'US'
+  },
+  {
+    id: '93gj7ZpAu7aLGK1EFLab',
+    episodeNumber: 16,
+    season: '14',
+    title: "Grand Finale",
+    description: "RuPaul crowns America's Next Drag Superstar in an epic Las Vegas drag revue show.",
+    type: 'finale,lipsyncSmackdown',
+    franchise: 'US'
+  },
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
 export const lipsyncs = [
-
+  
   {
     id: 'Q9wErT7yLpZ2xV5nHaKb',
     title: "Supermodel (You Better Work)",
@@ -5796,6 +5931,11 @@ export const seasons = [
   {
     id: 'swwEy0xEc7VUTC6ePjgo',
     seasonNumber: '13',
+    franchise: 'US',
+  },
+  {
+    id: 'M0V0zS0yFWUEpMZ9jkp1',
+    seasonNumber: '14',
     franchise: 'US',
   },
 ];

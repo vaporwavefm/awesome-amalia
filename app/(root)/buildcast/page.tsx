@@ -505,6 +505,28 @@ const Page = () => {
                   <div className="flex items-center gap-2 general-msg">
                     <h2 className="font-extrabold text-2xl text-black tracking-wide">
                       Queens
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p> <strong>The following queens are up for selection:</strong> </p>
+                          <p> <strong>US:</strong> 1-17 </p>
+                          <p> <strong>Canada:</strong> 1-4 </p>
+                          <p> <strong>UK:</strong> 1-5 </p>
+                          <p> <strong>Mexico:</strong> 1-2 </p>
+                          <p> <strong>Philippines:</strong> 1-2 </p>
+                          <p> <strong>Thailand:</strong> 1 </p>
+                          <p> <strong>France:</strong> 1 </p>
+                          <p>  <strong>Down Under:</strong> 1 </p>
+                          <p>  <strong>Brazil:</strong> 1 </p>
+                        </TooltipContent>
+                      </Tooltip>
                     </h2>
                     <p className="mt-2 text-sm font-medium text-purple-800">Select the queens that you wish you wish to compete in this season!
                       <br /> You can also edit their stats by entering a number between 1-100 - the higher the stat the better! (or keep them randomly generated)</p>
