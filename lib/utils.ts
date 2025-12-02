@@ -497,14 +497,15 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
 
   const bottomResults = [];
   const randomSeed = (Math.floor(Math.random() * 10) + 1);
-  let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
+  const winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
 
+  /*
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
     winWeight = 2; // override weights for smackdowns and finales
     highWeight = .4;
     lowWeight = .4;
     bottomWeight = 1;
-  }
+  } */
 
   for (let b = 0; b < bottomQueens.length; b++) {
 
