@@ -3442,6 +3442,76 @@ export const queens = [
     name: "Sederginne",
     franchise: 'NL'
   },
+  {
+    id: 'GgllMMVO5pd5zLF4WJHY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/04/Ivy-ElyseDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093825',
+    seasons: 'HO2',
+    name: "Ivy-Elyse",
+    franchise: 'NL'
+  },
+  {
+    id: 'OEAXJsWp38LDTmQmYyBT',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e7/JuicyKutoureDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093603',
+    seasons: 'HO2',
+    name: "Juicy Kutoure",
+    franchise: 'NL'
+  },
+  {
+    id: 'VKOl2otvfgGoS2v1tfXO',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/84/KetaMinajDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093326',
+    seasons: 'HO2',
+    name: "Keta Minaj",
+    franchise: 'NL'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/LoveMasisiDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093252',
+    seasons: 'HO2',
+    name: "Love Masisi",
+    franchise: 'NL'
+  },
+  {
+    id: 'BxgI6LwogpsnNklVuTo8',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/10/MyLittlePunyDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093154',
+    seasons: 'HO2',
+    name: "My Little Puny",
+    franchise: 'NL'
+  },
+  {
+    id: 'uMfOH4U7iG46wcdGyHen',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bc/ReggyBDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093444',
+    seasons: 'HO2',
+    name: "Reggy B",
+    franchise: 'NL'
+  },
+  {
+    id: '',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/61/TabithaDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903092807',
+    seasons: 'HO2',
+    name: "Tabitha",
+    franchise: 'NL'
+  },
+  {
+    id: '4GM9F3Bi00CPj2gZMLMa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/72/TheCountessDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210830131642',
+    seasons: 'HO2',
+    name: "The Countess",
+    franchise: 'NL'
+  },
+  {
+    id: 'XD4L8kHcd1s8buVfXzmj',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8d/VanessaVanCartierDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903092844',
+    seasons: 'HO2',
+    name: "Vanessa van Cartier",
+    franchise: 'NL'
+  },
+  {
+    id: 'ZPoHe1HNaPwb2cYS2OLM',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/ba/VivaldiDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903093009',
+    seasons: 'HO2',
+    name: "Vivaldi",
+    franchise: 'NL'
+  },
 
 ].sort((a, b) =>
   a.name.localeCompare(b.name)
