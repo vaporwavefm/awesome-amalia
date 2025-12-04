@@ -520,11 +520,11 @@ const Page = () => {
                           <p>  <strong>Brazil:</strong> 1-2 </p>
                           <p> <strong>Canada:</strong> 1-6 </p>
                           <p>  <strong>Down Under:</strong> 1 </p>
+                          <p> <strong>España:</strong> 1-3 </p>
                           <p>  <strong>Holland:</strong> 1-2 </p>
-                          <p> <strong>France:</strong> 1 </p>
+                          <p> <strong>France:</strong> 1-2 </p>
                           <p> <strong>Mexico:</strong> 1-2 </p>
                           <p> <strong>Philippines:</strong> 1-2 </p>
-                          <p> <strong>Spain:</strong> 1-2 </p>
                           <p> <strong>Thailand:</strong> 1 </p>
                           <p> <strong>UK:</strong> 1-7 </p>
                         </TooltipContent>
