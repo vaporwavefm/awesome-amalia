@@ -654,9 +654,17 @@ const Page = () => {
         {/* Validation and submit button */}
         {!isLoading && (
           <div className="w-full md:w-80 p-6 bg-white border border-gray-200 shadow-xl rounded-2xl relative md:sticky md:top-50 h-fit mr-8 hover:shadow-2xl transition-shadow">
+            <div className="mt-6 mb-6 p-4 bg-purple-50 border border-purple-200 rounded-xl text-center">
+              <p className="text-lg font-bold text-purple-700">
+                Queens Selected: {queenCards.length}
+              </p>
+              <p className="text-lg font-bold text-purple-700">
+                Episodes Selected: {episodeCards.length}
+              </p>
+            </div>
+
             {/* Container for text and button */}
             <div className="flex flex-col gap-6 text-gray-700">
-
               {/* Intro / Instructions */}
               <p className="text-sm leading-relaxed text-center">
                 To generate a brand-new simulation, you&apos;ll need to meet the minimum requirements below (These will adjust automatically as you add more queens and episodes!)
