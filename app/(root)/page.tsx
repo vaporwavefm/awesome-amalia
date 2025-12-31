@@ -3,6 +3,12 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Info } from "lucide-react";
 
 const Page = () => {
 
@@ -15,6 +21,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    { date: '2025-12-30', note: 'NEW: Added in ability to save season runs! New menu options that will load previous season runs. Fixed exporting season results table feature.' },
     { date: '2025-12-03', note: 'Added queens from FR2, ES2, ES3!' },
     { date: '2025-12-01', note: 'Added tooltip in buildcast Queens tab showing what queens are available to select! Added queens from CA5, CA6, UK6, UK7, BR2, HO1, HO2!' },
     { date: '2025-11-28', note: 'Added a lipsync smackdown episode feature! Look up A Very Special Episode when building your season (from season 14!)' },
@@ -109,6 +116,21 @@ const Page = () => {
           <p className="text-gray-700">
             You can use the navigation menu above or just click <a href="/buildcast" className="text-violet-600 font-medium hover:underline"> here </a> to start
             configuring a new simulation!
+          </p>
+          <p className="text-gray-700">
+            <span className="font-bold">PS: </span> If you need help with anything, just refer to this: <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                >
+                  <Info className="w-4 h-4" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent className="text-sm">
+                <p> I&apos;m a tooltip and can help explain what&apos;s going on! </p>
+              </TooltipContent>
+            </Tooltip>
           </p>
         </section>
       </div>

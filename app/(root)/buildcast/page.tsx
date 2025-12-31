@@ -301,7 +301,7 @@ const Page = () => {
                     value={seasonTitle}
                     onChange={(e) => setSeasonTitle(e.target.value)}
                     className="border-gray-300 focus:ring-2 focus:ring-purple-400"
-                    maxLength={100}
+                    maxLength={50}
                   />
                 </div>
 

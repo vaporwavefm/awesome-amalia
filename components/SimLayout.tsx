@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import CardList from "./CardList";
 import { mainChallenge, SavedLipsync, addNewLipsyncs, getQueenNameByIdSingle } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
@@ -21,6 +22,8 @@ import { Relationship, getQueenNameById } from "@/lib/utils";
 import EpisodeEventContainer from "./EpisodeEventContainer";
 import QueenCard from "./QueenCard";
 import LipsyncSmackdownComp from "./LipsyncSmackdownComp";
+import { useSeasons } from "@/components/SeasonsContext";
+
 type Placement = {
   episodeNumber: number | string;
   placement: string;
@@ -45,6 +48,14 @@ const SimLayout = (
       seasonStyle: string;
       seasonTitle: string;
     }) => {
+
+  const searchParams = useSearchParams();
+  const seasonIdFromUrl = searchParams.get("id"); // ?id=unique-season-id
+  const seasonId = useMemo(() => {
+    if (seasonIdFromUrl) return seasonIdFromUrl; // reuse url ID
+    return `season_${seasonTitle.replace(/\s+/g, "_")}_${Date.now()}`; // generate new ID for new version
+  }, [seasonIdFromUrl, seasonTitle]);
+
 
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
@@ -77,6 +88,7 @@ const SimLayout = (
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, SavedLipsync[]>>({});
+  const { seasons, setSeasons } = useSeasons();
 
   const getRelationshipChanges = (episodeNumber: number) => {
     const preEpisode = episodeHistory.pre[episodeNumber];
@@ -224,6 +236,78 @@ const SimLayout = (
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedEpisode, episodeEvent]);
 
+  useEffect(() => {
+    if (!episodeHistory || Object.keys(episodeHistory.post).length === 0) return;
+
+    try {
+      const existing = localStorage.getItem("allSeasons");
+      const allSeasons = existing ? JSON.parse(existing) : { seasons: {} };
+
+      if (!allSeasons.seasons[seasonId]) {
+        const newSeason = {
+          title: seasonTitle,
+          timestamp: Date.now(),
+          savedEpisodes: episodes,
+          savedQueens: queens,
+          savedLipsyncs: lipsyncs,
+          minNonElimEps,
+          seasonMode,
+          seasonStyle,
+          date: new Date().toLocaleString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }),
+          episodeHistory,
+        };
+
+        allSeasons.seasons[seasonId] = newSeason;
+
+        const sortedEntries = Object.entries(allSeasons.seasons).sort(
+          // @ts-expect-error idkkk
+          ([, a], [, b]) => b.timestamp - a.timestamp
+        );
+
+        const trimmedEntries = sortedEntries.slice(0, 5);
+
+        allSeasons.seasons = Object.fromEntries(trimmedEntries);
+
+        localStorage.setItem("allSeasons", JSON.stringify(allSeasons));
+
+        setSeasons(
+          trimmedEntries.map(([id, data]: any) => ({
+            id,
+            title: data.title,
+            date: data.date,
+          }))
+        );
+      }
+    } catch (err) {
+      console.error("Failed to save season results:", err);
+    }
+  }, [episodeHistory, seasonId, seasonTitle]); // save new simulation run to local storage
+
+  useEffect(() => {
+    if (!seasonIdFromUrl) return;
+
+    try {
+      const saved = localStorage.getItem("allSeasons");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const seasonData = parsed.seasons?.[seasonIdFromUrl];
+        if (seasonData) {
+          setEpisodeHistory(seasonData.episodeHistory || {});
+        }
+      }
+    } catch (err) {
+      console.error("Failed to load season results:", err);
+    }
+  }, [seasonIdFromUrl]); // load simulation run from URL
+
   const handleEpisodeClick = (episodeNumber: number) => {
     setEpisodeEvent('');
     setShowResults(false); // reset show results
@@ -357,9 +441,9 @@ const SimLayout = (
           ? `${names[0]} is declared the winner of this week's Maxi Challenge!`
           : `${others.join(', ')}, and ${last} are declared winners!`;
       case 'high':
-        return names.length === 1 ? `${names[0]} has placed high.` : `${others.join(', ')}, and ${last} have placed high.`;
+        return names.length === 1 ? `${names[0]} has placed high.` : `${others.join(', ')} and ${last} have placed high.`;
       case 'bottom':
-        return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')}, and ${last} have placed low.`;
+        return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')} and ${last} have placed low.`;
       case 'bottom2':
         return names.length === 1 ? `${names[0]} is up for elimination. ${(lipsyncTitle && lipsyncArtist) && "They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!"}`
           : `${others.join(', ')} and ${last} are up for elimination. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;

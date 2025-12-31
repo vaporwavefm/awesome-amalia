@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
-//import { collection, getDocs } from "firebase/firestore";
-//import { db } from "@/lib/firebase";
 import SimLayout from "@/components/SimLayout";
-//import { lipsyncs } from "@/constants/queenData";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button"; // since you're already using shadcn/ui buttons
+import { Button } from "@/components/ui/button";
 import { lipsyncs } from "@/constants/queenData";
-import { Spinner } from "@/components/ui/spinner"
+import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import { Suspense } from "react";
 
 const Page = () => {
 
@@ -21,7 +20,11 @@ const Page = () => {
   const [seasonTitle, setSeasonTitle] = useState('');
   const [seasonMode, setSeasonMode] = useState('');
   const [seasonStyle, setSeasonStyle] = useState('');
+
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const seasonId = searchParams.get("id") ?? "";
 
   function generateRelationships(queens: any[]): any[] {
     const updatedQueens = [...queens];
@@ -57,9 +60,11 @@ const Page = () => {
     return updatedQueens;
   }
 
-
   useEffect(() => {
     const loadData = async () => {
+      setCanSim(false);
+      setIsLoading(true);
+
       try {
         await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -67,14 +72,50 @@ const Page = () => {
         const savedEpisodes = localStorage.getItem("selectedEpisodes");
         const savedLipsyncs = localStorage.getItem("savedLipsyncs");
         const savedSeasonStyle = localStorage.getItem("seasonStyle") || "osf";
+        let overrideLocalStorage = false;
+        const DEFAULT_TITLE = "RuPaul's Drag Race";
 
-        setMinNonElimEps(localStorage.getItem("minNonElimEps") || "0");
-        setSeasonMode(localStorage.getItem("seasonMode") || "csp");
-        setSeasonStyle(savedSeasonStyle);
+        if (seasonId) {
+          const allSeasonsRaw = localStorage.getItem("allSeasons");
 
-        const seasonTitle = localStorage.getItem("seasonTitle");
-        if (seasonTitle && seasonTitle.trim() !== "") setSeasonTitle(seasonTitle);
-        else setSeasonTitle("Rupaul's Drag Race");
+          if (allSeasonsRaw) {
+            const parsed = JSON.parse(allSeasonsRaw);
+            const savedSeason = parsed?.seasons?.[seasonId];
+            overrideLocalStorage = true;
+            if (savedSeason?.title?.trim()) {
+              setSeasonTitle(savedSeason.title);
+            } else {
+              setSeasonTitle(DEFAULT_TITLE);
+            }
+
+            if (savedSeason?.savedEpisodes) {
+              setSelectedEpisodes(savedSeason.savedEpisodes);
+            }
+            if (savedSeason?.savedQueens) {
+              setSelectedQueens(savedSeason.savedQueens);
+            }
+            if (savedSeason?.savedLipsyncs) {
+              setSelectedLipsyncs(savedSeason.savedLipsyncs);
+            }
+            if (savedSeason?.minNonElimEps) {
+              setMinNonElimEps(savedSeason.minNonElimEps);
+            }
+            if (savedSeason?.seasonMode) {
+              setSeasonMode(savedSeason.seasonMode);
+            }
+            if (savedSeason?.seasonStyle) {
+              setSeasonStyle(savedSeason.seasonStyle);
+            }
+          } else {
+            setSeasonTitle(DEFAULT_TITLE);
+          }
+        } else {
+          const storedTitle = localStorage.getItem("seasonTitle");
+          setSeasonTitle(storedTitle?.trim() || DEFAULT_TITLE);
+          setMinNonElimEps(localStorage.getItem("minNonElimEps") || "0");
+          setSeasonMode(localStorage.getItem("seasonMode") || "csp");
+          setSeasonStyle(savedSeasonStyle);
+        }
 
         if (saved && savedEpisodes && savedLipsyncs) {
           const parsedQueens = JSON.parse(saved) ?? [];
@@ -107,9 +148,6 @@ const Page = () => {
           }
 
           if (parsedQueens.length > 0 && parsedEps.length > 0) {
-            //const sorted = parsedQueens.sort((a: any, b: any) =>
-            //a.name.localeCompare(b.name)
-            // );
             const sorted = queensWithRelationships.sort((a: any, b: any) =>
               a.name.localeCompare(b.name)
             );
@@ -119,10 +157,13 @@ const Page = () => {
               parsedEps[ep].episodeNumber = i;
               i++;
             }
-            //console.log(JSON.stringify(sorted));
-            setSelectedQueens(sorted);
-            setSelectedEpisodes(parsedEps);
-            setSelectedLipsyncs(parsedLipsyncs);
+
+            if (!overrideLocalStorage) {
+              setSelectedEpisodes(parsedEps);
+              setSelectedQueens(sorted);
+              setSelectedLipsyncs(parsedLipsyncs);
+            }
+
             setCanSim(true);
           }
         }
@@ -134,12 +175,20 @@ const Page = () => {
     };
 
     loadData();
-  }, []);
+  }, [seasonId]);
+
 
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <Spinner />
+        <Image
+          src="/assets/graphics/lipstickload.gif"
+          alt="Description of the GIF"
+          width={90}
+          height={90}
+          unoptimized={true}
+        />
+
         <p className="text-lg font-semibold text-gray-700">
           Loading simulation data (please wait!)...
         </p>
@@ -150,7 +199,9 @@ const Page = () => {
   return (
     <>
       {canSim ?
-        <SimLayout queens={selectedQueens}
+        <SimLayout
+          key={seasonId ?? "new-season"}
+          queens={selectedQueens}
           episodes={selectedEpisodes}
           lipsyncs={selectedLipsyncs}
           minNonElimEps={Number(minNonElimEps)}
