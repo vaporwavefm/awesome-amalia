@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {Poppins} from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 
 const poppins = Poppins({
 subsets: ['latin'],
@@ -38,7 +39,9 @@ export default function RootLayout({
         className={`${poppins.variable} font-poppins antialiased`}
       >
         {children}
+        <Analytics />
       </body>
+      
     </html>
   );
 }

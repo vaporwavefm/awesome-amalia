@@ -58,6 +58,7 @@ const Page = () => {
   const [minNonElimEps, setMinNonElimEps] = useState('0');
   const [minFinalists, setMinFinalists] = useState('3');
   const [seasonStyle, setSeasonStyle] = useState("osf");
+  const [seasonFlow, setSeasonFlow] = useState("");
   const [seasonMode, setSeasonMode] = useState('');
   const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
   const router = useRouter();
@@ -77,13 +78,13 @@ const Page = () => {
     localStorage.setItem("minNonElimEps", minNonElimEps);
     localStorage.setItem("seasonStyle", seasonStyle);
     localStorage.setItem("seasonMode", seasonMode);
+    localStorage.setItem("seasonFlow", seasonFlow);
     localStorage.setItem("seasonTitle", seasonTitle);
 
     const savedLipsyncs = [];
     for (const e in episodeCards) {
       let found = false;
       const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + Number(episodeCards[e].episodeNumber);
-      //console.log(eNum);
 
       for (const l in lipsyncs) {
         if (lipsyncs[l].episode === eNum) {
@@ -132,6 +133,7 @@ const Page = () => {
     const savedQueens = localStorage.getItem("selectedQueens");
     const savedEpisodes = localStorage.getItem("selectedEpisodes");
     const savedNonElim = localStorage.getItem("minNonElimEps");
+    const savedFlow = localStorage.getItem("seasonFlow");
     const savedMode = localStorage.getItem("seasonMode");
     const savedSeasonTitle = localStorage.getItem("seasonTitle");
     const savedStyle = localStorage.getItem("seasonStyle");
@@ -139,6 +141,7 @@ const Page = () => {
     if (savedNonElim !== null) setMinNonElimEps(savedNonElim);
     if (savedMode !== null) setSeasonMode(savedMode);
     if (savedStyle !== null) setSeasonStyle(savedStyle);
+    if (savedFlow != null) setSeasonFlow(savedFlow);
 
     let parsedQueens: any[] = [];
     let parsedEps: any[] = [];
@@ -305,11 +308,104 @@ const Page = () => {
                   />
                 </div>
 
+                {/* season flow */}
                 <div className="mt-4 flex flex-col space-y-2 w-[300px] relative">
-                  {/* season style */}
                   <div className="flex flex-col space-y-2 w-[300px] pb-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-800">Select season style:</span>
+                      <span className="font-medium text-gray-800">Select season format:</span>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p>
+                            <strong>Classic Format:</strong> No twists this season! The season will have tops, highs, lows,
+                            and bottom queens with a classic lipsync for your life to determine elimination.
+                          </p>
+                          <p>
+                            <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
+                            will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
+                          </p>
+                          <p className="mt-2">
+                            <strong>Lipsync Assassins:</strong> The top All-Star faces off against a
+                            secret Lipsync Assassin. If the top All-Star wins, they choose a queen to
+                            eliminate. If the Lipsync Assassin wins, the group vote decides who goes home. If the vote is a tie,
+                            the decision will go back to the top All-Star.
+                          </p>
+                          <br />
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+
+                    {/* Select dropdown */}
+                    <Select value={seasonFlow} onValueChange={setSeasonFlow}>
+                      <SelectTrigger id="seasonFlow" className="gen-config-select">
+                        <SelectValue placeholder="Select a season format:" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>All-Stars</SelectLabel>
+                          <SelectItem value="osas">Classic Format</SelectItem>
+                          <SelectItem value="ttwalas" disabled>Top-Two and Lipsticks (coming soon!)</SelectItem>
+                          <SelectItem value="laas" disabled>Lipsync Assassins (coming soon!)</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                {/* season premiere mode */}
+                <div className="mt-4 flex flex-col space-y-2 w-[300px] pb-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-gray-800">Select season premiere style:</span>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                        >
+                          <Info className="w-4 h-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent className="max-w-xs text-sm">
+                        <p>
+                          <strong>Classic Season:</strong> The queens will enter the competition all at once
+                          and will be eliminated each week.
+                        </p>
+                        <p>
+                          <strong>Split Premiere:</strong> The queens will be divided into two groups and be judged
+                          before making a merge.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
+
+                  {/* Select dropdown */}
+                  <Select
+                    value={seasonMode}
+                    onValueChange={(value) => setSeasonMode(value)}
+                  >
+                    <SelectTrigger id="seasonMode" className="gen-config-select">
+                      <SelectValue placeholder="Select a season premiere style:" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="csp"> Classic Premiere </SelectItem>
+                      <SelectItem value="sp"> Split Premiere </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* season finale style */}
+                <div className="mt-4 flex flex-col space-y-2 w-[300px] relative">
+
+                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium text-gray-800">Select season finale style:</span>
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <button
@@ -328,24 +424,6 @@ const Page = () => {
                             <strong>Lipsync for the Crown:</strong> The finalists compete in a lipsync smackdown,
                             and the winner is determined by their performance in a final Lipsync for the Crown.
                           </p>
-                          <br /><Separator />
-                          {/*
-                          <p className="mt-2">
-                            <strong>Classic All-Stars:</strong> The all-stars are judged on their overall
-                            performance throughout the season, and the winner is chosen based off track record.
-                          </p>
-                          */}
-                          <p className="mt-2">
-                            <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
-                            will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
-                          </p>
-                          <p className="mt-2">
-                            <strong>Lipsync Assassins:</strong> The top All-Star faces off against a
-                            secret Lipsync Assassin. If the top All-Star wins, they choose a queen to
-                            eliminate. If the Lipsync Assassin wins, the group vote decides who goes home. If the vote is a tie,
-                            the decision will go back to the top All-Star.
-                          </p>
-                          <br />
                         </TooltipContent>
                       </Tooltip>
                     </div>
@@ -353,7 +431,7 @@ const Page = () => {
                     {/* Select dropdown */}
                     <Select value={seasonStyle} onValueChange={setSeasonStyle}>
                       <SelectTrigger id="seasonStyle" className="gen-config-select">
-                        <SelectValue placeholder="Select a series type:" />
+                        <SelectValue placeholder="Select a season finale style::" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
@@ -361,54 +439,6 @@ const Page = () => {
                           <SelectItem value="osf">Classic Finale</SelectItem>
                           <SelectItem value="lsftc">Lipsync for the Crown </SelectItem>
                         </SelectGroup>
-                        <SelectGroup>
-                          <SelectLabel>All-Stars</SelectLabel>
-                          {/*<SelectItem value="osas" disabled>Classic All-Stars (coming soon!)</SelectItem>*/}
-                          <SelectItem value="ttwalas" disabled>Top-Two and Lipsticks (coming soon!)</SelectItem>
-                          <SelectItem value="laas" disabled>Lipsync Assassins (coming soon!)</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-
-                  </div>
-
-                  {/* season mode */}
-                  <div className="flex flex-col space-y-2 w-[300px] pb-2">
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-800">Select season mode:</span>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <button
-                            type="button"
-                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
-                          >
-                            <Info className="w-4 h-4" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-xs text-sm">
-                          <p>
-                            <strong>Classic Season:</strong> The queens will enter the competition all at once
-                            and will be eliminated each week.
-                          </p>
-                          <p>
-                            <strong>Split Premiere:</strong> The queens will be divided into two groups and be judged
-                            before making a merge.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-
-                    {/* Select dropdown */}
-                    <Select
-                      value={seasonMode}
-                      onValueChange={(value) => setSeasonMode(value)}
-                    >
-                      <SelectTrigger id="seasonMode" className="gen-config-select">
-                        <SelectValue placeholder="Select a series type:" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="csp"> Classic Season </SelectItem>
-                        <SelectItem value="sp"> Split Premiere </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -491,11 +521,9 @@ const Page = () => {
                     className="absolute right-[-40px] sm:right-[-60px] lg:right-[-100px] top-full sm:top-[90%] mt-2 opacity-40
                     pointer-events-none w-20 sm:w-28 md:w-32 md:top-full h-auto"
                   />
-
-
                 </div>
-              </div>
 
+              </div>
             </TabsContent>
 
             {/* Queens Tab */}

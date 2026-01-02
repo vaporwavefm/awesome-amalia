@@ -37,7 +37,8 @@ const SimLayout = (
     minNonElimEps,
     seasonMode,
     seasonStyle,
-    seasonTitle
+    seasonTitle,
+    seasonFlow
   }:
     {
       queens: any[];
@@ -47,6 +48,7 @@ const SimLayout = (
       seasonMode: string;
       seasonStyle: string;
       seasonTitle: string;
+      seasonFlow: string;
     }) => {
 
   const searchParams = useSearchParams();
@@ -55,7 +57,6 @@ const SimLayout = (
     if (seasonIdFromUrl) return seasonIdFromUrl; // reuse url ID
     return `season_${seasonTitle.replace(/\s+/g, "_")}_${Date.now()}`; // generate new ID for new version
   }, [seasonIdFromUrl, seasonTitle]);
-
 
   const initialTrackRecord = useMemo(() => {
     return queens.map(q => ({
@@ -263,6 +264,7 @@ const SimLayout = (
             second: "2-digit",
           }),
           episodeHistory,
+          seasonFlow
         };
 
         allSeasons.seasons[seasonId] = newSeason;

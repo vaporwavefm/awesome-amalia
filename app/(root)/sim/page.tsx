@@ -20,6 +20,7 @@ const Page = () => {
   const [seasonTitle, setSeasonTitle] = useState('');
   const [seasonMode, setSeasonMode] = useState('');
   const [seasonStyle, setSeasonStyle] = useState('');
+  const [seasonFlow, setSeasonFlow] = useState('');
 
   const router = useRouter();
 
@@ -72,6 +73,8 @@ const Page = () => {
         const savedEpisodes = localStorage.getItem("selectedEpisodes");
         const savedLipsyncs = localStorage.getItem("savedLipsyncs");
         const savedSeasonStyle = localStorage.getItem("seasonStyle") || "osf";
+        const savedSeasonFlow = localStorage.getItem("seasonFlow") || "osas";
+
         let overrideLocalStorage = false;
         const DEFAULT_TITLE = "RuPaul's Drag Race";
 
@@ -106,6 +109,10 @@ const Page = () => {
             if (savedSeason?.seasonStyle) {
               setSeasonStyle(savedSeason.seasonStyle);
             }
+            if (savedSeason?.seasonFlow) {
+              setSeasonFlow(savedSeason.seasonFlow);
+            }
+
           } else {
             setSeasonTitle(DEFAULT_TITLE);
           }
@@ -115,6 +122,7 @@ const Page = () => {
           setMinNonElimEps(localStorage.getItem("minNonElimEps") || "0");
           setSeasonMode(localStorage.getItem("seasonMode") || "csp");
           setSeasonStyle(savedSeasonStyle);
+          setSeasonFlow(savedSeasonFlow);
         }
 
         if (saved && savedEpisodes && savedLipsyncs) {
@@ -177,7 +185,6 @@ const Page = () => {
     loadData();
   }, [seasonId]);
 
-
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
@@ -208,6 +215,7 @@ const Page = () => {
           seasonMode={seasonMode}
           seasonStyle={seasonStyle}
           seasonTitle={seasonTitle}
+          seasonFlow={seasonFlow}
         />
         : (
           <div className="flex flex-col items-center justify-center min-h-100 gap-4">
