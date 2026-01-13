@@ -2002,7 +2002,7 @@ export const queens = [
   },
   {
     id: 'b6DKH1ZCIbsWSMIH8w15',
-    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e6/LexiLoveS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241205013840',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c2/LexiS17CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20241205013840',
     seasons: '17',
     name: "Lexi Love",
     franchise: 'US'
@@ -3730,7 +3730,7 @@ export const queens = [
     franchise: 'NL'
   },
   {
-    id: '',
+    id: 'EG10Zg5Dbq9NtyHDFl4N',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/61/TabithaDRHL2CastMug.png/revision/latest/scale-to-width-down/105?cb=20210903092807',
     seasons: 'HO2',
     name: "Tabitha",
@@ -3756,6 +3756,104 @@ export const queens = [
     seasons: 'HO2',
     name: "Vivaldi",
     franchise: 'NL'
+  },
+  {
+    id: 'ojrEknnwjEkzvmHFqjPD',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/AthenaDionS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202173958',
+    seasons: '18',
+    name: "Athena Dion",
+    franchise: 'US'
+  },
+  {
+    id: 'Hbqpoea5rtVv1Oo7aXhs',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/BriarBlushS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174022',
+    seasons: '18',
+    name: "Briar Blush",
+    franchise: 'US'
+  },
+  {
+    id: 'W2CVqBzD8OvURUAoV11n',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/64/CiaraMystS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174042',
+    seasons: '18',
+    name: "Ciara Myst",
+    franchise: 'US'
+  },
+  {
+    id: '1Ixb4hDM59FKGiecRknU',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3b/DarleneMitchellS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174101',
+    seasons: '18',
+    name: "Darlene Mitchell",
+    franchise: 'US'
+  },
+  {
+    id: 'I7KGbOGySYb65XZm4XCK',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b6/DDFuegoS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174121',
+    seasons: '18',
+    name: "DD Fuego",
+    franchise: 'US'
+  },
+  {
+    id: 'gzLJTqSxzuTjNTTIVG71',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/91/DiscordAddamsS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174143',
+    seasons: '18',
+    name: "Discord Addams",
+    franchise: 'US'
+  },
+  {
+    id: 'PLFsiKUBrUctVspPLh1f',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5b/JaneDon%27tS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174204',
+    seasons: '18',
+    name: "Jane Don't",
+    franchise: 'US'
+  },
+  {
+    id: '40TWZvqf94B0tHipLwyV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/JuicyLoveDionS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174225',
+    seasons: '18',
+    name: "Juicy Love Dion",
+    franchise: 'US'
+  },
+  {
+    id: 'b3WkV9xGrf5dTMAruVWL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f6/KenyaPleaserS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174256',
+    seasons: '18',
+    name: "Kenya Pleaser",
+    franchise: 'US'
+  },
+  {
+    id: 'rdVusqg81Kbq6ktXnRmM',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d2/MandyMangoS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174323',
+    seasons: '18',
+    name: "Mandy Mango",
+    franchise: 'US'
+  },
+  {
+    id: '4a3SdR6v78hT5orV5SpB',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/00/MiaStarrS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174355',
+    seasons: '18',
+    name: "Mia Starr",
+    franchise: 'US'
+  },
+  {
+    id: 'B8ptDgWOmsuWpbd9RYkZ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/13/MykiMeeksS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174432',
+    seasons: '18',
+    name: "Myki Meeks",
+    franchise: 'US'
+  },
+  {
+    id: 'Oenp5pmggBefDjr2ujEV',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/NiniCocoS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174453',
+    seasons: '18',
+    name: "Nini Coco",
+    franchise: 'US'
+  },
+  {
+    id: 'cGdxS6v3lZ1Xdrqu1oYy',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8a/VitaVonTesseStarrS18CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20251202174512',
+    seasons: '18',
+    name: "Vita VonTesse Starr",
+    franchise: 'US'
   },
 
 ].sort((a, b) =>
@@ -5330,6 +5428,430 @@ export const episodes = [
     type: 'finale,lipsyncSmackdown',
     franchise: 'US'
   },
+  {
+    id: 'jh0wIfdYcdcPR3UbPOGj',
+    episodeNumber: 1,
+    season: '15',
+    title: "One Night Only, Parts 1 & 2",
+    description: "A new cast of queens, competing to be crowned America’s Next Drag Superstar, must show off their performance skills in a talent show. Superstar singer Ariana Grande guest judges",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'a558LhPvhrMDhF8EZZI7',
+    episodeNumber: 2,
+    season: '15',
+    title: "One Night Only, Parts 1 & 2",
+    description: "A new cast of queens, competing to be crowned America’s Next Drag Superstar, must show off their performance skills in a talent show. Superstar singer Ariana Grande guest judges",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+
+  {
+    id: 'tIe7c6QDGa8lb9EvPHcq',
+    episodeNumber: 3,
+    season: '15',
+    title: "All Queens Go To Heaven",
+    description: "In this heavenly acting challenge, the queens must create infomercials for a queer afterlife. Country singer Maren Morris and LGBTQ activist Ts Madison guest judge.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'aRBtS7Dfrg8qUNevPBx7',
+    episodeNumber: 4,
+    season: '15',
+    title: "Supersized Snatch Game",
+    description: "Ru serves up a double helping of the celebrity impersonation game show, with the queens playing in two rounds, with two different casts of characters. Amandla Stenberg (The Hate U Give) guest judges.",
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'buvgtOhwvoKM7yhMvOQq',
+    episodeNumber: 5,
+    season: '15',
+    title: "House of Fashion",
+    description: "After the legendary Reading challenge, the queens must turn home decor into haute couture. Singer/ actress Janelle Monáe (Hidden Figures) guest judges.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'hhsyp38FH1TEFgtPbP1U',
+    episodeNumber: 6,
+    season: '15',
+    title: "Old Friends Gold",
+    description: "The queens fast forward 50 years to perform in old lady girl groups, singing about life, love, and growing old with your besties. Actress/ comedian Megan Stalter (Hacks) guest judges.",
+    type: 'dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'xIVtZE4HyE752OiKuUQ2',
+    episodeNumber: 7,
+    season: '15',
+    title: "The Daytona Wind 2",
+    description: "The queens exchange flatulence for canned laughter, as the melodramatic acting challenge returns in sitcom form. Actor Harvey Guillén (What We Do in the Shadows) guest judges.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: '0Cn7u2dwRE6o4SbwXAls',
+    episodeNumber: 8,
+    season: '15',
+    title: "LipSync Lalaparuza Smackdown",
+    description: "Strategy and alliances emerge as the queens face off in a series of lip syncs, all leading to a final sudden death elimination round.",
+    type: 'lipsyncSmackdown',
+    franchise: 'US'
+  },
+  {
+    id: 'JWR8tHS8dRlUjCMIFdUY',
+    episodeNumber: 9,
+    season: '15',
+    title: "The Crystal Ball: Episode 200",
+    description: "Drag Race celebrates its milestone 200th episode. The queens design outfits featuring the 15 year anniversary gift: crystal. Julia Garner (Inventing Anna; Ozark) guest judges.",
+    type: 'design',
+    franchise: 'US'
+  },
+  {
+    id: '6xyEPnAMBfFJyBHdMQ5a',
+    episodeNumber: 10,
+    season: '15',
+    title: "50/50’S Most Gagworthy Stars",
+    description: "The queens get up close and personal with celebrities for TV’s sketchiest newsmagazine, 50/50. On the runway, category is: Night Of 1000 Beyoncés. With special guests Charo, Frankie Grande and Love Connie.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'cvvfaPPc3RJjKGMgEpIU',
+    episodeNumber: 11,
+    season: '15',
+    title: "Two Queens, One Joke",
+    description: "The queens perform stand-up comedy in pairs, but an odd number of queens causes for some drama. Comedian Ali Wong (Ali Wong: Baby Cobra) guest judges.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'FmlR5sV73Dc5PWaxvmuP',
+    episodeNumber: 12,
+    season: '15',
+    title: "Wigloose: The Rusical!",
+    description: "This season’s Rusical is set in the small town of West Bumtuck, where drag has been outlawed. An underground alliance forms to try and defeat the bigots. Country music sensation Orville Peck guest judges.",
+    type: 'musical',
+    franchise: 'US'
+  },
+  {
+    id: 'R4i7bm5FRdRXqX7dNH4D',
+    episodeNumber: 13,
+    season: '15',
+    title: "Teacher Makeovers",
+    description: "The queens give drag makeovers to hard-working teachers, from kindergarten to high school. Queer pop musician Hayley Kiyoko guest judges.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: '63pq4N76FImHoiNkrKUi',
+    episodeNumber: 14,
+    season: '15',
+    title: "Blame It On The Edit",
+    description: 'The final queens collab with RuPaul on a remix of his song “Blame It On The Edit,” recording their own verses and creating a space-themed music video.',
+    type: 'musicVideo,dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'Msm3hBKACLviZcbi2XCE',
+    episodeNumber: 16,
+    season: '15',
+    title: "Grand Finale",
+    description: "RuPaul crowns America’s Next Drag Superstar, in an epic battle for the grand prize of $200,000.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'bgcjL080LmkoP0mAArfd',
+    episodeNumber: 1,
+    season: '16',
+    title: "Rate-A-Queen",
+    description: "A new cast of queens, competing to be crowned America’s Next Drag Superstar, must show off their performance skills in a talent show. Oscar-winning actress Charlize Theron guest judges.",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'S1xBvk0QbmgzAOEcBIwR',
+    episodeNumber: 2,
+    season: '16',
+    title: "Queen Choice Awards",
+    description: "A new cast of queens, competing to be crowned America’s Next Drag Superstar, must show off their performance skills in a talent show. Superstar singer Becky G guest judges.",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: '704ub9n8aaaecvTHcYP2',
+    episodeNumber: 3,
+    season: '16',
+    title: "The Mother of All Balls",
+    description: "The two groups of queens meet for the first time. Tensions rise as queens put their design skills to the test in a pageant of mother-inspired couture and showcase three mom-themed looks. Iconic fashion designer Isaac Mizrahi guest judges.",
+    type: 'ball,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'rs50vHUdohaAPDrzXd54',
+    episodeNumber: 4,
+    season: '16',
+    title: "RDR Live!",
+    description: "Live from Tuckahoe, it’s RDR Live! The queens are challenged to serve up laughs in a hilarious send-up of the iconic sketch comedy show. Actress and three-time SNL host Sarah Michelle Gellar (Buffy the Vampire Slayer) guest judges.",
+    type: 'improv',
+    franchise: 'US'
+  },
+  {
+    id: 'IXrj0w7fL0MFhQRNNunv',
+    episodeNumber: 5,
+    season: '16',
+    title: "Girl Groups",
+    description: "The queens are tasked with writing and performing their own verses, for RuPaul songs from his new album Black Butta. Swedish synth-pop duo Icona Pop guest judge.",
+    type: 'dancing',
+    franchise: 'US'
+  },
+  {
+    id: 'z6UELUHexQWUwa9oBvgM',
+    episodeNumber: 6,
+    season: '16',
+    title: "Welcome To The DollHouse",
+    description: "After a flamenco dance with Spanish sensation Charo, the queens must design their own dolls, based on their drag personas. Superstar stylist Law Roach (Legendary) guest judges.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'OqcA3GjkJJOl0dei8073',
+    episodeNumber: 7,
+    season: '16',
+    title: "The Sound Of Rusic",
+    description: "This season’s Rusical is set high in the Swish Alps, as a young queen called Mariah goes in search of a musical outlet for her inner freak. Legendary director Adam Shankman (Hairspray) guest judges.",
+    type: 'musical',
+    franchise: 'US'
+  },
+  {
+    id: 'vYGHbrYN6Cjwa6xlfi64',
+    episodeNumber: 8,
+    season: '16',
+    title: "Snatch Game",
+    description: "After the iconic Reading challenge, the queens impersonate celebrities in the classic quick-fire comedy game show. All Stars winner Chad Michaels drops by the werkroom; actress Kyra Sedgwick (The Closer) guest judges.",
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'khEMCnr2X08h1OVstR1I',
+    episodeNumber: 9,
+    season: '16',
+    title: "See You Next Wednesday",
+    description: "Morticia meets Mugler as the queens create a Neo-Goth look from scratch, using only black, white and gray fabric. Drop dead gorgeous model and actress Kaia Gerber (Bottoms) guest judges.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'yDOX0G0hc3ZwPC2Y80ym',
+    episodeNumber: 10,
+    season: '16',
+    title: "Werq The World",
+    description: "The queens let their voices be heard in an inspirational political anthem and exercise their right to shake their groove thing. Choreographer Jamal Sims (Aladdin) guest judges.",
+    type: 'singing,dancing',
+    franchise: 'US'
+  },
+  {
+    id: '28KxMej5l1fA5cnvAGnz',
+    episodeNumber: 11,
+    season: '16',
+    title: "Corporate Queens",
+    description: "The queens must devise and present comical Drag Awareness seminars, in front of a live audience of bored corporate employees. Actor and comedian Joel Kim Booster (Fire Island) guest judges.",
+    type: 'improv',
+    franchise: 'US'
+  },
+  {
+    id: 'sSZYqsy4cMYkfacuzp7i',
+    episodeNumber: 12,
+    season: '16',
+    title: "Bathroom Hunties",
+    description: "Nature calls! The queens star in the hot new design show “Bathroom Hunties,” decorating and showcasing over-the-top powder rooms. Actress Mayan Lopez (Lopez vs Lopez) guest judges.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'ULIKRRLGvyAIRLiSjJPL',
+    episodeNumber: 13,
+    season: '16',
+    title: "Drag Race Vegas LIVE! Makeovers",
+    description: "Hunky male dancers from the RuPaul’s Drag Race LIVE! show in Las Vegas drop by the werkroom, to be made over into devastating drag queens. Country star Kelsea Ballerini guest judges.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'ctKZDAgfCVqFb7nSIaVL',
+    episodeNumber: 14,
+    season: '16',
+    title: "Booked & Blessed",
+    description: "The queens dig deep and write their memoirs, pose for a book cover photo shoot and are grilled by co-host of Las Culturistas podcast Matt Rogers. Journalist and author Ronan Farrow (Catch and Kill) guest judges.",
+    type: 'improv,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'ZqYMnwZqg1mWFBPg4dYE',
+    episodeNumber: 15,
+    season: '16',
+    title: "LipSync Lalaparuza Smackdown - Reunited",
+    description: "All of the eliminated queens return to battle it out in a LipSync Lalaparuza Smackdown, with nine lip syncs and a cash prize of $50,000 on the line.",
+    type: 'lalaparuza',
+    franchise: 'US'
+  },
+  {
+    id: 'sm5Q8BPR726JtbBfgDTN',
+    episodeNumber: 16,
+    season: '16',
+    title: "Grand Finale",
+    description: "The top queens face off in an epic evening of performances and lip syncs, as they compete for the title of America’s Next Drag Superstar and a grand prize of $200,000.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'LqeyGt24mp26XKzuEBlI',
+    episodeNumber: 1,
+    season: '17',
+    title: "Squirrel Games",
+    description: 'Drag Race is back, doing what it does best: parodying the buzziest reality shows on TV. A new cast of queens must survive a deadly game of “Ru Light, Green Light,” before showing off their skills in a talent show. Superstar Katy Perry guest judges.',
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'SCRwR3u4Z4HkorXhML0v',
+    episodeNumber: 2,
+    season: '17',
+    title: "Drag Queens Got Talent - Part 2",
+    description: "The second half of the new cast of 14 queens, competing to be crowned America’s Next Drag Superstar, must show off their performance skills in a talent show. Rapper and singer Doechii guest judges.",
+    type: 'premiere,talentShow',
+    franchise: 'US'
+  },
+  {
+    id: 'I0UDaBrHYPuXFXZ42sLj',
+    episodeNumber: 3,
+    season: '17',
+    title: "Monopulence!",
+    description: 'The queens take fashion inspiration from the iconic board game Monopoly, and must create from scratch an outfit that screams “You own everything!” Actress and comedian Sandra Bernhard guest judges.',
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'm4R5rAvOhZiUxtLHmZ38',
+    episodeNumber: 4,
+    season: '17',
+    title: "Bitch, I'm A Drag Queen!",
+    description: "The queens are tasked with singing songs based on iconic rants and legendary moments from Drag Race herstory. Actress Julia Schlaepfer (1923) guest judges.",
+    type: 'improv,comedy,singing',
+    franchise: 'US'
+  },
+  {
+    id: 'KZyKmBbRGGryLqiI6mvG',
+    episodeNumber: 5,
+    season: '17',
+    title: "RDR Live!",
+    description: "Live from Tuckahoe, it’s RDR Live! The queens are challenged to serve up laughs in a hilarious send-up of the iconic sketch comedy show. Actor, writer and director Paul W. Downs (Hacks, Broad City) guest judges.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'jIsDrESKUFsYAmXSpI18',
+    episodeNumber: 6,
+    season: '17',
+    title: "Let’s Get Sea Sickening Ball",
+    description: "Tensions rise as the queens put their design skills to the test in a pageant of ocean-inspired couture, and showcase three fishy looks. Actress and model Hunter Schafer (Euphoria), and superstar stylist Law Roach (Legendary) guest judge.",
+    type: 'ball,design,runway',
+    franchise: 'US'
+  },
+  {
+    id: '5Mko1pKr5FF09caMW9e5',
+    episodeNumber: 7,
+    season: '17',
+    title: "Snatch Game",
+    description: "The queens impersonate celebrities in the classic quick-fire comedy game show. Global All Stars winner Alyssa Edwards drops by the werkroom; actress and comedian Quinta Brunson (Abbott Elementary) guest judges.",
+    type: 'snatchGame,improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'RBTPDazokYzEl91Qzpv0',
+    episodeNumber: 8,
+    season: '17',
+    title: "The Wicked Wiz Of Oz: The Rusical!",
+    description: "This season’s Rusical is inspired by a mashup of Wicked, The Wizard of Oz, and The Wiz. Jamal Sims choreographs the queens; singer Adam Lambert guest judges.",
+    type: 'musical',
+    franchise: 'US'
+  },
+  {
+    id: '1taV8LUzk6Vt3SHH7GlD',
+    episodeNumber: 9,
+    season: '17',
+    title: "Heavens To Betsey!",
+    description: "After the iconic Reading challenge, the queens rock out with their frocks out, as they create a look worthy of a Betsey Johnson fashion collection. The fashion icon herself, Betsey Johnson, guest judges.",
+    type: 'design,runway',
+    franchise: 'US'
+  },
+  {
+    id: '9InL2tYM6SFqn12iqTmD',
+    episodeNumber: 10,
+    season: '17',
+    title: "The Villains Roast",
+    description: "The queens pay a comedy tribute to three of the shadiest queens in Drag Race herstory: Kandy Muse, Mistress Isabelle Brooks, and Plane Jane. Comedian Whitney Cummings guest judges.",
+    type: 'roast,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'HJOZxkmn9ARNFLGVKuBN',
+    episodeNumber: 11,
+    season: '17',
+    title: "Ross Mathews vs. The Ducks",
+    description: "As a tribute to Truman Capote and his Swans, the queens must act up a storm in a high camp tale of betrayal. Cheyenne Jackson (American Horror Story) directs; singer Sam Smith guest judges.",
+    type: 'comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'Btl7cZcjfrgmcKplwMVW',
+    episodeNumber: 12,
+    season: '17',
+    title: "Charisma, Uniqueness, Nerve & Talent Monologues",
+    description: "The queens share hilarious and heart-warming true stories in a performance challenge with a twist: their partners must act out the stories through interpretive dance. Jerrod Carmichael (Jerrod Carmichael Reality Show) guest judges.",
+    type: 'acting,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'OpUNl1LGo64l0B9jqXyq',
+    episodeNumber: 13,
+    season: '17',
+    title: "Drag Baby Mamas",
+    description: "The queens make over some extra special drag newbies: their moms and dads. June Diane Raphael (Grace and Frankie) guest judges.",
+    type: 'makeover,runway',
+    franchise: 'US'
+  },
+  {
+    id: 'osLq7NXyr9BHLOta0lJ6',
+    episodeNumber: 14,
+    season: '17',
+    title: "How’s Your Headliner?",
+    description: "The queens audition to star in RuPaul’s Drag Race LIVE! at Flamingo Las Vegas. Tracee Ellis Ross (black-ish) guest judges.",
+    type: 'branding,commercial',
+    franchise: 'US'
+  },
+  {
+    id: 'NTRrPNFIDJgiwlGwGVgv',
+    episodeNumber: 15,
+    season: '17',
+    title: "Lip Sync Lalaparuza Smackdown",
+    description: "All of the eliminated queens return to battle it out in a Lip Sync Lalaparuza Smackdown, with eight lip syncs, and a cash prize of $50,000 on the line.",
+    type: 'lalaparuza',
+    franchise: 'US'
+  },
+  {
+    id: '1ySAIUDODkKRdv9RSYxG',
+    episodeNumber: 16,
+    season: '17',
+    title: "Grand Finale",
+    description: "The top queens face off in an epic evening of performances and lip syncs, as they compete for a grand prize of $200,000. Superstar Liza Minnelli joins RuPaul on stage.",
+    type: 'finale',
+    franchise: 'US'
+  },
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
@@ -6649,6 +7171,511 @@ export const lipsyncs = [
     season: "13",
     franchise: "US"
   },
+  {
+    id: 't9nt6gtMsLCGVbFZIVNg',
+    title: "Water Me",
+    episode: "us14e1",
+    genre: "funk-pop,electropop",
+    artist: "Lizzo",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'f2K7lTsC0t2IQQBwXG17',
+    title: "Fallin'",
+    episode: "us14e2",
+    genre: "R&B,soul",
+    artist: "Alicia Keys",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'D8CBqO8irmr8Gu556zwU',
+    title: "I Love It",
+    episode: "us14e3",
+    genre: "disco,pop",
+    artist: "Kylie Minogue",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'QLshjVgDN9uIZf3HRJZi',
+    title: "Play",
+    episode: "us14e4",
+    genre: "R&B,pop",
+    artist: "Jennifer Lopez",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'Hxt4TFaWow8869zSXdYg',
+    title: "My Head & My Heart",
+    episode: "us14e5",
+    genre: "dance-pop",
+    artist: "Ava Max",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'B5yZYKmAtUVtlKkJYhPB',
+    title: "Suga Mama",
+    episode: "us14e6",
+    genre: "R&B",
+    artist: "Beyoncé",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'HFdzo0DOOPDt4uEaMBr5',
+    title: "One Way or Another",
+    episode: "us14e7",
+    genre: "rock,punk",
+    artist: "Blondie",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: '4OLjeaW38xlJagYb7xcv',
+    title: "Un-Break My Heart (Soul-Hex Radio Mix)",
+    episode: "us14e8",
+    genre: "R&B,ballad",
+    artist: "Toni Braxton",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'MJKuMaSy1ydlyvpN6Hul',
+    title: "Something's Got a Hold on Me",
+    episode: "us14e9",
+    genre: "R&B,soul",
+    artist: "Etta James",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'nuJiGDB1UN8lkJcwHag2',
+    title: "Respect",
+    episode: "us14e21",
+    genre: "soul",
+    artist: "Aretha Franklin",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: '6hwNiJ1p7Bqs8FCGHNAy',
+    title: "Never Too Much",
+    episode: "us14e20",
+    genre: "R&B,soul",
+    artist: "Luther Vandross",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'h64QCUlRX81k392BU3vm',
+    title: "Radio",
+    episode: "us14e19",
+    genre: "pop,R&B",
+    artist: "Beyoncé",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'PV4PzZ9Y0p8ElPh7mL3J',
+    title: "Don't Let Go (Love)",
+    episode: "us14e18",
+    genre: "R&B,pop",
+    artist: "En Vogue",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'Bemy8YPHzpI0rmXdQeGo',
+    title: "Love Don't Cost a Thing",
+    episode: "us14e17",
+    genre: "pop,R&B",
+    artist: "Jennifer Lopez",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'wWswhnW9ux8j3QobaQqz',
+    title: "Swept Away",
+    episode: "us14e11",
+    genre: "pop,soul",
+    artist: "Diana Ross",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'cz2U2WlMKRzec0s2pmJ3',
+    title: "Heartbreak Hotel (Hex Hector Remix)",
+    episode: "us14e12",
+    genre: "dance,pop",
+    artist: "Whitney Houston ft. Faith Evans & Kelly Price",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'CZefDPaMABXYmYCjFB1r',
+    title: "Good 4 U",
+    episode: "us14e13",
+    genre: "pop,rock",
+    artist: "Olivia Rodrigo",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'zOSLIi6RXIUBWEQ1H60t',
+    title: "Telephone",
+    episode: "us14e14",
+    genre: "pop,dance",
+    artist: "Lady Gaga ft. Beyoncé",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: 'Cyvu7k2y4T71yyfu33Ev',
+    title: "Gimme! Gimme! Gimme! (A Man After Midnight)",
+    episode: "us14e16",
+    genre: "disco,pop",
+    artist: "Cher",
+    season: "14",
+    franchise: "US"
+  },
+  {
+    id: "A1B2C3D4E5F6G7H8I9J0",
+    title: "7 Rings",
+    episode: "us15e2",
+    genre: "pop",
+    artist: "Ariana Grande",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "K1L2M3N4O5P6Q7R8S9T0",
+    title: "Ain't No Mountain High Enough (Eric Kupper Remix)",
+    episode: "us15e3",
+    genre: "soul,R&B",
+    artist: "Diana Ross",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "U1V2W3X4Y5Z6A7B8C9D0",
+    title: "You Better Run",
+    episode: "us15e4",
+    genre: "rock",
+    artist: "Pat Benatar",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "E1F2G3H4I5J6K7L8M9N0",
+    title: "Q.U.E.E.N.",
+    episode: "us15e5",
+    genre: "funk, R&B",
+    artist: "Janelle Monáe ft. Erykah Badu",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "O1P2Q3R4S5T6U7V8W9X0",
+    title: "In Your Room",
+    episode: "us15e6",
+    genre: "pop,rock",
+    artist: "The Bangles",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "Y1Z2A3B4C5D6E7F8G9H0",
+    title: "Sweetest Pie",
+    episode: "us15e7",
+    genre: "pop,R&B",
+    artist: "Megan Thee Stallion & Dua Lipa",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "I1J2K3L4M5N6O7P8Q9R0",
+    title: "Boys Don't Cry",
+    episode: "us15e17",
+    genre: "pop",
+    artist: "Anitta",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "S1T2U3V4W5X6Y7Z8A9B0",
+    title: "Do You Wanna Touch Me (Oh Yeah)",
+    episode: "us15e18",
+    genre: "rock",
+    artist: "Joan Jett",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "C1D2E3F4G5H6I7J8K9L0",
+    title: "It's All Coming Back to Me Now",
+    episode: "us15e19",
+    genre: "pop,ballad",
+    artist: "Celine Dion",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "M1N2O3P4Q5R6S7T8U9V0",
+    title: "Tell It to My Heart",
+    episode: "us15e20",
+    genre: "dance,pop",
+    artist: "Taylor Dayne",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "W1X2Y3Z4A5B6C7D8E9F0",
+    title: "I'm In Love With a Monster",
+    episode: "us15e21",
+    genre: "pop",
+    artist: "Fifth Harmony",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "G1H2I3J4K5L6M7N8O9P0",
+    title: "Don't Go Yet",
+    episode: "us15e21",
+    genre: "pop,latin",
+    artist: "Camila Cabello",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "Q1R2S3T4U5V6W7X8Y9Z0",
+    title: "The Right Stuff",
+    episode: "us15e22",
+    genre: "pop",
+    artist: "Vanessa Williams",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "A2B3C4D5E6F7G8H9I0J1",
+    title: "Finally",
+    episode: "us15e8",
+    genre: "dance",
+    artist: "CeCe Peniston",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "K2L3M4N5O6P7Q8R9S0T1",
+    title: "That's What I Want",
+    episode: "us15e9",
+    genre: "pop",
+    artist: "Lil Nas X",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "U2V3W4X5Y6Z7A8B9C0D1",
+    title: "Single Ladies (Put a Ring On It)",
+    episode: "us15e10",
+    genre: "pop,R&B",
+    artist: "Beyoncé",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "E2F3G4H5I6J7K8L9M0N1",
+    title: "Boss Bitch",
+    episode: "us15e11",
+    genre: "pop",
+    artist: "Doja Cat",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "O2P3Q4R5S6T7U8V9W0X1",
+    title: "Running Up That Hill (A Deal With God)",
+    episode: "us15e12",
+    genre: "pop,rock",
+    artist: "Kate Bush",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "Y2Z3A4B5C6D7E8F9G0H1",
+    title: "For The Girls",
+    episode: "us15e13",
+    genre: "pop",
+    artist: "Hayley Kiyoko",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "I2J3K4L5M6N7O8P9Q0R1",
+    title: "When Love Takes Over",
+    episode: "us15e14",
+    genre: "dance",
+    artist: "David Guetta & Kelly Rowland",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "S2T3U4V5W6X7Y8Z9A0B1",
+    title: "Knock On Wood",
+    episode: "us15e16",
+    genre: "disco",
+    artist: "Amii Stewart",
+    season: "15",
+    franchise: "US"
+  },
+  {
+    id: "Q1W2E3R4T5Y6U7I8O9P0",
+    title: "Break My Soul",
+    episode: "us16e1",
+    genre: "dance,pop",
+    artist: "Beyoncé",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "A1S2D3F4G5H6J7K8L9Z0",
+    title: "Shower",
+    episode: "us16e2",
+    genre: "pop",
+    artist: "Becky G",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "Z1X2C3V4B5N6M7Q8W9E0",
+    title: "Maybe You're the Problem",
+    episode: "us16e3",
+    genre: "pop",
+    artist: "Ava Max",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "R1T2Y3U4I5O6P7A8S9D0",
+    title: "Dark Lady",
+    episode: "us16e4",
+    genre: "pop,female vocal",
+    artist: "Cher",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "F1G2H3J4K5L6Z7X8C9V0",
+    title: "Emergency",
+    episode: "us16e5",
+    genre: "electropop",
+    artist: "Icona Pop",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "B1N2M3Q4W5E6R7T8Y9U0",
+    title: "Control",
+    episode: "us16e6",
+    genre: "pop,R&B",
+    artist: "Janet Jackson",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "I1O2P3A4S5D6F7G8H9J0",
+    title: "Flowers",
+    episode: "us16e7",
+    genre: "pop",
+    artist: "Miley Cyrus",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "K1L2Z3X4C5V6B7N8M9Q0",
+    title: "I Wanna Dance with Somebody (Who Loves Me)",
+    episode: "us16e8",
+    genre: "pop,dance",
+    artist: "Whitney Houston",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "PyTy4xAjspPhnXo3UFOH",
+    title: "Bloody Mary (Wednesday Dance TikTok Remix)",
+    episode: "us16e9",
+    genre: "pop,electropop",
+    artist: "Lady Gaga",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "M3G4H4NTR41N0RL00K",
+    title: "Made You Look",
+    episode: "us16e10",
+    genre: "pop,doowop",
+    artist: "Meghan Trainor",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "D0N9N4S8U6M5M3E2R1L",
+    title: "Dim All The Lights",
+    episode: "us16e11",
+    genre: "disco,dance",
+    artist: "Donna Summer",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "M1Q2W3E4R5T6Y7U8I9O0",
+    title: "Body",
+    episode: "us16e12",
+    genre: "hiphop",
+    artist: "Megan Thee Stallion",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "K3LS34B4LL3R1N1MM9XQ",
+    title: "Miss Me More",
+    episode: "us16e13",
+    genre: "country,pop",
+    artist: "Kelsea Ballerini",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "T1N4TURNN3RBBG2MEX9",
+    title: "Better Be Good to Me",
+    episode: "us16e14",
+    genre: "rock,pop",
+    artist: "Tina Turner",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "C0CMUS1CF4CT0RYEDN9",
+    title: "Gonna Make You Sweat (Everybody Dance Now)",
+    episode: "us16e15",
+    genre: "dance,house",
+    artist: "C+C Music Factory",
+    season: "16",
+    franchise: "US"
+  },
+  {
+    id: "P1O2I3U4Y5T6R7E8W9Q0",
+    title: "Padam Padam",
+    episode: "us16e16",
+    genre: "dance,pop",
+    artist: "Kylie Minogue",
+    season: "16",
+    franchise: "US"
+  }
+
 ];
 
 export const seasons = [
@@ -6722,4 +7749,20 @@ export const seasons = [
     seasonNumber: '14',
     franchise: 'US',
   },
+  {
+    id: 'YiyYbfvAF1QSVszbJ2fM',
+    seasonNumber: '15',
+    franchise: 'US',
+  },
+  {
+    id: 'gIW8OVhzoT0L7oceBXF1',
+    seasonNumber: '16',
+    franchise: 'US',
+  },
+  {
+    id: 'gIW8OVhzoT0L7oceBXF2',
+    seasonNumber: '17',
+    franchise: 'US',
+  },
+
 ];

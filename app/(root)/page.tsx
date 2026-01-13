@@ -21,7 +21,8 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
-    { date: '2026-01-01', note: 'Happy new year!! :) Updated menu options in anticipation for creating Top-Two and Lipsticks format.'},
+    { date: '2026-01-13', note: 'Added a tooltip in the Simulaton Builder Episodes tab to show you what is available to select. Added episodes from US15,US16,US17! Added queens for US18!' },
+    { date: '2026-01-01', note: 'Happy new year!! :) Updated menu options in anticipation for creating Top-Two and Lipsticks format.' },
     { date: '2025-12-30', note: 'Added in ability to save season runs! New menu options that will load previous season runs. Fixed exporting season results table feature.' },
     { date: '2025-12-03', note: 'Added queens from FR2, ES2, ES3!' },
     { date: '2025-12-01', note: 'Added tooltip in buildcast Queens tab showing what queens are available to select! Added queens from CA5, CA6, UK6, UK7, BR2, HO1, HO2!' },

@@ -544,7 +544,7 @@ const Page = () => {
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs text-sm">
                           <p> <strong>The following queens are up for selection:</strong> </p>
-                          <p> <strong>US:</strong> 1-17 </p>
+                          <p> <strong>US:</strong> 1-18 </p>
                           <p>  <strong>Brazil:</strong> 1-2 </p>
                           <p> <strong>Canada:</strong> 1-6 </p>
                           <p>  <strong>Down Under:</strong> 1 </p>
@@ -609,6 +609,20 @@ const Page = () => {
                   <div className="flex items-center gap-2 general-msg">
                     <h2 className="font-extrabold text-2xl text-black tracking-wide">
                       Episodes
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button
+                            type="button"
+                            className="p-1 rounded-full text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <Info className="w-4 h-4" />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs text-sm">
+                          <p> <strong>The following episodes are up for selection:</strong> </p>
+                          <p> <strong>US:</strong> 1-17 </p>
+                        </TooltipContent>
+                      </Tooltip>
                     </h2>
                     <p className="mt-2 text-sm font-medium text-purple-800">Select the episodes that you wish to feature! You can rearrange the episode order if needed:</p>
                   </div>
