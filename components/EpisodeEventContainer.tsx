@@ -2,12 +2,14 @@
 import React from "react";
 import QueenCard from "./QueenCard";
 
-const EpisodeEventContainer = ({ relationshipChanges = [], queens = [] }: any) => {
+const EpisodeEventContainer = ({ relationshipChanges = [], queens = [], episodeNumber }: any,) => {
 
-  if (relationshipChanges == '' || !relationshipChanges || relationshipChanges.length === 0) {
+  const isPremiere = episodeNumber === 1 || episodeNumber === 2;
+
+  if (!relationshipChanges || relationshipChanges.length === 0) {
     return (
       <div className="flex flex-col items-center ">
-       <p className="italic font-bold">Everyone kept it cool this week and talked about their placements backstage! </p> 
+        <p className="italic font-bold">Everyone kept it cool this week and talked about their placements backstage! </p>
       </div>
     );
   }
@@ -25,6 +27,17 @@ const EpisodeEventContainer = ({ relationshipChanges = [], queens = [] }: any) =
           String(q.id) === String(change.target) ||
           String(q.name) === String(change.target)
       )?.name || change.target;
+
+    if (isPremiere) {
+      const drasticStrengthChange = Math.abs(diff) >= 15;
+      if (oldType !== newType) {
+        return `${change.queen} and ${targetQueen} started to see each other differently.`;
+      }
+      if (drasticStrengthChange) {
+        return `${change.queen} and ${targetQueen} had an unexpectedly strong first impression.`;
+      }
+      return "";
+    }
 
     if (oldType !== newType)
       return `${change.queen} and ${targetQueen} went from ${oldType}s to ${newType}s.`;
@@ -100,7 +113,6 @@ const EpisodeEventContainer = ({ relationshipChanges = [], queens = [] }: any) =
             <div
               key={i}
               className="flex flex-col items-center gap-3 p-4" >
-
               <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 w-full">
                 <div className="flex justify-center ">
                   <QueenCard q={queenA} viewMode="story" allQueens={queens} />
@@ -109,7 +121,6 @@ const EpisodeEventContainer = ({ relationshipChanges = [], queens = [] }: any) =
                   <QueenCard q={queenB} viewMode="story" allQueens={queens} />
                 </div>
               </div>
-
               <div className="text-center text-base text-gray-700 mt-3 max-w-md bg-gray-50 rounded-xl px-4 py-3 ">
                 <p className="italic font-bold">{message}</p>
               </div>

@@ -445,9 +445,13 @@ export function mainChallenge(
 
     if (seasonFlow == 'ttwalas') {
 
-      if (topTwoWinner[0].id === q.id) {
+      if (topTwoWinner.length > 0 && topTwoWinner[0].id === q.id) {
         placementType = 'win';
-        return { ...q, wins: q.wins + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+        return {
+          ...q,
+          wins: q.wins + 1,
+          placements: [...q.placements, { episodeNumber, placement: placementType }],
+        };
       }
 
       for (const t in topTwo) {
@@ -544,8 +548,8 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     highWeight = .4;
     lowWeight = .4;
     bottomWeight = 1.8;
-  } else if(seasonFlow && seasonFlow === 'ttwalas'){
-    winWeight = .1; 
+  } else if (seasonFlow && seasonFlow === 'ttwalas') {
+    winWeight = .1;
     highWeight = .1;
     lowWeight = .08;
     bottomWeight = .08;
@@ -642,9 +646,9 @@ export function updateRelationshipsAfterEpisode(
 ): Queen[] {
 
   const isPremiere = episodeNumber === 1 || episodeNumber === 2;
-  const easingFactor = isPremiere ? 0.2 : 1;
+  const easingFactor = isPremiere ? 0.1 : 1;
   const allowTypeChange = !isPremiere;
-  const globalDampening = 0.35;
+  const globalDampening = isPremiere ? 0.05 : 0.3;
 
   const updatedQueens = queens.map((queen) => {
     if (!queen.relationships || queen.isEliminated) return queen;
@@ -658,7 +662,9 @@ export function updateRelationshipsAfterEpisode(
 
       let { strength, type } = rel;
 
-      strength -= 5 * easingFactor * globalDampening; // decaying of relationships
+      if (!isPremiere) {
+        strength -= 5 * easingFactor * globalDampening; // decay relationships
+      }
 
       if (targetResult.placement === "win" && type === "ally") strength += 4 * easingFactor * globalDampening;
       if (targetResult.placement === "win" && type === "rival") strength -= 5 * easingFactor * globalDampening;
@@ -668,11 +674,18 @@ export function updateRelationshipsAfterEpisode(
         if (type === "friend") strength -= 10 * easingFactor * globalDampening;
       }
 
-      if (episodeType?.includes("team") && type === "rival") strength += 5 * easingFactor * globalDampening;
-      if (episodeType?.includes("roast") && type === "friend") strength -= 3 * easingFactor * globalDampening;
+      if (!isPremiere) {
+        if (episodeType?.includes("team") && type === "rival")
+          strength += 5 * easingFactor * globalDampening;
+        if (episodeType?.includes("roast") && type === "friend")
+          strength -= 3 * easingFactor * globalDampening;
+      }
 
-      const randomDrift = (Math.random() - 0.5) * 2;
-      strength += randomDrift * globalDampening;
+
+      if (!isPremiere) {
+        const randomDrift = (Math.random() - 0.5) * 2;
+        strength += randomDrift * globalDampening;
+      }
 
       if (allowTypeChange) {
         const evolveUpThreshold = 90;

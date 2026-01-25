@@ -868,6 +868,7 @@ const SimLayout = (
                 <EpisodeEventContainer
                   relationshipChanges={relationshipChanges}
                   queens={queens}
+                  episodeNumber={episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}
                 />
               )
             )}

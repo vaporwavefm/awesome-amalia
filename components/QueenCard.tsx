@@ -56,10 +56,10 @@ const QueenCard = ({ q,
   const isTopWinner = (maxWins != null) &&
     (seasonFlow &&
       (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
-        viewMode != 'top2'
-        && viewMode != 'top2lipsync'
+        (viewMode != 'top2'
+        && viewMode != 'top2lipsync' ))
       )
-      ))
+    )
     ? q.wins === maxWins && maxWins > 0 : false;
   const isMainScreen = viewMode != null && viewMode != 'eliminated';
 

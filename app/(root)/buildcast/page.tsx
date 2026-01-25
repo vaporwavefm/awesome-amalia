@@ -568,8 +568,8 @@ const Page = () => {
                           <p> <strong>US:</strong> 1-18 </p>
                           <p>  <strong>Brazil:</strong> 1-2 </p>
                           <p> <strong>Canada:</strong> 1-6 </p>
-                          <p>  <strong>Down Under:</strong> 1 </p>
-                          <p> <strong>España:</strong> 1-3 </p>
+                          <p>  <strong>Down Under:</strong> 1-4 </p>
+                          <p> <strong>España:</strong> 1-5 </p>
                           <p>  <strong>Holland:</strong> 1-2 </p>
                           <p> <strong>France:</strong> 1-2 </p>
                           <p> <strong>Mexico:</strong> 1-2 </p>
