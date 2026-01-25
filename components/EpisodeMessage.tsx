@@ -4,8 +4,11 @@ import { SavedLipsync } from "@/lib/utils";
 const EVENT_LBLS: Record<string, string> = {
     announceSafe: "Safe Queens",
     winner: "Winner",
+    top2: "Top 2",
+    top2lipsync: "Lipsync For Your Legacy",
     high: "High Queens",
     bottom: "Low",
+    bottomASRecap: "Bottom Queens",
     bottom2: "Bottom 2",
     eliminated: "Eliminated Queen",
     lsftc1: 'Lipsync For The Crown: Round 1',
@@ -18,7 +21,7 @@ const EVENT_LBLS: Record<string, string> = {
     lipsyncsmackdown: "Lipsync Smackdown",
 };
 
-const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, episodeNumber, episodeType }:
+const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, episodeNumber, episodeType, seasonFlow, winnerName }:
     {
         episodeEvent: string;
         eventMessage: string;
@@ -26,6 +29,8 @@ const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, e
         seasonTitle: string;
         episodeNumber: number;
         episodeType: string;
+        seasonFlow: string;
+        winnerName?: string;
     }) => {
 
     let label = EVENT_LBLS[episodeEvent] || "Queens";
@@ -35,13 +40,20 @@ const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, e
     let afterStr = '';
     const isLSFTC = ['lsftc1', 'lsftc2', 'lsftcFinal'].includes(episodeEvent);
 
-    if (episodeEvent === "bottom2" && eventMessage.includes("lipsync to")) {
+    if ((episodeEvent === "bottom2" || episodeEvent === "top2lipsync") && eventMessage.includes("lipsync to")) {
         const [before, after] = eventMessage.split("They will now have to lipsync to");
         mainMessage = before.trim();
-        lipsyncMessage = "They will now have to lipsync to";
-        afterStr = lipsyncObj?.lipsync?.title
-            ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
-            : "";
+        if (episodeEvent === "bottom2" && seasonFlow === 'ttwalas' && !episodeType.includes('lipsyncSmackdown')) {
+            const winner = winnerName ?? "The winner";
+            mainMessage += ` ${winner} must now decide which queen will get the chop.`;
+            lipsyncMessage = '';
+            afterStr = '';
+        } else {
+            lipsyncMessage = "They will now have to lipsync to";
+            afterStr = lipsyncObj?.lipsync?.title
+                ? `${lipsyncObj.lipsync.title} by ${lipsyncObj.lipsync.artist}`
+                : "";
+        }
     }
     if (isLSFTC) {
         lipsyncMessage = "They will now have to lipsync to" + '';
@@ -51,9 +63,7 @@ const EpisodeMessage = ({ episodeEvent, eventMessage, lipsyncObj, seasonTitle, e
     } else if (!isLSFTC && episodeEvent != 'results' && !episodeType.includes('finale')) {
         label = 'Episode ' + episodeNumber + ': ' + label;
     }
-if(episodeEvent == 'announceSafe'){
-    console.log('ddddd');
-}
+
     return <>
         <div className="flex justify-center mb-4 py-4">
             <div className="general-msg">
@@ -61,7 +71,7 @@ if(episodeEvent == 'announceSafe'){
                     {label}
                 </h2>
                 {mainMessage && (
-                    <p className="mt-2 text-base font-medium text-purple-800">
+                    <p className="mt-4 text-base font-medium text-purple-800">
                         {mainMessage}
                     </p>
                 )}

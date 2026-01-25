@@ -95,6 +95,7 @@ export function mainChallenge(
   nonElimination: boolean = false,
   episodeType: string,
   seasonStyle: string,
+  seasonFlow: string,
   lssdLipsyncs: any,
 ) {
 
@@ -116,7 +117,6 @@ export function mainChallenge(
 
       group1.forEach(q => { q.group = 1; q.isInSemiFinal = true; });
       group2.forEach(q => { q.group = 2; q.isInSemiFinal = true; });
-      //console.log('Group1:', group1.map(q => q.name), 'Group2:', group2.map(q => q.name));
 
       const winner1Id = lipsync(group1, episodeType.toLowerCase());
       const winner2Id = lipsync(group2, episodeType.toLowerCase());
@@ -163,11 +163,9 @@ export function mainChallenge(
 
       const activeQueens = trackRecord.filter(q => !q.isEliminated); // Only active queens
       const maxWins = Math.max(...activeQueens.map(q => q.wins)); // Max wins among active
-
       const finalists = activeQueens
         .map((q) => (q.wins === maxWins ? trackRecord.indexOf(q) : -1))
         .filter(idx => idx !== -1);
-
       const winnerIndex = finalists[Math.floor(Math.random() * finalists.length)]; // Random winner
 
       return {
@@ -185,7 +183,6 @@ export function mainChallenge(
           };
         })
       }
-
     }
   } // end finale 
 
@@ -198,7 +195,7 @@ export function mainChallenge(
 
     const activeQueens = trackRecord.filter(q => !q.isEliminated);
 
-    const allPairs: LipsyncPairResult[] = []; 
+    const allPairs: LipsyncPairResult[] = [];
 
     // Track per-queen results by round
     const roundResults: Record<string, number> = {};
@@ -395,7 +392,6 @@ export function mainChallenge(
       lows: q.lows,
       bottoms: q.bottoms
     });
-    //tempScores.push({ id: q.id, queen: q.name, episodeNumber, score: tempScore });
 
     return {
       ...q,
@@ -424,44 +420,86 @@ export function mainChallenge(
   if (!nonElimination) {
 
     if (topCount == 2 && bottomCount == 2) {
-      const eliminatedIdObj = bottomQueens.filter(q => q.id != lipsync(bottomQueens, episodeType.toLowerCase()));
+      const eliminatedIdObj = bottomQueens.filter(q => q.id != lipsync(bottomQueens, episodeType.toLowerCase(), seasonFlow));
       for (const btms in eliminatedIdObj) {
         eliminatedId = eliminatedIdObj[btms].id;
       }
     } else {
-      const eliminatedIdObj = bottomQueens.slice(1).filter(q => q.id != lipsync(bottomQueens.slice(1), episodeType.toLowerCase()));
+      const eliminatedIdObj = bottomQueens.slice(1).filter(q => q.id != lipsync(bottomQueens.slice(1), episodeType.toLowerCase(), seasonFlow));
       for (const btms in eliminatedIdObj) {
         eliminatedId = eliminatedIdObj[btms].id;
       }
     }
   }
 
+  let topTwoWinner: any;
+  const topTwo = topQueens.slice(0, 2);
+  if (seasonFlow == 'ttwalas') {
+    topTwoWinner = topQueens.slice(0, 2).filter(q => q.id == lipsync(topQueens.slice(0, 2), episodeType.toLowerCase()));
+  }
+
   const updatedRecord = scoredRecord.map(q => {
     if (q.isEliminated) return { ...q };
 
-    let placementType: 'win' | 'high' | 'low' | 'bottom' | 'safe';
+    let placementType: 'win' | 'high' | 'top2' | 'low' | 'bottom' | 'bottomAS' | 'safe';
 
-    if (topQueens[0]?.id === q.id) {
-      placementType = 'win';
-      return { ...q, wins: q.wins + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+    if (seasonFlow == 'ttwalas') {
+
+      if (topTwoWinner[0].id === q.id) {
+        placementType = 'win';
+        return { ...q, wins: q.wins + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
+      for (const t in topTwo) {
+        if (topTwo[t].id == q.id) {
+          placementType = 'top2';
+          return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+        }
+      }
+
+      if (topQueens.slice(1).some(t => t.id === q.id)) {
+        placementType = 'high';
+        return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
+      if (bottomQueens[0]?.id === q.id && bottomCount > 2) {
+        placementType = 'low';
+        return { ...q, lows: q.lows + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
+      if (bottomQueens.some(b => b.id === q.id)) {
+        placementType = 'bottomAS';
+        const isEliminated = q.id === eliminatedId;
+        return { ...q, bottoms: q.bottoms + 1, isEliminated, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
     }
 
-    if (topQueens.slice(1).some(t => t.id === q.id)) {
-      placementType = 'high';
-      return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+    else {
+
+      if (topQueens[0]?.id === q.id) {
+        placementType = 'win';
+        return { ...q, wins: q.wins + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+      if (topQueens.slice(1).some(t => t.id === q.id)) {
+        placementType = 'high';
+        return { ...q, highs: q.highs + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
+      if (bottomQueens[0]?.id === q.id && bottomCount > 2) {
+        placementType = 'low';
+        return { ...q, lows: q.lows + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
+      if (bottomQueens.some(b => b.id === q.id)) {
+        placementType = 'bottom';
+        const isEliminated = q.id === eliminatedId;
+        return { ...q, bottoms: q.bottoms + 1, isEliminated, placements: [...q.placements, { episodeNumber, placement: placementType }] };
+      }
+
     }
 
-    if (bottomQueens[0]?.id === q.id && bottomCount > 2) {
-      placementType = 'low';
-      return { ...q, lows: q.lows + 1, placements: [...q.placements, { episodeNumber, placement: placementType }] };
-    }
 
-    if (bottomQueens.some(b => b.id === q.id)) {
-      //console.log(episodeNumber + '\nbottoms: ' + JSON.stringify(bottomQueens) + '\n ' + eliminatedId + ' ' + q.id);
-      placementType = 'bottom';
-      const isEliminated = q.id === eliminatedId;
-      return { ...q, bottoms: q.bottoms + 1, isEliminated, placements: [...q.placements, { episodeNumber, placement: placementType }] };
-    }
 
     placementType = 'safe';
     return { ...q, placements: [...q.placements, { episodeNumber, placement: placementType }] };
@@ -493,18 +531,25 @@ function nittyGritty({ size }: { size: number }) {
   return [3, 3]; // default
 }
 
-function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[], episodeType: string) {
+function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[], episodeType: string,
+  seasonFlow?: string
+) {
 
   const bottomResults = [];
   const randomSeed = (Math.floor(Math.random() * 10) + 1);
   let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
- 
+
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
     winWeight = 1.5; // override weights for smackdowns and finales
     highWeight = .4;
     lowWeight = .4;
     bottomWeight = 1.8;
-  } 
+  } else if(seasonFlow && seasonFlow === 'ttwalas'){
+    winWeight = .1; 
+    highWeight = .1;
+    lowWeight = .08;
+    bottomWeight = .08;
+  }
 
   for (let b = 0; b < bottomQueens.length; b++) {
 

@@ -7674,6 +7674,15 @@ export const lipsyncs = [
     artist: "Kylie Minogue",
     season: "16",
     franchise: "US"
+  },
+  {
+    id: "P1O25g67j5T6R7E8W9Q0",
+    title: "Woman's World",
+    episode: "us17e1",
+    genre: "dance,pop",
+    artist: "Katy Perry",
+    season: "17",
+    franchise: "US"
   }
 
 ];

@@ -351,7 +351,7 @@ const Page = () => {
                         <SelectGroup>
                           <SelectLabel>All-Stars</SelectLabel>
                           <SelectItem value="osas">Classic Format</SelectItem>
-                          <SelectItem value="ttwalas" disabled>Top-Two and Lipsticks (coming soon!)</SelectItem>
+                          <SelectItem value="ttwalas">Top Two and Lipsticks </SelectItem>
                           <SelectItem value="laas" disabled>Lipsync Assassins (coming soon!)</SelectItem>
                         </SelectGroup>
                       </SelectContent>

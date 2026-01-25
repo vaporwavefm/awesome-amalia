@@ -201,6 +201,7 @@ const SimLayout = (
         e.nonElimination,
         e.type,
         seasonStyle,
+        seasonFlow,
         tempLssdLipsyncs
       );
 
@@ -211,7 +212,7 @@ const SimLayout = (
       }
 
       if (!result || !result.updatedRecord) {
-        console.warn(`⚠️ mainChallenge returned no updatedRecord for episode ${e.episodeNumber}`, result);
+        console.warn(`mainChallenge returned no updatedRecord for episode ${e.episodeNumber}`, result);
         continue; // skip this iteration 
       }
 
@@ -326,19 +327,23 @@ const SimLayout = (
   const handleEpisodeEventClick = (episodeNumber: number, eventType: string) => {
     setSelectedEpisode(episodeNumber);
 
-    const epIndex = episodes.findIndex(e => e.episodeNumber === episodeNumber);
-    if (epIndex !== -1) {
-      setCurrentEpisodeIndex(epIndex);
+    const epIndex = episodes.findIndex(
+      (e) => e.episodeNumber === episodeNumber
+    );
+    if (epIndex === -1) return;
 
-      const eventOrder = eventOrderByEpisode[epIndex];
-      const eventIndex = eventOrder.indexOf(eventType);
-      setCurrentEventIndex(eventIndex !== -1 ? eventIndex : 0);
-    }
+    setCurrentEpisodeIndex(epIndex);
+
+    const eventOrder = eventOrderByEpisode[epIndex];
+    const eventIndex = eventOrder.indexOf(eventType);
+
+    if (eventIndex === -1) return;
+
+    setCurrentEventIndex(eventIndex);
 
     if (eventType === "lipsyncsmackdown") {
       setEpisodeEvent("lipsyncsmackdown");
       setShowResults(false);
-
       return;
     }
 
@@ -381,15 +386,23 @@ const SimLayout = (
             return placement?.placement === 'safe';
           case 'winner':
             return placement?.placement === 'win';
+          case 'top2':
+            return (placement?.placement === 'top2' || placement?.placement === 'win');
+          case 'top2lipsync':
+            return (placement?.placement === 'top2' || placement?.placement === 'win');
           case 'high':
             return placement?.placement === 'high';
+          case 'bottomASRecap':
+            return placement?.placement === 'bottomAS';
           case 'bottom':
             return placement?.placement === 'low';
           case 'bottom2':
+            if (seasonFlow === 'ttwalas') {
+              return placement?.placement === 'bottomAS' || placement?.placement === 'bottom';
+            }
             return placement?.placement === 'bottom';
           case 'eliminated':
-            if (isNonElim) return placement?.placement === 'bottom';
-            return placement?.placement === 'bottom';
+            return (placement?.placement === 'bottom' || placement?.placement === 'bottomAS');
           default:
             return true;
         }
@@ -398,24 +411,65 @@ const SimLayout = (
 
   // Event message generator
   const generateEventMessage = (queens: any[], event: string, episodeNumber: number) => {
+
     const names = queens.map(q => q.name);
     const isEliminated = queens.map(q => q.isEliminated);
-    if (!names.length) {
-      if (event != 'announceSafe')
-        return '';
-    }
-    const last = names[names.length - 1];
-    const others = names.slice(0, names.length - 1);
     const episode = episodes.find(e => e.episodeNumber === episodeNumber);
     const isNonElim = episode?.nonElimination;
 
+    if (event === 'eliminated' && isNonElim) {
+      return 'Both queens have been given a chance to slay another day!';
+    }
+    if (!names.length && event !== 'announceSafe') {
+      return '';
+    }
+
+    const last = names[names.length - 1];
+    const others = names.slice(0, names.length - 1);
+    const isSmackdown = episode?.type?.toLowerCase().includes('lipsyncsmackdown');
+
+    let winnerName: string | undefined;
+    if (seasonFlow === "ttwalas") {
+      const episodePost = episodeHistory.post[episodeNumber] || [];
+      const top2Winner = episodePost.find(q =>
+        q.placements?.some((p: { episodeNumber: string | number; placement: string }) =>
+          Number(p.episodeNumber) === Number(episodeNumber) && p.placement.toLowerCase() === "win")
+      );
+      winnerName = top2Winner?.name;
+    }
+
     let btmMsg = '';
-    if (event == 'eliminated') {
-      if (isEliminated[0] == true && isEliminated[1] == false) {
-        btmMsg = names[1] + ', shantay you stay. ' + names[0] + ', sashay away.';
-      }
-      if (isEliminated[0] == false && isEliminated[1] == true) {
-        btmMsg = names[0] + ', shantay you stay. ' + names[1] + ', sashay away.';
+    if (event === 'eliminated') {
+      if (seasonFlow === 'ttwalas' && !isSmackdown) {
+
+        const episodePost = episodeHistory.post[episodeNumber] || [];
+        const top2Winner = episodePost.find(q =>
+          q.placements?.some((p: { episodeNumber: string | number; placement: string }) =>
+            Number(p.episodeNumber) === Number(episodeNumber) && p.placement.toLowerCase() === 'win')
+        );
+        const winnerName = top2Winner?.name;
+
+        let elimQueen = '';
+        let safeFromElimQueen = '';
+        if (isEliminated[0] && !isEliminated[1]) {
+          elimQueen = names[0];
+          safeFromElimQueen = names[1];
+        } else if (!isEliminated[0] && isEliminated[1]) {
+          elimQueen = names[1];
+          safeFromElimQueen = names[0];
+        }
+        if (elimQueen != '' && safeFromElimQueen != '') {
+          btmMsg = `${winnerName} has drawn her lipstick and chosen ${elimQueen}! ${safeFromElimQueen} is safe to slay another day.`;
+        } else {
+          btmMsg = `${names[0]} sashayed away.`;
+        }
+
+      } else {
+        if (isEliminated[0] && !isEliminated[1]) {
+          btmMsg = `${names[1]}, shantay you stay. ${names[0]}, sashay away.`;
+        } else if (!isEliminated[0] && isEliminated[1]) {
+          btmMsg = `${names[0]}, shantay you stay. ${names[1]}, sashay away.`;
+        }
       }
     };
 
@@ -442,15 +496,28 @@ const SimLayout = (
         return names.length === 1
           ? `${names[0]} is declared the winner of this week's Maxi Challenge!`
           : `${others.join(', ')}, and ${last} are declared winners!`;
+      case 'top2':
+        return names.length === 1 ? `${names[0]} is in the top! They must now decide which of the bottom queens will get the chop.` : `${others.join(', ')} and ${last} are the top 2 queens of the week! They must now decide which of the bottom queens will get the chop.`;
+      case 'top2lipsync':
+        return names.length === 1 ? `${names[0]} must now lipsync for their legacy. ${(lipsyncTitle && lipsyncArtist) && "They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!"}`
+          : `${others.join(', ')} and ${last} must now lipsync for their legacy. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;
       case 'high':
-        return names.length === 1 ? `${names[0]} has placed high.` : `${others.join(', ')} and ${last} have placed high.`;
+        return names.length === 1 ? `${names[0]} received good critiques and placed high.` : `${others.join(', ')} and ${last} received good critiques and placed high.`;
       case 'bottom':
-        return names.length === 1 ? `${names[0]} has placed low.` : `${others.join(', ')} and ${last} have placed low.`;
+        return names.length === 1 ? `${names[0]} has placed low, but is safe from elimination.` : `${others.join(', ')} and ${last} have placed low, but are safe from elimination.`;
       case 'bottom2':
         return names.length === 1 ? `${names[0]} is up for elimination. ${(lipsyncTitle && lipsyncArtist) && "They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!"}`
           : `${others.join(', ')} and ${last} are up for elimination. ${(lipsyncTitle && lipsyncArtist) ? ("They will now have to lipsync to " + lipsyncTitle + " by " + lipsyncArtist + ". Good luck and don't fuck it up!") : ''}`;
+      case 'bottomASRecap':
+        return names.length === 1 ? `${names[0]} is up for elimination.`
+          : `${others.join(', ')} and ${last} are up for elimination.`;
       case 'eliminated':
-        if (isNonElim) return 'Both queens have been given a chance to slay another day!';
+        if (isNonElim) {
+          return 'Both queens have been given a chance to slay another day!';
+        }
+        if (seasonFlow === 'ttwalas') {
+          return btmMsg;
+        }
         return names.length === 1 ? `${names[0]} sashayed away.` : btmMsg;
       case 'lsftc1':
         return names.length === 2
@@ -512,20 +579,66 @@ const SimLayout = (
 
   // logic for navigating through episodes and episode events 
   const eventOrderByEpisode = episodes.map((ep) => {
+
     const type = ep.type?.toLowerCase() ?? "";
     const isFinale = type.includes("finale");
     const isSmackdown = type.includes("lipsyncsmackdown");
+
+    const queensSnapshot = episodeHistory.post[ep.episodeNumber] || initialTrackRecord;
+
+    const hasLowQueens = queensSnapshot.some((q) => {
+      const placement = q.placements?.find(
+        (p: { episodeNumber: string | number; placement: string }) =>
+          Number(p.episodeNumber) === Number(ep.episodeNumber)
+      );
+      return placement?.placement === "low";
+    });
+
+    const hasSafeQueens = queensSnapshot.some((q) => {
+      const placement = q.placements?.find(
+        (p: { episodeNumber: string | number; placement: string }) =>
+          Number(p.episodeNumber) === Number(ep.episodeNumber)
+      );
+      return placement?.placement === "safe";
+    });
+
+    const hasHighQueens = queensSnapshot.some((q) => {
+      const placement = q.placements?.find(
+        (p: { episodeNumber: string | number; placement: string }) =>
+          Number(p.episodeNumber) === Number(ep.episodeNumber)
+      );
+      return placement?.placement === "high";
+    });
 
     if (isFinale) {
       return seasonStyle === "lsftc"
         ? ["main", "lsftc1", "lsftc1win", "lsftc2", "lsftc2win", "lsftcFinal", "winner", "results"]
         : ["winner", "results"];
     }
+
     if (isSmackdown) {
       return ["main", "lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
     }
 
-    return ["main", "announceSafe", "untucked", "high", "winner", "bottom", "bottom2", "eliminated"];
+    let events: string[] = ["main"];
+    if (hasSafeQueens) events.push("announceSafe");
+    events.push("untucked");
+    if (hasHighQueens) events.push("high");
+    events.push("winner");
+    if (hasLowQueens) events.push("bottom");
+    events.push("bottom2", "eliminated");
+
+    if (seasonFlow === "ttwalas") { // all stars lipstick override
+      events = ["main"];
+      if (hasSafeQueens) events.push("announceSafe");
+      if (hasHighQueens) events.push("high");
+      events.push("top2");
+      if (hasLowQueens) events.push("bottom");
+      events.push("bottomASRecap", "untucked", "top2lipsync", "winner");
+      events.push("bottom2", "eliminated");
+    }
+    return events;
+
   });
 
   const isAtResults =
@@ -533,9 +646,22 @@ const SimLayout = (
     eventOrderByEpisode[currentEpisodeIndex][currentEventIndex] === "results";
 
   const handleNextButton = () => {
+
+    if (selectedEpisode === null) {
+      setSelectedEpisode(episodes[0].episodeNumber);
+      setCurrentEpisodeIndex(0);
+      setCurrentEventIndex(0);
+      setEpisodeEvent("");
+      return;
+    }
+
     const currentEvents = eventOrderByEpisode[currentEpisodeIndex];
 
-    if (currentEventIndex === 0 && currentEvents[0] === "main") {
+    if (
+      episodeEvent &&
+      currentEventIndex === 0 &&
+      currentEvents[0] === "main"
+    ) {
       const firstRealEvent = 1;
       setCurrentEventIndex(firstRealEvent);
       handleEpisodeEventClick(
@@ -546,17 +672,17 @@ const SimLayout = (
     }
 
     const nextEventIndex = currentEventIndex + 1;
-
     if (nextEventIndex < currentEvents.length) {
       setCurrentEventIndex(nextEventIndex);
       handleEpisodeEventClick(
         episodes[currentEpisodeIndex].episodeNumber,
         currentEvents[nextEventIndex]
       );
-    } else if (currentEpisodeIndex + 1 < episodes.length) { // move to next ep
+    } else if (currentEpisodeIndex + 1 < episodes.length) {
       setCurrentEpisodeIndex(currentEpisodeIndex + 1);
       setCurrentEventIndex(0);
-      handleEpisodeClick(episodes[currentEpisodeIndex + 1].episodeNumber);
+      setEpisodeEvent("");
+      setSelectedEpisode(episodes[currentEpisodeIndex + 1].episodeNumber);
     }
   };
 
@@ -567,6 +693,15 @@ const SimLayout = (
       if (currentEventIndex > 0) {
         const prevEventIndex = currentEventIndex - 1; // get previous event button in same ep
         setCurrentEventIndex(prevEventIndex);
+
+        const prevEvent = currentEvents[prevEventIndex];
+        if (prevEvent === "main") {
+
+          setEpisodeEvent("");
+          setShowResults(false);
+          return;
+        }
+
         handleEpisodeEventClick(
           episodes[currentEpisodeIndex].episodeNumber,
           currentEvents[prevEventIndex]
@@ -665,6 +800,7 @@ const SimLayout = (
           episodeHistory={episodeHistory}
           initialTrackRecord={initialTrackRecord}
           seasonStyle={seasonStyle}
+          seasonFlow={seasonFlow}
           selectedEpisode={selectedEpisode}
           setSelectedEpisode={setSelectedEpisode}
         />
@@ -692,9 +828,11 @@ const SimLayout = (
                 episodeHistory={episodeHistory}
                 initialTrackRecord={initialTrackRecord}
                 seasonStyle={seasonStyle}
+                seasonFlow={seasonFlow}
                 closeSheet={() => setOpen(false)}
                 selectedEpisode={selectedEpisode}
                 setSelectedEpisode={setSelectedEpisode}
+
               />
             </div>
             <SheetClose asChild>
@@ -715,6 +853,14 @@ const SimLayout = (
               seasonTitle={seasonTitle}
               episodeNumber={episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}
               episodeType={episodes.find(e => e.episodeNumber === selectedEpisode)?.type}
+              seasonFlow={seasonFlow}
+              winnerName={
+                selectedEpisode && episodeHistory.post[selectedEpisode]
+                  ? episodeHistory.post[selectedEpisode].find((q: any) =>
+                    q.placements?.some((p: any) => Number(p.episodeNumber) === Number(selectedEpisode) && p.placement.toLowerCase() === "win")
+                  )?.name
+                  : "The winner"
+              }
             />
 
             {episodeEvent === "untucked" && (
@@ -744,6 +890,7 @@ const SimLayout = (
                   episodes={episodes}
                   seasonStyle={seasonStyle}
                   allQueens={queens}
+                  seasonFlow={seasonFlow}
                 />
               )
             }
@@ -770,6 +917,7 @@ const SimLayout = (
               lipsyncs={lipsyncs}
               seasonStyle={seasonStyle}
               allQueens={queens}
+              seasonFlow={seasonFlow}
             />
           </>
         )}

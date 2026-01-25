@@ -38,6 +38,7 @@ const QueenCard = ({ q,
   onRemove,
   onUpdateStats,
   allQueens,
+  seasonFlow
 }:
   {
     q: Queen,
@@ -48,10 +49,18 @@ const QueenCard = ({ q,
     onRemove?: (id: string) => void;
     onUpdateStats?: (id: string, updatedStats: Partial<QueenStats>) => void;
     allQueens?: Queen[];
+    seasonFlow?: string;
   }
 ) => {
 
-  const isTopWinner = (maxWins != null) ? q.wins === maxWins && maxWins > 0 : false;
+  const isTopWinner = (maxWins != null) &&
+    (seasonFlow &&
+      (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
+        viewMode != 'top2'
+        && viewMode != 'top2lipsync'
+      )
+      ))
+    ? q.wins === maxWins && maxWins > 0 : false;
   const isMainScreen = viewMode != null && viewMode != 'eliminated';
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -87,7 +96,7 @@ const QueenCard = ({ q,
       )}
       <CardHeader>
         <CardTitle
-          className={`text-center text-lg font-semibold tracking-tight
+          className={`text-center text-lg font-semibold  drop-shadow-sm
       ${isTopWinner ? "text-yellow-600 drop-shadow-sm" : "text-gray-900"}`}
         >
           {q.name}
@@ -122,12 +131,24 @@ const QueenCard = ({ q,
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">
-          {q.wins != null && (<p>Wins: {q.wins}</p>)}
-          {q.highs != null && (<p>Highs: {q.highs}</p>)}
-          {q.lows != null && (<p>Lows: {q.lows}</p>)}
-          {q.bottoms != null && (<p>Bottoms: {q.bottoms}</p>)}
-        </div>
+        {
+          (seasonFlow &&
+            (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
+              viewMode != 'top2'
+              && viewMode != 'bottomASRecap'
+              && viewMode != 'top2lipsync')
+            )
+          ) && (
+            <>
+              <div className="grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">
+                {q.wins != null && (<p>Wins: {q.wins}</p>)}
+                {q.highs != null && (<p>Highs: {q.highs}</p>)}
+                {q.lows != null && (<p>Lows: {q.lows}</p>)}
+                {q.bottoms != null && (<p>Bottoms: {q.bottoms}</p>)}
+              </div>
+            </>
+          )
+        }
 
         {isBuildCast && (
           <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-700 text-center">
@@ -140,7 +161,7 @@ const QueenCard = ({ q,
                 ) : null;
               })()}
             </p>
-            <p>Original Season(s): {q.seasons}</p>
+            <p>Original Season(s): {q.seasons} </p>
           </div>
         )}
 
@@ -166,7 +187,7 @@ const QueenCard = ({ q,
                             <circle
                               cx="25" cy="25"
                               r={radius}
-                              stroke="#6b21a8"
+                              stroke="url(#grad1)"
                               strokeWidth="4"
                               fill="transparent"
                               strokeDasharray={circumference}
@@ -279,7 +300,7 @@ const QueenCard = ({ q,
         )}
 
         {(q.isEliminated && !isMainScreen) ? (
-          <span className="mt-2 px-2 py-1 bg-red-500 text-white text-xs rounded-full self-center animate-pulse">
+          <span className="mt-2 px-3 py-1 bg-gradient-to-r from-red-500 to-pink-600  text-white text-xs rounded-full self-center shadow-md animate-pulse tracking-wide">
             Eliminated
           </span>
         ) : ''}

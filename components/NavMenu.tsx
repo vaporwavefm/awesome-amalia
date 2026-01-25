@@ -62,7 +62,7 @@ const NavMenu = () => {
                 {isDropdownOpen && (
                   <div className="absolute top-full min-w-[250px] left-0 mt-0.5 bg-white border border-gray-200 shadow-xl rounded-xs z-[9999]">
                     {seasons.length > 0 ? (
-                      [...seasons].reverse().map((season, index, arr) => (
+                      [...seasons].map((season, index, arr) => (
                         <Link
                           key={season.id}
                           href={`/sim?id=${season.id}`}

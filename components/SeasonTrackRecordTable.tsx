@@ -186,12 +186,16 @@ const SeasonTrackRecordTable = ({
         return "WIN";
       case "high":
         return "HIGH";
+      case "top2":
+        return "TOP2";
       case "safe":
         return "SAFE";
       case "low":
         return "LOW";
       case "bottom":
         return "BTM2";
+      case "bottomAS":
+        return "BTM";
       case "eliminated":
         return "OUT";
       default:
@@ -315,10 +319,12 @@ const SeasonTrackRecordTable = ({
                           ${isElimEp ? "bg-red-400 font-bold text-black-700" : ""}
                           ${isAfterElim ? "text-gray-400 bg-gray-200 italic" : ""}
                           ${placement == " " ? "text-gray-400 bg-gray-200 italic" : ""}
+                          ${placement === "TOP2" ? "bg-yellow-200 font-bold text-black-200" : ""}
                           ${placement === "HIGH" ? "bg-sky-300 text-black-200" : ""}
-                          ${placement === "WIN" ? "bg-blue-400 text-black-200" : ""}
+                          ${placement === "WIN" ? "bg-blue-400 font-bold text-black-700" : ""}
                           ${placement === "LOW" ? "bg-pink-200 text-black-200" : ""}
                           ${placement === "BTM2" ? "bg-red-300 text-black-200" : ""}
+                          ${placement === "BTM" ? "bg-red-300 text-black-200" : ""}
                           ${placement === "WINNER" ? "sparkle-gold" : ""}
                           ${placement === "RUNNER-UP" ? "bg-green-200 text-black font-medium" : ""}
                         `}

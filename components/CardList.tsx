@@ -43,7 +43,8 @@ const CardList = ({
     showResults,
     episodes,
     seasonStyle,
-    allQueens
+    allQueens,
+    seasonFlow
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -54,6 +55,7 @@ const CardList = ({
     episodes: { episodeNumber: number | string; title: string }[];
     seasonStyle: string;
     allQueens: Queen[];
+    seasonFlow: string;
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -67,8 +69,12 @@ const CardList = ({
                         <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
                         <TabsTrigger value="table-min" className="tabs-trigger" >Contestant Progess (Minified)</TabsTrigger>
                         <TabsTrigger value="table-full" className="tabs-trigger" >Contestant Progess</TabsTrigger>
-                        {/* <TabsTrigger value="chart">Track Record Chart</TabsTrigger> */}
-                        <TabsTrigger value="lipsyncs" className="tabs-trigger" >Lipsyncs</TabsTrigger>
+                        {
+                            (seasonFlow != 'ttwalas') && (
+
+                                <TabsTrigger value="lipsyncs" className="tabs-trigger" >Lipsyncs</TabsTrigger>
+                            )
+                        }
                     </TabsList>
 
                     {/* Queens Tab */}
@@ -90,6 +96,7 @@ const CardList = ({
                                         viewMode={viewMode}
                                         isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
                                         allQueens={allQueens}
+                                        seasonFlow={seasonFlow}
                                     />
                                 </div>
                             ))}
@@ -108,18 +115,17 @@ const CardList = ({
                             <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} />
                         </div>
                     </TabsContent>
-                    {/* Chart Tab */}
-                    {/*
-                    <TabsContent value="chart">
-                        <SeasonTrackRecordChart queens={queens} episodes={episodes} />
-                    </TabsContent>
-                    */}
                     {/* Lipsync Tab */}
-                    <TabsContent value="lipsyncs">
-                        <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
-                        </div>
-                    </TabsContent>
+                    {
+                        (seasonFlow != 'ttwalas') && (
+                            <TabsContent value="lipsyncs">
+                                <div className="w-[95%] mx-auto">
+                                    <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
+                                </div>
+                            </TabsContent>
+                        )
+                    }
+
                 </Tabs>
             ) : (
                 // Default non-results view (just show queens)
@@ -139,6 +145,7 @@ const CardList = ({
                                 maxWins={maxWins}
                                 viewMode={viewMode}
                                 allQueens={allQueens}
+                                seasonFlow={seasonFlow}
                             />
                         </div>
                     ))}

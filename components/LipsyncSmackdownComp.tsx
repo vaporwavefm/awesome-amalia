@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { getQueenNameById, Queen, QueenStats } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import QueenCard from "./QueenCard";
 
 const LipsyncSmackdownComp = ({ rounds, roundsToShow, queens }: { rounds: any; roundsToShow: any; queens: any }) => {
@@ -29,15 +28,7 @@ const LipsyncSmackdownComp = ({ rounds, roundsToShow, queens }: { rounds: any; r
     songs.sort(() => Math.random() - 0.5);
 
     return <div className="space-y-8">
-        {/* 
-        <Tabs defaultValue="trackList" className="w-full">
-            <TabsList className="tabs-list flex overflow-x-auto whitespace-nowrap scrollbar-hide">
-                <TabsTrigger value="trackList" className="tabs-trigger" >Track List</TabsTrigger>
-                <TabsTrigger value="smackdown" className="tabs-trigger" >Smackdown Results</TabsTrigger>
-            </TabsList> */}
 
-        {/* Song Tab */}
-        {/*<TabsContent value="trackList"> */}
         <div className="flex justify-center mb-4 py-4">
             <div className="general-msg">
                 <div className="mt-2 p-3">
@@ -56,13 +47,10 @@ const LipsyncSmackdownComp = ({ rounds, roundsToShow, queens }: { rounds: any; r
                         })
                     }
                 </div>
-            </div>
-            
+            </div>     
         </div>
-        {/*</TabsContent>  */}
-        {/*<TabsContent value="smackdown">   */}
-        <div className="mt-10">
-            
+        
+        <div className="mt-10">   
             {roundsToShow.map((round: number) => (
                 <div key={round} className="pt-6">
                     <div className="flex justify-center pb-4">
@@ -110,10 +98,7 @@ const LipsyncSmackdownComp = ({ rounds, roundsToShow, queens }: { rounds: any; r
                     </div>
                 </div>
             ))}
-
         </div>
-        {/* </TabsContent>
-        </Tabs> */}
     </div>;
 };
 

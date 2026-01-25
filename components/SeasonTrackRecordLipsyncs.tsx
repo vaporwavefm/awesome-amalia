@@ -52,7 +52,6 @@ type Props = {
 };
 
 const SeasonTrackRecordLipsyncs = ({ queens, episodes, lipsyncNames }: Props) => {
-  //console.log(lipsyncNames);
   const lipsyncs = episodes
     .map((ep) => {
       const bottoms = queens.filter((q) =>
