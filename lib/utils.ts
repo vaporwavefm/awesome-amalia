@@ -416,26 +416,26 @@ export function mainChallenge(
   const topQueens = tempScores.slice(0, topCount);
   const bottomQueens = tempScores.slice(-bottomCount);
 
+  let topTwoWinner: any;
+  const topTwo = topQueens.slice(0, 2);
+  if (seasonFlow == 'ttwalas') {
+    topTwoWinner = topQueens.slice(0, 2).filter(q => q.id == lipsync(topQueens.slice(0, 2), episodeType.toLowerCase(), seasonFlow));
+  }
+
   let eliminatedId = null;
   if (!nonElimination) {
 
     if (topCount == 2 && bottomCount == 2) {
-      const eliminatedIdObj = bottomQueens.filter(q => q.id != lipsync(bottomQueens, episodeType.toLowerCase(), seasonFlow));
+      const eliminatedIdObj = bottomQueens.filter(q => q.id != lipsync(bottomQueens, episodeType.toLowerCase()));
       for (const btms in eliminatedIdObj) {
         eliminatedId = eliminatedIdObj[btms].id;
       }
     } else {
-      const eliminatedIdObj = bottomQueens.slice(1).filter(q => q.id != lipsync(bottomQueens.slice(1), episodeType.toLowerCase(), seasonFlow));
+      const eliminatedIdObj = bottomQueens.slice(1).filter(q => q.id != lipsync(bottomQueens.slice(1), episodeType.toLowerCase()));
       for (const btms in eliminatedIdObj) {
         eliminatedId = eliminatedIdObj[btms].id;
       }
     }
-  }
-
-  let topTwoWinner: any;
-  const topTwo = topQueens.slice(0, 2);
-  if (seasonFlow == 'ttwalas') {
-    topTwoWinner = topQueens.slice(0, 2).filter(q => q.id == lipsync(topQueens.slice(0, 2), episodeType.toLowerCase()));
   }
 
   const updatedRecord = scoredRecord.map(q => {

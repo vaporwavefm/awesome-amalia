@@ -247,6 +247,27 @@ const Page = () => {
     );
   }
 
+  const addRandomQueens = (count: number) => {
+  setQueenCards((prev) => {
+    const existingIds = new Set(prev.map((q) => q.id));
+
+    const availableQueens = queens.filter(
+      (q) => !existingIds.has(q.id)
+    );
+
+    if (availableQueens.length === 0) return prev;
+
+    const shuffled = [...availableQueens].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, count).map((queen) => ({
+      ...queen,
+      stats: generateRandomStats(),
+    }));
+
+    return [...prev, ...selected];
+  });
+};
+
+
   return (
     <>
       <div className="flex flex-col md:flex-row">
@@ -580,6 +601,36 @@ const Page = () => {
                     });
                   }}
                 />
+
+                <div className="mt-4 flex justify-center gap-3">
+
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomQueens(1)}
+                    disabled={queenCards.length >= queens.length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                  >
+                  +1 Random Queen
+                  </Button>
+                
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomQueens(5)}
+                    disabled={queenCards.length >= queens.length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                  >
+                  +5 Random Queens
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomQueens(10)}
+                    disabled={queenCards.length >= queens.length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                  >
+                   +10 Random Queens
+                  </Button>
+                </div>
 
                 <div className="mt-6 flex flex-wrap justify-center gap-4 ">
                   {queenCards.map((queen) => (
