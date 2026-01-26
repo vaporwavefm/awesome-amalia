@@ -18,7 +18,7 @@ const NavMenu = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 w-full z-50 border-b border-pink-200 bg-gradient-to-r from-pink-100 to-pink-200 backdrop-blur-md shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-pink-100/80 to-pink-200/80 backdrop-blur-md border-b border-pink-200/60">
       <NavigationMenu className="max-w-7xl mx-auto px-6 py-3">
         <NavigationMenuList className="flex items-center justify-between w-full">
           <div className="flex items-center gap-8">
@@ -66,16 +66,16 @@ const NavMenu = () => {
                         <Link
                           key={season.id}
                           href={`/sim?id=${season.id}`}
-                          className={`block px-4 py-2 text-gray-700 hover:bg-pink-100 transition-colors ${index < arr.length - 1 ? "border-b border-gray-200" : ""
-                            }`}
+                          className="group block px-4 py-3 transition hover:bg-pink-50"
                         >
-                          <span className="text-sm font-bold text-gray-700 flex justify-center">
+                          <div className="text-sm font-semibold text-gray-800 group-hover:text-pink-500 text-center">
                             {season.title}
-                          </span>
-                          <div className="text-sm italic text-gray-400">
+                          </div>
+                          <div className="text-xs italic text-gray-400 text-center">
                             Generated {season.date}
                           </div>
                         </Link>
+
                       ))
                     ) : (
                       <span className="block px-4 py-2 text-sm italic text-gray-400">
@@ -85,7 +85,7 @@ const NavMenu = () => {
                   </div>
                 )}
               </div>
-              
+
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link

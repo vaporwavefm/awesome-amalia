@@ -13,6 +13,7 @@ import { faCrown, faPlay, faCheck, faX } from '@fortawesome/free-solid-svg-icons
 import { Info } from "lucide-react";
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 import {
   DndContext,
@@ -198,12 +199,17 @@ const Page = () => {
   function SortableEpisode({
     episode,
     index,
+    total,
     onRemove,
+    onMove,
   }: {
     episode: any;
     index: number;
+    total: number;
     onRemove: (id: string) => void;
+    onMove: (from: number, to: number) => void;
   }) {
+
     const { attributes, listeners, setNodeRef, transform, transition } =
       useSortable({ id: episode.id });
 
@@ -220,7 +226,7 @@ const Page = () => {
         className="flex justify-between items-center p-6 border rounded-lg shadow-sm bg-white hover:shadow-md transition "
       >
         <div className="flex items-start gap-3">
-          <div {...listeners} className="cursor-grab text-gray-400 hover:text-gray-600">
+          <div {...listeners} className="hidden md:block cursor-grab text-gray-400 hover:text-gray-600">
             <GripVertical className="w-5 h-5" />
           </div>
 
@@ -237,35 +243,63 @@ const Page = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => onRemove(episode.id)}
-          className="p-1 rounded-full hover:bg-red-100 transition"
-        >
-          <X className="w-5 h-5 text-red-500" />
-        </button>
+        <div className="flex flex-col items-center gap-1"> {/* sidebar actions */}
+          <button
+            onClick={() => onRemove(episode.id)}
+            className="mt-1 p-1 rounded-full hover:bg-red-100 transition"
+            title="Remove episode"
+          >
+            <X className="w-5 h-5 text-red-500" />
+          </button>
+          <button
+            onClick={() => onMove(index, index - 1)}
+            disabled={index === 0}
+            className="p-1 rounded hover:bg-pink-50 disabled:opacity-30"
+            title="Shift episode up"
+          >
+            <ChevronUp className="w-4 h-4 text-gray-600" />
+          </button>
+          <button
+            onClick={() => onMove(index, index + 1)}
+            disabled={index === total - 1}
+            className="p-1 rounded hover:bg-pink-50 disabled:opacity-30"
+            title="Shift episode down"
+          >
+            <ChevronDown className="w-4 h-4 text-gray-600" />
+          </button>
+        </div>
+
       </div>
     );
   }
 
   const addRandomQueens = (count: number) => {
-  setQueenCards((prev) => {
-    const existingIds = new Set(prev.map((q) => q.id));
+    setQueenCards((prev) => {
+      const existingIds = new Set(prev.map((q) => q.id));
 
-    const availableQueens = queens.filter(
-      (q) => !existingIds.has(q.id)
-    );
+      const availableQueens = queens.filter(
+        (q) => !existingIds.has(q.id)
+      );
 
-    if (availableQueens.length === 0) return prev;
+      if (availableQueens.length === 0) return prev;
 
-    const shuffled = [...availableQueens].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, count).map((queen) => ({
-      ...queen,
-      stats: generateRandomStats(),
-    }));
+      const shuffled = [...availableQueens].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, count).map((queen) => ({
+        ...queen,
+        stats: generateRandomStats(),
+      }));
 
-    return [...prev, ...selected];
-  });
-};
+      return [...prev, ...selected];
+    });
+  };
+
+
+  const moveEpisode = (from: number, to: number) => {
+    setEpisodeCards((prev) => {
+      if (to < 0 || to >= prev.length) return prev;
+      return arrayMove(prev, from, to);
+    });
+  };
 
 
   return (
@@ -603,32 +637,29 @@ const Page = () => {
                 />
 
                 <div className="mt-4 flex justify-center gap-3">
-
                   <Button
                     variant="outline"
                     onClick={() => addRandomQueens(1)}
                     disabled={queenCards.length >= queens.length}
                     className="rounded-full px-5 font-semibold hover:bg-purple-50"
                   >
-                  +1 Random Queen
+                    +1 Random Queen
                   </Button>
-                
                   <Button
                     variant="outline"
                     onClick={() => addRandomQueens(5)}
                     disabled={queenCards.length >= queens.length}
                     className="rounded-full px-5 font-semibold hover:bg-purple-50"
                   >
-                  +5 Random Queens
+                    +5 Random Queens
                   </Button>
-
                   <Button
                     variant="outline"
                     onClick={() => addRandomQueens(10)}
                     disabled={queenCards.length >= queens.length}
                     className="rounded-full px-5 font-semibold hover:bg-purple-50"
                   >
-                   +10 Random Queens
+                    +10 Random Queens
                   </Button>
                 </div>
 
@@ -733,9 +764,12 @@ const Page = () => {
                           key={e.id}
                           episode={e}
                           index={idx}
+                          total={episodeCards.length}
                           onRemove={handleRemoveEpisode}
+                          onMove={moveEpisode}
                         />
                       ))}
+
                     </div>
                   </SortableContext>
                 </DndContext>
