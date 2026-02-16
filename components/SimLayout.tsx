@@ -275,7 +275,7 @@ const SimLayout = (
           ([, a], [, b]) => b.timestamp - a.timestamp
         );
 
-        const trimmedEntries = sortedEntries.slice(0, 5);
+        const trimmedEntries = sortedEntries.slice(0, 4);
 
         allSeasons.seasons = Object.fromEntries(trimmedEntries);
 

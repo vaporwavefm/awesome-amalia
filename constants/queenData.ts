@@ -11,10 +11,10 @@ export const queens = [
     "seasons": "1,AS3",
     "name": "BeBe Zahara Benet",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954",
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/93/BeBeZaharaBenetAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100331",
     "urls": [
-      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954",
-      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/93/BeBeZaharaBenetAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100331"
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/93/BeBeZaharaBenetAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100331",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/BeBeZaharaBenetS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901220954"
     ]
   },
   {
@@ -29,21 +29,34 @@ export const queens = [
     "seasons": "1,AS1",
     "name": "Nina Flowers",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6f/NinaFlowersS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221108"
+    "url": 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/27/NinaFlowersAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214123',
+    'urls': [
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/27/NinaFlowersAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214123',
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6f/NinaFlowersS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221108"
+    ]
   },
   {
     "id": "vLbZCniWlga6Dy3BFWfM",
     "seasons": "1,AS5",
     "name": "Ongina",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/OnginaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221201"
+    "url": 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c9/OnginaAS5CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902190428',
+    'urls': [
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c9/OnginaAS5CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902190428',
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/OnginaS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221201"
+    ]
   },
   {
     "id": "4vpfdIi0056xjzlCGtgU",
     "seasons": "1,AS9",
     "name": "Shannel",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/ShannelS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221334"
+    "url": 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/db/ShannelAS9CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240423195737',
+    'urls': [
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/db/ShannelAS9CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240423195737',
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/af/ShannelAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214430',
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/ShannelS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221334"
+    ]
   },
   {
     "id": "luzWpObIapu146qe5vvi",
@@ -57,7 +70,11 @@ export const queens = [
     "seasons": "1,AS1",
     "name": "Tammie Brown",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/TammieBrownS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221428"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bf/TammieBrownAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214513",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bf/TammieBrownAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214513",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/TammieBrownS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901221428"
+    ]
   },
   {
     "id": "qcoymxap9ojQaVm6PwtT",
@@ -78,35 +95,62 @@ export const queens = [
     "seasons": "2,AS1",
     "name": "Raven",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/RavenS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225637"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/48/RavenAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214355",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/48/RavenAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214355",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/68/RavenS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225637"
+    ]
+
   },
   {
     "id": "P8bD6LlYyXs9nO1pOrWX",
     "seasons": "2,AS1,AS5,UKvtW1",
     "name": "Jujubee",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/JujubeeS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225724"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9b/JujubeeUKvsTWCastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220120115703",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9b/JujubeeUKvsTWCastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220120115703",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/25/JujubeeAS5CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902101633",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a7/JujubeeAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901213800",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/06/JujubeeS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225724"
+    ]
   },
   {
     "id": "Q9cE7MmZzYt0pP2qPsYZ",
     "seasons": "2,AS2",
     "name": "Tatianna",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/TatiannaS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225734"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/TatiannaAS2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902090817",
+    "urls":
+      [
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/TatiannaAS2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902090817",
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/TatiannaS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225734"
+      ]
   },
   {
     "id": "R0dF8NnZzZu1qQ3rQtZA",
     "seasons": "2,AS1,AS6",
     "name": "Pandora Boxx",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/PandoraBoxxS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225746"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/PandoraBoxxAS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902114008",
+    "urls":
+      [
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/PandoraBoxxAS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902114008",
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/37/PandoraBoxxAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901214240",
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/PandoraBoxxS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225746"
+      ]
   },
   {
     "id": "S1eG9OoZzVv2rR4sRuAB",
     "seasons": "2,AS8",
     "name": "Jessica Wild",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/JessicaWildS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225756"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9d/JessicaWildAS8CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20230420161703",
+    "urls":
+      [
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9d/JessicaWildAS8CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20230420161703",
+        "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/JessicaWildS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225756"
+      ]
   },
   {
     "id": "T2fH0PpZzWw3sS5tSvBC",
@@ -117,17 +161,25 @@ export const queens = [
   },
   {
     "id": "T2fH0frt75w3sS5tSvBC",
-    "seasons": "2",
+    "seasons": "2,AS3",
     "name": "Morgan McMichaels",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/76/MorganMcMichaelsS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225820"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/47/MorganMcMichaelsAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100636",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/47/MorganMcMichaelsAS3CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902100636",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/76/MorganMcMichaelsS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225820"
+    ]
   },
   {
     "id": "T2fH0PpZzvtDD35tSvBC",
     "seasons": "2,AS6",
     "name": "Kylie Sonique Love",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/SoniqueS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225838"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fe/KylieSoniqueLoveAS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210905182730",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fe/KylieSoniqueLoveAS6CastMug.png/revision/latest/scale-to-width-down/105?cb=20210905182730",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/SoniqueS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225838"
+    ]
   },
   {
     "id": "56g00PpZzWw3sS5tSvBC",
@@ -138,31 +190,50 @@ export const queens = [
   },
   {
     "id": "56g00PpZz56g885tSvBC",
-    "seasons": "2",
+    "seasons": "2,AS10",
     "name": "Nicole Paige Brooks",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c5/NicolePaigeBrooksS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225859"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/09/NicolePaigeBrooksAS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20250423191201",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/09/NicolePaigeBrooksAS10CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20250423191201",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c5/NicolePaigeBrooksS2CastMug.png/revision/latest/scale-to-width-down/105?cb=20220212225859"
+    ]
   },
   {
     "id": "56g45gFFr56g885tSvBC",
     "seasons": "3,AW1",
     "name": "Raja",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/RajaS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153542"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bb/RajaAS7CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220413193645",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bb/RajaAS7CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220413193645",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f8/RajaS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153542"
+    ]
   },
   {
     "id": "B4mNp0XzWqJr1sU7aZfG",
     "seasons": "3,AS1,AS4",
     "name": "Manila Luzon",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/88/ManilaLuzonS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153322"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/ManilaLuzonAS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902104419",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/ManilaLuzonAS4CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20210902104419",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2d/ManilaLuzonAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901213911",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/88/ManilaLuzonS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901153322"
+    ]
   },
   {
     "id": "C5oQp1YyXrKs2tV8bAgH",
     "seasons": "3,AS1,AS5,CvtW2",
     "name": "Alexis Mateo",
     "franchise": "US",
-    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ee/AlexisMateoS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901152949"
+    "url": "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/AlexisMateoCAvsTW2CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20240626205755",
+    "urls": [
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/AlexisMateoCAvsTW2CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20240626205755",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1d/AlexisMateoAS5CastMug.png/revision/latest/scale-to-width-down/105?cb=20210902185644",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/AlexisMateoAS1CastMug.png/revision/latest/scale-to-width-down/105?cb=20210901213645",
+      "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ee/AlexisMateoS3CastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20210901152949"
+    ]
   },
   {
     "id": "D6pRr2ZzYsLt3uW9cBhI",
@@ -2117,7 +2188,7 @@ export const queens = [
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fa/PanginaHealsUKvsTWCastMug.jpeg/revision/latest/scale-to-width-down/105?cb=20220117181132',
     seasons: 'UKvtW1',
     name: "Pangina Heals",
-    franchise: 'GB'
+    franchise: 'TH'
   },
   {
     id: 'AcxD83FwZHzpj0XgUwiu',

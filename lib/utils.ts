@@ -34,7 +34,7 @@ export interface LipsyncPairResult {
 
 export interface Relationship {
   targetId: string;
-  type: 'friend' | 'rival' | 'ally' | 'crush' | 'enemy';
+  type: string;
   strength: number;
 }
 
@@ -419,7 +419,7 @@ export function mainChallenge(
   let topTwoWinner: any;
   const topTwo = topQueens.slice(0, 2);
   if (seasonFlow == 'ttwalas') {
-    topTwoWinner = topQueens.slice(0, 2).filter(q => q.id == lipsync(topQueens.slice(0, 2), episodeType.toLowerCase(), seasonFlow));
+    topTwoWinner = topQueens.slice(0, 2).filter(q => q.id == lipsync(topQueens.slice(0, 2), episodeType.toLowerCase(), seasonFlow, true));
   }
 
   let eliminatedId = null;
@@ -536,7 +536,7 @@ function nittyGritty({ size }: { size: number }) {
 }
 
 function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[], episodeType: string,
-  seasonFlow?: string
+  seasonFlow?: string, isTopTwo?: boolean
 ) {
 
   const bottomResults = [];
@@ -547,15 +547,19 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     winWeight = 1.5; // override weights for smackdowns and finales
     highWeight = .4;
     lowWeight = .4;
-    bottomWeight = 1.8;
-  } else if (seasonFlow && seasonFlow === 'ttwalas') {
-    winWeight = .1;
-    highWeight = .1;
-    lowWeight = .08;
-    bottomWeight = .08;
+    bottomWeight = 1.7;
+  } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true) {
+    winWeight = .05;
+    highWeight = .02;
+    lowWeight = .02;
+    bottomWeight = .02;
   }
 
   for (let b = 0; b < bottomQueens.length; b++) {
+
+    if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 4) {
+      winWeight = .045;
+    }
 
     bottomResults.push({
       bottomId: bottomQueens[b].id,
@@ -749,6 +753,32 @@ function syncMutualRelationships(queens: Queen[]): Queen[] {
 
   return updatedQueens;
 }
+
+export function syncRelationships(queens: any[]): any[] {
+  return queens.map((queen) => {
+    const existing = queen.relationships ?? [];
+
+    const updated = queens
+      .filter(q => q.id !== queen.id)
+      .map(other => {
+        const found = existing.find((r: Relationship) => r.targetId === other.id);
+        if (found) return found;
+
+        // default relationship for new queens
+        return {
+          targetId: other.id,
+          type: "neutral",
+          strength: 0,
+        };
+      });
+
+    return {
+      ...queen,
+      relationships: updated,
+    };
+  });
+}
+
 
 function getRelationshipBias(queen: any, allQueens: any[]): number {
   if (!queen.relationships) return 0;

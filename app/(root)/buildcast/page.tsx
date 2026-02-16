@@ -11,10 +11,9 @@ import { X, GripVertical } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown, faPlay, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Info } from "lucide-react";
-import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input";
 import { ChevronUp, ChevronDown } from "lucide-react";
-
+import { Relationship, syncRelationships } from "@/lib/utils";
 import {
   DndContext,
   closestCenter,
@@ -46,6 +45,7 @@ import {
 
 import { CSS } from "@dnd-kit/utilities";
 import Image from "next/image";
+import { updateRelationshipsAfterEpisode } from "@/lib/utils";
 
 const Page = () => {
   const [queenCards, setQueenCards] = useState<typeof queens>([]);
@@ -73,7 +73,43 @@ const Page = () => {
     Singing: Math.floor(Math.random() * 101),
   });
 
+  function generateRelationships(queens: any[]): any[] {
+
+    const updatedQueens = [...queens];
+    for (let i = 0; i < queens.length; i++) {
+      const queen = queens[i];
+      const relationships = [];
+
+      for (let j = 0; j < queens.length; j++) {
+        if (i === j) continue;
+
+        const other = queens[j];
+        const weightedTypes = [
+          "friend", "friend", "ally", "neutral", "neutral", "rival"
+        ];
+        const type = weightedTypes[Math.floor(Math.random() * weightedTypes.length)]; // try to set initial relationships as friendly or neutral
+
+        let baseStrength = 0; // keep strength not as high and on the positive note
+        if (type === "friend" || type === "ally") baseStrength = 20 + Math.random() * 20;
+        else if (type === "rival") baseStrength = -10 + Math.random() * 10;
+        else baseStrength = Math.random() * 10;
+
+        relationships.push({
+          targetId: other.id,
+          type,
+          strength: Math.round(baseStrength),
+        });
+      }
+
+      updatedQueens[i] = { ...queen, relationships };
+    }
+
+    return updatedQueens;
+  }
+
   const handleSaveToLocalStorage = () => {
+    //console.log(queenCards);
+    //var updatedQueens = generateRelationships(queenCards);
     localStorage.setItem("selectedQueens", JSON.stringify(queenCards));
     localStorage.setItem("selectedEpisodes", JSON.stringify(episodeCards));
     localStorage.setItem("minNonElimEps", minNonElimEps);
@@ -119,8 +155,26 @@ const Page = () => {
   };
 
   const handleRemoveQueen = (id: string) => {
-    setQueenCards((prev) => prev.filter((queen) => queen.id !== id));
+    setQueenCards(prev =>
+      prev
+        .filter(q => q.id !== id)
+        .map(q => ({
+          ...q,
+          relationships: (q as any).relationships?.filter((r : Relationship) => r.targetId !== id),
+        }))
+    );
     setMinEps(minEps - 1);
+  };
+
+
+  const handleUpdateRelationships = (id: string, updatedRelationships: Relationship[]) => {
+    setQueenCards(prev =>
+      prev.map(q =>
+        q.id === id
+          ? { ...q, relationships: updatedRelationships }
+          : q
+      )
+    );
   };
 
   const handleRemoveEpisode = (id: string) => {
@@ -287,9 +341,12 @@ const Page = () => {
       const selected = shuffled.slice(0, count).map((queen) => ({
         ...queen,
         stats: generateRandomStats(),
+        relationships: [],
       }));
 
-      return [...prev, ...selected];
+      const updated = [...prev, ...selected];
+      return syncRelationships(updated);
+
     });
   };
 
@@ -624,24 +681,29 @@ const Page = () => {
                   type="queen"
                   onSelect={(queen) => {
                     setQueenCards((prev) => {
-                      if (prev.some((q) => q.id === queen.id)) return prev;
-                      return [
+                      if (prev.some(q => q.id === queen.id)) return prev;
+
+                      const updated = [
                         ...prev,
                         {
                           ...queen,
                           stats: generateRandomStats(),
+                          relationships: [],
                         },
                       ];
+
+                      return syncRelationships(updated);
                     });
+
                   }}
                 />
 
-                <div className="mt-4 flex justify-center gap-3">
+                <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
                   <Button
                     variant="outline"
                     onClick={() => addRandomQueens(1)}
                     disabled={queenCards.length >= queens.length}
-                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
                   >
                     +1 Random Queen
                   </Button>
@@ -649,7 +711,7 @@ const Page = () => {
                     variant="outline"
                     onClick={() => addRandomQueens(5)}
                     disabled={queenCards.length >= queens.length}
-                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
                   >
                     +5 Random Queens
                   </Button>
@@ -657,7 +719,7 @@ const Page = () => {
                     variant="outline"
                     onClick={() => addRandomQueens(10)}
                     disabled={queenCards.length >= queens.length}
-                    className="rounded-full px-5 font-semibold hover:bg-purple-50"
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
                   >
                     +10 Random Queens
                   </Button>
@@ -671,14 +733,17 @@ const Page = () => {
                       isBuildCast={true}
                       onRemove={handleRemoveQueen}
                       onUpdateStats={(id, updatedStats) => {
-                        setQueenCards((prev) =>
-                          prev.map((q) =>
-                            // @ts-expect-error girllll like
-                            q.id === id ? { ...q, stats: { ...(q.stats ?? {}), ...updatedStats } } : q
+                        setQueenCards(prev =>
+                          prev.map(q =>
+                            q.id === id
+                              ? { ...q, stats: { ...(q as any).stats, ...updatedStats } }
+                              : q
                           )
                         );
                       }}
+                      onUpdateRelationships={handleUpdateRelationships}
                     />
+
                   ))}
                 </div>
               </div>
@@ -853,7 +918,7 @@ const Page = () => {
                 className="mt-4 px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg transition-all
       disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 hover:shadow-2xl"
               >
-                Show me the results!
+                Generate!
               </Button>
             </div>
           </div>

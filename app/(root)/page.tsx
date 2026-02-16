@@ -16,11 +16,13 @@ const Page = () => {
   const [bugPage, setBugPage] = useState(1);
 
   const bugs = [
+
     { date: '2025-11-28', note: 'Issue with the navigation button. When you click on Previous when you are on the Safe screen you should be greeted with the main episode card and not just a list view of the queens. WIP' },
     { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted. FIXED: added sheet component to jump through episodes and navigation buttons to allow users to traverse through episode and episode events.' },
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    { date: '2025-02-16', note:  'Updated existing interface in buildcast for updating Queen stats. Added new interface for editing Queen relationships!'},
     { date: '2026-01-24', note: 'NEW All Stars season format for Top Two and Lipsticks is now LIVE! Added buttons to add a random queen when building your cast. Added queens for DU2,DU3,DU4,ES4,ES5!'},
     { date: '2026-01-13', note: 'Added a tooltip in the Simulaton Builder Episodes tab to show you what is available to select. Added episodes from US15,US16,US17! Added queens for US18!' },
     { date: '2026-01-01', note: 'Happy new year!! :) Updated menu options in anticipation for creating Top-Two and Lipsticks format.' },
