@@ -96,17 +96,15 @@ const QueenCard = ({ q,
   }, [q.relationships]);
 
 
-  const isTopWinner = (maxWins != null) &&
+  const isTopWinner = false; /*(maxWins != null) &&
     (seasonFlow &&
       (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
         (viewMode != 'top2'
           && viewMode != 'top2lipsync'))
       )
     )
-    ? q.wins === maxWins && maxWins > 0 : false;
+    ? q.wins === maxWins && maxWins > 0 : false; */
   const isMainScreen = viewMode != null && viewMode != 'eliminated';
-
-
 
   const handlePrev = () => {
     if (q.urls && q.urls.length > 0)

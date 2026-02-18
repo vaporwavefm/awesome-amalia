@@ -789,6 +789,63 @@ const SimLayout = (
     );
   };
 
+  const currentEpisode = episodes.find(
+    e => e.episodeNumber === selectedEpisode
+  );
+
+  const previousEpisode = episodes.find(
+    e => e.episodeNumber === (selectedEpisode ?? 0) - 1
+  );
+
+  const generateEpisodeRecap = (episodeNumber: number) => {
+    const previousEpisodeNumber = episodeNumber - 1;
+    if (previousEpisodeNumber <= 0) return null;
+
+    const episodeData = episodeHistory.post[previousEpisodeNumber];
+    if (!episodeData) return null;
+
+    const placements = episodeData.map(q => {
+      const placementObj = q.placements?.find(
+        (p: any) => Number(p.episodeNumber) === previousEpisodeNumber
+      );
+
+      return {
+        name: q.name,
+        placement: placementObj?.placement?.toLowerCase(),
+        isEliminated: q.isEliminated
+      };
+    });
+
+    const winner = placements.find(p => p.placement === "win");
+    const bottomQueens = placements.filter(
+      p => p.placement === "bottom" || p.placement === "bottomas"
+    );
+
+    const eliminated = placements.find(
+      p => p.isEliminated &&
+        (p.placement === "bottom" || p.placement === "bottomas")
+    );
+
+    let recap = "";
+
+    if (winner) {
+      recap += `Last week, ${winner.name} snatched the win. `;
+    }
+
+    if (bottomQueens.length === 2) {
+      recap += `${bottomQueens[0].name} and ${bottomQueens[1].name} landed in the bottom two. `;
+    }
+
+    if (eliminated) {
+      if (seasonFlow == 'ttwalas' && winner) {
+        recap += `In the end, ${winner.name} chose to eliminate ${eliminated.name}.`;
+      }
+      else recap += `In the end, ${eliminated.name} sashayed away.`;
+    }
+
+    return recap.trim();
+  };
+
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
       {/* Display episode cards */}
@@ -899,18 +956,42 @@ const SimLayout = (
         ) : (
           <>
             {selectedEpisode ? (
-              // existing episode preview box
-              <div className="e-title-msg">
-                <h2 className="e-title-h2"> Episode {episodes.find(e => e.episodeNumber === selectedEpisode)?.episodeNumber}: {episodes.find(e => e.episodeNumber === selectedEpisode)?.title} </h2>
-                <p className="e-title-descr"> In this episode of {seasonTitle.trimEnd()}: {episodes.find(e => e.episodeNumber === selectedEpisode)?.description} </p>
+              <div className="e-title-msg space-y-4">
+                <div>
+                  <h2 className="e-title-h2">
+                    Episode {currentEpisode?.episodeNumber}: {currentEpisode?.title}
+                  </h2>
+                  {previousEpisode && (
+                    <div className=" rounded-xl p-4">
+                      <h3 className="text-sm uppercase tracking-wide text-gray-500 font-semibold">
+                        Previously on {seasonTitle.trimEnd()}
+                      </h3>
+                      <p className="text-sm text-gray-700 mt-1">
+                        Episode {previousEpisode.episodeNumber}: {previousEpisode.title}
+                      </p>
+                      {generateEpisodeRecap(selectedEpisode) && (
+                        <p className="text-sm text-gray-700 mt-2 italic">
+                          {generateEpisodeRecap(selectedEpisode)}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  <p className="e-title-descr">
+                    This week on {seasonTitle.trimEnd()}: {currentEpisode?.description}
+                  </p>
+                </div>
               </div>
             ) : (
-              // initial message
               <div className="e-title-msg">
-                <h2 className="e-title-h2"> Welcome to {seasonTitle}! </h2>
-                <p className="e-title-descr">  Who will snatch the crown? Click on any episode or click next below to follow their journey!</p>
+                <h2 className="e-title-h2">
+                  Welcome to {seasonTitle}!
+                </h2>
+                <p className="e-title-descr">
+                  Who will snatch the crown? Click on any episode or click next below to follow their journey!
+                </p>
               </div>
             )}
+
 
             <CardList
               queens={queensForCardList}

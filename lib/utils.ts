@@ -540,7 +540,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
 ) {
 
   const bottomResults = [];
-  const randomSeed = (Math.floor(Math.random() * 10) + 1);
+  let randomSeed = (Math.floor(Math.random() * 10) + 1);
   let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
 
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
@@ -551,14 +551,16 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
   } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true) {
     winWeight = .05;
     highWeight = .02;
-    lowWeight = .02;
-    bottomWeight = .02;
+    lowWeight = .01;
+    bottomWeight = .01;
   }
 
   for (let b = 0; b < bottomQueens.length; b++) {
 
-    if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 4) {
-      winWeight = .045;
+    if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
+      // do nothing 
+    } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 3) {
+      randomSeed = randomSeed / (2 * (bottomQueens[b].wins - 2));
     }
 
     bottomResults.push({

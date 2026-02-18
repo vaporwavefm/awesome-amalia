@@ -160,12 +160,11 @@ const Page = () => {
         .filter(q => q.id !== id)
         .map(q => ({
           ...q,
-          relationships: (q as any).relationships?.filter((r : Relationship) => r.targetId !== id),
+          relationships: (q as any).relationships?.filter((r: Relationship) => r.targetId !== id),
         }))
     );
     setMinEps(minEps - 1);
   };
-
 
   const handleUpdateRelationships = (id: string, updatedRelationships: Relationship[]) => {
     setQueenCards(prev =>
@@ -350,6 +349,57 @@ const Page = () => {
     });
   };
 
+  const addRandomEpisodes = (count: number) => {
+    setEpisodeCards((prev) => {
+      const existingIds = new Set(prev.map((e) => e.id));
+
+      const availableEpisodes = episodes.filter(
+        (e) =>
+          !existingIds.has(e.id) &&
+          !e.type?.toLowerCase().includes("finale")
+      );
+
+      if (availableEpisodes.length === 0) return prev;
+
+      const shuffled = [...availableEpisodes].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, Math.min(count, availableEpisodes.length));
+
+      return [...prev, ...selected];
+    });
+  };
+
+  const addRandomFinaleEpisode = () => {
+    setEpisodeCards((prev) => {
+      const existingIds = new Set(prev.map((e) => e.id));
+
+      const availableFinales = episodes.filter(
+        (e) =>
+          e.type?.toLowerCase().includes("finale") &&
+          !existingIds.has(e.id)
+      );
+
+      if (availableFinales.length === 0) return prev;
+
+      const randomFinale =
+        availableFinales[Math.floor(Math.random() * availableFinales.length)];
+
+      const withoutFinale = prev.filter(
+        (e) => !e.type?.toLowerCase().includes("finale") // filter out finale episodes
+      );
+
+      return [...withoutFinale, randomFinale];
+    });
+  };
+
+
+  const handleClearAllQueens = () => {
+    setQueenCards([]);
+    setMinEps(0);
+  };
+
+  const handleClearAllEpisodes = () => {
+    setEpisodeCards([]);
+  };
 
   const moveEpisode = (from: number, to: number) => {
     setEpisodeCards((prev) => {
@@ -723,6 +773,14 @@ const Page = () => {
                   >
                     +10 Random Queens
                   </Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleClearAllQueens}
+                    disabled={queenCards.length === 0}
+                    className="rounded-full px-5 font-semibold text-red-600 border-red-200 hover:bg-red-50 w-full sm:w-auto"
+                  >
+                    Clear All!
+                  </Button>
                 </div>
 
                 <div className="mt-6 flex flex-wrap justify-center gap-4 ">
@@ -805,6 +863,49 @@ const Page = () => {
                   prev.some((e) => e.id === episode.id) ? prev : [...prev, episode]
                 )
               } */}
+
+                <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomEpisodes(1)}
+                    disabled={episodeCards.length >= episodes.filter(e => !e.type?.toLowerCase().includes("finale")).length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
+                  >
+                    +1 Random Episode
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomEpisodes(5)}
+                    disabled={episodeCards.length >= episodes.filter(e => !e.type?.toLowerCase().includes("finale")).length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
+                  >
+                    +5 Random Episodes
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => addRandomEpisodes(10)}
+                    disabled={episodeCards.length >= episodes.filter(e => !e.type?.toLowerCase().includes("finale")).length}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
+                  >
+                    +10 Random Episodes
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={addRandomFinaleEpisode}
+                    disabled={episodeCards.some(e => e.type?.toLowerCase().includes("finale"))}
+                    className="rounded-full px-5 font-semibold border-yellow-300 text-yellow-700 hover:bg-yellow-50 w-full sm:w-auto"
+                  >
+                    Add Random Finale
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleClearAllEpisodes}
+                    disabled={episodeCards.length === 0}
+                    className="rounded-full px-5 font-semibold text-red-600 border-red-200 hover:bg-red-50 w-full sm:w-auto"
+                  >
+                    Clear All!!
+                  </Button>
+                </div>
 
                 <DndContext
                   collisionDetection={closestCenter}
