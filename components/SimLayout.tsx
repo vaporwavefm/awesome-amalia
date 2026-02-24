@@ -275,7 +275,7 @@ const SimLayout = (
           ([, a], [, b]) => b.timestamp - a.timestamp
         );
 
-        const trimmedEntries = sortedEntries.slice(0, 4);
+        const trimmedEntries = sortedEntries.slice(0, 3);
 
         allSeasons.seasons = Object.fromEntries(trimmedEntries);
 
@@ -809,10 +809,15 @@ const SimLayout = (
         (p: any) => Number(p.episodeNumber) === previousEpisodeNumber
       );
 
+      const winsSoFar = (q.placements ?? []).filter(
+        (p: any) => p.placement.toLowerCase() === "win" && Number(p.episodeNumber) <= previousEpisodeNumber
+      ).length;
+
       return {
         name: q.name,
         placement: placementObj?.placement?.toLowerCase(),
-        isEliminated: q.isEliminated
+        isEliminated: q.isEliminated,
+        winsSoFar
       };
     });
 
@@ -829,7 +834,12 @@ const SimLayout = (
     let recap = "";
 
     if (winner) {
-      recap += `Last week, ${winner.name} snatched the win. `;
+      const ordinal = (n: number) => {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+      };
+      recap += `Last week, ${winner.name} snatched their ${ordinal(winner.winsSoFar)} win. `;
     }
 
     if (bottomQueens.length === 2) {
@@ -839,8 +849,9 @@ const SimLayout = (
     if (eliminated) {
       if (seasonFlow == 'ttwalas' && winner) {
         recap += `In the end, ${winner.name} chose to eliminate ${eliminated.name}.`;
+      } else {
+        recap += `In the end, ${eliminated.name} sashayed away.`;
       }
-      else recap += `In the end, ${eliminated.name} sashayed away.`;
     }
 
     return recap.trim();

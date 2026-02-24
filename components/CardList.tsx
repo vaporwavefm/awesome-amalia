@@ -5,9 +5,10 @@ import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import QueenCard from "./QueenCard";
 import SeasonTrackRecordTable from "./SeasonTrackRecordTable";
-//import SeasonTrackRecordChart from "./SeasonTrackRecordChart";
 import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
-import QueenScoreBreakdownTable from "./QueenScoreBreakdownTable";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { useState } from "react";
 
 type Queen = {
     id: string;
@@ -59,10 +60,24 @@ const CardList = ({
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
-    const filteredQueens = queens;
+    //const filteredQueens = queens;
+    const [showEliminated, setShowEliminated] = useState(true);
+    const filteredQueens = queens.filter(q => showEliminated || !q.isEliminated);
 
     return (
         <div className="w-full">
+
+            {viewMode == null &&
+                <div className="flex items-center justify-center gap-2 pt-4 pb-4 text-md font-medium text-slate-700 cursor-pointer">
+                    <Switch id="airplane-mode"
+                        onCheckedChange={() => setShowEliminated(prev => !prev)}
+                        checked={showEliminated}
+
+                    />
+                    <Label htmlFor="airplane-mode">Show Eliminated Queens</Label>
+                </div>
+            }
+
             {showResults ? (
                 <Tabs defaultValue="queens" className="w-full">
                     <TabsList className="tabs-list flex overflow-x-auto whitespace-nowrap scrollbar-hide">
@@ -86,7 +101,7 @@ const CardList = ({
                                     className={`transition duration-300 inline-flex max-w-xs justify-center 
                       ${queen.isEliminated &&
                                             (viewMode === "eliminated" || viewMode == null)
-                                            ? "opacity-40 grayscale"
+                                            ? "opacity-60 grayscale-[10%]"
                                             : ""
                                         }`}
                                 >
@@ -136,7 +151,7 @@ const CardList = ({
                             className={`transition duration-300 inline-flex max-w-xs justify-center 
                   ${queen.isEliminated &&
                                     (viewMode === "eliminated" || viewMode == null)
-                                    ? "opacity-40 grayscale"
+                                    ? "opacity-60 grayscale-[10%]"
                                     : ""
                                 }`}
                         >

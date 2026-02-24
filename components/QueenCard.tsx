@@ -151,7 +151,10 @@ const QueenCard = ({ q,
             src={q.urls ? q.urls[currentIndex] : q.url}
             alt={q.name}
             fill
-            className={`rounded-full border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? "grayscale" : ""}`}
+            sizes="104px"
+            className={`rounded-full object-cover border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? "grayscale" : ""
+              }`}
+            quality={100}
           />
           {q.urls && q.urls.length > 1 && (
             <>
