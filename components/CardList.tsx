@@ -45,7 +45,7 @@ const CardList = ({
     episodes,
     seasonStyle,
     allQueens,
-    seasonFlow
+    seasonFlow,
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -67,7 +67,7 @@ const CardList = ({
     return (
         <div className="w-full">
 
-            {viewMode == null &&
+            {(viewMode == null) &&
                 <div className="flex items-center justify-center gap-2 pt-4 pb-4 text-md font-medium text-slate-700 cursor-pointer">
                     <Switch id="airplane-mode"
                         onCheckedChange={() => setShowEliminated(prev => !prev)}

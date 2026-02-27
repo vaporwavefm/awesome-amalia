@@ -29,6 +29,7 @@ const EpisodeEventContainer = ({ relationshipChanges = [], queens = [], episodeN
       )?.name || change.target;
 
     if (isPremiere) {
+
       const drasticStrengthChange = Math.abs(diff) >= 15;
       if (oldType !== newType) {
         return `${change.queen} and ${targetQueen} started to see each other differently.`;
@@ -40,52 +41,42 @@ const EpisodeEventContainer = ({ relationshipChanges = [], queens = [], episodeN
     }
 
     if (oldType !== newType)
-      return `${change.queen} and ${targetQueen} went from ${oldType}s to ${newType}s.`;
+      return `${change.queen} now sees ${targetQueen} as a ${newType}.`;
 
     if (newType === "friend") {
-      if (diff > 10) return `${change.queen} and ${targetQueen} are now closer than ever!`;
-      if (diff > 0) return `${change.queen} and ${targetQueen} grew a little friendlier.`;
-      if (diff < -10) return `${change.queen} and ${targetQueen} drifted apart this episode.`;
-      if (diff < 0) return `${change.queen} and ${targetQueen} had a tense moment this episode.`;
+      if (diff > 10) return `${change.queen} feels much closer to ${targetQueen}.`;
+      if (diff > 0) return `${change.queen} started warming up to ${targetQueen}.`;
+      if (diff < -10) return `${change.queen} feels distant from ${targetQueen} now.`;
+      if (diff < 0) return `${change.queen} felt slight tension with ${targetQueen}.`;
     }
 
     if (newType === "rival") {
-      if (diff > 10) return `${change.queen} and ${targetQueen}'s rivalry intensified.`;
-      if (diff > 0) return `${change.queen} threw some shade at ${targetQueen}, and it was not well received.`;
-      if (diff < 0) return `${change.queen} and ${targetQueen} settled things down.`;
+      if (diff > 10) return `${change.queen} feels seriously threatened by ${targetQueen}.`;
+      if (diff > 0) return `${change.queen} threw some light shade at ${targetQueen}.`;
+      if (diff < 0) return `${change.queen} is cooling off about ${targetQueen}.`;
     }
 
     if (newType === "enemy") {
-      if (diff > 10) return `${change.queen} and ${targetQueen} are beefing hard!`;
-      if (diff > 0) return `${change.queen} and ${targetQueen}'s beef deepened.`;
-      if (diff < 0) return `${change.queen} and ${targetQueen} tried to talk it out and be friendly.`;
+      if (diff > 10) return `${change.queen} wants ${targetQueen} gone.`;
+      if (diff > 0) return `${change.queen} started disliking ${targetQueen} even more.`;
+      if (diff < 0) return `${change.queen} attempted to make up with ${targetQueen}.`;
     }
 
     return "";
   };
 
-  const seenPairs = new Set<string>();
+  const seenDirectional = new Set<string>();
   const uniqueChanges = relationshipChanges.filter((c: any) => {
-    const key = [c.queen, c.target].sort().join("-");
-    if (seenPairs.has(key)) return false;
-    seenPairs.add(key);
+    const key = `${c.queen}->${c.target}`;
+    if (seenDirectional.has(key)) return false;
+    seenDirectional.add(key);
     return true;
   });
 
   const sortedChanges = [...uniqueChanges].sort((a, b) => {
-    const queenAName =
-      queens.find(
-        (q: any) =>
-          String(q.id) === String(a.queen) || String(q.name) === String(a.queen)
-      )?.name || a.queen;
-
-    const queenBName =
-      queens.find(
-        (q: any) =>
-          String(q.id) === String(b.queen) || String(q.name) === String(b.queen)
-      )?.name || b.queen;
-
-    return queenAName.localeCompare(queenBName);
+    const diffA = Math.abs((a.to?.strength ?? 0) - (a.from?.strength ?? 0));
+    const diffB = Math.abs((b.to?.strength ?? 0) - (b.from?.strength ?? 0));
+    return diffB - diffA;
   });
 
   return (

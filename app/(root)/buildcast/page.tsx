@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "@/components/Search";
 import { queens, episodes, seasons, lipsyncs } from "@/constants/queenData";
+import { LipsyncData, SavedLipsync } from "@/lib/utils";
 import QueenCard from "@/components/QueenCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -19,14 +20,12 @@ import {
   closestCenter,
   DragEndEvent
 } from "@dnd-kit/core";
-
 import {
   arrayMove,
   SortableContext,
   useSortable,
   verticalListSortingStrategy
 } from "@dnd-kit/sortable";
-
 import {
   Select,
   SelectContent,
@@ -36,7 +35,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
 import {
   Tooltip,
   TooltipContent,
@@ -182,6 +180,12 @@ const Page = () => {
 
   //------------- effects and validation ----------------------------
 
+  useEffect(() => {
+    if (queenCards.length === 0) {
+      setEpisodeCards([]);
+    }
+  }, [queenCards]);
+
   useEffect(() => { // load existing queens and episodes config
 
     const savedQueens = localStorage.getItem("selectedQueens");
@@ -276,7 +280,9 @@ const Page = () => {
         ref={setNodeRef}
         style={style}
         {...attributes}
-        className="flex justify-between items-center p-6 border rounded-lg shadow-sm bg-white hover:shadow-md transition "
+        className="flex flex-col md:flex-row md:justify-between md:items-center 
+               p-4 md:p-6 border rounded-xl shadow-sm bg-white 
+               hover:shadow-md transition gap-4"
       >
         <div className="flex items-start gap-3">
           <div {...listeners} className="hidden md:block cursor-grab text-gray-400 hover:text-gray-600">
@@ -296,30 +302,30 @@ const Page = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-1"> {/* sidebar actions */}
+        <div className="flex justify-between md:flex-col items-center gap-2"> {/* sidebar actions */}
           <button
             onClick={() => onRemove(episode.id)}
-            className="mt-1 p-1 rounded-full hover:bg-red-100 transition"
-            title="Remove episode"
+            className="p-2 rounded-full hover:bg-red-100 transition"
           >
             <X className="w-5 h-5 text-red-500" />
           </button>
-          <button
-            onClick={() => onMove(index, index - 1)}
-            disabled={index === 0}
-            className="p-1 rounded hover:bg-pink-50 disabled:opacity-30"
-            title="Shift episode up"
-          >
-            <ChevronUp className="w-4 h-4 text-gray-600" />
-          </button>
-          <button
-            onClick={() => onMove(index, index + 1)}
-            disabled={index === total - 1}
-            className="p-1 rounded hover:bg-pink-50 disabled:opacity-30"
-            title="Shift episode down"
-          >
-            <ChevronDown className="w-4 h-4 text-gray-600" />
-          </button>
+          <div className="flex md:flex-col gap-2">
+            <button
+              onClick={() => onMove(index, index - 1)}
+              disabled={index === 0}
+              className="p-2 rounded-lg bg-gray-50 hover:bg-pink-50 disabled:opacity-30"
+            >
+              <ChevronUp className="w-5 h-5 text-gray-700" />
+            </button>
+
+            <button
+              onClick={() => onMove(index, index + 1)}
+              disabled={index === total - 1}
+              className="p-2 rounded-lg bg-gray-50 hover:bg-pink-50 disabled:opacity-30"
+            >
+              <ChevronDown className="w-5 h-5 text-gray-700" />
+            </button>
+          </div>
         </div>
 
       </div>

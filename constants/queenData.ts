@@ -4304,6 +4304,228 @@ export const queens = [
     name: "Satín Greco",
     franchise: 'ES'
   },
+  {
+    id: 'F6eIzkwn79qUleoU7SQb',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/98/AvaHangarDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029223239',
+    seasons: 'IT1',
+    name: "Ava Hangar",
+    franchise: 'IT'
+  },
+  {
+    id: 'X5QUsFOVygAmAFT3b0us',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bd/DivinityDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029223841',
+    seasons: 'IT1',
+    name: "Divinity",
+    franchise: 'IT'
+  },
+  {
+    id: 'WohYMhJsu5kOfpbVYQql',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/62/ElecktraBionicDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029223904',
+    seasons: 'IT1',
+    name: "Elecktra Bionic",
+    franchise: 'IT'
+  },
+  {
+    id: 'JEBmV1qSUJ8IYhQ32P91',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/26/EnormaJeanDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029223918',
+    seasons: 'IT1',
+    name: "Enorma Jean",
+    franchise: 'IT'
+  },
+  {
+    id: 'jcvm7OVsHSyTSEJMrcxL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/FaridaKantDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029224045',
+    seasons: 'IT1',
+    name: "Farida Kant",
+    franchise: 'IT'
+  },
+  {
+    id: 'lYVm6nIsG3QsWl3Cpkwu',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/ca/IvanaVampDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029224244',
+    seasons: 'IT1',
+    name: "Ivana Vamp",
+    franchise: 'IT'
+  },
+  {
+    id: 'BB4sf133hjmca7QtJCyk',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e5/LeRicheDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029224350',
+    seasons: 'IT1',
+    name: "La Riche",
+    franchise: 'IT'
+  },
+  {
+    id: 'DHzjDCOTw8NRxU9Bmc25',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f3/LuquishaLubambaDRIT1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20211029224559',
+    seasons: 'IT1',
+    name: "Luquisha Lubamba",
+    franchise: 'IT'
+  },
+
+  {
+    id: 'dZKrw194w2aLIKDuZyPB',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/57/AuraEternalDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230606133146',
+    seasons: 'IT2',
+    name: "Aura Eternal",
+    franchise: 'IT'
+  },
+  {
+    id: 'Gwbms6z26cMwm9I7BDd2',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d5/Gioffr%C3%A9DRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020204935',
+    seasons: 'IT2',
+    name: "Gioffré",
+    franchise: 'IT'
+  },
+  {
+    id: '9Feq2lpQR6P6m6fcoYQp',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/LaDiamondDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230606133057',
+    seasons: 'IT2',
+    name: "La Diamond",
+    franchise: 'IT'
+  },
+  {
+    id: 'fuMcOziaVS3QJ1tENPof',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b3/LaPetiteNoireDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020205943',
+    seasons: 'IT2',
+    name: "La Petite Noire",
+    franchise: 'IT'
+  },
+  {
+    id: 'g5hn8TtN58Po0izgLgYY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/NarcisoDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020210046',
+    seasons: 'IT2',
+    name: "Narciso",
+    franchise: 'IT'
+  },
+  {
+    id: '0VW2xlZyxOKQQnvzRNlD',
+    urls: [
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6e/NehelleniaGAS1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240716012759',
+      'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/71/NehelleniaDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020210341',
+    ],
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6e/NehelleniaGAS1CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20240716012759',
+    seasons: 'IT2,GAS1',
+    name: "Nehellenia",
+    franchise: 'IT'
+  },
+  {
+    id: 'Rk4nJS00BXjEWKDRRQ1D',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e9/ObamaDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020210459',
+    seasons: 'IT2',
+    name: "Obama",
+    franchise: 'IT'
+  },
+  {
+    id: 'Sj1XaTcvLxsQkjOWtqOJ',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/99/PantheraVirusDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020210556',
+    seasons: 'IT2',
+    name: "Panthera Virus",
+    franchise: 'IT'
+  },
+  {
+    id: 'gKdB5WpYHaGLRQW6HoyS',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5d/SkandaloveDRIT2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230606133107',
+    seasons: 'IT2',
+    name: "Skandalove",
+    franchise: 'IT'
+  },
+  {
+    id: 'heNI483Iqr1XYDMLSmuo',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4d/TanissaYonc%C3%A8DRI2CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20221020210841',
+    seasons: 'IT2',
+    name: "Tanissa Yoncè",
+    franchise: 'IT'
+  },
+  {
+    id: 'B497VGDpLtqRhW84DBVX',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/91/AdrianaPicassoDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145407',
+    seasons: 'IT3',
+    name: "Adriana Picasso",
+    franchise: 'IT'
+  },
+  {
+    id: 'Mz5enAvosUzhYOGsPpQi',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/00/AmyKraniaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145338',
+    seasons: 'IT3',
+    name: "Amy Krania",
+    franchise: 'IT'
+  },
+  {
+    id: 'eZYWE3sbfej4tZU9lh0O',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6d/LaPradaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145353',
+    seasons: 'IT3',
+    name: "La Prada",
+    franchise: 'IT'
+  },
+  {
+    id: 'vMFkOPnZxSEEL2wAoR7c',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/02/LaSheevaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145426',
+    seasons: 'IT3',
+    name: "La Sheeva",
+    franchise: 'IT'
+  },
+  {
+    id: '0asXTcaF4l0MWhbAc1zG',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2e/LeilaYarnDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145434',
+    seasons: 'IT3',
+    name: "Leila Yarn",
+    franchise: 'IT'
+  },
+  {
+    id: 'n4KInptRuULGmLA8cOGx',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a0/LightningAuroraDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145444',
+    seasons: 'IT3',
+    name: "Lightning Aurora",
+    franchise: 'IT'
+  },
+  {
+    id: '2zCcCgle7aER3NvpXrMY',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/LinaGaloreDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145455',
+    seasons: 'IT3',
+    name: "Lina Galore",
+    franchise: 'IT'
+  },
+  {
+    id: 'Cj8I3EdLxpv5jJjaIgrf',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ad/MelissaBianchiniDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145505',
+    seasons: 'IT3',
+    name: "Melissa Bianchini",
+    franchise: 'IT'
+  },
+  {
+    id: 'XwqZSMJlZDDrY4qplALL',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d2/MorganaCosmicaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145514',
+    seasons: 'IT3',
+    name: "Morgana Cosmica",
+    franchise: 'IT'
+  },
+  {
+    id: '9V9cuRv1tpGEZGpZhuMH',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b8/SilvanaDellaMaglianaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145532',
+    seasons: 'IT3',
+    name: "Silvana Della Magliana",
+    franchise: 'IT'
+  },
+  {
+    id: 'VZ51232xv2B5mDsg395N',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/97/SissyLeaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145648',
+    seasons: 'IT3',
+    name: "Sissy Lea",
+    franchise: 'IT'
+  },
+  {
+    id: 'WYdUr5Ca6pucbE8p4Gye',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/56/SyparioDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145658',
+    seasons: 'IT3',
+    name: "Sypario",
+    franchise: 'IT'
+  },
+  {
+    id: 'i6cexBGrn9TuaM1Y40a8',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/10/VezirjaDRIT3CastMug.jpg/revision/latest/scale-to-width-down/105?cb=20230918145707',
+    seasons: 'IT3',
+    name: "Vezirja",
+    franchise: 'IT'
+  },
 
 ].sort((a, b) =>
   a.name.localeCompare(b.name)

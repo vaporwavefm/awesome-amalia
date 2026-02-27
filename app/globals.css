@@ -211,6 +211,27 @@
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c084fc;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c084fc transparent;
+}
 
 @layer base {
   :root {

@@ -200,11 +200,25 @@ const QueenCard = ({ q,
             )
           ) && (
             <>
-              <div className="grid grid-cols-2 gap-2 text-sm text-gray-700 text-center">
-                {q.wins != null && (<p>Wins: {q.wins}</p>)}
-                {q.highs != null && (<p>Highs: {q.highs}</p>)}
-                {q.lows != null && (<p>Lows: {q.lows}</p>)}
-                {q.bottoms != null && (<p>Bottoms: {q.bottoms}</p>)}
+              <div className="w-full mt-4">
+                <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-center">
+                  {[
+                    { label: "Wins", value: q.wins },
+                    { label: "Highs", value: q.highs },
+                    { label: "Lows", value: q.lows },
+                    { label: "Bottoms", value: q.bottoms },
+                  ].map(
+                    (stat) =>
+                      stat.value != null && (
+                        <div key={stat.label} className="flex flex-col items-center">
+                          <span className="text-xs text-gray-500">{stat.label}</span>
+                          <span className="mt-0.5 text-base font-semibold text-gray-900 tabular-nums">
+                            {stat.value}
+                          </span>
+                        </div>
+                      )
+                  )}
+                </div>
               </div>
             </>
           )
