@@ -22,6 +22,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    { date: '2026-04-03', note: 'Added beta version of adding your very own Custom Queens! Just type the URL for the queen to add to your fantasy cast! :)'},
     { date: '2026-02-26', note: 'Made some adjustments to the episode cards in buildcast to be more mobile friendly! Also added queens from IT1, IT2, IT3!'},
     { date: '2026-02-23', note: 'Made some tweaks to the recaps messages! Also added a toggle button to hide eliminated queens :)'},
     { date: '2026-02-18', note: 'Added episode recaps on episode message screens on your simulation runs :)! Also made adjustments to lipsync outcomes for Top 2 lipsync wins.' },

@@ -16,6 +16,14 @@ import { Input } from "@/components/ui/input";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { Relationship, syncRelationships } from "@/lib/utils";
 import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter
+} from "@/components/ui/dialog";
+import {
   DndContext,
   closestCenter,
   DragEndEvent
@@ -60,7 +68,15 @@ const Page = () => {
   const [seasonFlow, setSeasonFlow] = useState("");
   const [seasonMode, setSeasonMode] = useState('');
   const [isLoading, setIsLoading] = useState(true); // fix loading issues with the big red Xs
+  const [showCustomQueenDialog, setShowCustomQueenDialog] = useState(false);
+  const [customQueen, setCustomQueen] = useState({
+    name: "",
+    url: "",
+    franchise: "US",
+    seasons: "",
+  });
   const router = useRouter();
+
 
   const generateRandomStats = () => ({
     Acting: Math.floor(Math.random() * 101),
@@ -70,6 +86,74 @@ const Page = () => {
     Runway: Math.floor(Math.random() * 101),
     Singing: Math.floor(Math.random() * 101),
   });
+
+  const handleCreateCustomQueen = async () => {
+
+    if (!customQueen.name) return;
+
+    let imageUrl = customQueen.url;
+
+    if (imageUrl) {
+
+      if (!isValidUrl(imageUrl)) {
+        alert("Please enter a valid URL.");
+        return;
+      }
+
+      const isValidImage = await validateImageUrl(imageUrl);
+
+      if (!isValidImage) {
+        alert("Image URL is invalid or failed to load.");
+        return;
+      }
+
+    } else {
+      imageUrl = "/assets/queens/default.png";
+    }
+
+    const newQueen = {
+      id: crypto.randomUUID(),
+      name: customQueen.name,
+      url: imageUrl,
+      franchise: customQueen.franchise,
+      seasons: customQueen.seasons,
+      stats: generateRandomStats(),
+      relationships: [],
+    };
+
+    setQueenCards(prev => {
+      const updated = [...prev, newQueen];
+      return syncRelationships(updated);
+    });
+
+    setCustomQueen({
+      name: "",
+      url: "",
+      franchise: "US",
+      seasons: "",
+    });
+
+    setShowCustomQueenDialog(false);
+  };
+
+  const isValidUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const validateImageUrl = (url: string): Promise<boolean> => {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.src = url;
+
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+  });
+};
 
   function generateRelationships(queens: any[]): any[] {
 
@@ -719,6 +803,7 @@ const Page = () => {
                           <p> <strong>España:</strong> 1-5 </p>
                           <p>  <strong>Holland:</strong> 1-2 </p>
                           <p> <strong>France:</strong> 1-2 </p>
+                          <p> <strong>Italy:</strong> 1-3 </p>
                           <p> <strong>Mexico:</strong> 1-2 </p>
                           <p> <strong>Philippines:</strong> 1-2 </p>
                           <p> <strong>Thailand:</strong> 1 </p>
@@ -787,8 +872,71 @@ const Page = () => {
                   >
                     Clear All!
                   </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowCustomQueenDialog(true)}
+                    className="rounded-full px-5 font-semibold hover:bg-purple-50 w-full sm:w-auto"
+                  >
+                    + Custom Queen
+                  </Button>
                 </div>
 
+                <Dialog open={showCustomQueenDialog} onOpenChange={setShowCustomQueenDialog}>
+                  <DialogContent className="max-w-lg">
+                    <DialogHeader>
+                      <DialogTitle>Create Custom Queen</DialogTitle>
+                    </DialogHeader>
+
+                    <div className="flex flex-col gap-4 mt-4">
+
+                      <Input
+                        placeholder="Queen Name"
+                        value={customQueen.name}
+                        onChange={(e) =>
+                          setCustomQueen(prev => ({ ...prev, name: e.target.value }))
+                        }
+                      />
+
+                      <Input
+                        placeholder="Image URL"
+                        value={customQueen.url}
+                        onChange={(e) =>
+                          setCustomQueen(prev => ({ ...prev, url: e.target.value }))
+                        }
+                      />
+
+                      <Input
+                        placeholder="Franchise (ex: US, UK)"
+                        value={customQueen.franchise}
+                        onChange={(e) =>
+                          setCustomQueen(prev => ({ ...prev, franchise: e.target.value }))
+                        }
+                      />
+
+                      <Input
+                        placeholder="Season (ex: 15)"
+                        value={customQueen.seasons}
+                        onChange={(e) =>
+                          setCustomQueen(prev => ({ ...prev, seasons: e.target.value }))
+                        }
+                      />
+
+                    </div>
+
+                    <DialogFooter className="mt-6">
+                      <Button variant="ghost" onClick={() => setShowCustomQueenDialog(false)}>
+                        Cancel
+                      </Button>
+
+                      <Button
+                        className="bg-purple-600 hover:bg-purple-700"
+                        onClick={handleCreateCustomQueen}
+                      >
+                        Add Queen
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
                 <div className="mt-6 flex flex-wrap justify-center gap-4 ">
                   {queenCards.map((queen) => (
                     <QueenCard
