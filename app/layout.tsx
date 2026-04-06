@@ -25,7 +25,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rupaul's Drag Race Simulator",
-  description: "Simulate full seasons of drag race!",
+  description: "Simulate full seasons of Rupaul's Drag Race! Select or import your own custom queens, select which challenges the queens will have to face (for example: musicals, snatch game, roasts, acting challenges!). You can also control other factors such as finale styles, premiere styles, and more!",
 };
 
 export default function RootLayout({
