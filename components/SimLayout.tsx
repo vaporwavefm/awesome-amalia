@@ -279,7 +279,23 @@ const SimLayout = (
 
         allSeasons.seasons = Object.fromEntries(trimmedEntries);
 
-        localStorage.setItem("allSeasons", JSON.stringify(allSeasons));
+        try {
+          localStorage.setItem("allSeasons", JSON.stringify(allSeasons));
+        } catch (err) {
+          console.warn("Storage quota exceeded, clearing old seasons...");
+
+          const trimmedEntries = Object.entries(allSeasons.seasons)
+            .sort(([, a]: any, [, b]: any) => b.timestamp - a.timestamp)
+            .slice(0, 1); 
+
+          allSeasons.seasons = Object.fromEntries(trimmedEntries);
+
+          try {
+            localStorage.setItem("allSeasons", JSON.stringify(allSeasons));
+          } catch (err2) {
+            console.error("Still too large even after trimming:", err2);
+          }
+        }
 
         setSeasons(
           trimmedEntries.map(([id, data]: any) => ({
