@@ -29,6 +29,7 @@ const EpisodeList = ({
   closeSheet,
   selectedEpisode,
   setSelectedEpisode,
+  episodeEvent
 }: {
   episodes: any[];
   onEpisodeClick: (epNum: number) => void;
@@ -40,6 +41,7 @@ const EpisodeList = ({
   closeSheet?: () => void;
   selectedEpisode: number | null;
   setSelectedEpisode: React.Dispatch<React.SetStateAction<number | null>>;
+  episodeEvent?: string;
 }) => {
   const handleEventClick = (
     e: React.MouseEvent,
@@ -232,7 +234,11 @@ const EpisodeList = ({
                 return (
                   <button
                     key={eventType}
-                    className={buttonClass}
+                    className={`${buttonClass} ${selectedEpisode === ep.episodeNumber &&
+                        episodeEvent === eventType
+                        ? "ring-4 ring-purple-500 ring-offset-2 font-bold scale-105"
+                        : ""
+                      }`}
                     onClick={(e) => handleEventClick(e, ep.episodeNumber, eventType, ep.nonElimination || false)}
                   >
                     {buttonLabel}

@@ -51,7 +51,6 @@ import {
 
 import { CSS } from "@dnd-kit/utilities";
 import Image from "next/image";
-import { updateRelationshipsAfterEpisode } from "@/lib/utils";
 
 const Page = () => {
   const [queenCards, setQueenCards] = useState<typeof queens>([]);
@@ -146,48 +145,14 @@ const Page = () => {
   };
 
   const validateImageUrl = (url: string): Promise<boolean> => {
-  return new Promise((resolve) => {
-    const img = new window.Image();
-    img.src = url;
+    return new Promise((resolve) => {
+      const img = new window.Image();
+      img.src = url;
 
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-  });
-};
-
-  function generateRelationships(queens: any[]): any[] {
-
-    const updatedQueens = [...queens];
-    for (let i = 0; i < queens.length; i++) {
-      const queen = queens[i];
-      const relationships = [];
-
-      for (let j = 0; j < queens.length; j++) {
-        if (i === j) continue;
-
-        const other = queens[j];
-        const weightedTypes = [
-          "friend", "friend", "ally", "neutral", "neutral", "rival"
-        ];
-        const type = weightedTypes[Math.floor(Math.random() * weightedTypes.length)]; // try to set initial relationships as friendly or neutral
-
-        let baseStrength = 0; // keep strength not as high and on the positive note
-        if (type === "friend" || type === "ally") baseStrength = 20 + Math.random() * 20;
-        else if (type === "rival") baseStrength = -10 + Math.random() * 10;
-        else baseStrength = Math.random() * 10;
-
-        relationships.push({
-          targetId: other.id,
-          type,
-          strength: Math.round(baseStrength),
-        });
-      }
-
-      updatedQueens[i] = { ...queen, relationships };
-    }
-
-    return updatedQueens;
-  }
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+    });
+  };
 
   const handleSaveToLocalStorage = () => {
     //console.log(queenCards);
@@ -822,7 +787,9 @@ const Page = () => {
                   type="queen"
                   onSelect={(queen) => {
                     setQueenCards((prev) => {
-                      if (prev.some(q => q.id === queen.id)) return prev;
+                      if (prev.some(q => q.id === queen.id)) {
+                        return prev;
+                      }
 
                       const updated = [
                         ...prev,
@@ -835,7 +802,6 @@ const Page = () => {
 
                       return syncRelationships(updated);
                     });
-
                   }}
                 />
 

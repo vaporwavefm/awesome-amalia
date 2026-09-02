@@ -652,93 +652,208 @@ export function updateRelationshipsAfterEpisode(
 ): Queen[] {
 
   const isPremiere = episodeNumber === 1 || episodeNumber === 2;
-  const easingFactor = isPremiere ? 0.1 : 1;
-  const allowTypeChange = !isPremiere;
-  const globalDampening = isPremiere ? 0.05 : 0.3;
-  const dramaMultiplier =
-    episodeType?.includes("finale") ? 2.5 :
-      episodeType?.includes("roast") ? 1.8 :
-        episodeType?.includes("lipsyncsmackdown") ? 2 :
-          episodeType?.includes("team") ? 1.5 :
-            1;
 
-  const updatedQueens = queens.map((queen) => {
-    if (!queen.relationships || queen.isEliminated) return queen;
-    const queenResult = episodeResults.find(r => r.id === queen.id);
+  const normalizedEpisodeType = episodeType?.toLowerCase() ?? "";
+
+  const dramaMultiplier =
+    normalizedEpisodeType.includes("finale") ? 1.15 :
+    normalizedEpisodeType.includes("roast") ? 1.10 :
+    normalizedEpisodeType.includes("lipsyncsmackdown") ? 1.10 :
+    normalizedEpisodeType.includes("team") ? 1.05 :
+    1;
+
+  const getPlacement = (id: string) =>
+    episodeResults.find(r => r.id === id)?.placement?.toLowerCase() ?? "safe";
+
+  return queens.map((queen) => {
+
+    if (!queen.relationships || queen.isEliminated) {
+      return queen;
+    }
+
+    const queenPlacement = getPlacement(queen.id);
 
     const updatedRelationships = queen.relationships.map((rel) => {
-      const targetQueen = queens.find(q => q.id === rel.targetId);
-      if (!targetQueen || targetQueen.isEliminated) return rel;
-      const targetResult = episodeResults.find(r => r.id === rel.targetId);
 
-      if (!targetResult) return rel;
+      const targetQueen = queens.find(
+        q => q.id === rel.targetId
+      );
+
+      if (!targetQueen || targetQueen.isEliminated) {
+        return rel;
+      }
+
+      const targetPlacement = getPlacement(rel.targetId);
 
       let { strength, type } = rel;
 
-      const isNeutral = type === "neutral";
-      const volatility = isNeutral
-        ? 0.6 + Math.random() * 0.4
-        : 0.8 + Math.random() * 0.4;
+      if (!isPremiere) {
+        const drift = (Math.random() - 0.5) * 0.4;
+        strength += drift;
+      }
+
+      if (
+        queenPlacement === "win" &&
+        targetPlacement === "win"
+      ) {
+        if (type === "neutral") strength += 1.5;
+        if (type === "friend") strength += 1.5;
+        if (type === "ally") strength += 1;
+      }
+
+      const queenStruggling =
+        ["bottom", "bottomas", "low"].includes(queenPlacement);
+
+      const targetStruggling =
+        ["bottom", "bottomas", "low"].includes(targetPlacement);
+
+      if (queenStruggling && targetStruggling) {
+        if (type === "neutral") strength += 1.5;
+        if (type === "friend") strength += 1.5;
+        if (type === "ally") strength += 1;
+      }
+
+      if (
+        queenStruggling &&
+        targetPlacement === "win"
+      ) {
+
+        if (type === "friend") strength -= 1.2 * dramaMultiplier;
+        if (type === "ally") strength -= 0.8 * dramaMultiplier;
+        if (type === "rival") strength -= 0.4 * dramaMultiplier;
+      }
+
+      if (
+        queenPlacement === "win" &&
+        targetStruggling
+      ) {
+
+        if (type === "friend") strength += 0.8;
+        if (type === "ally") strength += 0.5;
+      }
+
+      if (type === "friend") {
+
+        if (
+          queenPlacement === "safe" &&
+          targetPlacement === "safe"
+        ) {
+          strength += 0.3;
+        }
+
+        if (strength <= 8) {
+          strength += 1;
+        }
+      }
+
+      if (type === "ally") {
+
+        if (
+          queenPlacement === targetPlacement &&
+          ["win", "high", "safe"].includes(queenPlacement)
+        ) {
+          strength += 0.5;
+        }
+
+        if (strength < 35) {
+          type = "friend";
+        }
+      }
+
+      if (type === "rival") {
+
+        if (
+          queenPlacement === targetPlacement &&
+          !queenStruggling
+        ) {
+          strength += 0.5;
+        }
+
+        if (strength >= 65) {
+          type = "neutral";
+        }
+      }
+
+      if (type === "enemy") {
+
+        if (
+          queenPlacement === targetPlacement &&
+          queenPlacement !== "bottom"
+        ) {
+          strength += 0.5;
+        }
+
+        if (strength >= 55) {
+          type = "rival";
+        }
+      }
 
       if (!isPremiere) {
-        const gravityCenter = 50;
-        strength += (gravityCenter - strength) * 0.05;
+
+        switch (type) {
+
+          case "neutral":
+
+            if (strength >= 70) {
+              type = "friend";
+            }
+
+            else if (strength <= -10) {
+              type = "rival";
+            }
+
+            break;
+
+          case "friend":
+
+            if (strength >= 90) {
+              type = "ally";
+            }
+
+            else if (strength <= -15) {
+              type = "neutral";
+            }
+
+            break;
+
+          case "ally":
+            if (strength <= 25) {
+              type = "friend";
+            }
+            break;
+
+          case "rival":
+            if (strength >= 60) {
+              type = "neutral";
+            }
+
+            break;
+
+          case "enemy":
+            if (strength >= 50) {
+              type = "rival";
+            }
+            break;
+        }
       }
 
-      if (targetResult.placement === "win" && type === "friend") strength += 2 * easingFactor * globalDampening * dramaMultiplier;
-      if (targetResult.placement === "win" && type === "ally") strength += 4 * easingFactor * globalDampening *  dramaMultiplier;
-      if (targetResult.placement === "win" && type === "rival") strength -= 5 * easingFactor * globalDampening *  dramaMultiplier;
-      if (targetResult.placement === "bottom" && type === "rival") strength += 3 * easingFactor * globalDampening *  dramaMultiplier;
+      strength = Math.max(
+        -100,
+        Math.min(100, strength)
+      );
 
-      if (queenResult?.placement === "bottom" && targetResult.placement === "win") {
-        if (type === "friend") strength -= 10 * easingFactor * globalDampening *  dramaMultiplier;
-      }
-
-      if (!isPremiere) {
-        if (episodeType?.includes("team") && type === "rival")
-          strength += 5 * easingFactor * globalDampening * volatility;
-        if (episodeType?.includes("roast") && type === "friend")
-          strength -= 3 * easingFactor * globalDampening * volatility;
-      }
-
-
-      if (!isPremiere) {
-        const randomDrift = (Math.random() - 0.5) * 2;
-        strength += randomDrift * globalDampening * volatility * dramaMultiplier;
-      }
-
-      if (allowTypeChange) {
-        const evolveUpThreshold = 80;
-        const evolveDownThreshold = 20;
-        const softenThreshold = 10;
-
-        if (type === "neutral" && strength >= evolveUpThreshold)
-          type = "friend";
-        else if (type === "neutral" && strength <= 10)
-          type = "rival";
-
-        else if (type === "friend" && strength >= 80)
-          type = "ally";
-        else if (type === "friend" && strength <= evolveDownThreshold)
-          type = "rival";
-        else if (type === "rival" && strength >= 80)
-          type = "friend";
-        else if (type === "ally" && strength < 50 - softenThreshold)
-          type = "friend";
-        else if (type === "enemy" && strength > 70)
-          type = "rival";
-      }
-
-      strength = Math.max(0, Math.min(100, strength));
-      return { ...rel, strength, type };
+      return {
+        ...rel,
+        strength: Math.round(strength),
+        type
+      };
     });
 
-    return { ...queen, relationships: updatedRelationships };
+    return {
+      ...queen,
+      relationships: updatedRelationships
+    };
   });
-
-  //return syncMutualRelationships(updatedQueens);
-  // do not sync relatipnships anymore
-  return updatedQueens;
 }
 
 function syncMutualRelationships(queens: Queen[]): Queen[] {
@@ -782,30 +897,65 @@ function syncMutualRelationships(queens: Queen[]): Queen[] {
 }
 
 export function syncRelationships(queens: any[]): any[] {
-  return queens.map((queen) => {
-    const existing = queen.relationships ?? [];
+  const updatedQueens = queens.map((queen) => ({
+    ...queen,
+    relationships: [...(queen.relationships ?? [])],
+  }));
 
-    const updated = queens
-      .filter(q => q.id !== queen.id)
-      .map(other => {
-        const found = existing.find((r: Relationship) => r.targetId === other.id);
-        if (found) return found;
+  for (let i = 0; i < updatedQueens.length; i++) {
+    for (let j = i + 1; j < updatedQueens.length; j++) {
+      const queenA = updatedQueens[i];
+      const queenB = updatedQueens[j];
 
-        // default relationship for new queens
-        return {
-          targetId: other.id,
-          type: "neutral",
-          strength: 0,
-        };
+      const existingA = queenA.relationships.find(
+        (relationship: Relationship) =>
+          relationship.targetId === queenB.id
+      );
+
+      const existingB = queenB.relationships.find(
+        (relationship: Relationship) =>
+          relationship.targetId === queenA.id
+      );
+
+      if (existingA || existingB) {
+        continue;
+      }
+
+      const roll = Math.random();
+
+      let type: Relationship["type"];
+      let strength: number;
+
+      if (roll < 0.40) {
+        type = "friend";
+        strength = Math.floor(20 + Math.random() * 21);
+      } else if (roll < 0.60) {
+        type = "ally";
+        strength = Math.floor(15 + Math.random() * 21);
+      } else if (roll < 0.90) {
+        type = "neutral";
+        strength = Math.floor(-5 + Math.random() * 16);
+      } else {
+        type = "rival";
+        strength = Math.floor(-15 + Math.random() * 11);
+      }
+
+      queenA.relationships.push({
+        targetId: queenB.id,
+        type,
+        strength,
       });
 
-    return {
-      ...queen,
-      relationships: updated,
-    };
-  });
-}
+      queenB.relationships.push({
+        targetId: queenA.id,
+        type,
+        strength,
+      });
+    }
+  }
 
+  return updatedQueens;
+}
 
 function getRelationshipBias(queen: any, allQueens: any[]): number {
   if (!queen.relationships) return 0;

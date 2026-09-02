@@ -286,7 +286,7 @@ const SimLayout = (
 
           const trimmedEntries = Object.entries(allSeasons.seasons)
             .sort(([, a]: any, [, b]: any) => b.timestamp - a.timestamp)
-            .slice(0, 1); 
+            .slice(0, 1);
 
           allSeasons.seasons = Object.fromEntries(trimmedEntries);
 
@@ -887,6 +887,7 @@ const SimLayout = (
           seasonFlow={seasonFlow}
           selectedEpisode={selectedEpisode}
           setSelectedEpisode={setSelectedEpisode}
+          episodeEvent={episodeEvent}
         />
       </div>
       <div className="block md:hidden p-2">{/* for mobile screens */}

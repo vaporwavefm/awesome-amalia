@@ -11,12 +11,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { useSeasons } from "@/components/SeasonsContext";
+import { usePathname } from "next/navigation";
 
 const NavMenu = () => {
 
   const { seasons } = useSeasons();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+  const pathname = usePathname();
   return (
     <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-pink-100/80 to-pink-200/80 backdrop-blur-md border-b border-pink-200/60">
       <NavigationMenu className="max-w-7xl mx-auto px-6 py-3 overflow-x-auto md:overflow-visible">
@@ -25,7 +26,10 @@ const NavMenu = () => {
             <NavigationMenuLink asChild>
               <Link
                 href="/"
-                className="text-lg font-semibold tracking-tight text-gray-700 hover:text-pink-600 transition-colors">
+                className={`text-sm font-medium transition-colors ${pathname === "/"
+                  ? "text-pink-600"
+                  : "text-gray-700 hover:text-pink-600"
+                  }`}>
                 Home
               </Link>
             </NavigationMenuLink>
@@ -34,7 +38,10 @@ const NavMenu = () => {
             <NavigationMenuLink asChild>
               <Link
                 href="/buildcast"
-                className="text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors"
+                className={`text-sm font-medium transition-colors ${pathname === "/buildcast"
+                  ? "text-pink-600"
+                  : "text-gray-700 hover:text-pink-600"
+                  }`}
                 title="Start building a new simulation"
               >
                 Simulation Builder
@@ -84,7 +91,10 @@ const NavMenu = () => {
             <NavigationMenuLink asChild>
               <Link
                 href="/sim"
-                className="text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors"
+                className={`text-sm font-medium transition-colors ${pathname === "/sim"
+                    ? "text-pink-600"
+                    : "text-gray-700 hover:text-pink-600"
+                  }`}
                 title="Run the latest simulation configuration and generate a new season"
               >
                 Run Latest Simulation
