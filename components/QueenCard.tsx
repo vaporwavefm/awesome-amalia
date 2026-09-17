@@ -125,7 +125,7 @@ const QueenCard = ({ q,
       className={`relative flex flex-col justify-between rounded-2xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1
     ${q.isEliminated && !isMainScreen ? 'border-2 border-red-400 bg-red-50' : 'border border-gray-200'}
     ${q.isEliminated && !isMainScreen ? 'opacity-40 grayscale' : ''}
-    w-56 min-h-80`}
+    w-60 min-h-80`}
     >
 
       {isBuildCast && (
@@ -146,14 +146,13 @@ const QueenCard = ({ q,
       </CardHeader>
 
       <CardContent className="flex flex-col items-center justify-start space-y-3">
-        <div className="relative w-26 h-26 flex items-center justify-center group">
+        <div className="relative w-32 h-32 flex items-center justify-center group overflow-hidden rounded-xl">
           <Image
             src={q.urls ? q.urls[currentIndex] : q.url}
             alt={q.name}
             fill
             sizes="104px"
-            className={`rounded-full object-cover border-2 border-purple-300 ${(q.isEliminated && !isMainScreen) ? "grayscale" : ""
-              }`}
+            className={`rounded-xl object-cover border-2 border-purple-300 ${q.isEliminated && !isMainScreen ? "grayscale" : ""}`}
             quality={100}
           />
           {q.urls && q.urls.length > 1 && (

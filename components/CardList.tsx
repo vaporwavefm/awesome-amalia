@@ -46,6 +46,8 @@ const CardList = ({
     seasonStyle,
     allQueens,
     seasonFlow,
+    currentEpisode,
+    showTrackRecordTabs
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -57,12 +59,23 @@ const CardList = ({
     seasonStyle: string;
     allQueens: Queen[];
     seasonFlow: string;
+    currentEpisode?: number | null;
+    showTrackRecordTabs?: boolean;
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
     //const filteredQueens = queens;
     const [showEliminated, setShowEliminated] = useState(true);
     const filteredQueens = queens.filter(q => showEliminated || !q.isEliminated);
+    const hasTrackRecord = queens.some(
+        (queen) =>
+            queen.placements &&
+            Object.keys(queen.placements).length > 0
+    );
+
+    const shouldShowTabs = Boolean(
+        showTrackRecordTabs && hasTrackRecord
+    );
 
     return (
         <div className="w-full">
@@ -78,12 +91,12 @@ const CardList = ({
                 </div>
             }
 
-            {showResults ? (
+            {shouldShowTabs ? (
                 <Tabs defaultValue="queens" className="w-full">
                     <TabsList className="tabs-list flex overflow-x-auto whitespace-nowrap scrollbar-hide">
                         <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
-                        <TabsTrigger value="table-min" className="tabs-trigger" >Contestant Progess (Minified)</TabsTrigger>
-                        <TabsTrigger value="table-full" className="tabs-trigger" >Contestant Progess</TabsTrigger>
+                        <TabsTrigger value="table-min" className="tabs-trigger" >Track Record (Minified)</TabsTrigger>
+                        <TabsTrigger value="table-full" className="tabs-trigger" >Track Record</TabsTrigger>
                         {
                             (seasonFlow != 'ttwalas') && (
 
@@ -121,13 +134,13 @@ const CardList = ({
                     {/* Table Tab */}
                     <TabsContent value="table-min">
                         <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} />
                         </div>
                     </TabsContent>
 
                     <TabsContent value="table-full">
                         <div className="w-[97%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} />
                         </div>
                     </TabsContent>
                     {/* Lipsync Tab */}

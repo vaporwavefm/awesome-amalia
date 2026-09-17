@@ -560,7 +560,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
       // do nothing 
     } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 3) {
-      randomSeed = randomSeed / (2 * (bottomQueens[b].wins - 2));
+      randomSeed = randomSeed / (3 * (bottomQueens[b].wins - 2));
     }
 
     bottomResults.push({

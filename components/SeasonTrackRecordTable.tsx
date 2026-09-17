@@ -33,6 +33,8 @@ type SeasonTrackRecordTableProps = {
   episodes: { episodeNumber: number | string; title: string; id?: string }[];
   isMinified?: boolean;
   seasonStyle: string;
+  currentEpisode?: number | null;
+  showResults?: boolean;
 };
 
 const SeasonTrackRecordTable = ({
@@ -40,6 +42,8 @@ const SeasonTrackRecordTable = ({
   episodes,
   isMinified = false,
   seasonStyle,
+  currentEpisode,
+  showResults,
 }: SeasonTrackRecordTableProps) => {
 
   const [isExporting, setIsExporting] = useState(false);
@@ -48,6 +52,15 @@ const SeasonTrackRecordTable = ({
   const finaleEpNum = Math.max(
     ...episodes.map((ep) => Number(ep.episodeNumber))
   );
+
+  const displayedEpisodes =
+  showResults
+    ? episodes
+    : currentEpisode && currentEpisode > 1
+      ? episodes.filter(
+          (ep) => Number(ep.episodeNumber) < Number(currentEpisode)
+        )
+      : episodes;
 
   const handleExport = async () => {
     if (!tableRef.current) return;
@@ -255,7 +268,7 @@ const SeasonTrackRecordTable = ({
                   {!isMinified && (
                     <TableHead className="text-center">Picture</TableHead>
                   )}
-                  {episodes.map((ep) => (
+                  {displayedEpisodes.map((ep) => (
                     <TableHead
                       key={ep.id || ep.episodeNumber}
                       className="text-center px-2 h-16 ">
@@ -303,7 +316,7 @@ const SeasonTrackRecordTable = ({
                         </TableCell>
                       )}
 
-                      {episodes.map((ep) => {
+                      {displayedEpisodes.map((ep) => {
                         const placement = getPlacement(q, ep.episodeNumber);
                         const epNum = Number(ep.episodeNumber);
 

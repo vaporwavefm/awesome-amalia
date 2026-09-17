@@ -3,12 +3,26 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {Poppins} from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
 
 const poppins = Poppins({
 subsets: ['latin'],
 weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 variable: '--font-poppins',
 })
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+});
 
 /*
 const geistSans = Geist({
@@ -36,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} font-poppins antialiased`}
+        className={`${jakarta.variable} font-jakarta antialiased`}
       >
         {children}
         <Analytics />

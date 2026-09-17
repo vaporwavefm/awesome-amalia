@@ -873,6 +873,9 @@ const SimLayout = (
     return recap.trim();
   };
 
+  const showTrackRecordTabs =
+  showResults || episodeEvent === "main" || episodeEvent == '';
+
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
       {/* Display episode cards */}
@@ -977,6 +980,8 @@ const SimLayout = (
                   seasonStyle={seasonStyle}
                   allQueens={queens}
                   seasonFlow={seasonFlow}
+                  currentEpisode={selectedEpisode}
+                  showTrackRecordTabs={showTrackRecordTabs}
                 />
               )
             }
@@ -1028,6 +1033,7 @@ const SimLayout = (
               seasonStyle={seasonStyle}
               allQueens={queens}
               seasonFlow={seasonFlow}
+              showTrackRecordTabs={showTrackRecordTabs}
             />
           </>
         )}
