@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import {Poppins} from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { Inter } from "next/font/google";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -12,11 +11,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const poppins = Poppins({
-subsets: ['latin'],
-weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-variable: '--font-poppins',
-})
+
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

@@ -4526,6 +4526,21 @@ export const queens = [
     name: "Vezirja",
     franchise: 'IT'
   },
+  {
+    id: 'K7mQ2vL9xP4aN8cR1TzB',
+    url: 'https://logosrupaulsdragrace.fandom.com/wiki/Special:Redirect/file/AlikDRUK8CastMug.jpg',
+    seasons: 'UK8',
+    name: 'Alik',
+    franchise: 'UK'
+  },
+  {
+    id: 'R4nY8pC2wM6jH9sV3kQa',
+    url: 'https://logosrupaulsdragrace.fandom.com/wiki/Special:Redirect/file/AnitaPissDRUK8CastMug.jpg',
+    seasons: 'UK8',
+    name: 'Anita Piss',
+    franchise: 'UK'
+  },
+  
 
 ].sort((a, b) =>
   a.name.localeCompare(b.name)

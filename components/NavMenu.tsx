@@ -18,32 +18,27 @@ const NavMenu = () => {
   const { seasons } = useSeasons();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const getNavLinkClass = (href: string) => {
+    const active = pathname === href;
+    return ["flex items-center h-9 px-3 rounded-md", "text-sm font-medium", "transition-colors duration-200", active
+      ? "bg-pink-600 text-white shadow-sm"
+      : "text-slate-700 hover:bg-pink-100 hover:text-pink-700",].join(" ");
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full bg-gradient-to-r from-pink-100/80 to-pink-200/80 backdrop-blur-md border-b border-pink-200/60">
-      <NavigationMenu className="max-w-7xl mx-auto px-6 py-3 overflow-x-auto md:overflow-visible">
-        <NavigationMenuList className="flex items-center gap-8 min-w-max whitespace-nowrap">
+    <header className="sticky top-0 z-50 w-full border-b border-pink-200/70 bg-gradient-to-r from-pink-50 via-rose-50 to-pink-100 shadow-sm backdrop-blur-md">
+      <NavigationMenu key={pathname} className="mx-auto max-w-7xl px-6 py-3 overflow-x-auto md:overflow-visible">
+        <NavigationMenuList className="flex min-w-max items-center gap-1 whitespace-nowrap">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link
-                href="/"
-                className={`text-sm font-medium transition-colors ${pathname === "/"
-                  ? "text-pink-600"
-                  : "text-gray-700 hover:text-pink-600"
-                  }`}>
+              <Link href="/" className={getNavLinkClass("/")}>
                 Home
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link
-                href="/buildcast"
-                className={`text-sm font-medium transition-colors ${pathname === "/buildcast"
-                  ? "text-pink-600"
-                  : "text-gray-700 hover:text-pink-600"
-                  }`}
-                title="Start building a new simulation"
-              >
+              <Link href="/buildcast" className={getNavLinkClass("/buildcast")} title="Start building a new simulation" >
                 Simulation Builder
               </Link>
             </NavigationMenuLink>
@@ -89,18 +84,13 @@ const NavMenu = () => {
           </div>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link
-                href="/sim"
-                className={`text-sm font-medium transition-colors ${pathname === "/sim"
-                    ? "text-pink-600"
-                    : "text-gray-700 hover:text-pink-600"
-                  }`}
-                title="Run the latest simulation configuration and generate a new season"
-              >
-                Run Latest Simulation
+              <Link href="/sim" className={getNavLinkClass("/sim")} title="Run the latest simulation configuration and generate a new season" >
+                Run Simulation
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          <div className="mx-2 h-6 w-px bg-pink-200" />
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link

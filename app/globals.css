@@ -182,29 +182,42 @@
 }
 
 .e-title-msg {
-  @apply m-6 p-6
-         bg-gradient-to-r from-purple-200 via-indigo-100 to-purple-200
-         rounded-xl border border-gray-300
-         text-center text-gray-800 font-semibold
-         shadow-lg transition-transform duration-300 ease-in-out
-         hover:scale-101 hover:shadow-2xl;
+  @apply mx-6 my-5 p-6
+         bg-white
+         rounded-lg
+         border border-purple-200
+         border-t-4 border-t-purple-700
+         text-center
+         shadow-sm;
 }
 
 .e-title-h2 {
-  @apply font-bold text-2xl text-center text-purple-800 tracking-wide;
+  @apply font-bold text-2xl
+         text-center
+         text-purple-900
+         tracking-tight;
 }
 
 .e-title-descr {
-  @apply mt-3 text-base text-center text-gray-700 leading-relaxed;
+  @apply mt-3
+         text-lg
+         text-center
+         text-slate-800
+         leading-relaxed;
 }
 
 .general-msg {
-  @apply inline-block max-w-2xl 
-         bg-white text-gray-800
-         rounded-lg border border-gray-200
-         shadow-lg py-4 px-8 text-center
-         transition-transform duration-300 ease-in-out
-         hover:scale-101 hover:shadow-xl;
+  @apply inline-block max-w-2xl
+         bg-white
+         text-purple-900
+         rounded-lg
+         border border-purple-200
+         border-t-4 border-t-purple-700
+         shadow-sm
+         py-5 px-8
+         text-center
+         text-lg
+         leading-relaxed;
 }
 
 .scrollbar-hide {
