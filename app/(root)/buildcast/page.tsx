@@ -772,7 +772,7 @@ const Page = () => {
                           <p> <strong>Mexico:</strong> 1-2 </p>
                           <p> <strong>Philippines:</strong> 1-2 </p>
                           <p> <strong>Thailand:</strong> 1 </p>
-                          <p> <strong>UK:</strong> 1-7 </p>
+                          <p> <strong>UK:</strong> 1-8 </p>
                         </TooltipContent>
                       </Tooltip>
                     </h2>

@@ -503,8 +503,6 @@ export function mainChallenge(
 
     }
 
-
-
     placementType = 'safe';
     return { ...q, placements: [...q.placements, { episodeNumber, placement: placementType }] };
   });
@@ -528,11 +526,21 @@ function nittyGritty({ size }: { size: number }) {
   const placementReserve: Record<number, [number, number]> = {
     5: [2, 3],
     6: [3, 3],
-    7: [4, 3]
+    7: [4, 3],
   };
 
-  if (placementReserve[size]) return placementReserve[size];
+  if (placementReserve[size]) {
+    return placementReserve[size];
+  }
+
+  if (size >= 8) {
+    return Math.random() < 0.5
+      ? [3, 3]
+      : [3, 3];
+  }
+
   return [3, 3]; // default
+
 }
 
 function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs: number; lows: number; bottoms: number }[], episodeType: string,
@@ -540,7 +548,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
 ) {
 
   const bottomResults = [];
-  let randomSeed = (Math.floor(Math.random() * 10) + 1);
+  let queenRandomSeed = Math.floor(Math.random() * 10) + 1;
   let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
 
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
@@ -560,13 +568,15 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
       // do nothing 
     } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 3) {
-      randomSeed = randomSeed / (3 * (bottomQueens[b].wins - 2));
+      queenRandomSeed = Math.floor(Math.random() * 10) + 1;
+      queenRandomSeed =
+        queenRandomSeed / (3 * (bottomQueens[b].wins - 2));
     }
 
     bottomResults.push({
       bottomId: bottomQueens[b].id,
       name: bottomQueens[b].queen,
-      result: randomSeed
+      result: queenRandomSeed
         + (winWeight * bottomQueens[b].wins)
         + (highWeight * bottomQueens[b].highs)
         - (lowWeight * bottomQueens[b].lows)
@@ -628,7 +638,7 @@ function getEpisodeScore(queen: any, episodeType: string, episodeNumber: number,
   const randomFactor = Math.floor(Math.random() * 20) - 10;
   const bias = getQueenBiasFromStats(queen);
 
-  const relationshipBias = 0;// getRelationshipBias(queen, queen.allQueens || []);
+  const relationshipBias = 0; // getRelationshipBias(queen, queen.allQueens || []);
   const finalScore = baseStat + statIncrease; //+ relationshipBias;
 
   //const finalScore = (baseStat + statIncrease);
@@ -657,10 +667,10 @@ export function updateRelationshipsAfterEpisode(
 
   const dramaMultiplier =
     normalizedEpisodeType.includes("finale") ? 1.15 :
-    normalizedEpisodeType.includes("roast") ? 1.10 :
-    normalizedEpisodeType.includes("lipsyncsmackdown") ? 1.10 :
-    normalizedEpisodeType.includes("team") ? 1.05 :
-    1;
+      normalizedEpisodeType.includes("roast") ? 1.10 :
+        normalizedEpisodeType.includes("lipsyncsmackdown") ? 1.10 :
+          normalizedEpisodeType.includes("team") ? 1.05 :
+            1;
 
   const getPlacement = (id: string) =>
     episodeResults.find(r => r.id === id)?.placement?.toLowerCase() ?? "safe";

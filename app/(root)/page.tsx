@@ -16,12 +16,12 @@ const Page = () => {
   const [bugPage, setBugPage] = useState(1);
 
   const bugs = [
-
     { date: '2025-11-28', note: 'Issue with the navigation button. When you click on Previous when you are on the Safe screen you should be greeted with the main episode card and not just a list view of the queens. WIP' },
     { date: '2025-09-25', note: 'Rendering issues in mobile versions will need to be adjusted. FIXED: added sheet component to jump through episodes and navigation buttons to allow users to traverse through episode and episode events.' },
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    {date: '2026-09-24', note: 'Wow! Its been more than 1 year since this started! I am currently doing some UI updates and finally adjusted the quality issue with the Queen URLs! If you want to see higher quality pictures of the queens, under the Simulation Builder, just delete the queen and add them back into the cast! Also added queens from UK8!'},
     { date: '2026-04-03', note: 'Added beta version of adding your very own Custom Queens! Just type the URL for the queen to add to your fantasy cast! :)'},
     { date: '2026-02-26', note: 'Made some adjustments to the episode cards in buildcast to be more mobile friendly! Also added queens from IT1, IT2, IT3!'},
     { date: '2026-02-23', note: 'Made some tweaks to the recaps messages! Also added a toggle button to hide eliminated queens :)'},
@@ -44,7 +44,7 @@ const Page = () => {
     { date: "2025-09-14", note: "First go-live! Simulator currently has the following queens from these seasons imported: US9, US10, US11, UK2, C1. Also available are episodes from US10, US11. For now, only the old-school style season mode is available. Stats have been implemented to weigh results for placements and lipsync outcomes. Stats are currently being generated at random." },
   ];
 
-  const ITEMS_PER_PAGE = 3;
+  const ITEMS_PER_PAGE = 5;
   const paginate = (data: any[], page: number) => {
     const start = (page - 1) * ITEMS_PER_PAGE;
     return data.slice(start, start + ITEMS_PER_PAGE);
@@ -162,7 +162,7 @@ const Page = () => {
                    data-[state=active]:bg-red-600 data-[state=active]:text-white 
                    hover:bg-red-200 transition"
             >
-              Werk in Progress
+              Known Issues
             </TabsTrigger>
           </TabsList>
 
@@ -206,7 +206,7 @@ const Page = () => {
 
           {/* Bugs Tab */}
           <TabsContent value="bugs" className="mt-6 space-y-6">
-            <h2 className="text-2xl font-bold text-red-600">Werk in Progress</h2>
+            <h2 className="text-2xl font-bold text-red-600">Known Issues</h2>
             <ul className="space-y-6 pl-4 pr-4 mb-4">
               {paginate(bugs, bugPage).map((bug, idx) => (
                 <li
