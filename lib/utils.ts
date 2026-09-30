@@ -548,7 +548,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
 ) {
 
   const bottomResults = [];
-  let queenRandomSeed = Math.floor(Math.random() * 10) + 1;
+  const queenRandomSeed = Math.floor(Math.random() * 10) + 1;
   let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
 
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
