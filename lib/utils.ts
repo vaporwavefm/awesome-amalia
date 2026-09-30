@@ -564,13 +564,14 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
   }
 
   for (let b = 0; b < bottomQueens.length; b++) {
+    let adjustedRandomSeed = queenRandomSeed;
 
     if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
       // do nothing 
     } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 3) {
-      queenRandomSeed = Math.floor(Math.random() * 10) + 1;
-      queenRandomSeed =
-        queenRandomSeed / (3 * (bottomQueens[b].wins - 2));
+      adjustedRandomSeed =
+        queenRandomSeed /
+        (3 * (bottomQueens[b].wins - 2));
     }
 
     bottomResults.push({

@@ -773,6 +773,7 @@ const Page = () => {
                           <p> <strong>Philippines:</strong> 1-2 </p>
                           <p> <strong>Thailand:</strong> 1 </p>
                           <p> <strong>UK:</strong> 1-8 </p>
+                          <p> <strong>Dragula:</strong> 1 </p>
                         </TooltipContent>
                       </Tooltip>
                     </h2>

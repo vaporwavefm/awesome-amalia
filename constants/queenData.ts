@@ -4673,6 +4673,62 @@ export const queens = [
     name: 'Pinche Queen',
     franchise: 'DRGLA'
   },
+  {
+  id: 'Q7mK2xN9vR4tL8pW5cHd',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/BiqtchPuddinBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Biqtch Puddin',
+  franchise: 'DRGLA'
+},
+{
+  id: 'M9vC3kT7yHa2Q6nR8pWx',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bc/VictoriaElizabethBlackBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Victoria Elizabeth Black',
+  franchise: 'DRGLA'
+},
+{
+  id: 'X5pL8mQ2vR7nK4tW9cHd',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9e/AbhoraBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Abhora',
+  franchise: 'DRGLA'
+},
+{
+  id: 'N2kV7qR9xM4pL8tC5yHa',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/DisasterinaBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Disasterina',
+  franchise: 'DRGLA'
+},
+{
+  id: 'R8tQ3mK6xV9nP2cL7yWh',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/ce/ErikaKlashBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Erika Klash',
+  franchise: 'DRGLA'
+},
+{
+  id: 'T9cL4mX7qN2vR8pK5yWh',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a9/KendraOnixxxBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Kendra Onixxx',
+  franchise: 'DRGLA'
+},
+{
+  id: 'V3pK8nQ5xR2mL9tW7cHa',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/14/MonikkieShameBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Monikkie Shame',
+  franchise: 'DRGLA'
+},
+{
+  id: 'C8mR5qN2xV7pK9tL4yWh',
+  url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/FelonyDodgerBBD2CastMug.png',
+  seasons: 'DRGLA2',
+  name: 'Felony Dodger',
+  franchise: 'DRGLA'
+},
 
 
 ].sort((a, b) =>
