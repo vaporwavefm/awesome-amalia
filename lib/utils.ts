@@ -577,7 +577,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     bottomResults.push({
       bottomId: bottomQueens[b].id,
       name: bottomQueens[b].queen,
-      result: queenRandomSeed
+      result: adjustedRandomSeed
         + (winWeight * bottomQueens[b].wins)
         + (highWeight * bottomQueens[b].highs)
         - (lowWeight * bottomQueens[b].lows)
