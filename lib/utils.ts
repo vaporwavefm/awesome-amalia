@@ -231,8 +231,6 @@ export function mainChallenge(
           winners.push(winnerId);
           losers.push(...trio.filter(q => q.id !== winnerId));
 
-          //const allPairs: LipsyncPairResult[] = []; 
-
           allPairs.push({
             pair: trio.map(q => q.id),
             winnerId,
@@ -558,7 +556,7 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
     bottomWeight = 1.7;
   } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true) {
     winWeight = .05;
-    highWeight = .02;
+    highWeight = .015;
     lowWeight = .01;
     bottomWeight = .01;
   }
@@ -568,10 +566,13 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
 
     if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
       // do nothing 
-    } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true && bottomQueens[b].wins > 3) {
-      adjustedRandomSeed =
-        queenRandomSeed /
-        (3 * (bottomQueens[b].wins - 2));
+    } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true) {
+      if (bottomQueens[b].wins > 3) {
+        adjustedRandomSeed =
+          queenRandomSeed /
+          (3 * (bottomQueens[b].wins - 2));
+      }
+
     }
 
     bottomResults.push({

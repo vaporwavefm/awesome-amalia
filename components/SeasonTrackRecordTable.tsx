@@ -54,13 +54,13 @@ const SeasonTrackRecordTable = ({
   );
 
   const displayedEpisodes =
-  showResults
-    ? episodes
-    : currentEpisode && currentEpisode > 1
-      ? episodes.filter(
+    showResults
+      ? episodes
+      : currentEpisode && currentEpisode > 1
+        ? episodes.filter(
           (ep) => Number(ep.episodeNumber) < Number(currentEpisode)
         )
-      : episodes;
+        : episodes;
 
   const handleExport = async () => {
     if (!tableRef.current) return;
@@ -259,9 +259,10 @@ const SeasonTrackRecordTable = ({
             style={{ overflow: "visible" }}
           >
             <Table>
-              <TableCaption className="bg-purple-100 text-purple-900 font-semibold py-2 rounded-t-lg mb-2">
+              <TableCaption className="text-purple-900 font-semibold text-sm tracking-wide py-3 px-4 border-b border-purple-200 text-center">
                 Contestant Progress
               </TableCaption>
+
               <TableHeader>
                 <TableRow>
                   <TableHead>Queen</TableHead>

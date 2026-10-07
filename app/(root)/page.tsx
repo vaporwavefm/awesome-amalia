@@ -21,6 +21,7 @@ const Page = () => {
     { date: '2025-09-24', note: 'Need to fix issue involving lipsyncs not being synced correctly if certain episodes do not contain lipsyncs (like s9e1) or if seasons starts at episode 2 (like s3) FIXED: Filled in random lipsyncs if the episode itself does not have a lipsync.' },
   ]
   const updates = [
+    {date: '2026-10-07', note: 'More UI updated to the Queen cards! Also, added queens from LMD5! (And also added queens from Dragula, of course)'},
     {date: '2026-09-24', note: 'Wow! Its been more than 1 year since this started! I am currently doing some UI updates and finally adjusted the quality issue with the Queen URLs! If you want to see higher quality pictures of the queens, under the Simulation Builder, just delete the queen and add them back into the cast! Also added queens from UK8!'},
     { date: '2026-04-03', note: 'Added beta version of adding your very own Custom Queens! Just type the URL for the queen to add to your fantasy cast! :)'},
     { date: '2026-02-26', note: 'Made some adjustments to the episode cards in buildcast to be more mobile friendly! Also added queens from IT1, IT2, IT3!'},

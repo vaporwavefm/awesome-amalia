@@ -66,6 +66,7 @@ const CardList = ({
     const maxWins = Math.max(...queens.map((q) => q.wins));
     //const filteredQueens = queens;
     const [showEliminated, setShowEliminated] = useState(true);
+    const [showMinimized, setShowMinimized] = useState(false);
     const filteredQueens = queens.filter(q => showEliminated || !q.isEliminated);
     const hasTrackRecord = queens.some(
         (queen) =>
@@ -82,12 +83,18 @@ const CardList = ({
 
             {(viewMode == null) &&
                 <div className="flex items-center justify-center gap-2 pt-4 pb-4 text-md font-medium text-slate-700 cursor-pointer">
-                    <Switch id="airplane-mode"
+                    <Switch id="show-eliminated"
                         onCheckedChange={() => setShowEliminated(prev => !prev)}
                         checked={showEliminated}
 
                     />
                     <Label htmlFor="airplane-mode">Show Eliminated Queens</Label>
+                    {/* <Switch id="show-eliminated"
+                        onCheckedChange={() => setShowMinimized(prev => !prev)}
+                        checked={showMinimized}
+
+                    />
+                    <Label htmlFor="show-minimized">Only Show Icons</Label> */}
                 </div>
             }
 
@@ -125,6 +132,7 @@ const CardList = ({
                                         isWinner={showResults && queen.wins === maxWins} // pass down to QueenCard if needed
                                         allQueens={allQueens}
                                         seasonFlow={seasonFlow}
+                                        showMinimized={showMinimized}
                                     />
                                 </div>
                             ))}
@@ -174,6 +182,7 @@ const CardList = ({
                                 viewMode={viewMode}
                                 allQueens={allQueens}
                                 seasonFlow={seasonFlow}
+                                showMinimized={showMinimized}
                             />
                         </div>
                     ))}

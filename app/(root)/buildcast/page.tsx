@@ -541,11 +541,11 @@ const Page = () => {
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs text-sm">
                           <p>
-                            <strong>Classic Format:</strong> No twists this season! The season will have tops, highs, lows,
+                            <strong>Classic Season:</strong> No twists this season! The season will have tops, highs, lows,
                             and bottom queens with a classic lipsync for your life to determine elimination.
                           </p>
                           <p>
-                            <strong>Top Two & Lipsticks:</strong> In each episode, the top two All-Stars
+                            <strong>Classic All-Stars:</strong> In each episode, the top two All-Stars
                             will Lipsync for their Legacy. The winner earns the power to eliminate one of the bottom queens.
                           </p>
                           <p className="mt-2">
@@ -567,8 +567,8 @@ const Page = () => {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>All-Stars</SelectLabel>
-                          <SelectItem value="osas">Classic Format</SelectItem>
-                          <SelectItem value="ttwalas">Top Two and Lipsticks </SelectItem>
+                          <SelectItem value="osas">Classic Season</SelectItem>
+                          <SelectItem value="ttwalas">Classic All-Stars </SelectItem>
                           <SelectItem value="laas" disabled>Lipsync Assassins (coming soon!)</SelectItem>
                         </SelectGroup>
                       </SelectContent>
@@ -773,7 +773,8 @@ const Page = () => {
                           <p> <strong>Philippines:</strong> 1-2 </p>
                           <p> <strong>Thailand:</strong> 1 </p>
                           <p> <strong>UK:</strong> 1-8 </p>
-                          <p> <strong>Dragula:</strong> 1 </p>
+                          <p> <strong>Dragula:</strong> 1-6 </p>
+                          <p> <strong>La Más Draga:</strong> 5 </p>
                         </TooltipContent>
                       </Tooltip>
                     </h2>

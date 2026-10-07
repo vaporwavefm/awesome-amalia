@@ -5037,6 +5037,90 @@ export const queens = [
     name: 'Yuri',
     franchise: 'DRGLA'
   },
+  {
+    id: 'K7mQ2vR9xP4tN8cL5yHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a6/AishaDollkillsMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Aisha Dollkills',
+    franchise: 'LMD'
+  },
+  {
+    id: 'N4pL8xC2mV7qR5tK9yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/DeseosFabMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Deseos Fab',
+    franchise: 'LMD'
+  },
+  {
+    id: 'R6tY3mK8pQ2vN9xL4cHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/Fif%C3%ADEstahMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Fifí Estah',
+    franchise: 'LMD'
+  },
+  {
+    id: 'V9cP4mX7rL2qK8tN5yHd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5a/GrethaWhiteMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Gretha White',
+    franchise: 'LMD'
+  },
+  {
+    id: 'Q5nR8vK3mT7xP2cL9yHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/86/HiddenMistakeMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Hidden Mistake',
+    franchise: 'LMD'
+  },
+  {
+    id: 'M8xC2pV7qL4rN9tK5yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e6/HumaKyleMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Huma Kyle',
+    franchise: 'LMD'
+  },
+  {
+    id: 'T3qK9mR5vP8xL2cN7yHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3e/IsabellayCatalinaMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Isabella y Catalina',
+    franchise: 'LMD'
+  },
+  {
+    id: 'P7vN4xC9mK2qR8tL5yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/LightKingMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Light King',
+    franchise: 'LMD'
+  },
+  {
+    id: 'L2mQ8vR5xC7pN4tK9yHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/45/LizaZanZuzziMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Liza Zan Zuzzi',
+    franchise: 'LMD'
+  },
+  {
+    id: 'C9xP3mK7vN2qR8tL5yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/PaperCutLMD5MugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Paper Cut',
+    franchise: 'LMD'
+  },
+  {
+    id: 'Y4rL8mQ2vK9xP5tN7cHa',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/01/PekeBalderasMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Peke Balderas',
+    franchise: 'LMD'
+  },
+  {
+    id: 'W7pN3xC8mR5qK2tL9yHd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/38/SantaLuc%C3%ADaMugPromo2.jpg',
+    seasons: 'LMD5',
+    name: 'Santa Lucía',
+    franchise: 'LMD'
+  },
 
 
 ].sort((a, b) =>
