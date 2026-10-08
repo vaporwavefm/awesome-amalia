@@ -104,12 +104,7 @@ const CardList = ({
                         <TabsTrigger value="queens" className="tabs-trigger" >Queens</TabsTrigger>
                         <TabsTrigger value="table-min" className="tabs-trigger" >Track Record (Minified)</TabsTrigger>
                         <TabsTrigger value="table-full" className="tabs-trigger" >Track Record</TabsTrigger>
-                        {
-                            (seasonFlow != 'ttwalas') && (
-
-                                <TabsTrigger value="lipsyncs" className="tabs-trigger" >Lipsyncs</TabsTrigger>
-                            )
-                        }
+                        <TabsTrigger value="lipsyncs" className="tabs-trigger" >Lipsyncs</TabsTrigger>
                     </TabsList>
 
                     {/* Queens Tab */}
@@ -152,16 +147,11 @@ const CardList = ({
                         </div>
                     </TabsContent>
                     {/* Lipsync Tab */}
-                    {
-                        (seasonFlow != 'ttwalas') && (
-                            <TabsContent value="lipsyncs">
-                                <div className="w-[95%] mx-auto">
-                                    <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} />
-                                </div>
-                            </TabsContent>
-                        )
-                    }
-
+                    <TabsContent value="lipsyncs">
+                        <div className="w-[95%] mx-auto">
+                            <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} seasonFlow={seasonFlow} />
+                        </div>
+                    </TabsContent>
                 </Tabs>
             ) : (
                 // Default non-results view (just show queens)
