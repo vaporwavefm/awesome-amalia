@@ -4531,595 +4531,694 @@ export const queens = [
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0a/AlikDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Alik',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'B4nX8qL2wM7pR5sK9dTf',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/59/AnitaPissDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Anita Piss',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'C9rT5vN3kP8xQ2mL6sWj',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/ca/Coral-HoleMandiDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Coral-Hole Mandi',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'D2mK7qR4xV9nP5tL8cHs',
     url: 'http://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/90/FleshDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Flesh',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'E8pL3xN6qT2vR9mK5wHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1e/KYKellyDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'KY Kelly',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'F5qW9mR2kL7xN4pT8vCs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/13/LuckyRoySinghDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Lucky Roy Singh',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'G3vN8pK5xQ2mL7rT9wHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e0/Ma_danni_xDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'ma_dannii_x',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'H9kR4xP7mL2vN8qT5cWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c3/MochaDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Mocha',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'J6pT2mQ9xR5vK8nL3wHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b3/NayaThornDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Naya Thorn',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'L9xC5mQ2vR8pN4kT7yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9c/ParisBabyDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Paris Baby',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'M4nR8qL2xP7vK5tN9cWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b1/TequilaThirstDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'Tequila Thirst',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'N7xK3pQ9mR5vL2tW8cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8d/TheDeltaQuadrantDRUK8CastMug.jpg',
     seasons: 'UK8',
     name: 'The Delta Quadrant',
-    franchise: 'UK'
+    franchise: 'GB'
   },
   {
     id: 'K7mQ2vR9xL4pN8tW5cHs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/29/VanderVonOddBBD1CastMug.jpg',
     seasons: 'DRGLA1',
     name: 'Vander Von Odd',
-    franchise: 'DRGLA'
+    franchise: 'US'
+
   },
   {
     id: 'P4xN8qL2mR7vK5tW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/32/FrankieDoomBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Frankie Doom',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R9vK3mQ7xP2nL8tW5cHs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/43/MelissaBefierceBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Melissa Befierce',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T5qL8xN2mR9vK4pW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/95/MeatballBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Meatball',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V8pR2mK7xQ5nL9tW4cHs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/20/LorisBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Loris',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'X3nK9qL5mR2vP8tW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9b/XochiMochiBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Xochi Mochi',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'B6vQ2mN8xR5pK9tW3cHs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/57/FoxieAdjuiaBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Foxie Adjuia',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'D9xL4pR7mQ2vN8tK5cWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/c7/UrsulaMajorBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Ursula Major',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'F2mK8qN5xR9vL3tW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3a/PincheQueenBBD1CastMug.png',
     seasons: 'DRGLA1',
     name: 'Pinche Queen',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Q7mK2xN9vR4tL8pW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/BiqtchPuddinBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Biqtch Puddin',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'M9vC3kT7yHa2Q6nR8pWx',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bc/VictoriaElizabethBlackBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Victoria Elizabeth Black',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'X5pL8mQ2vR7nK4tW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9e/AbhoraBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Abhora',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'N2kV7qR9xM4pL8tC5yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/DisasterinaBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Disasterina',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R8tQ3mK6xV9nP2cL7yWh',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/c/ce/ErikaKlashBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Erika Klash',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T9cL4mX7qN2vR8pK5yWh',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a9/KendraOnixxxBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Kendra Onixxx',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V3pK8nQ5xR2mL9tW7cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/14/MonikkieShameBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Monikkie Shame',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'C8mR5qN2xV7pK9tL4yWh',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/FelonyDodgerBBD2CastMug.png',
     seasons: 'DRGLA2',
     name: 'Felony Dodger',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R7mK2xQ9vL4pN8tW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/10/HollowEveBBD3CastMug.jpg',
     seasons: 'DRGLA3',
     name: 'Hollow Eve',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'N4qV8mT2xK7pL5yR9cWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/6d/DollyaBlackBBD3CastMug.jpg',
     seasons: 'DRGLA3',
     name: 'Dollya Black',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T5nL8qR2xV9mK4pW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fd/ViolenciaBBD3CastMug.png',
     seasons: 'DRGLA3',
     name: 'Violencia!',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'P8mQ4vN7xR2kL9tC5yWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4a/YovskaBBD3CastMug.jpg',
     seasons: 'DRGLA3',
     name: 'Yovska',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'C6xK9mR3qV8pN2tL5yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/44/PriscillaChambersBBD3CastMug.png',
     seasons: 'DRGLA3',
     name: 'Priscilla Chambers',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V2pL7nQ5xM9rK4tW8cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9a/MaxiGlamourBBD3CastMug.jpg',
     seasons: 'DRGLA3',
     name: 'Maxi Glamour',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'M5rT8qK2xN7vP4lW9cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/01/LouisiannaPurchaseBBD3CastMug.png',
     seasons: 'DRGLA3',
     name: 'Louisiana Purchase',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Q9vN3mL7xR5pK2tW8yHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/57/EvahDestructionBBD3CastMug.jpg',
     seasons: 'DRGLA3',
     name: 'Evah Destruction',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'H4kP8xR2mV7qN5tL9cWs',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fb/LandonCiderBBD3CastMug.png',
     seasons: 'DRGLA3',
     name: 'Landon Cider',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Y5tR9nK3xV7mQ2pL8cWd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/40/MaddelynnHatterBBD3CastMug.png',
     seasons: 'DRGLA3',
     name: 'Maddelynn Hatter',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'G7mQ2xR9vK4pL8tW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b8/DahliBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Dahli',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'N4vK8qL2xP7mR5tW9cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0f/HoSoTerraTomaBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'HoSo Terra Toma',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R9pM3xQ7vL5kN2tW8cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b9/SaintBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Saint',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'K5tL8qV2xR9mN4pW7cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5b/SigourneyBeaverBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Sigourney Beaver',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'P8mR4xN7qK2vL9tW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8d/LaZavaletaBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'La Zavaleta',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V2qK7mL5xR9pN4tW8cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/78/JadeJolieBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Jade Jolie',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'M6xP9qR3vK8nL2tW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/86/BitterBettyBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Bitter Betty',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T3nK8qV5xM2pR9lW7cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0d/MerrieCherryBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Merrie Cherry',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Q7vL4mN9xK2pR8tW5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e4/KocoCaineBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Koco Caine',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'H9mR5qK2xV7pL4tW8cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ef/AstrudAureliaBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Astrud Aurelia',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'C4pN8xQ7mR2vK9tW5yHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/FormeldaHydeBBD4CastMug.jpg',
     seasons: 'DRGLA4',
     name: 'Formelda Hyde',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'J7qM4xR9vK2pL8tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/af/NiohuruXBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Niohuru X',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V3nK8qP5xR2mL9tW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/19/BlackberriBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Blackberri',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Q9mR2xK7vN5pL4tW8cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/64/OrkgotikBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Orkgotik',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'L5pT8qN3xV7mK2rW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/ThrobZombieBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Throb Zombie',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R4kM9vQ2xP7nL5tW8cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/1a/FantasiaRoyaleGagaBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Fantasia Royale Gaga',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'N8xQ3mL7vK5pR2tW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0c/CynthiaDollBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Cynthia Doll',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'K2vR7qM5xN9pL4tW8cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/JayKayBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Jay Kay',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'P6mT9xQ3vR7kN2wL5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f1/AnnaPhylacticBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Anna Phylactic',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'W8qK4nR2xM7pV5tL9cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/2e/JarvisHammerBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Jarvis Hammer',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'C5rN9mK3xQ7vP2tW8yHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f7/SatannaBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Satanna',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T7pL2xV9mR4qK8nW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/76/OnyxOndyxBBD5CastMug.jpg',
     seasons: 'DRGLA5',
     name: 'Onyx Ondyx',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'X7mQ2vR9kL4pN8tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/6/63/AsiaConsentTBBD6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Asia Consent',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'K4nR8qL2xP7vM5tW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/88/AuntieHeroineTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Auntie Heroine',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'M9vK3xQ7pR2nL8tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/2/21/AuroraGozmicTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Aurora Gozmic',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'P5tL8qN2xV7mK4rW9cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/DesireeDikTBBD6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Desiree Dik',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'R8mQ4vK7xN2pL9tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7c/GreyMatterTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Grey Matter',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'N2xK7qM5vR9pL4tW8cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b7/JahariaTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Jaharia',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'V6pR9mQ3xK8nL2tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b7/MajestyTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Majesty',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'T3qN8xL5mR2vK9pW7cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/ff/PiTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Pi',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'Q7mL4vN9xK2pR8tW5cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/0f/ScyllaTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Scylla',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'H9xR5qK2vM7pL4tW8cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bf/SeverityStoneTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Severity Stone',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'C4mN8qV7xR2pK9tW5yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a6/VivviTheForceTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Vivvi The Force',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'W8pK3mQ6xV9rN2tL5cHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/09/YuriTBBDS6CastMug.jpg',
     seasons: 'DRGLA6',
     name: 'Yuri',
-    franchise: 'DRGLA'
+    franchise: 'US'
   },
   {
     id: 'K7mQ2vR9xP4tN8cL5yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a6/AishaDollkillsMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Aisha Dollkills',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'N4pL8xC2mV7qR5tK9yWd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7e/DeseosFabMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Deseos Fab',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'R6tY3mK8pQ2vN9xL4cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/Fif%C3%ADEstahMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Fifí Estah',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'V9cP4mX7rL2qK8tN5yHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5a/GrethaWhiteMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Gretha White',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'Q5nR8vK3mT7xP2cL9yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/86/HiddenMistakeMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Hidden Mistake',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'M8xC2pV7qL4rN9tK5yWd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/e6/HumaKyleMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Huma Kyle',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'T3qK9mR5vP8xL2cN7yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/3e/IsabellayCatalinaMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Isabella y Catalina',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'P7vN4xC9mK2qR8tL5yWd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/LightKingMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Light King',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'L2mQ8vR5xC7pN4tK9yHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/45/LizaZanZuzziMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Liza Zan Zuzzi',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'C9xP3mK7vN2qR8tL5yWd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/a4/PaperCutLMD5MugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Paper Cut',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'Y4rL8mQ2vK9xP5tN7cHa',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/01/PekeBalderasMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Peke Balderas',
-    franchise: 'LMD'
+    franchise: 'MX'
   },
   {
     id: 'W7pN3xC8mR5qK2tL9yHd',
     url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/3/38/SantaLuc%C3%ADaMugPromo2.jpg',
     seasons: 'LMD5',
     name: 'Santa Lucía',
-    franchise: 'LMD'
+    franchise: 'MX'
+  },
+  {
+    id: 'K8mQ2vL7xR4nP9tW3yHd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f1/AlexisMvglerLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Alexis Mvgler',
+    franchise: 'MX'
+  },
+  {
+    id: 'N5xT9qB3mK7vR2pL8yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7b/AnkCosartMiniPromo2.jpg',
+    seasons: 'LMD6',
+    name: 'Ank Cosart',
+    franchise: 'MX'
+  },
+  {
+    id: 'P4rW8mC2xJ6qL9tN3vYd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7f/ArielLMD6PromoPoster.jpeg',
+    seasons: 'LMD6',
+    name: 'Ariel',
+    franchise: 'MX'
+  },
+  {
+    id: 'V7kM3pR9xB2nQ5tL8yHd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/4c/AriesLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Aries',
+    franchise: 'MX'
+  },
+  {
+    id: 'C2nX6qL8mT4vR9pK3yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/bc/Braulio8000LMD6PromoPoster.jpeg',
+    seasons: 'LMD6',
+    name: 'Braulio 8000',
+    franchise: 'MX'
+  },
+  {
+    id: 'R9mK4xP2vN7qL5tB8yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fc/CattrionaLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Cattriona',
+    franchise: 'MX'
+  },
+  {
+    id: 'L3qV8mX5pR2nK7tB9yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/04/DimittraLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Dimittra',
+    franchise: 'MX'
+  },
+  {
+    id: 'X6pN2kR9mV4qT7yL3bWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dd/ElectraWalpurgisLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Electra Walpurgis',
+    franchise: 'MX'
+  },
+  {
+    id: 'B8vQ3mL7xN5pR2kT9yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/50/JuanaGuadalupeLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Juana Guadalupe',
+    franchise: 'MX'
+  },
+  {
+    id: 'M4tX9qR2vK6nP3yL8bWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/db/KellyLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Kelly',
+    franchise: 'MX'
+  },
+  {
+    id: 'Q7nL3xV8mR5pK2tB9yWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/d7/LaKyliezzLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'La Kyliezz',
+    franchise: 'MX'
+  },
+  {
+    id: 'T2mP8vK4xN9qR6yL3bWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/dc/MizzPeachesLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Mizz Peaches',
+    franchise: 'MX'
+  },
+  {
+    id: 'W9xR5mQ2vL7nK3pT8yHd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/0/07/PurgaLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Purga',
+    franchise: 'MX'
+  },
+  {
+    id: 'Y3kN7vM2qP9xR4tL8bWd',
+    url: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/5/5b/ShantelleLMD6PromoPoster.jpg',
+    seasons: 'LMD6',
+    name: 'Shantelle',
+    franchise: 'MX'
   },
 
 
