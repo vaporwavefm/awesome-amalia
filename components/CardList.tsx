@@ -47,7 +47,8 @@ const CardList = ({
     allQueens,
     seasonFlow,
     currentEpisode,
-    showTrackRecordTabs
+    showTrackRecordTabs,
+    lipsyncPairs
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -61,6 +62,7 @@ const CardList = ({
     seasonFlow: string;
     currentEpisode?: number | null;
     showTrackRecordTabs?: boolean;
+    lipsyncPairs?: any;
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -149,7 +151,13 @@ const CardList = ({
                     {/* Lipsync Tab */}
                     <TabsContent value="lipsyncs">
                         <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordLipsyncs queens={queens} episodes={episodes} lipsyncNames={lipsyncs} seasonFlow={seasonFlow} />
+                            <SeasonTrackRecordLipsyncs
+                                queens={queens}
+                                episodes={episodes}
+                                lipsyncNames={lipsyncs}
+                                seasonFlow={seasonFlow}
+                                lipsyncPairs={lipsyncPairs}
+                            />
                         </div>
                     </TabsContent>
                 </Tabs>

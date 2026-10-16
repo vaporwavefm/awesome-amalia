@@ -88,7 +88,7 @@ const SimLayout = (
   const [open, setOpen] = useState(false);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
-  const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, SavedLipsync[]>>({});
+  const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, any[]>>({});
   const { seasons, setSeasons } = useSeasons();
 
   const getRelationshipChanges = (episodeNumber: number) => {
@@ -183,7 +183,6 @@ const SimLayout = (
           tempLssdLipsyncs[e.episodeNumber] = addNewLipsyncs(lipsyncs, totalLipsyncs);
         }
 
-        //console.log('tempLssdLipsyncs[e.episodeNumber]: ' + JSON.stringify(tempLssdLipsyncs[e.episodeNumber]));
       }
 
       let activeGroup = trackRecord;
@@ -204,6 +203,13 @@ const SimLayout = (
         seasonFlow,
         tempLssdLipsyncs
       );
+
+      if (e.type.toLowerCase().includes("lipsyncsmackdown") && !e.type.toLowerCase().includes("finale")) {
+        setLssdLipsyncs(prev => ({
+          ...prev,
+          [e.episodeNumber]: result.lipsyncPairs ?? [],
+        }));
+      }
 
       const pairs = result.lipsyncPairs ?? [];
 
@@ -874,7 +880,20 @@ const SimLayout = (
   };
 
   const showTrackRecordTabs =
-  showResults || episodeEvent === "main" || episodeEvent == '';
+    showResults || episodeEvent === "main" || episodeEvent == '';
+
+  const lipsyncPairsPartial = useMemo(() => {
+    if (selectedEpisode === null || selectedEpisode == 1) {
+      return {};
+    }
+
+    return Object.fromEntries(
+      Object.entries(lssdLipsyncs).filter(
+        ([episodeNumber]) =>
+          Number(episodeNumber) <= selectedEpisode - 1
+      )
+    );
+  }, [lssdLipsyncs, selectedEpisode]);
 
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
@@ -982,6 +1001,7 @@ const SimLayout = (
                   seasonFlow={seasonFlow}
                   currentEpisode={selectedEpisode}
                   showTrackRecordTabs={showTrackRecordTabs}
+                  lipsyncPairs={lipsyncPairsPartial ?? []}
                 />
               )
             }
@@ -1025,7 +1045,6 @@ const SimLayout = (
               </div>
             )}
 
-
             <CardList
               queens={queensForCardList}
               episodes={episodes}
@@ -1034,6 +1053,7 @@ const SimLayout = (
               allQueens={queens}
               seasonFlow={seasonFlow}
               showTrackRecordTabs={showTrackRecordTabs}
+              lipsyncPairs={lipsyncPairsPartial ?? []}
             />
           </>
         )}
