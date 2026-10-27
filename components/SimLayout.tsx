@@ -18,15 +18,44 @@ import {
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Relationship, getQueenNameById } from "@/lib/utils";
+import { Relationship, getQueenNameById, getMiniChallengeWinner, type MiniChallengeResult, } from "@/lib/utils";
 import EpisodeEventContainer from "./EpisodeEventContainer";
 import QueenCard from "./QueenCard";
 import LipsyncSmackdownComp from "./LipsyncSmackdownComp";
 import { useSeasons } from "@/components/SeasonsContext";
+import { QueenStats } from "@/lib/utils";
 
 type Placement = {
   episodeNumber: number | string;
   placement: string;
+};
+
+type Queen = {
+  id: string;
+  name: string;
+  url: string;
+  urls?: string[];
+  urlObj?: string[];
+  franchise?: string;
+  seasons?: string;
+  wins?: number;
+  highs?: number;
+  lows?: number;
+  bottoms?: number;
+  isEliminated?: boolean;
+  stats?: QueenStats;
+  relationships?: Relationship[];
+};
+
+type MiniChallenge = {
+  winner: Queen;
+  id: string;
+  description: string;
+};
+
+type SavedMiniChallenge = {
+  episodeNumber: number;
+  miniChallenge: MiniChallenge;
 };
 
 const SimLayout = (
@@ -38,7 +67,8 @@ const SimLayout = (
     seasonMode,
     seasonStyle,
     seasonTitle,
-    seasonFlow
+    seasonFlow,
+    miniChallenges
   }:
     {
       queens: any[];
@@ -49,6 +79,7 @@ const SimLayout = (
       seasonStyle: string;
       seasonTitle: string;
       seasonFlow: string;
+      miniChallenges?: SavedMiniChallenge[];
     }) => {
 
   const searchParams = useSearchParams();
@@ -79,8 +110,17 @@ const SimLayout = (
     }));
   }, [queens]);
 
-  const [episodeHistory, setEpisodeHistory] = useState<{ pre: { [key: number]: any[] }, post: { [key: number]: any[] }, lipsyncPairs?: { [key: number]: SavedLipsync[] }; }>({ pre: {}, post: {}, lipsyncPairs: {} });
-  const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
+  const [episodeHistory, setEpisodeHistory] = useState<{
+    pre: { [key: number]: any[] };
+    post: { [key: number]: any[] };
+    lipsyncPairs?: { [key: number]: SavedLipsync[] };
+    miniChallenges?: Record<number, MiniChallengeResult>;
+  }>({
+    pre: {},
+    post: {},
+    lipsyncPairs: {},
+    miniChallenges: {},
+  }); const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
   const [episodeEvent, setEpisodeEvent] = useState('');
   const [selectedLipsync, setSelectedLipsync] = useState<SavedLipsync | null>(null);
   const [showResults, setShowResults] = useState(false);
@@ -90,6 +130,22 @@ const SimLayout = (
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, any[]>>({});
   const { seasons, setSeasons } = useSeasons();
+
+  const miniChallengesByEpisode: Record<number, MiniChallengeResult> = {};
+  (miniChallenges ?? []).forEach(({ episodeNumber, miniChallenge }) => {
+    const episode = episodes.find(
+      (e) => e.episodeNumber === Number(episodeNumber)
+    );
+
+    if (!episode || episode.title.toLowerCase().includes("finale")) { // no mini challenge for finale
+      return;
+    }
+
+    miniChallengesByEpisode[Number(episodeNumber)] = {
+      ...miniChallenge,
+      winner: null,
+    };
+  });
 
   const getRelationshipChanges = (episodeNumber: number) => {
     const preEpisode = episodeHistory.pre[episodeNumber];
@@ -194,6 +250,15 @@ const SimLayout = (
         }
       }
 
+      const miniChallenge = miniChallengesByEpisode[e.episodeNumber];
+
+      if (miniChallenge) {
+        miniChallengesByEpisode[e.episodeNumber] = {
+          ...miniChallenge,
+          winner: getMiniChallengeWinner(activeGroup),
+        };
+      }
+
       const result = mainChallenge(
         activeGroup,
         e.episodeNumber,
@@ -236,18 +301,20 @@ const SimLayout = (
 
     }
 
-    setEpisodeHistory({ pre: preHistory, post: postHistory, lipsyncPairs: lipsyncPairsByEpisode });
+    setEpisodeHistory({ pre: preHistory, post: postHistory, lipsyncPairs: lipsyncPairsByEpisode, miniChallenges: miniChallengesByEpisode });
 
-  }, [initialTrackRecord, episodes]);
+  }, [initialTrackRecord, episodes, miniChallenges]);
 
   useEffect(() => { // scroll back to top for new event
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedEpisode, episodeEvent]);
 
   useEffect(() => {
+
     if (!episodeHistory || Object.keys(episodeHistory.post).length === 0) return;
 
     try {
+
       const existing = localStorage.getItem("allSeasons");
       const allSeasons = existing ? JSON.parse(existing) : { seasons: {} };
 
@@ -271,7 +338,8 @@ const SimLayout = (
             second: "2-digit",
           }),
           episodeHistory,
-          seasonFlow
+          seasonFlow,
+          miniChallenges
         };
 
         allSeasons.seasons[seasonId] = newSeason;
@@ -401,9 +469,19 @@ const SimLayout = (
           (p: Placement) => p.episodeNumber === selectedEpisode
         );
         const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
-        const isNonElim = episode?.nonElimination;
 
         switch (episodeEvent) {
+          case "miniChallenge":
+            const episodeQueens = episodeHistory.pre[selectedEpisode] || [];
+            const queenAtEpisode = episodeQueens.find(
+              (episodeQueen: any) => episodeQueen.id === q.id
+            );
+            return queenAtEpisode ? !queenAtEpisode.isEliminated : !q.isEliminated;
+          case 'miniChallengeWinner': {
+            const miniChallenge = episodeHistory.miniChallenges?.[selectedEpisode!];
+            const winnerId = miniChallenge?.winner?.id;
+            return winnerId != null && q.id === winnerId;
+          }
           case 'announceSafe':
             return placement?.placement === 'safe';
           case 'winner':
@@ -503,6 +581,36 @@ const SimLayout = (
     }
 
     switch (event) {
+      case 'miniChallenge': {
+        const miniChallenge = episodeHistory.miniChallenges?.[episodeNumber];
+
+        if (!miniChallenge) {
+          return '';
+        }
+
+        const challengeWinner = miniChallenge.winner?.name;
+
+        if (!challengeWinner) {
+          return `${miniChallenge.description}`;
+        }
+
+        return `${miniChallenge.description}`;
+      }
+      case 'miniChallengeWinner': {
+        const miniChallenge = episodeHistory.miniChallenges?.[episodeNumber];
+
+        if (!miniChallenge) {
+          return '';
+        }
+
+        const challengeWinner = miniChallenge.winner?.name;
+
+        if (!challengeWinner) {
+          return `There was no winner for this Mini-Challenge!`;
+        }
+
+        return `${challengeWinner} wins the Mini-Challenge!`;
+      }
       case 'announceSafe':
         if (names.length == 0) {
           return 'All of the queens were asked to remain on the main stage.';
@@ -608,6 +716,9 @@ const SimLayout = (
 
     const queensSnapshot = episodeHistory.post[ep.episodeNumber] || initialTrackRecord;
 
+    const hasMiniChallenge =
+      !isFinale && !!episodeHistory.miniChallenges?.[ep.episodeNumber];
+
     const hasLowQueens = queensSnapshot.some((q) => {
       const placement = q.placements?.find(
         (p: { episodeNumber: string | number; placement: string }) =>
@@ -639,10 +750,20 @@ const SimLayout = (
     }
 
     if (isSmackdown) {
-      return ["main", "lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
+      const events = ["main"];
+      if (hasMiniChallenge) {
+        events.push("miniChallenge");
+        events.push("miniChallengeWinner");
+      }
+      events.push("lipsyncsmackdown", "untucked", "bottom2", "eliminated");
+      return events;
     }
 
     let events: string[] = ["main"];
+    if (hasMiniChallenge) {
+      events.push("miniChallenge");
+      events.push("miniChallengeWinner");
+    }
     if (hasSafeQueens) events.push("announceSafe");
     events.push("untucked");
     if (hasHighQueens) events.push("high");
@@ -652,6 +773,10 @@ const SimLayout = (
 
     if (seasonFlow === "ttwalas") { // all stars lipstick override
       events = ["main"];
+      if (hasMiniChallenge) {
+        events.push("miniChallenge");
+        events.push("miniChallengeWinner");
+      }
       if (hasSafeQueens) events.push("announceSafe");
       if (hasHighQueens) events.push("high");
       events.push("top2");

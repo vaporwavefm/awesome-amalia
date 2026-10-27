@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Search from "@/components/Search";
-import { queens, episodes, seasons, lipsyncs } from "@/constants/queenData";
+import { queens, episodes, seasons, lipsyncs, miniChallenges } from "@/constants/queenData";
 import { LipsyncData, SavedLipsync } from "@/lib/utils";
 import QueenCard from "@/components/QueenCard";
 import { Button } from "@/components/ui/button";
@@ -155,8 +155,7 @@ const Page = () => {
   };
 
   const handleSaveToLocalStorage = () => {
-    //console.log(queenCards);
-    //var updatedQueens = generateRelationships(queenCards);
+
     localStorage.setItem("selectedQueens", JSON.stringify(queenCards));
     localStorage.setItem("selectedEpisodes", JSON.stringify(episodeCards));
     localStorage.setItem("minNonElimEps", minNonElimEps);
@@ -198,6 +197,27 @@ const Page = () => {
     }
 
     localStorage.setItem('savedLipsyncs', JSON.stringify(savedLipsyncs));
+
+    const shuffledMiniChallenges = [...miniChallenges].sort(
+      () => Math.random() - 0.5
+    );
+
+    if (episodeCards.length > shuffledMiniChallenges.length) {
+      throw new Error(
+        "Not enough unique mini-challenges for all episodes."
+      );
+    }
+
+    const savedMiniChallenges = episodeCards.map((episode, index) => ({
+      episodeNumber: index + 1,
+      miniChallenge: shuffledMiniChallenges[index],
+    }));
+
+    localStorage.setItem(
+      "savedMiniChallenges",
+      JSON.stringify(savedMiniChallenges)
+    );
+
     router.push("/sim");
   };
 
@@ -774,7 +794,7 @@ const Page = () => {
                           <p> <strong>Thailand:</strong> 1 </p>
                           <p> <strong>UK:</strong> 1-8 </p>
                           <p> <strong>Dragula:</strong> 1-6 </p>
-                          <p> <strong>La Más Draga:</strong> 5 </p>
+                          <p> <strong>La Más Draga:</strong> 5-6 </p>
                         </TooltipContent>
                       </Tooltip>
                     </h2>

@@ -2,6 +2,8 @@ import React from "react";
 import { SavedLipsync } from "@/lib/utils";
 
 const EVENT_LBLS: Record<string, string> = {
+    miniChallenge: "Mini-Challenge",
+    miniChallengeWinner: "Mini-Challenge Winner",
     announceSafe: "Safe Queens",
     winner: "Winner",
     top2: "Top 2",

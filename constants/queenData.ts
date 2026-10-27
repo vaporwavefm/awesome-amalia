@@ -9141,3 +9141,114 @@ export const seasons = [
   },
 
 ];
+
+export const miniChallenges = [
+  {
+    id: 'a7Kp2mQ9xR4vL8nT5bWc',
+    description: 'The queens pose seductively during a carwash photoshoot, showing off their confidence, sex appeal, and modeling abilities.'
+  },
+  {
+    id: 'b3Nw8yH2kM6pX9qR4tVc',
+    description: 'The queens capture exaggerated facial expressions and reactions in photographs in response to different situations presented by RuPaul.'
+  },
+  {
+    id: 'c9Lr5vD1sJ7mK3xP8nQw',
+    description: 'The queens test their knowledge of trivia, answering questions that challenge their general knowledge and quick thinking.'
+  },
+  {
+    id: 'd4Xq7nB2wT9kM5pR1vLc',
+    description: 'The queens pair up and apply makeup to one another, demonstrating their beauty skills and ability to create polished drag looks.'
+  },
+  {
+    id: 'e8Vm3pK6rN1xQ9wT4bJy',
+    description: 'The queens participate in a workout session led by female fighters, testing their stamina, coordination, and physical determination.'
+  },
+  {
+    id: 'f2Jw9cR5mL8vN3xK7pQa',
+    description: 'The queens compete in a vogueing showdown, showcasing their poses, rhythm, attitude, and performance skills.'
+  },
+  {
+    id: 'g6Tp4xM9qB2nR7vK1wLc',
+    description: 'The queens pose for a dramatic photoshoot featuring powerful wind effects and flowing fabric, creating dynamic and glamorous images.'
+  },
+  {
+    id: 'h1Qv8mK3xP6rT9nW4bJy',
+    description: 'The queens transform miniature RuPaul dolls with exaggerated makeup, outrageous styling, and over-the-top drag-inspired looks.'
+  },
+  {
+    id: 'i5Rn2wX7kL4mQ9vT3pBc',
+    description: 'The queens compete in a chicken-eating contest, testing their appetite, determination, and ability to handle the messy competition.'
+  },
+  {
+    id: 'j9Km6pV2xR8nT4wQ1bLc',
+    description: 'The queens answer trivia questions that test their knowledge, memory, and ability to think quickly under pressure.'
+  },
+  {
+    id: 'k3Wq7nL5mX1vR9pT4bJy',
+    description: 'The queens decorate boxes with their individual drag aesthetics and incorporate borrowed items, then pose for photographs showcasing their creativity and personal style.'
+  },
+  {
+    id: 'l8Px2mR6vK9nQ4wT1bJy',
+    description: 'The queens transform their partners with drag-inspired makeup, wigs, and styling, creating cohesive and polished makeovers.'
+  },
+  {
+    id: 'm4Vn9xK2qR7pT5wL1bJc',
+    description: 'The queens throw playful insults at one another in a battle of wit, shade, and comedic timing, demonstrating their ability to deliver sharp and entertaining reads.'
+  },
+  {
+    id: 'n7Qb3wM8xL2vR6pT9kJy',
+    description: 'The queens compete in a trivia game, answering questions under pressure and demonstrating their knowledge and quick thinking.'
+  },
+  {
+    id: 'o2Xr5mK9vN4qT7wL1bPc',
+    description: 'The queens showcase their makeover skills by creating drag-inspired looks with coordinated makeup, hair, and styling.'
+  },
+  {
+    id: 'p6Lm1xR8qV3nK9wT4bJy',
+    description: 'The queens pose for a festive holiday card photoshoot featuring a wintry backdrop, fake snow, and playful seasonal props.'
+  },
+  {
+    id: 'q1Nw7pK4xM9rT2vL5bJc',
+    description: 'The queens attempt to predict their partners’ answers and preferences, testing their intuition, observation skills, and ability to read another person.'
+  },
+  {
+    id: 'r8Tq3mV6xK1nP9wL4bJy',
+    description: 'The queens create leotards out of duct tape, showing off their creativity, construction skills, and ability to turn unconventional materials into wearable fashion.'
+  },
+  {
+    id: 's4Kx9nR2vL7mQ1wT6bPc',
+    description: 'The queens pose for glamorous, attention-grabbing red carpet photographs, aiming to deliver dramatic and memorable celebrity-inspired moments.'
+  },
+  {
+    id: 't9Wm2pX5kR8vN3qL1bJy',
+    description: 'The queens respond to RuPaul-related prompts in a comedic guessing game, testing their knowledge of RuPaul’s sayings and their ability to think quickly.'
+  },
+  {
+    id: 'u3Qv8mL1xP6nR9wK4bTy',
+    description: 'The queens pose for a nude-inspired editorial photoshoot, emphasizing their bodies, confidence, and ability to create striking fashion images.'
+  },
+  {
+    id: 'v7Rx4mK9nT2qL6wP1bJc',
+    description: 'The queens read one another with sharp, funny insults and shady one-liners, demonstrating their wit, comedic timing, and ability to throw shade.'
+  },
+  {
+    id: 'w2Lp6xN9qR4mT8vK1bJy',
+    description: 'The queens decorate ordinary bras with rhinestones and embellishments, transforming basic lingerie into glamorous drag accessories.'
+  },
+  {
+    id: 'x5Vm1qK8rT3nL9wP4bJc',
+    description: 'The queens compete in a musical-chairs-style game set to RuPaul’s music, testing their speed, alertness, and competitive instincts.'
+  },
+  {
+    id: 'y9Rn4wL2mK7xP1vT6bJc',
+    description: 'The queens design fashionable headpieces inspired by the beach, demonstrating their creativity and ability to transform themed materials into distinctive accessories.'
+  },
+  {
+    id: 'z3Kp7mV1xN9qR4wT6bJy',
+    description: 'The queens participate in a carnival-style dunk tank game, aiming to dunk their fellow contestants in a playful test of accuracy and competitive spirit.'
+  },
+  {
+    id: 'A6wT2mQ9xR4vK8nL1pBc',
+    description: 'The queens invent a marketable drag product and pitch it on RuPaul’s fictional home-shopping network, RuVC, using charisma, humor, and persuasive salesmanship.'
+  }
+];

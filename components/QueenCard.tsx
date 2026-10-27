@@ -217,7 +217,7 @@ const QueenCard = ({ q,
             </div>
 
             {
-              (seasonFlow &&
+              (viewMode != 'miniChallenge' && viewMode != 'miniChallengeWinner' && seasonFlow &&
                 (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
                   viewMode != 'top2'
                   && viewMode != 'bottomASRecap'

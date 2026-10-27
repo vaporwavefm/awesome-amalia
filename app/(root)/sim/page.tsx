@@ -20,6 +20,7 @@ const Page = () => {
   const [seasonMode, setSeasonMode] = useState('');
   const [seasonStyle, setSeasonStyle] = useState('');
   const [seasonFlow, setSeasonFlow] = useState('');
+  const [miniChallenges, setMiniChallenges] = useState<any[]>([]);;
 
   const router = useRouter();
 
@@ -32,6 +33,7 @@ const Page = () => {
       setIsLoading(true);
 
       try {
+
         await new Promise((resolve) => setTimeout(resolve, 300));
 
         const saved = localStorage.getItem("selectedQueens");
@@ -39,6 +41,11 @@ const Page = () => {
         const savedLipsyncs = localStorage.getItem("savedLipsyncs");
         const savedSeasonStyle = localStorage.getItem("seasonStyle") || "osf";
         const savedSeasonFlow = localStorage.getItem("seasonFlow") || "osas";
+        const savedMiniChallenges = localStorage.getItem("savedMiniChallenges");
+
+        setMiniChallenges(
+          savedMiniChallenges ? JSON.parse(savedMiniChallenges) : []
+        );
 
         let overrideLocalStorage = false;
         const DEFAULT_TITLE = "RuPaul's Drag Race";
@@ -177,6 +184,7 @@ const Page = () => {
           seasonStyle={seasonStyle}
           seasonTitle={seasonTitle}
           seasonFlow={seasonFlow}
+          miniChallenges={miniChallenges}
         />
         : (
           <div className="flex flex-col items-center justify-center min-h-100 gap-4">

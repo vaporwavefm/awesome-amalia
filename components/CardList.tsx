@@ -66,7 +66,6 @@ const CardList = ({
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
-    //const filteredQueens = queens;
     const [showEliminated, setShowEliminated] = useState(true);
     const [showMinimized, setShowMinimized] = useState(false);
     const filteredQueens = queens.filter(q => showEliminated || !q.isEliminated);

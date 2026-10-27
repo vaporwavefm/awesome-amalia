@@ -63,6 +63,15 @@ export type Queen = {
   relationships?: Relationship[];
 };
 
+export type MiniChallengeResult = {
+  id: string;
+  description: string;
+  winner: {
+    id: string;
+    name: string;
+  } | null;
+};
+
 const episodeTypeToStats: Record<string, (keyof any)[]> = {
   acting: ["Acting", "Comedy"],
   branding: ["Acting", "Comedy"],
@@ -88,6 +97,24 @@ export const getQueenNameById = (allQueens: Queen[], id: string): string => {
   const targetQueen = allQueens?.find((queen) => queen.id === id);
   return targetQueen ? targetQueen.name : "Queen Not Found";
 };
+
+export function getMiniChallengeWinner(
+  queens: Queen[]
+): { id: string; name: string } | null {
+  const activeQueens = queens.filter((q) => !q.isEliminated);
+
+  if (activeQueens.length === 0) {
+    return null;
+  }
+
+  const randomIndex = Math.floor(Math.random() * activeQueens.length);
+  const winner = activeQueens[randomIndex];
+
+  return {
+    id: winner.id,
+    name: winner.name,
+  };
+}
 
 export function mainChallenge(
   trackRecord: any[],

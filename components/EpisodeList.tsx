@@ -34,7 +34,13 @@ const EpisodeList = ({
   episodes: any[];
   onEpisodeClick: (epNum: number) => void;
   onEpisodeEventClick: (epNum: number, eventType: string, nonElimination: boolean) => void;
-  episodeHistory: { pre: { [key: number]: any[] }; post: { [key: number]: any[] } };
+  episodeHistory: { pre: { [key: number]: any[] }; post: { [key: number]: any[] }; miniChallenges?: {
+    [key: number]: {
+      id: string;
+      description: string;
+      winner: { id: string; name: string } | null;
+    };
+  }; };
   initialTrackRecord: any[];
   seasonStyle: string;
   seasonFlow?: string;
@@ -69,6 +75,10 @@ const EpisodeList = ({
 
     const queensSnapshot = episodeHistory.post[ep.episodeNumber] || initialTrackRecord;
 
+    const hasMiniChallenge =
+    !isFinale &&
+    !!episodeHistory.miniChallenges?.[ep.episodeNumber];
+
     const hasLowQueens = queensSnapshot.some((q) =>
       q.placements?.some((p: any) => Number(p.episodeNumber) === Number(ep.episodeNumber) && p.placement === "low")
     );
@@ -88,10 +98,23 @@ const EpisodeList = ({
     }
 
     if (isSmackdown) {
-      return ["lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
+
+      const events = ["lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
+
+    if (hasMiniChallenge) {
+      events.unshift("miniChallengeWinner");
+      events.unshift("miniChallenge");
+
+    }
+
+    return events;
     }
 
     const events: string[] = [];
+    if (hasMiniChallenge) {
+      events.push("miniChallenge");
+      events.push("miniChallengeWinner");
+    }
     if (hasSafeQueens) events.push("announceSafe");
 
     if (seasonFlow === "ttwalas") {
@@ -158,6 +181,14 @@ const EpisodeList = ({
                 const isFinale = ep.type?.toLowerCase().includes("finale");
                 // Style by event
                 switch (eventType) {
+                  case "miniChallenge":
+                    buttonClass += " bg-gray-200 hover:bg-gray-300";
+                    buttonLabel = "Mini-Challenge";
+                    break;
+                  case "miniChallengeWinner":
+                    buttonClass += " bg-gray-200 hover:bg-gray-300";
+                    buttonLabel = "Mini-Challenge Winner";
+                    break;
                   case "announceSafe":
                     buttonClass += " bg-gray-200 hover:bg-gray-300";
                     buttonLabel = "Safe";
