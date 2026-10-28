@@ -9250,5 +9250,154 @@ export const miniChallenges = [
   {
     id: 'A6wT2mQ9xR4vK8nL1pBc',
     description: 'The queens invent a marketable drag product and pitch it on RuPaul’s fictional home-shopping network, RuVC, using charisma, humor, and persuasive salesmanship.'
+  },
+  {
+    id: 'S4mC8vR2qL9xT5nB1pWd',
+    description: 'The queens will pose for a photoshoot on a spinning platform while being sprayed with hazardous waste.'
+  },
+  {
+    id: 'S4nD7xK3mP8vR2qL5tWa',
+    description: 'The queens will create exaggerated badonkadonks using drag padding within a limited time.'
+  },
+  {
+    id: 'S4pF2wM9kR6xT3nB8vQa',
+    description: 'The queens will create fashionable hats decorated with butterfly-shaped accessories.'
+  },
+  {
+    id: 'S4qG5yN2rL8wC4mT7vPb',
+    description: 'The queens will paint each other’s faces while handcuffed together and pose for mugshot photographs.'
+  },
+  {
+    id: 'S4rH8zP3sM6xD2nK9vWb',
+    description: 'The queens will compete in Beat the Cock, testing their quick reactions and playful competitiveness.'
+  },
+  {
+    id: 'S4sJ4aQ7tN2yF8mR5vXc',
+    description: 'The queens will compete in a wet T-shirt contest and try to earn the biggest crowd reaction.'
+  },
+  {
+    id: 'S4tK9bR5vP2zG6nM3wYd',
+    description: 'The queens will read each other with sharp, funny insults in the Reading Is Fundamental challenge.'
+  },
+  {
+    id: 'S4uL3cS8wQ5aH2nP7xZe',
+    description: 'The queens will answer provocative questions in a polygraph-style game designed to expose secrets and inspire funny reactions.'
+  },
+  {
+    id: 'S4vM6dT2xR9bJ5pN8wZa',
+    description: 'The queens will design fashionable shoes inspired by Absolut Vodka.'
+  },
+  {
+    id: 'S4wN2eU7yS4cK8qL5xAb',
+    description: 'The queens will give teddy bears drag makeovers and create distinctive personalities for their new looks.'
+  },
+  {
+    id: 'S4xP5fV8zT3dL6rM2nBc',
+    description: 'The queens will use puppets to impersonate their fellow contestants and deliver shady commentary.'
+  },
+  {
+    id: 'S5aB7mK2xR9vT4nP6qWd',
+    description: 'The queens will pose for an underwater photoshoot while attempting to serve glamour beneath the water.'
+  },
+  {
+    id: 'S5bC3nL8yQ5wF2rM9tXa',
+    description: 'The queens will lip-sync to a RuPaul song with only their mouths visible, relying on expressive lip movements.'
+  },
+  {
+    id: 'S5cD6pM4zR8xK2vN7wYb',
+    description: 'The queens will work in pairs to create mannequin dolls for an America’s Junior Drag Superstar pageant.'
+  },
+  {
+    id: 'S5dE9qN2aT7yL5mP3xWc',
+    description: 'The queens will compete in a Soul Train-inspired dance-off to showcase their rhythm and dance skills.'
+  },
+  {
+    id: 'S5eF4rP8bU2xM6nQ9yZa',
+    description: 'The queens will style a cuddler into a red-carpet-ready look for a celebrity fashion showdown.'
+  },
+  {
+    id: 'S5fG7sQ3cV9zN2kR5mWd',
+    description: 'The queens will apply drag makeup in complete darkness, relying on touch and intuition to create their looks.'
+  },
+  {
+    id: 'S5gH2tR6dW8aP4nK9xYb',
+    description: 'The queens will read each other with clever insults, quick wit, and shady observations.'
+  },
+  {
+    id: 'S5hJ5vS9eX3bQ7mL2rNc',
+    description: 'The queens will identify matching pairs of underwear worn by members of the Pit Crew.'
+  },
+  {
+    id: 'S5jK8wT2fY6cR4nM9pZa',
+    description: 'The queens will invent dramatic personal sob stories and attempt to produce convincing tears on camera.'
+  },
+  {
+    id: 'S5kL3xU7gZ9dS5pN2qWb',
+    description: 'The queens will endure a drag-themed fitness boot camp and try to outlast their competitors.'
+  },
+  {
+    id: 'S5mN6yV2hA8eT4qR7wXc',
+    description: 'The queens will use puppets to impersonate their fellow contestants and deliver shady commentary.'
+  },
+  {
+    id: 'S6aC4mR8vT2xN7pL5qWd',
+    description: 'The queens will pose for a dramatic photoshoot while jumping from a platform to capture glamorous midair shots.'
+  },
+  {
+    id: 'S6bD9nK3wP6yR2tM8xVa',
+    description: 'The queens will perform a beach-themed lip-sync in pairs, combining synchronized movements with playful beach aesthetics.'
+  },
+  {
+    id: 'S6cE2pL7xQ5vT9nR4mWb',
+    description: 'The queens will examine blended photographs and determine whether the resulting faces belong to female celebrities or drag queens.'
+  },
+  {
+    id: 'S6dF5qM8zR3xK7nP2vWa',
+    description: 'The queens will design creative nail looks and model fruits and vegetables with expressive hand poses.'
+  },
+  {
+    id: 'S6eG8rN2aT6yL4mQ9xPb',
+    description: 'The queens will read each other with clever insults and cutting one-liners in Reading Is Fundamental.'
+  },
+  {
+    id: 'S6fH3sP7bU9xM2nR5vWc',
+    description: 'The queens will compete in a Hangman-style word-guessing game using clues and drag-related vocabulary.'
+  },
+  {
+    id: 'S6gJ6tQ2cV8zN4kL7wXa',
+    description: 'The queens will create an abstract painting celebrating marriage equality by using their bodies as paintbrushes.'
+  },
+  {
+    id: 'S6hK9vR4dW2aP6nM8xYb',
+    description: 'The queens will use puppets in a therapeutic role-playing exercise to express emotions and imitate their fellow contestants.'
+  },
+  {
+    id: 'S7aD5mT9xR2vK6nP3qWb',
+    description: 'The queens will model two contrasting fashion looks inspired by spring and fall.'
+  },
+  {
+    id: 'S7bE8nQ4yL2wF6rM9tXc',
+    description: 'The queens will serve face and maintain glamorous expressions while the Pit Crew blasts them with a leaf blower.'
+  },
+  {
+    id: 'S7cF3pR7zT5xN9mK2vWa',
+    description: 'The queens will transform into glamorous grandmothers and dance with walkers and canes, combining character acting with choreography.'
+  },
+  {
+    id: 'S7dG6qS2aU8yL4nP9xRb',
+    description: 'The queens will create exaggerated fashion silhouettes using tape for a Fake Housewives of Drag Race-inspired look.'
+  },
+  {
+    id: 'S7eH9rV5bW3xM7nQ2tZa',
+    description: 'The queens will read each other with clever insults and shady punchlines in Reading Is Fundamental.'
+  },
+  {
+    id: 'S7fJ2sW8cX4yN6pR3vTb',
+    description: 'The queens will compete in Monster in Your Pants, a playful mini-challenge centered on humorous physical comedy.'
+  },
+  {
+    id: 'S7gK5tX9dY2zP8nL4mVa',
+    description: 'The queens will use puppets to impersonate their fellow contestants and deliver funny, shady commentary.'
   }
+  
 ];

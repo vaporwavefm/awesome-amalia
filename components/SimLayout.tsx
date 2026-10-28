@@ -48,7 +48,6 @@ type Queen = {
 };
 
 type MiniChallenge = {
-  winner: Queen;
   id: string;
   description: string;
 };
@@ -1127,6 +1126,11 @@ const SimLayout = (
                   currentEpisode={selectedEpisode}
                   showTrackRecordTabs={showTrackRecordTabs}
                   lipsyncPairs={lipsyncPairsPartial ?? []}
+                  miniChallenges={Object.fromEntries(
+                    Object.entries(episodeHistory.miniChallenges ?? {}).filter(
+                      ([episodeNumber]) => Number(episodeNumber) < Number(selectedEpisode)
+                    )
+                  )}
                 />
               )
             }
@@ -1179,6 +1183,11 @@ const SimLayout = (
               seasonFlow={seasonFlow}
               showTrackRecordTabs={showTrackRecordTabs}
               lipsyncPairs={lipsyncPairsPartial ?? []}
+              miniChallenges={Object.fromEntries(
+                Object.entries(episodeHistory.miniChallenges ?? {}).filter(
+                  ([episodeNumber]) => Number(episodeNumber) < Number(selectedEpisode)
+                )
+              )}
             />
           </>
         )}

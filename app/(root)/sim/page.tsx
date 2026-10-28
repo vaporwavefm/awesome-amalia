@@ -43,10 +43,6 @@ const Page = () => {
         const savedSeasonFlow = localStorage.getItem("seasonFlow") || "osas";
         const savedMiniChallenges = localStorage.getItem("savedMiniChallenges");
 
-        setMiniChallenges(
-          savedMiniChallenges ? JSON.parse(savedMiniChallenges) : []
-        );
-
         let overrideLocalStorage = false;
         const DEFAULT_TITLE = "RuPaul's Drag Race";
 
@@ -56,43 +52,66 @@ const Page = () => {
           if (allSeasonsRaw) {
             const parsed = JSON.parse(allSeasonsRaw);
             const savedSeason = parsed?.seasons?.[seasonId];
+
             overrideLocalStorage = true;
-            if (savedSeason?.title?.trim()) {
-              setSeasonTitle(savedSeason.title);
+
+            if (savedSeason) {
+              // Load the mini-challenges belonging to THIS season.
+              setMiniChallenges(savedSeason.miniChallenges ?? []);
+
+              if (savedSeason.title?.trim()) {
+                setSeasonTitle(savedSeason.title);
+              } else {
+                setSeasonTitle(DEFAULT_TITLE);
+              }
+
+              if (savedSeason.savedEpisodes) {
+                setSelectedEpisodes(savedSeason.savedEpisodes);
+              }
+
+              if (savedSeason.savedQueens) {
+                setSelectedQueens(savedSeason.savedQueens);
+              }
+
+              if (savedSeason.savedLipsyncs) {
+                setSelectedLipsyncs(savedSeason.savedLipsyncs);
+              }
+
+              if (savedSeason.minNonElimEps !== undefined) {
+                setMinNonElimEps(String(savedSeason.minNonElimEps));
+              }
+
+              if (savedSeason.seasonMode) {
+                setSeasonMode(savedSeason.seasonMode);
+              }
+
+              if (savedSeason.seasonStyle) {
+                setSeasonStyle(savedSeason.seasonStyle);
+              }
+
+              if (savedSeason.seasonFlow) {
+                setSeasonFlow(savedSeason.seasonFlow);
+              }
             } else {
               setSeasonTitle(DEFAULT_TITLE);
-            }
-            if (savedSeason?.savedEpisodes) {
-              setSelectedEpisodes(savedSeason.savedEpisodes);
-            }
-            if (savedSeason?.savedQueens) {
-              setSelectedQueens(savedSeason.savedQueens);
-            }
-            if (savedSeason?.savedLipsyncs) {
-              setSelectedLipsyncs(savedSeason.savedLipsyncs);
-            }
-            if (savedSeason?.minNonElimEps) {
-              setMinNonElimEps(savedSeason.minNonElimEps);
-            }
-            if (savedSeason?.seasonMode) {
-              setSeasonMode(savedSeason.seasonMode);
-            }
-            if (savedSeason?.seasonStyle) {
-              setSeasonStyle(savedSeason.seasonStyle);
-            }
-            if (savedSeason?.seasonFlow) {
-              setSeasonFlow(savedSeason.seasonFlow);
+              setMiniChallenges([]);
             }
           } else {
             setSeasonTitle(DEFAULT_TITLE);
+            setMiniChallenges([]);
           }
         } else {
+          setMiniChallenges(
+            savedMiniChallenges ? JSON.parse(savedMiniChallenges) : []
+          );
+
           const storedTitle = localStorage.getItem("seasonTitle");
+
           setSeasonTitle(storedTitle?.trim() || DEFAULT_TITLE);
           setMinNonElimEps(localStorage.getItem("minNonElimEps") || "0");
           setSeasonMode(localStorage.getItem("seasonMode") || "csp");
-          setSeasonStyle(savedSeasonStyle);
-          setSeasonFlow(savedSeasonFlow);
+          setSeasonStyle(localStorage.getItem("seasonStyle") || "osf");
+          setSeasonFlow(localStorage.getItem("seasonFlow") || "osas");
         }
 
         if (saved && savedEpisodes && savedLipsyncs) {

@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCrown, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { toPng } from "html-to-image";
 import { Spinner } from "./ui/spinner";
+import { type MiniChallengeResult } from "@/lib/utils";
 
 type Queen = {
   id: string;
@@ -28,6 +29,16 @@ type Queen = {
   isEliminated: boolean;
 };
 
+type MiniChallenge = {
+  id: string;
+  description: string;
+};
+
+type SavedMiniChallenge = {
+  episodeNumber: number;
+  miniChallenge: MiniChallenge;
+};
+
 type SeasonTrackRecordTableProps = {
   queens: Queen[];
   episodes: { episodeNumber: number | string; title: string; id?: string }[];
@@ -35,6 +46,7 @@ type SeasonTrackRecordTableProps = {
   seasonStyle: string;
   currentEpisode?: number | null;
   showResults?: boolean;
+  miniChallenges?: Record<number, MiniChallengeResult>;
 };
 
 const SeasonTrackRecordTable = ({
@@ -44,6 +56,7 @@ const SeasonTrackRecordTable = ({
   seasonStyle,
   currentEpisode,
   showResults,
+  miniChallenges
 }: SeasonTrackRecordTableProps) => {
 
   const [isExporting, setIsExporting] = useState(false);
@@ -216,6 +229,11 @@ const SeasonTrackRecordTable = ({
     }
   };
 
+  const getMiniChallengeWins = (q: Queen) =>
+    Object.values(miniChallenges ?? {}).filter(
+      (challenge) => challenge.winner?.id === q.id
+    ).length;
+
   const sortedQueens = [...queens].sort((a, b) => {
     const getCategory = (q: Queen) => {
       const last = q.placements.at(-1);
@@ -248,6 +266,15 @@ const SeasonTrackRecordTable = ({
   const maxHighs = Math.max(...queens.map((q) => q.highs));
   const maxLows = Math.max(...queens.map((q) => q.lows));
   const maxBottoms = Math.max(...queens.map((q) => q.bottoms));
+  const maxMCWins = Math.max(
+    ...queens.map(
+      (q) =>
+        Object.values(miniChallenges ?? {}).filter(
+          (challenge) => challenge.winner?.id === q.id
+        ).length
+    ),
+    0
+  );
 
   return (
     <div className="relative">
@@ -290,6 +317,7 @@ const SeasonTrackRecordTable = ({
                   <TableHead className="text-center">Highs</TableHead>
                   <TableHead className="text-center">Lows</TableHead>
                   <TableHead className="text-center">Bottoms</TableHead>
+                  <TableHead className="text-center whitespace-nowrap"> MC Wins </TableHead>
                 </TableRow>
               </TableHeader>
 
@@ -299,14 +327,16 @@ const SeasonTrackRecordTable = ({
                   const elimEpNum = elimPlacement
                     ? Number(elimPlacement.episodeNumber)
                     : null;
-
+                  const miniChallengeWins = Object.values(miniChallenges ?? {}).filter(
+                    (challenge) => challenge.winner?.id === q.id
+                  ).length;
                   return (
                     <TableRow key={q.id} className="border-t">
                       <TableCell className="font-medium">{q.name}</TableCell>
 
                       {!isMinified && (
-                        <TableCell className="p-0 w-24 h-24">
-                          <div className="relative w-full h-full aspect-square">
+                        <TableCell className="p-0">
+                          <div className="relative w-32 h-36">
                             <Image
                               src={q.url || "/placeholder.png"}
                               alt={q.name}
@@ -320,6 +350,11 @@ const SeasonTrackRecordTable = ({
                       {displayedEpisodes.map((ep) => {
                         const placement = getPlacement(q, ep.episodeNumber);
                         const epNum = Number(ep.episodeNumber);
+
+                        const miniChallengeWinner =
+                          !isMinified &&
+                          miniChallenges?.[epNum]?.winner?.id === q.id;
+                        // const epNum = Number(ep.episodeNumber);
 
                         const isElimEp =
                           elimEpNum !== null && epNum === elimEpNum;
@@ -343,7 +378,12 @@ const SeasonTrackRecordTable = ({
                           ${placement === "RUNNER-UP" ? "bg-green-200 text-black font-medium" : ""}
                         `}
                           >
-                            {placement}
+                            <span>{placement}</span>
+                            {miniChallengeWinner && (
+                              <div className="ml-1 mt-2 text-xs font-bold whitespace-nowrap">
+                                + Mini-Challen. Winner
+                              </div>
+                            )}
                           </TableCell>
                         );
                       })}
@@ -381,6 +421,16 @@ const SeasonTrackRecordTable = ({
                         {q.bottoms}{" "}
                         {q.bottoms === maxBottoms && (
                           <FontAwesomeIcon icon={faCrown} />
+                        )}
+                      </TableCell>
+                      <TableCell className={`text-center ${miniChallengeWins === maxMCWins
+                          ? "bg-yellow-200 font-bold"
+                          : ""
+                        }`}
+                      >
+                        {miniChallengeWins}
+                        {miniChallengeWins === maxMCWins && (
+                          <FontAwesomeIcon icon={faCrown} className="ml-1" />
                         )}
                       </TableCell>
                     </TableRow>

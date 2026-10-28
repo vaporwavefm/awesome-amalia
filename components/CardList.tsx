@@ -9,6 +9,7 @@ import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
+import { type MiniChallengeResult  } from "@/lib/utils";
 
 type Queen = {
     id: string;
@@ -35,6 +36,16 @@ type Lipsync = {
     }
 };
 
+type MiniChallenge = {
+  id: string;
+  description: string;
+};
+
+type SavedMiniChallenge = {
+  episodeNumber: number;
+  miniChallenge: MiniChallenge;
+};
+
 const CardList = ({
     queens,
     lipsyncs,
@@ -48,7 +59,9 @@ const CardList = ({
     seasonFlow,
     currentEpisode,
     showTrackRecordTabs,
-    lipsyncPairs
+    lipsyncPairs,
+    miniChallenges
+    
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -63,6 +76,7 @@ const CardList = ({
     currentEpisode?: number | null;
     showTrackRecordTabs?: boolean;
     lipsyncPairs?: any;
+    miniChallenges?: Record<number, MiniChallengeResult>
 }) => {
 
     const maxWins = Math.max(...queens.map((q) => q.wins));
@@ -138,13 +152,13 @@ const CardList = ({
                     {/* Table Tab */}
                     <TabsContent value="table-min">
                         <div className="w-[95%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} isMinified={true} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} miniChallenges={miniChallenges} />
                         </div>
                     </TabsContent>
 
                     <TabsContent value="table-full">
                         <div className="w-[97%] mx-auto">
-                            <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} />
+                            <SeasonTrackRecordTable queens={queens} episodes={episodes} seasonStyle={seasonStyle} currentEpisode={currentEpisode} showResults={showResults} miniChallenges={miniChallenges} />
                         </div>
                     </TabsContent>
                     {/* Lipsync Tab */}
