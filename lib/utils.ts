@@ -70,6 +70,7 @@ export type MiniChallengeResult = {
     id: string;
     name: string;
   } | null;
+  modifier?: number;
 };
 
 const episodeTypeToStats: Record<string, (keyof any)[]> = {
@@ -116,6 +117,28 @@ export function getMiniChallengeWinner(
   };
 }
 
+export function getMiniChallengeModifier(): number {
+  const roll = Math.random();
+
+  if (roll < 0.25) {
+    return Math.floor(Math.random() * 11) + 15; // +15% to +25%
+  }
+
+  if (roll < 0.5) {
+    return Math.floor(Math.random() * 10) + 5; // +5% to +14%
+  }
+
+  if (roll < 0.7) {
+    return 0; // No effect
+  }
+
+  if (roll < 0.9) {
+    return -(Math.floor(Math.random() * 10) + 5); // -5% to -14%
+  }
+
+  return -(Math.floor(Math.random() * 11) + 15); // -15% to -25%
+}
+
 export function mainChallenge(
   trackRecord: any[],
   episodeNumber: string | number,
@@ -124,6 +147,7 @@ export function mainChallenge(
   seasonStyle: string,
   seasonFlow: string,
   lssdLipsyncs: any,
+  miniChallengeWinnerId?: string | null
 ) {
 
   const isFinale = episodeType.toLowerCase().includes("finale");
@@ -396,18 +420,32 @@ export function mainChallenge(
     bottoms: number;
   }[] = [];
 
+  let miniChallengeModifier = 0;
+
   const scoredRecord = trackRecord.map(q => {
     if (q.isEliminated) return { ...q };
 
     //const tempScore = Math.floor(Math.random() * 100) + 1;
     const { baseStat, finalScore, randomFactor, bias, statIncrease, relevantStats } = getEpisodeScore(q, episodeType, Number(episodeNumber), trackRecord);
 
+    const modifier =
+      q.id === miniChallengeWinnerId
+        ? getMiniChallengeModifier()
+        : 0;
+
+    if (q.id === miniChallengeWinnerId) {
+      miniChallengeModifier = modifier;
+    }
+
+    const adjustedScore =
+      finalScore * (1 + modifier / 100);
+
     tempScores.push({
       id: q.id,
       queen: q.name,
       episodeNumber,
       baseStat: baseStat,
-      score: finalScore,
+      score: adjustedScore,
       randomFactor,
       bias,
       statIncrease: statIncrease,
@@ -422,7 +460,7 @@ export function mainChallenge(
       ...q,
       scores: [...q.scores, {
         episodeNumber,
-        score: finalScore,
+        score: adjustedScore,
         baseStat: baseStat,
         statIncrease: statIncrease,
         relevantStatsLen: relevantStats.length,
@@ -537,9 +575,8 @@ export function mainChallenge(
     placement: q.placements[q.placements.length - 1]?.placement || 'safe'
   }));
 
-  const relationshipUpdated = updateRelationshipsAfterEpisode(updatedRecord, episodeResults);
-
-  return { updatedRecord: relationshipUpdated };
+  const relationshipUpdated = updateRelationshipsAfterEpisode(updatedRecord, episodeResults); 
+  return { updatedRecord: relationshipUpdated, miniChallengeModifier, };
 }
 
 function nittyGritty({ size }: { size: number }) {

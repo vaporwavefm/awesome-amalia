@@ -3,7 +3,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import CardList from "./CardList";
-import { mainChallenge, SavedLipsync, addNewLipsyncs, getQueenNameByIdSingle } from "@/lib/utils";
+import { mainChallenge, SavedLipsync, addNewLipsyncs, getQueenNameByIdSingle, getMiniChallengeModifier } from "@/lib/utils";
 import EpisodeList from "./EpisodeList";
 import EpisodeMessage from "./EpisodeMessage";
 import {
@@ -249,13 +249,16 @@ const SimLayout = (
         }
       }
 
+      let miniChallengeWinnerId: string | null = null;
       const miniChallenge = miniChallengesByEpisode[e.episodeNumber];
 
       if (miniChallenge) {
+        const winner = getMiniChallengeWinner(activeGroup);
         miniChallengesByEpisode[e.episodeNumber] = {
           ...miniChallenge,
-          winner: getMiniChallengeWinner(activeGroup),
+          winner,
         };
+        miniChallengeWinnerId = winner?.id ?? null;
       }
 
       const result = mainChallenge(
@@ -265,8 +268,16 @@ const SimLayout = (
         e.type,
         seasonStyle,
         seasonFlow,
-        tempLssdLipsyncs
+        tempLssdLipsyncs,
+        miniChallengeWinnerId
       );
+
+      if (miniChallengesByEpisode[e.episodeNumber]) {
+        miniChallengesByEpisode[e.episodeNumber] = {
+          ...miniChallengesByEpisode[e.episodeNumber],
+          modifier: result.miniChallengeModifier ?? 0,
+        };
+      }
 
       if (e.type.toLowerCase().includes("lipsyncsmackdown") && !e.type.toLowerCase().includes("finale")) {
         setLssdLipsyncs(prev => ({
@@ -481,6 +492,11 @@ const SimLayout = (
             const winnerId = miniChallenge?.winner?.id;
             return winnerId != null && q.id === winnerId;
           }
+          case 'miniChallengeWinnerEffect': {
+            const miniChallenge = episodeHistory.miniChallenges?.[selectedEpisode!];
+            const winnerId = miniChallenge?.winner?.id;
+            return winnerId != null && q.id === winnerId;
+          }
           case 'announceSafe':
             return placement?.placement === 'safe';
           case 'winner':
@@ -609,6 +625,40 @@ const SimLayout = (
         }
 
         return `${challengeWinner} wins the Mini-Challenge!`;
+      }
+      case "miniChallengeWinnerEffect": {
+        const miniChallenge =
+          episodeHistory.miniChallenges?.[episodeNumber];
+
+        if (!miniChallenge) {
+          return "";
+        }
+
+        const challengeWinner = miniChallenge.winner?.name;
+
+        if (!challengeWinner) {
+          return "There was no winner for this Mini-Challenge!";
+        }
+
+        const modifier = miniChallenge.modifier ?? 0;
+
+        if (modifier >= 15) {
+          return `${challengeWinner} gains a major confidence boost from winning the Mini-Challenge! This ultimately ends up improving their performance in the Maxi Challenge greatly!`;
+        }
+
+        if (modifier > 0) {
+          return `${challengeWinner} gains a little confidence boost from winning the Mini-Challenge! This gives her a small advantage going into the Maxi Challenge.`;
+        }
+
+        if (modifier === 0) {
+          return `${challengeWinner}'s Mini-Challenge win has no effect on her performance in the Maxi Challenge.`;
+        }
+
+        if (modifier <= -15) {
+          return `${challengeWinner}'s Mini-Challenge win distracts them from fully performing well in the Maxi Challenge.`;
+        }
+
+        return `${challengeWinner}'s Mini-Challenge win causes them to become overconfident and could affect their performance in the Maxi Challenge in a negative way.`;
       }
       case 'announceSafe':
         if (names.length == 0) {
@@ -753,6 +803,7 @@ const SimLayout = (
       if (hasMiniChallenge) {
         events.push("miniChallenge");
         events.push("miniChallengeWinner");
+        events.push("miniChallengeWinnerEffect");
       }
       events.push("lipsyncsmackdown", "untucked", "bottom2", "eliminated");
       return events;
@@ -762,6 +813,7 @@ const SimLayout = (
     if (hasMiniChallenge) {
       events.push("miniChallenge");
       events.push("miniChallengeWinner");
+      events.push("miniChallengeWinnerEffect");
     }
     if (hasSafeQueens) events.push("announceSafe");
     events.push("untucked");
@@ -775,6 +827,7 @@ const SimLayout = (
       if (hasMiniChallenge) {
         events.push("miniChallenge");
         events.push("miniChallengeWinner");
+        events.push("miniChallengeWinnerEffect");
       }
       if (hasSafeQueens) events.push("announceSafe");
       if (hasHighQueens) events.push("high");

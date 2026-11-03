@@ -102,6 +102,7 @@ const EpisodeList = ({
       const events = ["lipsyncsmackdown", "untucked", "bottom2", "eliminated"];
 
     if (hasMiniChallenge) {
+      events.unshift("miniChallengeWinnerEffect");
       events.unshift("miniChallengeWinner");
       events.unshift("miniChallenge");
 
@@ -114,6 +115,7 @@ const EpisodeList = ({
     if (hasMiniChallenge) {
       events.push("miniChallenge");
       events.push("miniChallengeWinner");
+      events.push("miniChallengeWinnerEffect");
     }
     if (hasSafeQueens) events.push("announceSafe");
 
@@ -189,6 +191,10 @@ const EpisodeList = ({
                     buttonClass += " bg-gray-200 hover:bg-gray-300";
                     buttonLabel = "Mini-Challenge Winner";
                     break;
+                  case "miniChallengeWinnerEffect":
+                    buttonClass += " bg-gray-200 hover:bg-gray-300";
+                    buttonLabel = "Mini-Challenge Winner Effect";
+                    break;  
                   case "announceSafe":
                     buttonClass += " bg-gray-200 hover:bg-gray-300";
                     buttonLabel = "Safe";
