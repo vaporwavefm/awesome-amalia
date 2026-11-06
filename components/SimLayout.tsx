@@ -16,7 +16,6 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Relationship, getQueenNameById, getMiniChallengeWinner, type MiniChallengeResult, } from "@/lib/utils";
 import EpisodeEventContainer from "./EpisodeEventContainer";
@@ -24,6 +23,7 @@ import QueenCard from "./QueenCard";
 import LipsyncSmackdownComp from "./LipsyncSmackdownComp";
 import { useSeasons } from "@/components/SeasonsContext";
 import { QueenStats } from "@/lib/utils";
+import { Menu, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 type Placement = {
   episodeNumber: number | string;
@@ -129,6 +129,7 @@ const SimLayout = (
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const [lssdLipsyncs, setLssdLipsyncs] = useState<Record<number, any[]>>({});
   const { seasons, setSeasons } = useSeasons();
+  const [isEpisodeListCollapsed, setIsEpisodeListCollapsed] = useState(false);
 
   const miniChallengesByEpisode: Record<number, MiniChallengeResult> = {};
   (miniChallenges ?? []).forEach(({ episodeNumber, miniChallenge }) => {
@@ -210,10 +211,13 @@ const SimLayout = (
     );
 
     if (eligible.length > 0 && Number(minNonElimEps) > 0) {
-      for (let i = 0; i < Number(minNonElimEps); i++) {
-        const randomIndex = Math.floor(Math.random() * eligible.length);
-        sortedEpisodes[eligible[randomIndex].episodeNumber - 1].nonElimination = true;
-      }
+
+      const shuffledEligible = [...eligible].sort(() => Math.random() - 0.5);
+      const selectedEpisodes = shuffledEligible.slice(0, Math.min(Number(minNonElimEps), shuffledEligible.length));
+      selectedEpisodes.forEach((episode) => {
+        sortedEpisodes[episode.episodeNumber - 1].nonElimination = true;
+      });
+      
     }
 
     for (const e of sortedEpisodes) {
@@ -1075,19 +1079,48 @@ const SimLayout = (
   return (
     <div className="md:flex md:justify-center gap-2 pt-2">
       {/* Display episode cards */}
-      <div className="hidden md:block w-1/4 p-4"> {/* for regular desktop screens */}
-        <EpisodeList
-          episodes={episodes}
-          onEpisodeClick={handleEpisodeClick}
-          onEpisodeEventClick={handleEpisodeEventClick}
-          episodeHistory={episodeHistory}
-          initialTrackRecord={initialTrackRecord}
-          seasonStyle={seasonStyle}
-          seasonFlow={seasonFlow}
-          selectedEpisode={selectedEpisode}
-          setSelectedEpisode={setSelectedEpisode}
-          episodeEvent={episodeEvent}
-        />
+      <div
+        className={`hidden md:block p-4 transition-all duration-300 ease-in-out ${isEpisodeListCollapsed ? "w-16 shrink-0" : "w-1/4"
+          }`}
+      >
+        <div className="flex justify-end mb-1">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setIsEpisodeListCollapsed(!isEpisodeListCollapsed)}
+            aria-label={
+              isEpisodeListCollapsed
+                ? "Expand episode list"
+                : "Collapse episode list"
+            }
+            title={
+              isEpisodeListCollapsed
+                ? "Expand episode list"
+                : "Collapse episode list"
+            }
+          >
+            {isEpisodeListCollapsed ? (
+              <PanelLeftOpen className="w-4 h-4" />
+            ) : (
+              <PanelLeftClose className="w-4 h-4" />
+            )}
+          </Button>
+        </div>
+
+        {!isEpisodeListCollapsed && (
+          <EpisodeList
+            episodes={episodes}
+            onEpisodeClick={handleEpisodeClick}
+            onEpisodeEventClick={handleEpisodeEventClick}
+            episodeHistory={episodeHistory}
+            initialTrackRecord={initialTrackRecord}
+            seasonStyle={seasonStyle}
+            seasonFlow={seasonFlow}
+            selectedEpisode={selectedEpisode}
+            setSelectedEpisode={setSelectedEpisode}
+            episodeEvent={episodeEvent}
+          />
+        )}
       </div>
       <div className="block md:hidden p-2">{/* for mobile screens */}
         <Sheet open={open} onOpenChange={setOpen}>
@@ -1127,7 +1160,7 @@ const SimLayout = (
       </div>
 
       {/* Display main screen */}
-      <div className="sm:w-full md:w-3/4 pt-2">
+      <div className="sm:w-full md:flex-1 min-w-0 pt-2 transition-all duration-300">
         {episodeEvent ? (
           <>
             <EpisodeMessage

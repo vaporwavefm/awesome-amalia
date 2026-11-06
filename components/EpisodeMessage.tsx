@@ -4,6 +4,7 @@ import { SavedLipsync } from "@/lib/utils";
 const EVENT_LBLS: Record<string, string> = {
     miniChallenge: "Mini-Challenge",
     miniChallengeWinner: "Mini-Challenge Winner",
+    miniChallengeWinnerEffect: "Mini-Challenge Winner Effect",
     announceSafe: "Safe Queens",
     winner: "Winner",
     top2: "Top 2",
