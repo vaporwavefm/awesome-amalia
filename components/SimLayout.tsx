@@ -217,7 +217,7 @@ const SimLayout = (
       selectedEpisodes.forEach((episode) => {
         sortedEpisodes[episode.episodeNumber - 1].nonElimination = true;
       });
-      
+
     }
 
     for (const e of sortedEpisodes) {
@@ -483,13 +483,13 @@ const SimLayout = (
           (p: Placement) => p.episodeNumber === selectedEpisode
         );
         const episode = episodes.find(e => e.episodeNumber === selectedEpisode);
+        const episodeQueens = episodeHistory.pre[selectedEpisode] || [];
+        const queenAtEpisode = episodeQueens.find(
+          (episodeQueen: any) => episodeQueen.id === q.id
+        );
 
         switch (episodeEvent) {
           case "miniChallenge":
-            const episodeQueens = episodeHistory.pre[selectedEpisode] || [];
-            const queenAtEpisode = episodeQueens.find(
-              (episodeQueen: any) => episodeQueen.id === q.id
-            );
             return queenAtEpisode ? !queenAtEpisode.isEliminated : !q.isEliminated;
           case 'miniChallengeWinner': {
             const miniChallenge = episodeHistory.miniChallenges?.[selectedEpisode!];
@@ -501,6 +501,8 @@ const SimLayout = (
             const winnerId = miniChallenge?.winner?.id;
             return winnerId != null && q.id === winnerId;
           }
+          case 'mainStage':
+            return queenAtEpisode ? !queenAtEpisode.isEliminated : !q.isEliminated;
           case 'announceSafe':
             return placement?.placement === 'safe';
           case 'winner':
@@ -664,6 +666,55 @@ const SimLayout = (
 
         return `${challengeWinner}'s Mini-Challenge win causes them to become overconfident and could affect their performance in the Maxi Challenge in a negative way.`;
       }
+      case 'mainStage': {
+
+        let activeQueens =
+          episodeHistory.pre[episodeNumber]?.filter(
+            (q: any) => !q.isEliminated
+          ) || [];
+
+        if (seasonMode === "sp") { // split premiere
+          if (episodeNumber === 1) {
+            activeQueens = activeQueens.filter(
+              (q: any) => q.group === 1
+            );
+          } else if (episodeNumber === 2) {
+            activeQueens = activeQueens.filter(
+              (q: any) => q.group === 2
+            );
+          }
+        }
+
+        const episodeResults = episodeHistory.post[episodeNumber] || [];
+        const activeQueenIds = new Set(
+          activeQueens.map((q: any) => q.id)
+        );
+
+        const safeCount = episodeResults.filter((q: any) => {
+          if (!activeQueenIds.has(q.id)) return false;
+
+          const placement = q.placements?.find(
+            (p: Placement) =>
+              Number(p.episodeNumber) === Number(episodeNumber)
+          );
+
+          return placement?.placement === "safe";
+        }).length;
+
+        const critiqueCount = activeQueens.length - safeCount;
+
+        if (safeCount === 0) {
+          return `All ${activeQueens.length} queens receive critiques on the main stage.`;
+        }
+
+        if (critiqueCount === 0) {
+          return `All ${safeCount} queens are declared safe!`;
+        }
+
+        return `${safeCount} ${safeCount === 1 ? "queen is" : "queens are"
+          } declared safe, while the remaining ${critiqueCount} ${critiqueCount === 1 ? "queen receives" : "queens receive"
+          } critiques.`;
+      }
       case 'announceSafe':
         if (names.length == 0) {
           return 'All of the queens were asked to remain on the main stage.';
@@ -819,6 +870,7 @@ const SimLayout = (
       events.push("miniChallengeWinner");
       events.push("miniChallengeWinnerEffect");
     }
+    events.push('mainStage');
     if (hasSafeQueens) events.push("announceSafe");
     events.push("untucked");
     if (hasHighQueens) events.push("high");
@@ -833,6 +885,7 @@ const SimLayout = (
         events.push("miniChallengeWinner");
         events.push("miniChallengeWinnerEffect");
       }
+      events.push('mainStage');
       if (hasSafeQueens) events.push("announceSafe");
       if (hasHighQueens) events.push("high");
       events.push("top2");

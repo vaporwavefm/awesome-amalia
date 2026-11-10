@@ -614,10 +614,10 @@ function lipsync(bottomQueens: { id: string; queen: string; wins: number; highs:
   let winWeight = 1.4, highWeight = .6, lowWeight = .5, bottomWeight = 2;
 
   if (episodeType.toLowerCase().includes('finale') || episodeType.toLowerCase().includes('lipsyncsmackdown')) {
-    winWeight = 1.5; // override weights for smackdowns and finales
-    highWeight = .4;
-    lowWeight = .4;
-    bottomWeight = 1.7;
+    winWeight = 1.25; // override weights for smackdowns and finales
+    highWeight = .5;
+    lowWeight = .5;
+    bottomWeight = 1.25;
   } else if (seasonFlow && seasonFlow === 'ttwalas' && isTopTwo && isTopTwo == true) {
     winWeight = .05;
     highWeight = .015;

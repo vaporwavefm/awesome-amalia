@@ -117,6 +117,8 @@ const EpisodeList = ({
       events.push("miniChallengeWinner");
       events.push("miniChallengeWinnerEffect");
     }
+    
+    events.push("mainStage");
     if (hasSafeQueens) events.push("announceSafe");
 
     if (seasonFlow === "ttwalas") {
@@ -195,6 +197,10 @@ const EpisodeList = ({
                     buttonClass += " bg-gray-200 hover:bg-gray-300";
                     buttonLabel = "Mini-Challenge Winner Effect";
                     break;  
+                  case "mainStage":
+                    buttonClass += " bg-gray-200 hover:bg-gray-300";
+                    buttonLabel = "Main Stage";
+                    break;
                   case "announceSafe":
                     buttonClass += " bg-gray-200 hover:bg-gray-300";
                     buttonLabel = "Safe";
