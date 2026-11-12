@@ -7218,6 +7218,204 @@ export const episodes = [
     type: 'finale',
     franchise: 'US'
   },
+  {
+    id: 'A7kP2mV9xQ4nL8rT5cWd',
+    episodeNumber: 1,
+    season: '18',
+    title: "You Can't Keep A Good Drag Queen Down!",
+    description: "A dazzling new cast of queens navigate their first maxi-challenge, repurposing leftover treasures from the Drag Race vaults to create their own signature drag looks.",
+    type: 'design,premiere',
+    franchise: 'US'
+  },
+  {
+    id: 'B3nR8wK5pY2mV9xQ4cLd',
+    episodeNumber: 2,
+    season: '18',
+    title: "Q-Pop Girl Groups",
+    description: "The queens split into rival Q-Pop girl groups, singing and dancing to tracks inspired by iconic musical artists.",
+    type: 'singing',
+    franchise: 'US'
+  },
+  {
+    id: 'C9xT4mJ7qL2pW8nR5vKb',
+    episodeNumber: 3,
+    season: '18',
+    title: "RDR Live Returns!",
+    description: "Live from Tuckahoe, RDR Live returns! The queens must once again serve up laughs in a hilarious send-up of the iconic sketch comedy show.",
+    type: 'acting',
+    franchise: 'US'
+  },
+  {
+    id: 'D5pN8xQ2mV7rK4wL9cJb',
+    episodeNumber: 4,
+    season: '18',
+    title: "Red Carpet Mash-Ups",
+    description: "The queens must create show-stopping looks inspired by a mash-up of two different legendary red carpet looks.",
+    type: 'design',
+    franchise: 'US'
+  },
+  {
+    id: 'E2mW9qR4xK7pV3nL8cJb',
+    episodeNumber: 5,
+    season: '18',
+    title: "The Rate-A-Queen Talent Show, Part 1",
+    description: "Half of the queens take the stage to perform show-stopping talent numbers, while the other half watch and rate their performances.",
+    type: 'default',
+    franchise: 'US'
+  },
+  {
+    id: 'F8vL3pQ9nX5mR2wK7cJb',
+    episodeNumber: 6,
+    season: '18',
+    title: "The Rate-A-Queen Talent Show, Part 2",
+    description: "The other half of the cast takes to the stage for their talent show performances, while their fellow queens watch and rate the acts.",
+    type: 'default',
+    franchise: 'US'
+  },
+  {
+    id: 'G4rX9mK2pW7vL5nQ8cJb',
+    episodeNumber: 7,
+    season: '18',
+    title: "Drag Queens For Change",
+    description: "The queens are tasked with creating twisted parodies of political advertisements.",
+    type: 'parody,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'H6qN2vR8mP4xK9wL3cJb',
+    episodeNumber: 8,
+    season: '18',
+    title: "Snatch Game Of Love: Island Edition",
+    description: "RuPaul throws the queens a curveball by giving the classic celebrity impersonation game show a new format twist.",
+    type: 'comedy,snatchGame',
+    franchise: 'US'
+  },
+  {
+    id: 'J9wK3mV7qX2pR8nL4cTb',
+    episodeNumber: 9,
+    season: '18',
+    title: "Fannie: The Hard Knock Ball Rusical",
+    description: "The queens star in a Rusical inspired by a mashup of the Broadway musical Annie and New York City ballroom culture.",
+    type: 'musical',
+    franchise: 'US'
+  },
+  {
+    id: 'K2xP8nL4vQ9mR5wT3cJb',
+    episodeNumber: 10,
+    season: '18',
+    title: "Drag In A Bag",
+    description: "RuPaul throws a spectacular curveball at the queens with the third design challenge of the season.",
+    type: 'design',
+    franchise: 'US'
+  },
+  {
+    id: 'L5mR9wX2qK7nV4pT8cJb',
+    episodeNumber: 11,
+    season: '18',
+    title: "A Toast to Alyssa Edwards",
+    description: "The queens pay a comedy tribute to tongue-popping Drag Race legend Alyssa Edwards.",
+    type: 'roast',
+    franchise: 'US'
+  },
+  {
+    id: 'M8qV3nK5xR2pW9cL4tJb',
+    episodeNumber: 12,
+    season: '18',
+    title: "Mammas, Don't Let Your Babies Grow Up to Be Drag Queens",
+    description: "The queens give queer cowboys fabulous drag makeovers.",
+    type: 'makeover',
+    franchise: 'US'
+  },
+  {
+    id: 'N4pX7mQ2vL9rK5wT8cJb',
+    episodeNumber: 13,
+    season: '18',
+    title: "Karens Gone Wild",
+    description: "The queens face off with RuPaul in a chaotic improv challenge inspired by viral Karen meltdowns.",
+    type: 'improv,comedy',
+    franchise: 'US'
+  },
+  {
+    id: 'P7wK2nV9mR4xQ8cL5tJb',
+    episodeNumber: 14,
+    season: '18',
+    title: "Good Morning Bitches",
+    description: "The queens take over the eighth and ninth hours of a morning show, testing their hosting skills with interviews and banter.",
+    type: 'improv',
+    franchise: 'US'
+  },
+  {
+    id: 'Q3vL8mX5pN2rK9wT4cJb',
+    episodeNumber: 15,
+    season: '18',
+    title: "All RuPaul-A-Paruza Smackdown",
+    description: "All of the eliminated queens return to battle it out in a Lalaparuza lip sync smackdown, featuring RuPaul songs and a cash prize of $50,000.",
+    type: 'lalaparuza,lipsyncSmackdown',
+    franchise: 'US'
+  },
+  {
+    id: 'R9xW4nK2mV7pQ5cL8tJb',
+    episodeNumber: 16,
+    season: '18',
+    title: "Grand Finale",
+    description: "The top queens face off in an epic evening of performances and lip syncs as they compete for a grand prize of $200,000. Superstar Miley Cyrus joins RuPaul on stage.",
+    type: 'finale',
+    franchise: 'US'
+  },
+  {
+    id: 'Kp7VmQ2xN9aLc4RjT8wB',
+    episodeNumber: 1,
+    season: 'AS1',
+    title: "It Takes Two",
+    description: "The twelve returning queens are surprised to learn they will be competing in teams of two and that both team members will be eliminated together.",
+    type: 'design',
+    franchise: 'US'
+  },
+  {
+    id: 'X3mTq8VnL5pR2jWc9aKb',
+    episodeNumber: 2,
+    season: 'AS1',
+    title: "RuPaul's Gaff-In",
+    description: "The queens' teams write original comedy material for a Laugh-In style sketch show, delivering celebrity impersonations before presenting their best mod looks on the runway.",
+    type: 'parody',
+    franchise: 'US'
+  },
+  {
+    id: 'B9rWk4YpN2xM7cQa5jLv',
+    episodeNumber: 3,
+    season: 'AS1',
+    title: "Queens Behaving Badly",
+    description: "The remaining queens hit the streets as they entice strangers to help them earn points in challenges fed to them by their teammates through an earpiece.",
+    type: 'improv',
+    franchise: 'US'
+  },
+  {
+    id: 'H6nZp3TsV8qL1mXc4jRb',
+    episodeNumber: 4,
+    season: 'AS1',
+    title: "All-Star Girl Groups",
+    description: "The remaining teams pair up with celebrity daughters to form girl groups and perform in a battle of the divas.",
+    type: 'singing',
+    franchise: 'US'
+  },
+  {
+    id: 'D2vKx9RmW5pJ7nQa3tLc',
+    episodeNumber: 5,
+    season: 'AS1',
+    title: "Dynamic Drag Duos",
+    description: "The remaining All Stars turn their drag personas into drag superheroes and super villains, complete with original lore and a performance introducing their characters.",
+    type: 'acting',
+    franchise: 'US'
+  },
+  {
+    id: 'F8qYw4NcL2mT9pXj6rKb',
+    episodeNumber: 6,
+    season: 'AS1',
+    title: "The Grand Finale",
+    description: "For the final challenge, RuPaul sends her All Stars on a junket that culminates with a stand-up routine at L.A.'s Comedy Store.",
+    type: 'finale',
+    franchise: 'US'
+  }
 
 ].sort((a, b) => a.episodeNumber - b.episodeNumber);
 
@@ -9399,5 +9597,5 @@ export const miniChallenges = [
     id: 'S7gK5tX9dY2zP8nL4mVa',
     description: 'The queens will use puppets to impersonate their fellow contestants and deliver funny, shady commentary.'
   }
-  
+
 ];

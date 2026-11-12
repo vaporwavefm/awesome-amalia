@@ -247,6 +247,53 @@ const Page = () => {
     setEpisodeCards((prev) => prev.filter((episode) => episode.id !== id));
   };
 
+  const addRandomEpisodesByType = (types: string[], count: number = 1) => {
+    setEpisodeCards((prev) => {
+      const existingIds = new Set(prev.map((e) => e.id));
+
+      const availableEpisodes = episodes.filter(
+        (e) =>
+          types.includes(e.type?.toLowerCase()) &&
+          !existingIds.has(e.id) &&
+          !e.type?.toLowerCase().includes("finale")
+      );
+
+      if (availableEpisodes.length === 0) return prev;
+
+      const shuffled = [...availableEpisodes].sort(
+        () => Math.random() - 0.5
+      );
+
+      return [
+        ...prev,
+        ...shuffled.slice(0, count),
+      ];
+    });
+  };
+
+  const challengeTypes = [
+    {
+      label: "Acting",
+      types: ["acting", "branding", "commercial", "improv"],
+    },
+    {
+      label: "Comedy",
+      types: ["comedy", "roast", "parody", "improv"],
+    },
+    {
+      label: "Design",
+      types: ["design", "makeover"],
+    },
+    {
+      label: "Singing",
+      types: ["singing", "musical"],
+    },
+    {
+      label: "Dance",
+      types: ["dancing", "musical"],
+    },
+  ];
+
   //------------- effects and validation ----------------------------
 
   useEffect(() => {
@@ -967,7 +1014,7 @@ const Page = () => {
                         </TooltipTrigger>
                         <TooltipContent className="max-w-xs text-sm">
                           <p> <strong>The following episodes are up for selection:</strong> </p>
-                          <p> <strong>US:</strong> 1-17 </p>
+                          <p> <strong>US:</strong> 1-18, AS1</p>
                         </TooltipContent>
                       </Tooltip>
                     </h2>
@@ -1047,6 +1094,18 @@ const Page = () => {
                   >
                     Clear All!!
                   </Button>
+                </div>
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+                  {challengeTypes.map(({ label, types }) => (
+                    <Button
+                      key={label}
+                      variant="outline"
+                      onClick={() => addRandomEpisodesByType(types)}
+                      className="w-full rounded-full px-5 font-semibold hover:bg-pink-50"
+                    >
+                      +1 Random {label} Challenge
+                    </Button>
+                  ))}
                 </div>
 
                 <DndContext

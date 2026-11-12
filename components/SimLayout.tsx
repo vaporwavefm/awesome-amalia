@@ -704,16 +704,16 @@ const SimLayout = (
         const critiqueCount = activeQueens.length - safeCount;
 
         if (safeCount === 0) {
-          return `All ${activeQueens.length} queens receive critiques on the main stage.`;
+          return `Once the main challenge is completed, it's time for the judge's critiques! All ${activeQueens.length} queens are asked to remain on the main stage.`;
         }
 
         if (critiqueCount === 0) {
-          return `All ${safeCount} queens are declared safe!`;
+          return `Once the main challenge is completed, it's time for the judge's critiques! All ${safeCount} queens are declared safe!`;
         }
 
-        return `${safeCount} ${safeCount === 1 ? "queen is" : "queens are"
-          } declared safe, while the remaining ${critiqueCount} ${critiqueCount === 1 ? "queen receives" : "queens receive"
-          } critiques.`;
+        return `Once the main challenge is completed, it's time for the judge's critiques! ${safeCount} ${safeCount === 1 ? "queen is" : "queens are"
+          } declared safe, while the remaining ${critiqueCount} ${critiqueCount === 1 ? "queen remains" : "queens remain"
+          } on the main stage.`;
       }
       case 'announceSafe':
         if (names.length == 0) {
