@@ -45,6 +45,7 @@ type Queen = {
   isEliminated?: boolean;
   stats?: QueenStats;
   relationships?: Relationship[];
+  placements?: { episodeNumber: number | string; placement: string }[];
 };
 
 const QueenCard = ({ q,
@@ -57,7 +58,8 @@ const QueenCard = ({ q,
   onUpdateRelationships,
   allQueens,
   seasonFlow,
-  showMinimized
+  showMinimized,
+  episodeNumber
 }:
   {
     q: Queen,
@@ -71,6 +73,7 @@ const QueenCard = ({ q,
     allQueens?: Queen[];
     seasonFlow?: string;
     showMinimized?: boolean;
+    episodeNumber?: number | null;
   }
 ) => {
 
@@ -120,6 +123,38 @@ const QueenCard = ({ q,
       setCurrentIndex((prev) =>
         q.urls && prev === q.urls.length - 1 ? 0 : prev + 1
       );
+  };
+
+  const getTrackRecordPlacement = (
+    placement: string,
+    episodeNumber: number | string
+  ) => {
+    const lastPlacement = q.placements?.[q.placements.length - 1];
+
+    const isLastEpisode =
+      lastPlacement &&
+      Number(lastPlacement.episodeNumber) === Number(episodeNumber);
+
+    const isEliminationEpisode = q.isEliminated && isLastEpisode;
+
+    switch (placement) {
+      case "win":
+        return isWinner && isLastEpisode ? "WINNER" : "WIN";
+      case "high": return "HIGH";
+      case "top2": return "TOP2";
+      case "safe": return "SAFE";
+      case "low": return "LOW";
+      case "bottom":
+        return isEliminationEpisode ? "OUT" : "BTM2";
+      case "bottomAS":
+        return isEliminationEpisode ? "OUT" : "BTM";
+      case "finale":
+        return isLastEpisode
+          ? (q.isEliminated ? "OUT" : "RU")
+          : "FINALE";
+      default:
+        return placement.toUpperCase();
+    }
   };
 
   return (
@@ -217,8 +252,8 @@ const QueenCard = ({ q,
             </div>
 
             {
-              (viewMode != 'miniChallenge' && viewMode != 'miniChallengeWinner' && viewMode != 'miniChallengeWinnerEffect' 
-                && viewMode != 'mainStage'  && seasonFlow &&
+              (viewMode != 'miniChallenge' && viewMode != 'miniChallengeWinner' && viewMode != 'miniChallengeWinnerEffect'
+                && viewMode != 'mainStage' && seasonFlow &&
                 (seasonFlow != 'ttwalas' || (seasonFlow === 'ttwalas' &&
                   viewMode != 'top2'
                   && viewMode != 'bottomASRecap'
@@ -306,6 +341,72 @@ const QueenCard = ({ q,
                     )}
                   </AccordionContent>
                 </AccordionItem>
+
+                <AccordionItem value="trackRecord">
+                  <AccordionTrigger className="text-sm font-medium hover:text-purple-900">
+                    Track Record
+                  </AccordionTrigger>
+
+                  <AccordionContent className="pt-2 text-sm text-gray-700">
+                    {q.placements && q.placements.length > 0 ? (
+                      <div className="grid grid-cols-2 gap-2">
+                        {q.placements
+                          .filter((p) =>
+                            episodeNumber != null
+                              ? Number(p.episodeNumber) < episodeNumber
+                              : true
+                          )
+                          .slice()
+                          .sort(
+                            (a, b) =>
+                              Number(a.episodeNumber) - Number(b.episodeNumber)
+                          )
+                          .map((p) => {
+                            const placement = getTrackRecordPlacement(
+                              p.placement,
+                              p.episodeNumber
+                            );
+
+                            const placementStyles: Record<string, string> = {
+                              WIN: "bg-blue-400 text-white",
+                              HIGH: "bg-sky-300 text-slate-900",
+                              TOP2: "bg-yellow-200 text-slate-900",
+                              SAFE: "bg-gray-100 text-gray-700",
+                              LOW: "bg-pink-200 text-slate-900",
+                              BTM2: "bg-red-300 text-slate-900",
+                              BTM: "bg-red-300 text-slate-900",
+                              OUT: "bg-red-400 text-white",
+                              WINNER: "bg-yellow-300 text-slate-900",
+                              "RU": "bg-green-200 text-green-900",
+                            };
+
+                            return (
+                              <div
+                                key={p.episodeNumber}
+                                className="flex flex-col items-center rounded-md border border-gray-200 overflow-hidden"
+                              >
+                                <span className="w-full bg-purple-50 py-1 text-center text-[10px] font-medium text-purple-900">
+                                  EP {p.episodeNumber}
+                                </span>
+
+                                <span
+                                  className={`w-full py-2 text-center text-xs font-bold ${placementStyles[placement] || "bg-gray-100 text-gray-700"
+                                    }`}
+                                >
+                                  {placement}
+                                </span>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    ) : (
+                      <p className="text-xs text-gray-500">
+                        No track record available.
+                      </p>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+
                 <AccordionItem value="relationships">
                   <AccordionTrigger className="text-sm font-medium hover:text-purple-900">
                     Relationships

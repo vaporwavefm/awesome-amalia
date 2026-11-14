@@ -165,38 +165,38 @@ const Page = () => {
     localStorage.setItem("seasonTitle", seasonTitle);
 
     const savedLipsyncs = [];
-    for (const e in episodeCards) {
-      let found = false;
-      const eNum = episodeCards[e].franchise.toLowerCase() + episodeCards[e].season + 'e' + Number(episodeCards[e].episodeNumber);
+    const shuffledLipsyncs = [...lipsyncs];
 
-      for (const l in lipsyncs) {
-        if (lipsyncs[l].episode === eNum) {
-          savedLipsyncs.push({
-            episodeNumber: episodeCards[e].episodeNumber,
-            lipsync: lipsyncs[l]
-          })
-          found = true;
-        }
-      }
+    for (let i = shuffledLipsyncs.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
 
-      if (!found) {
-        const usedIds = new Set(savedLipsyncs.map((l: any) => l.lipsync?.id)); // track used lipsyncs
-        let randomItem, cutoff = 0;
-        do {
-          const randomIndex = Math.floor(Math.random() * lipsyncs.length);
-          randomItem = lipsyncs[randomIndex];
-          cutoff++;
-        } while (usedIds.has(randomItem.id) && cutoff < 50);
-
-        usedIds.add(randomItem.id);
-        savedLipsyncs.push({
-          episodeNumber: Number(episodeCards[e].episodeNumber),
-          lipsync: randomItem,
-        });
-      }
+      [shuffledLipsyncs[i], shuffledLipsyncs[randomIndex]] =
+        [shuffledLipsyncs[randomIndex], shuffledLipsyncs[i]];
     }
 
-    localStorage.setItem('savedLipsyncs', JSON.stringify(savedLipsyncs));
+    let lipsyncIndex = 0;
+
+    for (const e in episodeCards) {
+      if (lipsyncIndex >= shuffledLipsyncs.length) {
+        for (let i = shuffledLipsyncs.length - 1; i > 0; i--) {
+          const randomIndex = Math.floor(Math.random() * (i + 1));
+
+          [shuffledLipsyncs[i], shuffledLipsyncs[randomIndex]] =
+            [shuffledLipsyncs[randomIndex], shuffledLipsyncs[i]];
+        }
+
+        lipsyncIndex = 0;
+      }
+
+      const randomItem = shuffledLipsyncs[lipsyncIndex++];
+
+      savedLipsyncs.push({
+        episodeNumber: Number(episodeCards[e].episodeNumber),
+        lipsync: randomItem,
+      });
+    }
+
+    localStorage.setItem("savedLipsyncs", JSON.stringify(savedLipsyncs));
 
     const shuffledMiniChallenges = [...miniChallenges].sort(
       () => Math.random() - 0.5

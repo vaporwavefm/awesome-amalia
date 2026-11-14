@@ -9,7 +9,7 @@ import SeasonTrackRecordLipsyncs from "./SeasonTrackRecordLipsyncs";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import { type MiniChallengeResult  } from "@/lib/utils";
+import { type MiniChallengeResult } from "@/lib/utils";
 
 type Queen = {
     id: string;
@@ -37,13 +37,13 @@ type Lipsync = {
 };
 
 type MiniChallenge = {
-  id: string;
-  description: string;
+    id: string;
+    description: string;
 };
 
 type SavedMiniChallenge = {
-  episodeNumber: number;
-  miniChallenge: MiniChallenge;
+    episodeNumber: number;
+    miniChallenge: MiniChallenge;
 };
 
 const CardList = ({
@@ -61,7 +61,7 @@ const CardList = ({
     showTrackRecordTabs,
     lipsyncPairs,
     miniChallenges
-    
+
 }: {
     queens: Queen[];
     lipsyncs: Lipsync[];
@@ -143,6 +143,7 @@ const CardList = ({
                                         allQueens={allQueens}
                                         seasonFlow={seasonFlow}
                                         showMinimized={showMinimized}
+                                        episodeNumber={showResults ? null : currentEpisode}
                                     />
                                 </div>
                             ))}
@@ -194,6 +195,7 @@ const CardList = ({
                                 allQueens={allQueens}
                                 seasonFlow={seasonFlow}
                                 showMinimized={showMinimized}
+                                episodeNumber={currentEpisode}
                             />
                         </div>
                     ))}
